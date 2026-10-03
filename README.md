@@ -1,5 +1,7 @@
 # WHP Standing Witness Client & MCP Adapter
 
+[![Smithery Badge](https://smithery.ai/badge/@wheelerhubbell/whp-standing)](https://smithery.ai/servers/@wheelerhubbell/whp-standing)
+
 Official client interface and MCP adapter for **Wheeler Hubbell Publishing (WHP) Standing Witness**.
 
 Standing Witness provides authoritative, machine-to-machine Decision Integrity Protocols (DIP) and Standing evaluation for autonomous AI agents, automated workflows, and sovereign publishing pipelines.
