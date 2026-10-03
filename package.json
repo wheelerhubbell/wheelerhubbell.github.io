@@ -1,0 +1,27 @@
+{
+  "name": "@wheelerhubbell/standing-client",
+  "version": "1.0.0",
+  "description": "Client adapter and MCP bridge for Wheeler Hubbell Publishing Standing Witness verification service.",
+  "main": "index.mjs",
+  "bin": {
+    "whp-standing": "./bin/cli.mjs"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "node ./bin/cli.mjs"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai-agents",
+    "decision-integrity",
+    "standing-witness",
+    "x402"
+  ],
+  "author": "Wheeler Hubbell Publishing",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wheelerhubbell/whp-standing-client.git"
+  }
+}
