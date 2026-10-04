@@ -157,3 +157,13 @@ footer{padding:36px var(--gut);border-top:1px solid var(--line);font-family:var(
   .heroLinks{gap:22px}
 }
 @media(max-width:520px){.book p.meta{font-size:10.5px;line-height:1.5;color:var(--mute)}.feature p.meta{color:#c9a9a6}}
+
+.reading{max-width:36em;margin:clamp(72px,10vw,140px) auto 0;padding-top:clamp(40px,6vw,72px);border-top:1px solid #3a1a1f}
+.reading h3{font-size:clamp(38px,6.5vw,84px);line-height:1.04;margin:14px 0 28px}
+.reading h3 span{display:block;color:#d4b9a0}
+.excerpt{font-size:clamp(20px,2.4vw,28px);line-height:1.4;color:var(--paper);margin:0 0 28px}
+.room{padding-top:clamp(96px,13vw,190px);padding-bottom:clamp(96px,13vw,190px)}
+.plate{font-family:var(--sans);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);margin-top:22px;padding-top:16px;border-top:1px solid var(--line);max-width:14em}
+.publishing .side h2{font-size:clamp(30px,4vw,52px)}
+a,.solid,.link{transition:color .6s ease,background-color .6s ease,border-color .6s ease}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
