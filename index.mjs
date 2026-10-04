@@ -144,3 +144,9 @@ export class StandingClient {
     return res.json();
   }
 }
+
+export {
+  withStandingWitness,
+  createLangChainGuard,
+  createElizaGuard
+} from './adapters.mjs';

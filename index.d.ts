@@ -54,3 +54,11 @@ export declare class StandingClient {
   evaluate(payload: any, paymentToken?: string | null): Promise<any>;
   getResult(resultId: string): Promise<any>;
 }
+
+export function withStandingWitness<T extends (...args: any[]) => any>(
+  fn: T,
+  options?: Record<string, any>
+): (...args: Parameters<T>) => Promise<ReturnType<T>>;
+
+export function createLangChainGuard(tool: any, options?: Record<string, any>): any;
+export function createElizaGuard(action: any, options?: Record<string, any>): any;
