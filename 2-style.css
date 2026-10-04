@@ -167,3 +167,8 @@ footer{padding:36px var(--gut);border-top:1px solid var(--line);font-family:var(
 .publishing .side h2{font-size:clamp(30px,4vw,52px)}
 a,.solid,.link{transition:color .6s ease,background-color .6s ease,border-color .6s ease}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+.rec+.rec{margin-top:clamp(56px,8vw,104px);padding-top:clamp(40px,5vw,64px);border-top:1px solid var(--line)}
+.rec h3{font-size:clamp(24px,2.6vw,34px);font-weight:400;margin:0 0 .3em}
+.rec .sub{color:var(--brass);font-family:var(--sans);font-size:13px;letter-spacing:.08em;margin:0 0 1.4em}
+.rec+.rec{max-width:34em}
