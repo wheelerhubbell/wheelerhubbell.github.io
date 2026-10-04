@@ -1,21 +1,32 @@
 {
-  "name": "@wheelerhubbell/standing-client",
-  "version": "1.0.0",
-  "description": "Client adapter and MCP bridge for Wheeler Hubbell Publishing Standing Witness verification service.",
+  "name": "@wheelerhubbell/whp-standing-client",
+  "version": "0.1.0",
+  "description": "Fail-closed epistemic standing middleware and client SDK for autonomous AI agents.",
   "main": "index.mjs",
+  "types": "index.d.ts",
   "bin": {
     "whp-standing": "./bin/cli.mjs"
   },
   "type": "module",
+  "files": [
+    "index.mjs",
+    "index.d.ts",
+    "bin",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
+    "test": "node --test test/guard.test.mjs",
     "start": "node ./bin/cli.mjs"
   },
   "keywords": [
-    "mcp",
-    "model-context-protocol",
     "ai-agents",
+    "middleware",
+    "guardrails",
     "decision-integrity",
     "standing-witness",
+    "provenance",
+    "mcp",
     "x402"
   ],
   "author": "Wheeler Hubbell Publishing",
