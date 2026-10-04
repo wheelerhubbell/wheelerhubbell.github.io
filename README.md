@@ -3,7 +3,14 @@
 > **Fail-closed epistemic standing middleware for autonomous AI agents.**  
 > Governed by the Authority Conservation Principle: **$A(c) \le P(c)$** (Authority cannot exceed provenance).
 
-Standing verifies that an agent tool action carries sufficient upstream authority and provenance before reaching a state-changing boundary.
+Standing detects and stops **Coherent Substitution**—when an AI agent silently replaces the assigned task with an adjacent one ($q \to q^*$), reasons coherently about the replacement, and executes unauthorized state mutations.
+
+---
+
+## 📚 Case Studies & Theory
+
+- **[Coherent Substitution (v1.1)](./COHERENT_SUBSTITUTION.md):** Theoretical formulation of proposition integrity and why systems fail before their reasoning becomes wrong.
+- **[Mata v. Avianca Epistemic Autopsy](./MATA_V_AVIANCA_AUTOPSY.md):** Controlled forensic breakdown showing how an agent citing 100% verified sources still fails by answering the wrong question ($Q_0 \to Q_1$).
 
 ---
 
@@ -29,7 +36,7 @@ await guardAction(toolCall, {
 return await tool.execute(toolCall.arguments);
 ```
 
-If an agent attempts a state-changing operation (file deletion, database write, API mutation) without attributable upstream authorization, `guardAction` throws a `StandingViolationError` before the boundary is crossed.
+If an agent attempts a state-changing operation (file deletion, database write, API mutation) without attributable upstream authorization or provenance, `guardAction` throws a `StandingViolationError` before the boundary is crossed.
 
 ---
 
