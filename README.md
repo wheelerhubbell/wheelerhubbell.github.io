@@ -85,18 +85,32 @@ if (!decision.allowed) {
 
 ## 🌐 Verifiable Network Verification
 
-Connect to the live WHP Standing Witness service on Base USDC ($1.00 x402-v2 gate):
+The live service has a plain front door for ordinary x402 agents: `POST /v1/evaluate` with `subject`, `claim` and optional `provenance`, priced at 1.00 USDC on Base (x402 v2). It returns a signed evaluation record. That record is not a sealed Standing Mark. Marks are issued through `POST /v1/evaluations`, which takes signed submissions per the published contract.
+
+Example using the official x402 client (requires your own funded wallet and spending limits; not yet verified end to end against the live service):
 
 ```javascript
-import { StandingClient } from '@wheelerhubbell/whp-standing-client';
+import { x402Client, wrapFetchWithPayment } from '@x402/fetch';
+import { registerExactEvmScheme } from '@x402/evm/exact/client';
+import { privateKeyToAccount } from 'viem/accounts';
 
-const client = new StandingClient();
-const result = await client.evaluate({
-  subject: "agent-session-42",
-  claim: "Agent executed system mutation",
-  provenance: { source: "user-intent", authority: "admin" }
+const client = new x402Client();
+registerExactEvmScheme(client, { signer: privateKeyToAccount(process.env.EVM_PRIVATE_KEY) });
+const fetchWithPayment = wrapFetchWithPayment(fetch, client);
+
+const res = await fetchWithPayment('https://standing-guard-service.lovable.app/v1/evaluate', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    subject: 'agent-session-42',
+    claim: 'Agent executed system mutation',
+    provenance: { source: 'user-intent', authority: 'admin' }
+  })
 });
+console.log(await res.json());
 ```
+
+Check the payment terms first with `GET /v1/contract`. The `StandingClient` class in this package does not sign or pay yet.
 
 - **Live Service:** [https://standing-guard-service.lovable.app](https://standing-guard-service.lovable.app)
 - **Discovery:** [/.well-known/x402](https://standing-guard-service.lovable.app/.well-known/x402)
