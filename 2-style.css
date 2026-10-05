@@ -275,3 +275,25 @@ footer{text-align:left;padding-top:28px;padding-bottom:28px;font-size:9px;line-h
 @media(max-width:1000px){.top{align-items:start}.mark{max-width:180px}nav{max-width:480px}.principle{padding-left:18px;padding-right:18px}.principle h3{font-size:22px}.principle p{font-size:15px}.cover-link{padding:30px}.book,.book.flip{column-gap:6%}}
 @media(max-width:760px){.top{display:block}.mark{display:block;max-width:none;margin-bottom:20px;font-size:11px}nav{justify-content:flex-start;max-width:none;gap:9px 18px;font-size:9px}.hero{padding-top:65px;padding-bottom:35px}.hero h1{font-size:clamp(68px,16vw,115px);margin-bottom:32px}.statement{font-size:28px}.hero-credit{margin-bottom:42px}.work-map{grid-template-columns:repeat(3,1fr)}.work-map a{min-height:125px;padding:22px 8px 22px 0;margin-right:15px;gap:20px}.work-map a:nth-child(3){border-right:0;margin-right:0}.work-map a:nth-child(n+4){border-top:1px solid var(--line)}.work-map em{font-size:22px}.work-map span{font-size:9px}.inquiry{padding-top:35px;padding-bottom:65px}.index-note{display:none}.pair,.research,.inquiry{grid-template-columns:1fr;gap:25px}.book,.book.flip{grid-template-columns:1fr;grid-template-areas:"title" "cover" "info";gap:26px;padding:45px 0 58px}.book-opening{padding-top:0}.book-opening h3{font-size:36px;max-width:12em}.cover-link{padding:32px;max-width:100%;width:100%;}.book img{max-height:420px}.book .info{max-width:36em}.book .info p{font-size:17px}.further-works ul{grid-template-columns:1fr;gap:0}.further-works li{font-size:23px}.protocol .head{display:block;margin-bottom:42px}.protocol .head h2{margin-bottom:25px}.principles{grid-template-columns:1fr}.principle,.principle:nth-child(2),.principle:last-child{display:grid;grid-template-columns:40px 1fr;gap:12px 22px;padding:26px 0;border:0;border-top:1px solid var(--line)}.principle .num{grid-row:1/3;font-size:27px}.principle h3{min-height:0;font-size:29px}.principle p{grid-column:2;font-size:16px}.principles>.label{padding-top:23px;margin-bottom:22px}.teaching-path{gap:12px 20px}.teaching-path span{font-size:16px}.teaching-path span+span:before{margin-right:20px}.research .side h2{font-size:40px}.record div{grid-template-columns:90px 1fr;gap:10px}.rec h3{font-size:36px}.roomInner,.reading{max-width:36em}.room,.books,.protocol,.research,.publishing,.about{padding-top:70px;padding-bottom:70px}.about{gap:38px}.about-statement{font-size:24px}.portrait{max-width:260px}.doc{display:block}.asks{margin:32px 0;padding:24px}.contact{padding-top:70px;padding-bottom:70px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+/* Cloth, gilt and lamplight, held below the type. */
+:root{--ink:#0d141b;--paper:#e4d7bd;--paper2:#c0b29a;--brass:#bc9a60;--line:#494034}
+.top{background:#101516;border-bottom-color:#665334}
+.mark{display:flex;gap:16px;align-items:center;max-width:300px;min-width:240px;font-size:11px;letter-spacing:.18em;line-height:1.7}
+.house-monogram{display:block;position:relative;width:44px;height:44px;flex:0 0 44px;color:var(--brass);font-size:31px;line-height:44px;letter-spacing:-.12em;border:1px solid #7b653f;text-transform:none}
+.house-monogram span:first-child{position:absolute;left:3px;top:-3px}.house-monogram span:last-child{position:absolute;font-size:25px;left:20px;top:3px}
+.hero{background-color:#0d141b;background-image:radial-gradient(ellipse at 88% 20%,rgba(135,93,43,.13),transparent 65%)}
+.hero h1{color:#e7dbc3;text-shadow:0 2px 1px #000}
+.kicker,.label,.work-map em{color:var(--brass)}
+.books,.room,.publishing{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M0 1h6M0 4h6' stroke='%23c4a877' stroke-opacity='.045'/%3E%3Cpath d='M1 0v6M4 0v6' stroke='%23000000' stroke-opacity='.12'/%3E%3C/svg%3E")}
+.books{background-color:#191d21}
+.cover-link{background:#24211e;border-top:1px solid #52412d;border-bottom:3px solid #51412d;box-shadow:inset 0 0 35px #151413,0 20px 30px -24px #000}
+.book img{box-shadow:7px 13px 22px #080908}
+.room{background-color:#2b1b20;border-color:#65402e}
+.research{background-color:#1b221d;border-top-color:#6c6348}
+.record{background:rgba(7,12,10,.18);border-top-color:#736043}
+.publishing{background-color:#1e1b1a}
+.publishing .plate{color:var(--brass)}
+.principles{border-top-color:var(--brass)}
+.principle .num{text-shadow:0 1px #000}
+@media(max-width:1000px){.mark{min-width:210px;gap:12px;font-size:10px}}
+@media(max-width:760px){.mark{display:flex;max-width:none;min-width:0;margin-bottom:22px;font-size:10px}.house-monogram{width:38px;height:38px;flex-basis:38px;line-height:38px;font-size:28px}.house-monogram span:last-child{font-size:22px;left:18px;top:2px}.hero{background-image:radial-gradient(ellipse at 95% 5%,rgba(135,93,43,.12),transparent 65%)}}
