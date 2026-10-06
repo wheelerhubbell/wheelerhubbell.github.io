@@ -124,23 +124,44 @@ export class StandingClient {
     return res.json();
   }
 
-  async evaluate(payload, paymentToken = null) {
-    const headers = {
-      'Content-Type': 'application/json'
-    };
-    if (paymentToken) {
-      headers['X-Payment'] = paymentToken;
-    }
-    const res = await fetch(`${this.endpoint}/v1/evaluate`, {
+  /**
+   * Evaluate a claim at the simple front door (POST /v1/evaluate).
+   * The endpoint answers HTTP 402 until paid (1 USDC on Base).
+   * To pay in one call, pass options.fetch: a fetch that signs and pays x402
+   * challenges, for example one wrapped with the @x402/fetch package.
+   * Without it, this method returns the 402 payment terms as a result
+   * object ({ paymentRequired: true, status: 402, ... }) instead of throwing.
+   * Legacy: a string second argument is still sent as an X-Payment header.
+   */
+  async evaluate(payload, options = null) {
+    const opts = typeof options === 'string' ? { paymentToken: options } : (options || {});
+    const doFetch = opts.fetch || fetch;
+    const headers = { 'Content-Type': 'application/json' };
+    if (opts.paymentToken) headers['X-Payment'] = opts.paymentToken;
+    const res = await doFetch(`${this.endpoint}/v1/evaluate`, {
       method: 'POST',
       headers,
       body: JSON.stringify(payload)
     });
+    if (res.status === 402) {
+      const header = res.headers.get('payment-required');
+      let terms = null;
+      try { terms = header ? JSON.parse(Buffer.from(header, 'base64').toString('utf8')) : await res.json(); } catch { /* leave null */ }
+      return { paymentRequired: true, status: 402, terms };
+    }
     return res.json();
   }
 
-  async getResult(resultId) {
-    const res = await fetch(`${this.endpoint}/v1/result/${resultId}`);
+  /**
+   * Fetch a paid result by purchase id (GET /v1/purchases/{id}/result).
+   * Retrieval never triggers a second charge. The signed-Mark rail
+   * (/v1/evaluations) needs client proof headers: pass them in options.headers.
+   */
+  async getResult(purchaseId, options = {}) {
+    const doFetch = options.fetch || fetch;
+    const res = await doFetch(`${this.endpoint}/v1/purchases/${encodeURIComponent(purchaseId)}/result`, {
+      headers: options.headers || {}
+    });
     return res.json();
   }
 }
