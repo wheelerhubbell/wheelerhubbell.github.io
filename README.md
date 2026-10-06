@@ -40,7 +40,7 @@ No engine files, keys, payment authorizations, customer records, or private repo
 
 ## Historical worked example: genesis self-test
 
-[`examples/examples/genesis-selftest.mark.json`](examples/examples/genesis-selftest.mark.json) is the original signed receipt for the publisher's own self-test, not an outside customer's purchase. It contains the submitted provenance, payment terms and authorization, signed assessment, and settlement evidence.
+[`examples/genesis-selftest.mark.json`](examples/genesis-selftest.mark.json) is the original signed receipt for the publisher's own self-test, not an outside customer's purchase. It contains the submitted provenance, payment terms and authorization, signed assessment, and settlement evidence.
 
 Base transaction: `0x751f288ece3cc39081a6c3873665af5f0f441bf6c2751374a95a1c40e6ccafdf`, block `52220195`, 1.000000 USDC. Check the transaction independently on Base.
 
@@ -53,7 +53,7 @@ c9507f2c5d0d80935a4885071c8372eeba25010e514e81401acabb246134bff6
 This pin is a declared trust assumption, not proof that the issuer has institutional authority. A reader must independently decide whether to admit that root.
 
 ```
-python3 verify_mark.py examples/examples/genesis-selftest.mark.json --root-pin c9507f2c5d0d80935a4885071c8372eeba25010e514e81401acabb246134bff6
+python3 verify_mark.py examples/genesis-selftest.mark.json --root-pin c9507f2c5d0d80935a4885071c8372eeba25010e514e81401acabb246134bff6
 ```
 
 With that explicit pin, the historical example verifies its cryptographic integrity and evaluator replay. This command does not check current standing or independently recheck the chain.
