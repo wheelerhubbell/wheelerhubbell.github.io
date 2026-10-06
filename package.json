@@ -1,6 +1,6 @@
 {
   "name": "@wheelerhubbell/whp-standing-client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Fail-closed epistemic standing middleware and client SDK for autonomous AI agents.",
   "main": "index.mjs",
   "types": "index.d.ts",
