@@ -51,8 +51,8 @@ export declare class StandingClient {
   endpoint: string;
   constructor(options?: { endpoint?: string });
   getContract(): Promise<any>;
-  evaluate(payload: any, paymentToken?: string | null): Promise<any>;
-  getResult(resultId: string): Promise<any>;
+  evaluate(payload: any, options?: string | { fetch?: typeof fetch; paymentToken?: string } | null): Promise<any>;
+  getResult(purchaseId: string, options?: { fetch?: typeof fetch; headers?: Record<string, string> }): Promise<any>;
 }
 
 export function withStandingWitness<T extends (...args: any[]) => any>(
