@@ -1,0 +1,38 @@
+{
+  "name": "@wheelerhubbell/whp-standing-client",
+  "version": "0.1.1",
+  "description": "Fail-closed epistemic standing middleware and client SDK for autonomous AI agents.",
+  "main": "index.mjs",
+  "types": "index.d.ts",
+  "bin": {
+    "whp-standing": "./bin/cli.mjs"
+  },
+  "type": "module",
+  "files": [
+    "index.mjs",
+    "index.d.ts",
+    "bin",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test test/guard.test.mjs",
+    "start": "node ./bin/cli.mjs"
+  },
+  "keywords": [
+    "ai-agents",
+    "middleware",
+    "guardrails",
+    "decision-integrity",
+    "standing-witness",
+    "provenance",
+    "mcp",
+    "x402"
+  ],
+  "author": "Wheeler Hubbell Publishing",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wheelerhubbell/whp-standing-client.git"
+  }
+}

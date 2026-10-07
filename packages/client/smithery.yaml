@@ -1,0 +1,7 @@
+startCommand:
+  type: stdio
+  configSchema:
+    endpoint:
+      type: string
+      default: "https://standing-guard-service.lovable.app/mcp"
+      description: "Hosted endpoint for WHP Standing Witness service."
