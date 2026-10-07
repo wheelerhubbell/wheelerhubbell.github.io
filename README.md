@@ -7,7 +7,7 @@ Independent verifier for WHP Standing v1. This repository contains only the stan
 `verify_mark.py` is published byte-for-byte from the source identified by the live service's signed profile authorization. Expected SHA-256:
 
 ```
-bb8cb78205f1892dcbf00d845cf85e504a0efacf2a0d8a793313fa8c0e99b833
+0980eb6bb156f4251a935a65a6e2ef6c7441fc06de8b2a05f1e57c511d19cb5e
 ```
 
 Verify the file hash before running it. The verifier checks its own source hash against the authorization supplied with a Mark. A hash match establishes byte identity, not endorsement of code or admission of a trust root.
@@ -32,13 +32,15 @@ The verifier embeds its wire schemas and imports no producer modules. Cryptograp
 
 ## Source and scope
 
-Ratified source: https://standing-guard-service.lovable.app/verification/bb8cb78205f1892dcbf00d845cf85e504a0efacf2a0d8a793313fa8c0e99b833.py
+Ratified source: https://standing-guard-service.lovable.app/v1/verification/0980eb6bb156f4251a935a65a6e2ef6c7441fc06de8b2a05f1e57c511d19cb5e.py
 
 Service verification information: https://standing-guard-service.lovable.app/v1/verification
 
 No engine files, keys, payment authorizations, customer records, or private repository history are included. Publication does not add a software license or grant broader rights.
 
 ## Historical worked example: genesis self-test
+
+Use the original hash-named verifier for this historical Mark. Both verifier generations and their current-status resolution routes remain available.
 
 [`examples/genesis-selftest.mark.json`](examples/genesis-selftest.mark.json) is the original signed receipt for the publisher's own self-test, not an outside customer's purchase. It contains the submitted provenance, payment terms and authorization, signed assessment, and settlement evidence.
 
@@ -53,7 +55,7 @@ c9507f2c5d0d80935a4885071c8372eeba25010e514e81401acabb246134bff6
 This pin is a declared trust assumption, not proof that the issuer has institutional authority. A reader must independently decide whether to admit that root.
 
 ```
-python3 verify_mark.py examples/genesis-selftest.mark.json --root-pin c9507f2c5d0d80935a4885071c8372eeba25010e514e81401acabb246134bff6
+python3 bb8cb78205f1892dcbf00d845cf85e504a0efacf2a0d8a793313fa8c0e99b833.py examples/genesis-selftest.mark.json --root-pin c9507f2c5d0d80935a4885071c8372eeba25010e514e81401acabb246134bff6
 ```
 
 With that explicit pin, the historical example verifies its cryptographic integrity and evaluator replay. This command does not check current standing or independently recheck the chain.
