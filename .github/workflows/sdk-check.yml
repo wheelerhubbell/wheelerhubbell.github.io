@@ -1,0 +1,43 @@
+name: Public SDK build and boundary checks
+on:
+  push:
+    paths: ['sdk/**', '.github/workflows/sdk-check.yml', '*verifier*', '*.py']
+  pull_request:
+    paths: ['sdk/**', '.github/workflows/sdk-check.yml', '*verifier*', '*.py']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-sdk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: sudo apt-get update && sudo apt-get install -y bubblewrap
+      - run: python3 sdk/tools/boundary_check.py
+      - run: |
+          python3 -m venv /tmp/whp-verifier-runtime
+          /tmp/whp-verifier-runtime/bin/pip install -r requirements.txt
+          /tmp/whp-verifier-runtime/bin/pip install build hatchling 'eth-account>=0.13,<0.14'
+      - run: npm ci --ignore-scripts && npm test && npm pack
+        working-directory: sdk/typescript
+        env:
+          WHP_PUBLIC_CHECKOUT: ${{ github.workspace }}
+          WHP_VERIFIER_RUNTIME: /tmp/whp-verifier-runtime
+      - run: |
+          PYTHONPATH=src /tmp/whp-verifier-runtime/bin/python -m unittest discover -s tests -v
+          /tmp/whp-verifier-runtime/bin/python -m build
+        working-directory: sdk/python
+        env:
+          WHP_PUBLIC_CHECKOUT: ${{ github.workspace }}
+          WHP_VERIFIER_RUNTIME: /tmp/whp-verifier-runtime
+      - run: python3 sdk/tools/inspect_artifacts.py
+      # No publishing job, wallet key, payments or private repository checkout.
