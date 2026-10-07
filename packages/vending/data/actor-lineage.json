@@ -1,0 +1,69 @@
+{
+  "protocolVersion": "WHP-ACTOR-REGISTRY-v0.1",
+  "registryId": "WHP-CANONICAL-ACTORS",
+  "issuedAt": "2026-09-24",
+  "actors": [
+    {
+      "actorId": "JUSTIN_NATURAL_PERSON",
+      "actorType": "NATURAL_PERSON",
+      "canonicalLabel": "Justin",
+      "capacities": [
+        "INDIVIDUAL",
+        "PRESIDENT_OF_WHP"
+      ]
+    },
+    {
+      "actorId": "WHEELER_HUBBELL_PUBLISHING_INC",
+      "actorType": "CORPORATION",
+      "canonicalLabel": "Wheeler Hubbell Publishing, Inc.",
+      "capacities": [
+        "CORPORATE_ENTITY"
+      ]
+    }
+  ],
+  "capacities": [
+    {
+      "capacityId": "INDIVIDUAL",
+      "actorId": "JUSTIN_NATURAL_PERSON",
+      "principalId": "JUSTIN_NATURAL_PERSON"
+    },
+    {
+      "capacityId": "PRESIDENT_OF_WHP",
+      "actorId": "JUSTIN_NATURAL_PERSON",
+      "principalId": "WHEELER_HUBBELL_PUBLISHING_INC",
+      "authoritySource": "CORPORATE_OFFICE_AND_APPLICABLE_CORPORATE_AUTHORITY"
+    },
+    {
+      "capacityId": "CORPORATE_ENTITY",
+      "actorId": "WHEELER_HUBBELL_PUBLISHING_INC",
+      "principalId": "WHEELER_HUBBELL_PUBLISHING_INC"
+    }
+  ],
+  "relationships": [
+    {
+      "type": "UPSTREAM_CONTRIBUTOR_TO",
+      "fromActorId": "JUSTIN_NATURAL_PERSON",
+      "toActorId": "WHEELER_HUBBELL_PUBLISHING_INC",
+      "scope": [
+        "RIGHTS",
+        "LABOR",
+        "INTELLECTUAL_PROPERTY",
+        "AUTHORITY",
+        "DECISIONS",
+        "OTHER_VALID_CONTRIBUTIONS"
+      ]
+    },
+    {
+      "type": "AUTHORIZED_REPRESENTATIVE_OF",
+      "fromActorId": "JUSTIN_NATURAL_PERSON",
+      "capacityId": "PRESIDENT_OF_WHP",
+      "toActorId": "WHEELER_HUBBELL_PUBLISHING_INC"
+    }
+  ],
+  "invariants": [
+    "ALIGNMENT_DOES_NOT_COLLAPSE_IDENTITY",
+    "GOAL_LINEAGE_BEGINS_WITH_GOAL_HOLDER",
+    "REPRESENTATIVE_CAPACITY_DOES_NOT_CHANGE_ASSET_OWNERSHIP",
+    "INTER_ACTOR_VALUE_FLOW_REQUIRES_ITS_OWN_AUTHORIZED_EVENT"
+  ]
+}

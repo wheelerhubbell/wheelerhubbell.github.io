@@ -1,0 +1,40 @@
+{
+  "schema_version": "whp.vending.service.v1",
+  "service_id": "whp-vending",
+  "name": "WHP Vending",
+  "publisher": {
+    "name": "Wheeler Hubbell Publishing, Inc."
+  },
+  "origin": "https://whp-vending.wheelerhubbell.chatgpt.site",
+  "mode": "live",
+  "description": "Five fixed-price digital decision-integrity instruments with verified Stripe checkout and paid ZIP delivery.",
+  "catalog": {
+    "current": "https://whp-vending.wheelerhubbell.chatgpt.site/catalog/v1/index.json",
+    "legacy": "https://whp-vending.wheelerhubbell.chatgpt.site/catalog.json",
+    "version": "1.0.1",
+    "build": "RESTORED-2026-09-22.1"
+  },
+  "discovery": {
+    "llms_txt": "https://whp-vending.wheelerhubbell.chatgpt.site/llms.txt",
+    "openapi": "https://whp-vending.wheelerhubbell.chatgpt.site/openapi.json",
+    "rights": "https://whp-vending.wheelerhubbell.chatgpt.site/v1/rights",
+    "health": "https://whp-vending.wheelerhubbell.chatgpt.site/healthz",
+    "readiness": "https://whp-vending.wheelerhubbell.chatgpt.site/readyz"
+  },
+  "commerce": {
+    "checkout_rail": "stripe_payment_link",
+    "currency": "usd",
+    "one_time": true,
+    "subscription": false,
+    "autonomous_payment_supported": false,
+    "buyer_interaction_required": true,
+    "fulfillment": "digital_download",
+    "status_url_template": "https://whp-vending.wheelerhubbell.chatgpt.site/api/status?session_id={CHECKOUT_SESSION_ID}",
+    "download_url_template": "https://whp-vending.wheelerhubbell.chatgpt.site/download?session_id={CHECKOUT_SESSION_ID}",
+    "recovery_credential": "stripe_checkout_session_id"
+  },
+  "scope": {
+    "whp_standing": false,
+    "standing_mark_issuance": false
+  }
+}

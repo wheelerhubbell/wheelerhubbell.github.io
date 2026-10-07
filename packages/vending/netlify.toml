@@ -1,0 +1,14 @@
+[build]
+  # The canonical production service is ChatGPT Sites. Keep this legacy
+  # repository connected for history, but never spend Netlify build credits.
+  ignore = "exit 0"
+  command = "npm test && npm run check:public"
+  publish = "public"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+  external_node_modules = ["@netlify/database", "mppx", "stripe"]
+
+[build.environment]
+  NODE_VERSION = "24"

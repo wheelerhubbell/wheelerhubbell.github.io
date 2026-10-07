@@ -1,0 +1,46 @@
+name: WHP autonomous market worker
+
+on:
+  schedule:
+    - cron: "2-57/5 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: whp-autonomous-market-worker
+  cancel-in-progress: false
+
+jobs:
+  fulfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Check out worker control file
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+
+      - name: Check out pinned market engine
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: wheelerhubbellpublishing/Wheeler-Hubbell-Publishing-Standing-Mark
+          ref: ef585b8149c14051e30c2d6344ad06e138745fb6
+          path: .market-engine
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout: automation/autonomous-market
+          sparse-checkout-cone-mode: true
+
+      - name: Use Node.js 22.16
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22.16.0
+
+      - name: Process one paid job
+        env:
+          WHP_MARKET_ORIGIN: https://whp-autonomous-market.wheelerhubbell.chatgpt.site
+          WHP_ENGINE_COMMIT: ef585b8149c14051e30c2d6344ad06e138745fb6
+        run: node .github/scripts/market-worker.mjs

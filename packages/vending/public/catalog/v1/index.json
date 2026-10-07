@@ -1,0 +1,153 @@
+{
+  "schema_version": "whp.vending.catalog.v1",
+  "catalog_id": "whp-decision-integrity-instruments",
+  "version": "1.0.1",
+  "build": "RESTORED-2026-09-22.1",
+  "publisher": {
+    "name": "Wheeler Hubbell Publishing, Inc."
+  },
+  "currency": "usd",
+  "rights_url": "https://whp-vending.wheelerhubbell.chatgpt.site/v1/rights",
+  "products": [
+    {
+      "id": "claim-classifier",
+      "sku": "WHP-DI-CC-001",
+      "name": "Claim Classifier",
+      "description": "Classify what a claim actually asks before answering it. Includes a guided Markdown instrument and a blank JSON worksheet.",
+      "best_for": "Before analysis begins",
+      "version": "1.0.1",
+      "availability": "available",
+      "offer": {
+        "amount_minor": 299,
+        "currency": "usd",
+        "one_time": true,
+        "checkout_rail": "stripe_payment_link",
+        "checkout_url": "https://buy.stripe.com/00w6oHdXHezh5yoc311oI01",
+        "provider": {
+          "name": "stripe",
+          "payment_link_id": "plink_1UIcwaDGLm8ZFa9TwVB8doKG",
+          "price_id": "price_1UIcqODGLm8ZFa9T8S9iPSUK"
+        }
+      },
+      "artifact": {
+        "media_type": "application/zip",
+        "filename": "WHP-DI-CC-001-v1.0.1-restored.zip",
+        "bytes": 4768,
+        "sha256": "e353c7314154acaec2e6b0c955b3b2c6c81cfdab015bd862e676c4064ca30ea8"
+      },
+      "rights_url": "https://whp-vending.wheelerhubbell.chatgpt.site/v1/rights"
+    },
+    {
+      "id": "return-the-burden",
+      "sku": "WHP-DI-RB-001",
+      "name": "Return the Burden",
+      "description": "Test whether a response returns the proof burden to the party making the claim. Includes a guided instrument and blank JSON worksheet.",
+      "best_for": "Unsupported conclusions",
+      "version": "1.0.1",
+      "availability": "available",
+      "offer": {
+        "amount_minor": 499,
+        "currency": "usd",
+        "one_time": true,
+        "checkout_rail": "stripe_payment_link",
+        "checkout_url": "https://buy.stripe.com/00wbJ1g5P3UD8KA5ED1oI02",
+        "provider": {
+          "name": "stripe",
+          "payment_link_id": "plink_1UIcwbDGLm8ZFa9ThIkB7qeA",
+          "price_id": "price_1UIcqiDGLm8ZFa9To44dt1ku"
+        }
+      },
+      "artifact": {
+        "media_type": "application/zip",
+        "filename": "WHP-DI-RB-001-v1.0.1-restored.zip",
+        "bytes": 3954,
+        "sha256": "09eae59e6d3a740f802f2412c78f4393eded6ac50ff361c17867ba82dbf5a67e"
+      },
+      "rights_url": "https://whp-vending.wheelerhubbell.chatgpt.site/v1/rights"
+    },
+    {
+      "id": "audit-the-move",
+      "sku": "WHP-DI-ATM-001",
+      "name": "Audit the Move",
+      "description": "Run the exact eleven-question audit panel against a consequential move. Includes Markdown and blank JSON formats.",
+      "best_for": "Decision review",
+      "version": "1.0.1",
+      "availability": "available",
+      "offer": {
+        "amount_minor": 799,
+        "currency": "usd",
+        "one_time": true,
+        "checkout_rail": "stripe_payment_link",
+        "checkout_url": "https://buy.stripe.com/6oU14ncTDbn58KAc311oI03",
+        "provider": {
+          "name": "stripe",
+          "payment_link_id": "plink_1UIcwcDGLm8ZFa9TmJREP8ky",
+          "price_id": "price_1UIcqjDGLm8ZFa9TaKCRflyQ"
+        }
+      },
+      "artifact": {
+        "media_type": "application/zip",
+        "filename": "WHP-DI-ATM-001-v1.0.1-restored.zip",
+        "bytes": 4072,
+        "sha256": "5cee6c8904a14e1c8e8137660a705cf437d6d31fa003913b1e46c1a008fc3cca"
+      },
+      "rights_url": "https://whp-vending.wheelerhubbell.chatgpt.site/v1/rights"
+    },
+    {
+      "id": "limited-verdict",
+      "sku": "WHP-DI-LV-001",
+      "name": "Limited Verdict",
+      "description": "Issue the narrowest verdict the evidence supports, with explicit limits and unresolved questions. Includes Markdown and JSON.",
+      "best_for": "High-stakes conclusions",
+      "version": "1.0.1",
+      "availability": "available",
+      "offer": {
+        "amount_minor": 999,
+        "currency": "usd",
+        "one_time": true,
+        "checkout_rail": "stripe_payment_link",
+        "checkout_url": "https://buy.stripe.com/5kQ28rcTDdvdbWMeb91oI04",
+        "provider": {
+          "name": "stripe",
+          "payment_link_id": "plink_1UIcwdDGLm8ZFa9TGqS7rRM2",
+          "price_id": "price_1UIcqkDGLm8ZFa9TgKERqscl"
+        }
+      },
+      "artifact": {
+        "media_type": "application/zip",
+        "filename": "WHP-DI-LV-001-v1.0.1-restored.zip",
+        "bytes": 3801,
+        "sha256": "48e8018c06496f76d3e18d82558f509005246129c5c93a1c87360ff68484e650"
+      },
+      "rights_url": "https://whp-vending.wheelerhubbell.chatgpt.site/v1/rights"
+    },
+    {
+      "id": "response-auditor",
+      "sku": "WHP-DI-RA-001",
+      "name": "Response Auditor",
+      "description": "Audit human–AI responses across authority, fidelity, scope, qualifier preservation, and repair. Includes the full contract and JSON rubric.",
+      "best_for": "Complete response review",
+      "version": "1.0.1",
+      "availability": "available",
+      "offer": {
+        "amount_minor": 1999,
+        "currency": "usd",
+        "one_time": true,
+        "checkout_rail": "stripe_payment_link",
+        "checkout_url": "https://buy.stripe.com/eVq6oHbPz0Ir0e43wv1oI05",
+        "provider": {
+          "name": "stripe",
+          "payment_link_id": "plink_1UIcwdDGLm8ZFa9TLyZSx5sT",
+          "price_id": "price_1UIcqkDGLm8ZFa9T6KnD4gnO"
+        }
+      },
+      "artifact": {
+        "media_type": "application/zip",
+        "filename": "WHP-DI-RA-001-v1.0.1-restored.zip",
+        "bytes": 6787,
+        "sha256": "675f7e4b9468008a09b69f520171b127ea8d8ffd5d7df3b76bf4c31583b8549d"
+      },
+      "rights_url": "https://whp-vending.wheelerhubbell.chatgpt.site/v1/rights"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+name: WHP public commerce probe
+
+on:
+  push:
+    paths:
+      - ".github/workflows/market-public-probe.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Probe existing WHP public commerce surfaces
+        shell: bash
+        run: |
+          set -u
+          probe_get() {
+            local url="$1"
+            echo "===== GET ${url} ====="
+            code="$(curl --silent --show-error --location --max-time 20 --output /tmp/body --write-out '%{http_code}' "${url}" || true)"
+            echo "HTTP ${code}"
+            head -c 16000 /tmp/body 2>/dev/null || true
+            echo
+          }
+
+          market="https://whp-autonomous-market.wheelerhubbell.chatgpt.site"
+          probe_get "${market}/healthz"
+          probe_get "${market}/.well-known/x402"
+
+          standing="https://whp-standing-live-production.up.railway.app"
+          probe_get "${standing}/healthz"
+          probe_get "${standing}/v1/contract"
+          probe_get "${standing}/openapi.json"
+          probe_get "${standing}/llms.txt"

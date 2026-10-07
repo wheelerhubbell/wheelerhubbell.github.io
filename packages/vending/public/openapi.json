@@ -1,0 +1,355 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "WHP Vending",
+    "version": "1.0.1",
+    "description": "Discovery, status, and paid-download recovery for five fixed-price digital instruments. Checkout is completed on Stripe-hosted Payment Links and requires buyer interaction; this API does not expose an autonomous payment rail."
+  },
+  "servers": [
+    {
+      "url": "https://whp-vending.wheelerhubbell.chatgpt.site"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Discovery"
+    },
+    {
+      "name": "Recovery"
+    },
+    {
+      "name": "Operations"
+    },
+    {
+      "name": "Stripe"
+    }
+  ],
+  "paths": {
+    "/.well-known/whp-vending.json": {
+      "get": {
+        "tags": [
+          "Discovery"
+        ],
+        "operationId": "getVendingService",
+        "summary": "Describe the live Vending service and commerce boundary",
+        "responses": {
+          "200": {
+            "description": "Service manifest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/catalog/v1/index.json": {
+      "get": {
+        "tags": [
+          "Discovery"
+        ],
+        "operationId": "getVendingCatalog",
+        "summary": "List exact saleable revisions, checkout URLs, prices, and artifact hashes",
+        "responses": {
+          "200": {
+            "description": "Current catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Catalog"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/rights": {
+      "get": {
+        "tags": [
+          "Discovery"
+        ],
+        "operationId": "getVendingRights",
+        "summary": "Read the machine-readable purchase license",
+        "responses": {
+          "200": {
+            "description": "Rights document",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/status": {
+      "get": {
+        "tags": [
+          "Recovery"
+        ],
+        "operationId": "getPurchaseStatus",
+        "summary": "Resolve a private Checkout Session recovery credential",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SessionId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Terminal purchase state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PurchaseStatus"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Verified webhook is still pending",
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid recovery credential"
+          }
+        }
+      }
+    },
+    "/success": {
+      "get": {
+        "tags": [
+          "Recovery"
+        ],
+        "operationId": "getPurchaseDeliveryPage",
+        "summary": "Open the private purchase delivery page",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SessionId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delivery page",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid recovery credential"
+          }
+        }
+      }
+    },
+    "/download": {
+      "get": {
+        "tags": [
+          "Recovery"
+        ],
+        "operationId": "downloadPurchasedArtifact",
+        "summary": "Download the exact artifact for a verified paid Session",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SessionId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Hash-verified purchased ZIP",
+            "headers": {
+              "X-Content-SHA256": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              }
+            },
+            "content": {
+              "application/zip": {
+                "schema": {
+                  "type": "string",
+                  "contentEncoding": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No paid delivery is available"
+          }
+        }
+      }
+    },
+    "/webhooks/stripe": {
+      "post": {
+        "tags": [
+          "Stripe"
+        ],
+        "operationId": "receiveStripeCheckoutEvent",
+        "summary": "Receive an account-authenticated Stripe Checkout event",
+        "description": "Stripe-only callback. The Stripe-Signature is verified against the untouched raw body before parsing. It is not a buyer purchase endpoint.",
+        "parameters": [
+          {
+            "name": "Stripe-Signature",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Relevant event recorded once, or unrelated live Payment Link event safely ignored"
+          },
+          "400": {
+            "description": "Invalid signature or event contract"
+          },
+          "503": {
+            "description": "Commerce dependency unavailable"
+          }
+        }
+      }
+    },
+    "/healthz": {
+      "get": {
+        "tags": [
+          "Operations"
+        ],
+        "operationId": "getLiveness",
+        "summary": "Check Worker liveness",
+        "responses": {
+          "200": {
+            "description": "Worker is live"
+          }
+        }
+      }
+    },
+    "/readyz": {
+      "get": {
+        "tags": [
+          "Operations"
+        ],
+        "operationId": "getCommerceReadiness",
+        "summary": "Check configuration, fulfillment schema, and artifact integrity",
+        "responses": {
+          "200": {
+            "description": "Commerce boundary is ready"
+          },
+          "503": {
+            "description": "One or more commerce invariants failed"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "SessionId": {
+        "name": "session_id",
+        "in": "query",
+        "required": true,
+        "description": "Private Stripe Checkout Session recovery credential.",
+        "schema": {
+          "type": "string",
+          "pattern": "^cs_live_[A-Za-z0-9]{8,240}$"
+        }
+      }
+    },
+    "schemas": {
+      "Catalog": {
+        "type": "object",
+        "required": [
+          "schema_version",
+          "version",
+          "build",
+          "currency",
+          "products"
+        ],
+        "properties": {
+          "schema_version": {
+            "const": "whp.vending.catalog.v1"
+          },
+          "version": {
+            "type": "string"
+          },
+          "build": {
+            "type": "string"
+          },
+          "currency": {
+            "const": "usd"
+          },
+          "products": {
+            "type": "array",
+            "minItems": 5,
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      },
+      "PurchaseStatus": {
+        "type": "object",
+        "required": [
+          "state"
+        ],
+        "properties": {
+          "state": {
+            "enum": [
+              "processing",
+              "waiting",
+              "ready",
+              "failed",
+              "expired"
+            ]
+          },
+          "product_id": {
+            "type": "string"
+          },
+          "sku": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "download_url": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Agent-readable WHP Vending guide",
+    "url": "https://whp-vending.wheelerhubbell.chatgpt.site/llms.txt"
+  },
+  "x-whp-commerce": {
+    "checkout_rail": "stripe_payment_link",
+    "autonomous_payment_supported": false,
+    "buyer_interaction_required": true
+  }
+}

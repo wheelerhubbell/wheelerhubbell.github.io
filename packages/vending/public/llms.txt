@@ -1,0 +1,17 @@
+# WHP Vending
+
+> Five fixed-price decision-integrity instruments delivered as hash-verified ZIP files after a verified Stripe payment.
+
+Publisher: Wheeler Hubbell Publishing, Inc.
+Origin: https://whp-vending.wheelerhubbell.chatgpt.site
+
+- Service manifest: https://whp-vending.wheelerhubbell.chatgpt.site/.well-known/whp-vending.json
+- Current machine catalog: https://whp-vending.wheelerhubbell.chatgpt.site/catalog/v1/index.json
+- OpenAPI: https://whp-vending.wheelerhubbell.chatgpt.site/openapi.json
+- Rights: https://whp-vending.wheelerhubbell.chatgpt.site/v1/rights
+- Liveness: https://whp-vending.wheelerhubbell.chatgpt.site/healthz
+- Commerce readiness: https://whp-vending.wheelerhubbell.chatgpt.site/readyz
+
+Checkout uses one-time Stripe-hosted Payment Links. Browser or human interaction is required to complete payment. This Site does not expose x402, A2A, or MCP payment rails. A paid Checkout Session ID is the private recovery credential for status and repeated download without another charge.
+
+WHP Vending is separate from WHP Standing. These products do not issue a WHP Standing Mark, establish truth, replace professional advice, or guarantee an outcome.
