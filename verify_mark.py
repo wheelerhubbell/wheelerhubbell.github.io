@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Independent WHP Standing verifier. Imports no producer modules.
+"""Independent WHP Standing verifier 1.0.1. Imports no producer modules.
 Requires Python >=3.11 and cryptography. Never treats an embedded root as trust.
 Offline validity, current registry standing and chain settlement are separate outputs.
 """
@@ -335,7 +335,9 @@ def recheck_chain(p,rpc_url):
     w=lambda n:format(int(n),'064x')
     sig=pay['payload']['signature'][2:].lower();v=int(sig[-2:],16);v=v+27 if v<27 else v
     expected='0xe3ee160e'+a['from'][2:].lower().rjust(64,'0')+a['to'][2:].lower().rjust(64,'0')+w(a['value'])+w(a['validAfter'])+w(a['validBefore'])+a['nonce'][2:].lower()+w(v)+sig[:64]+sig[64:128]
-    need(tx['input'].lower()==expected==s['transaction_input'].lower(),'TRANSFER_CALLDATA_MISMATCH')
+    actual=tx['input'].lower()
+    cdp_trailer='a161776a6364705f666163696c31000e0280218021802180218021802180218021'
+    need(actual==s['transaction_input'].lower() and actual in (expected,expected+cdp_trailer),'TRANSFER_CALLDATA_MISMATCH')
     topic=lambda addr:'0x'+addr[2:].lower().rjust(64,'0')
     logs=[l for l in receipt['logs'] if l['address'].lower()==r['asset'].lower() and not l.get('removed',False) and l['transactionHash'].lower()==txid and l['blockHash']==receipt['blockHash']]
     auth=[l for l in logs if [x.lower() for x in l['topics']]==['0x98de503528ee59b575ef0c0a2576a82497bfc029a5685b209e9ec333479b10a5',topic(a['from']),a['nonce'].lower()]]
