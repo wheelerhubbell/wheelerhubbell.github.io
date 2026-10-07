@@ -21,7 +21,21 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: sudo apt-get update && sudo apt-get install -y bubblewrap
+      - name: Enable bwrap namespaces on disposable CI runner
+        # AppArmor admission is only for /usr/bin/bwrap. No global sysctl change.
+        # SDK still requires --unshare-all and fails closed if sandboxing fails.
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bubblewrap apparmor
+          sudo tee /etc/apparmor.d/whp-bwrap-ci >/dev/null <<'PROFILE'
+          abi <abi/4.0>,
+          include <tunables/global>
+          profile whp_bwrap_ci /usr/bin/bwrap flags=(unconfined) {
+            userns,
+          }
+          PROFILE
+          sudo apparmor_parser -r /etc/apparmor.d/whp-bwrap-ci
+          bwrap --unshare-all --ro-bind /usr /usr --ro-bind /lib /lib --ro-bind /lib64 /lib64 --proc /proc --dev /dev /usr/bin/true
       - run: python3 sdk/tools/boundary_check.py
       - run: |
           python3 -m venv /tmp/whp-verifier-runtime
