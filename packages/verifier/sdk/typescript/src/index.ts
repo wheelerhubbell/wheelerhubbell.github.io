@@ -1,0 +1,99 @@
+import {createHash,createPublicKey,createPrivateKey,sign,verify,randomBytes,KeyObject} from 'node:crypto';
+import {mkdirSync,openSync,closeSync,existsSync,readFileSync,writeFileSync,renameSync,unlinkSync,fsyncSync,realpathSync,lstatSync,mkdtempSync,rmSync} from 'node:fs';
+import {join,resolve,dirname} from 'node:path';
+import {tmpdir} from 'node:os';
+import {spawnSync} from 'node:child_process';
+import {recoverTypedDataAddress} from 'viem';
+export const PROFILE='4244be9ed0012eaeba8e2efeb9d274ad3c1f3e188748838c191129054d24c5ab';
+export const CONTRACT='dd433c055fe0ad0bdb0326479b3339eea018204ccef44cd6ef247520a29c8e75';
+export const VERIFIER='0980eb6bb156f4251a935a65a6e2ef6c7441fc06de8b2a05f1e57c511d19cb5e';
+const USDC='0x833589fcd6edb6e08f4c7c32d4f71b54bda02913',PAYEE='0x1050eddd8282623b0c263ed6bdbd42370bbc28d3';
+// Exact wire fields are validated at each boundary; arbitrary record values are not trusted.
+export type Wire=Record<string,any>;
+export function need(ok:unknown,code:string):asserts ok {if(!ok)throw new Error(code);}
+export function canonical(x:any,depth=0):string {
+ need(depth<=64,'JSON_DEPTH');
+ if(x===null)return 'null';if(typeof x==='boolean')return x?'true':'false';
+ if(typeof x==='number'){need(Number.isSafeInteger(x)&&!Object.is(x,-0),'INTEGER_REQUIRED');return String(x);}
+ if(typeof x==='string'){need(!/[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/u.test(x),'INVALID_UNICODE');return JSON.stringify(x);}
+ if(Array.isArray(x))return '['+x.map(v=>canonical(v,depth+1)).join(',')+']';
+ need(x&&typeof x==='object'&&Object.getPrototypeOf(x)===Object.prototype,'I_JSON_REQUIRED');
+ return '{'+Object.keys(x).sort().map(k=>canonical(k,depth+1)+':'+canonical(x[k],depth+1)).join(',')+'}';
+}
+export function strictJson(raw:string|Uint8Array):any {
+ const text=typeof raw==='string'?raw:new TextDecoder('utf-8',{fatal:true}).decode(raw);let i=0;
+ const ws=()=>{while(/\s/.test(text[i]||'')&&i<text.length)i++;};
+ const string=()=>{const start=i++;while(i<text.length){if(text[i]==='\\'){i+=2;continue;}if(text[i++]==='"')return JSON.parse(text.slice(start,i));}throw new Error('JSON_STRING');};
+ const val=(depth=0):any=>{need(depth<=64,'JSON_DEPTH');ws();const c=text[i];
+  if(c==='"')return string();
+  if(c==='{'){i++;const o:Wire={};ws();if(text[i]==='}'){i++;return o;}while(true){ws();need(text[i]==='"','JSON_KEY');const k=string();need(!Object.hasOwn(o,k),'DUPLICATE_JSON_KEY');ws();need(text[i++]===':','JSON_COLON');Object.defineProperty(o,k,{value:val(depth+1),enumerable:true,writable:true});ws();const end=text[i++];if(end==='}')return o;need(end===',','JSON_COMMA');}}
+  if(c==='['){i++;const a:any[]=[];ws();if(text[i]===']'){i++;return a;}while(true){a.push(val(depth+1));ws();const end=text[i++];if(end===']')return a;need(end===',','JSON_COMMA');}}
+  for(const [token,v] of [['true',true],['false',false],['null',null]] as const){if(text.slice(i,i+token.length)===token){i+=token.length;return v;}}
+  const n=/^-?(?:0|[1-9]\d*)/.exec(text.slice(i));need(n,'JSON_VALUE');i+=n[0].length;const v=Number(n[0]);need(Number.isSafeInteger(v)&&!Object.is(v,-0),'INTEGER_REQUIRED');return v;
+ };const result=val();ws();need(i===text.length,'JSON_TRAILING');canonical(result);return result;
+}
+export const bytehash=(raw:Uint8Array|string)=>createHash('sha256').update(raw).digest('hex');
+export const digest=(x:any)=>bytehash(canonical(x));
+const exact=(x:Wire,fields:string[])=>need(x&&canonical(Object.keys(x).sort())===canonical([...fields].sort()),'FIELDS_INVALID');
+const b64=(s:string)=>{const b=Buffer.from(s,'base64');need(b.toString('base64')===s,'BASE64_ENCODING');return b;};
+export const keyId=(s:string)=>bytehash(b64(s));
+export function publicKey(key:KeyObject):string{return (key.type==='private'?createPublicKey(key):key).export({type:'spki',format:'der'}).toString('base64');}
+export function seal(payload:Wire,type:string,key:KeyObject):Wire {
+ need(key.asymmetricKeyType==='ed25519','ED25519_REQUIRED');const protectedHeader={type,algorithm:'Ed25519',canonicalization:'WHP-JCS-I1',key_id:keyId(publicKey(key))};
+ const e={protected:protectedHeader,payload};return {...e,signature:sign(null,Buffer.from(canonical(e)),key).toString('base64')};
+}
+export function unseal(e:Wire,type:string,pub:string):Wire {
+ exact(e,['protected','payload','signature']);need(canonical(e.protected)===canonical({type,algorithm:'Ed25519',canonicalization:'WHP-JCS-I1',key_id:keyId(pub)}),'SIGNATURE_CONTEXT');
+ const key=createPublicKey({key:b64(pub),type:'spki',format:'der'});need(key.asymmetricKeyType==='ed25519'&&publicKey(key)===pub,'ED25519_REQUIRED');const sig=b64(e.signature);need(sig.length===64&&verify(null,Buffer.from(canonical({protected:e.protected,payload:e.payload})),key,sig),'SIGNATURE_INVALID');return e.payload;
+}
+export function clientProof(key:KeyObject,method:string,path:string,body:Uint8Array=new Uint8Array(),at=Math.floor(Date.now()/1000)):string {
+ return Buffer.from(canonical(seal({method,path,body_hash:bytehash(body),issued_at:at,expires_at:at+120,nonce:randomBytes(16).toString('hex')},'WHP-CLIENT-PROOF-v1',key))).toString('base64');
+}
+export function trust(bundle:Wire,pin:string,at:number):{pa:Wire,keys:Map<string,Wire>,rev:Wire[]} {
+ exact(bundle,['root_public_key','profile_authorization','certificates','revocations','status_snapshot']);need(Buffer.byteLength(canonical(bundle))<=65536,'TRUST_BUNDLE_TOO_LARGE');const root=bundle.root_public_key;need(keyId(root)===pin,'UNTRUSTED_ROOT');
+ const pa=unseal(bundle.profile_authorization,'WHP-PROFILE-AUTHORIZATION-v1',root);exact(pa,['profile_hash','contract_hash','verifier_sha256','ratified','issuer','environment','valid_from','valid_until']);
+ need(pa.profile_hash===PROFILE&&pa.contract_hash===CONTRACT&&pa.verifier_sha256===VERIFIER&&pa.ratified===true&&pa.environment==='LIVE'&&pa.valid_from<=at&&at<pa.valid_until,'PROFILE_NOT_AUTHORIZED');
+ const s=unseal(bundle.status_snapshot,'WHP-TRUST-STATUS-v1',root);exact(s,['sequence','previous_hash','profile_authorization_hash','certificates_hash','revocations_hash','valid_from','valid_until']);need(s.valid_from<=at&&at<s.valid_until,'TRUST_STATUS_EXPIRED');
+ need(s.profile_authorization_hash===digest(bundle.profile_authorization)&&s.certificates_hash===digest(bundle.certificates)&&s.revocations_hash===digest(bundle.revocations),'TRUST_MANIFEST');
+ const keys=new Map<string,Wire>();for(const e of bundle.certificates){const c=unseal(e,'WHP-AUTHORITY-CERTIFICATE-v1',root);exact(c,['public_key','subject','roles','scopes','jurisdictions','operations','profile_hash','valid_from','valid_until']);const k=keyId(c.public_key);need(!keys.has(k)&&c.profile_hash===PROFILE,'CERTIFICATE_INVALID');keys.set(k,c);}
+ return {pa,keys,rev:bundle.revocations.map((e:Wire)=>unseal(e,'WHP-KEY-REVOCATION-v1',root))};
+}
+export function quoteBinding(e:Wire,bundle:Wire,pin:string,raw:Uint8Array,origin:string,at:number):Wire {
+ const s=strictJson(raw),{pa,keys,rev}=trust(bundle,pin,at),c=keys.get(e.protected.key_id);need(c,'UNKNOWN_AUTHORITY');const q=unseal(e,'WHP-STANDING-QUOTE-v1',c.public_key);
+ need(c.roles.includes('ISSUER')&&c.subject===pa.issuer&&c.valid_from<=at&&at<c.valid_until&&!rev.some(r=>r.key_id===e.protected.key_id&&r.effective_at<=at),'AUTHORITY_DENIED');need(c.scopes.includes(s.bounds.scope)&&c.jurisdictions.includes(s.bounds.jurisdiction),'AUTHORITY_OUT_OF_BOUNDS');
+ exact(q,['purchase_id','request_hash','buyer_key','profile_hash','issuer','environment','issued_at','expires_at','resource','payment_requirements','charge_policy']);const pid=digest({domain:'WHP-STANDING-PURCHASE-v1',root_pin:pin,buyer_key:s.buyer_key,client_reference:s.client_reference});
+ need(q.purchase_id===pid&&q.request_hash===digest(s)&&q.buyer_key===s.buyer_key&&q.profile_hash===PROFILE&&q.environment==='LIVE'&&q.issuer===pa.issuer,'QUOTE_BINDING');
+ need(q.issued_at<=at+30&&at<q.expires_at&&q.expires_at>q.issued_at,'QUOTE_EXPIRED');need(q.resource.url===origin+'/v1/evaluations','QUOTE_RESOURCE');return q;
+}
+export type PaymentPolicy={network:'eip155:8453',asset:string,payTo:string,maxPerPurchase:bigint,maxTotal:bigint};
+export type Prepared={quote:Wire,trustBundle:Wire,submissionRaw:string,purchaseId:string,origin:string};
+export type TransportResponse={status:number,headers:Record<string,string>,raw:Uint8Array};
+export type Transport=(url:string,method:string,headers:Record<string,string>,body:Uint8Array)=>Promise<TransportResponse>;
+export type UnverifiedResponse=TransportResponse & {body:any,verified:false};
+export type TypedSigner={address:`0x${string}`,signTypedData:(typed:any)=>Promise<`0x${string}`>};
+export class FileJournal {
+ readonly directory:string;
+ constructor(directory:string){mkdirSync(directory,{recursive:true,mode:0o700});need(!lstatSync(directory).isSymbolicLink(),'JOURNAL_SYMLINK');this.directory=realpathSync(directory);}
+ async locked<T>(f:()=>Promise<T>):Promise<T>{const p=join(this.directory,'lock');const fd=openSync(p,'wx',0o600);try{return await f();}finally{closeSync(fd);unlinkSync(p);}}
+ load():Wire{const p=join(this.directory,'ledger.json');if(!existsSync(p))return {reserved:'0',purchases:{}};need(!lstatSync(p).isSymbolicLink(),'JOURNAL_SYMLINK');return strictJson(readFileSync(p));}
+ save(state:Wire){const p=join(this.directory,'ledger.tmp');const fd=openSync(p,'wx',0o600);try{writeFileSync(fd,canonical(state));fsyncSync(fd);}finally{closeSync(fd);}renameSync(p,join(this.directory,'ledger.json'));const d=openSync(this.directory,'r');try{fsyncSync(d);}finally{closeSync(d);}}
+}
+function terms(r:Wire,p:PaymentPolicy){need(r.scheme==='exact'&&r.network==='eip155:8453'&&r.asset.toLowerCase()===USDC&&r.payTo.toLowerCase()===PAYEE,'PAYMENT_DESTINATION');need(p.network===r.network&&p.asset.toLowerCase()===USDC&&p.payTo.toLowerCase()===PAYEE,'OWNER_POLICY_MISMATCH');need(canonical(r.extra)===canonical({assetTransferMethod:'eip3009',name:'USD Coin',paymentFlow:'authorization',version:'2'}),'PAYMENT_SCHEME');need(/^\d+$/.test(r.amount)&&BigInt(r.amount)===1000000n&&BigInt(r.amount)<=p.maxPerPurchase,'PAYMENT_LIMIT');exact(r,['scheme','network','asset','payTo','amount','maxTimeoutSeconds','extra']);need(Number.isSafeInteger(r.maxTimeoutSeconds)&&r.maxTimeoutSeconds>0&&r.maxTimeoutSeconds<=300,'PAYMENT_TIMEOUT');}
+function typedPayment(q:Wire,address:string,at:number,stored?:Wire){const r=q.payment_requirements;const a=stored??{from:address,to:r.payTo,value:r.amount,validAfter:String(Math.max(0,at-10)),validBefore:String(Math.min(q.expires_at,at+r.maxTimeoutSeconds)),nonce:'0x'+digest({domain:'WHP-STANDING-PURCHASE-BINDING-v1',quote:q})};return {authorization:a,typed:{domain:{name:'USD Coin',version:'2',chainId:8453,verifyingContract:r.asset},primaryType:'TransferWithAuthorization',types:{TransferWithAuthorization:[{name:'from',type:'address'},{name:'to',type:'address'},{name:'value',type:'uint256'},{name:'validAfter',type:'uint256'},{name:'validBefore',type:'uint256'},{name:'nonce',type:'bytes32'}]},message:{...a,value:BigInt(a.value),validAfter:BigInt(a.validAfter),validBefore:BigInt(a.validBefore)}}};}
+async function defaultTransport(url:string,method:string,headers:Record<string,string>,body:Uint8Array):Promise<TransportResponse>{const r=await fetch(url,{method,headers,body:method==='GET'?undefined:Buffer.from(body),redirect:'error',signal:AbortSignal.timeout(30000)});const raw=new Uint8Array(await r.arrayBuffer());need(raw.length<=2000000,'RESPONSE_TOO_LARGE');return {status:r.status,headers:Object.fromEntries(r.headers),raw};}
+export class StandingClient {
+ readonly origin:string;readonly rootPin:string;readonly buyerKey:KeyObject;readonly publicKey:string;readonly journal:FileJournal;readonly transport:Transport;readonly clock:()=>number;
+ constructor(o:{origin:string,rootPin:string,buyerKey:KeyObject,journal:FileJournal,transport?:Transport,clock?:()=>number}){const u=new URL(o.origin);need(u.protocol==='https:'&&!u.username&&!u.password&&!u.search&&!u.hash&&u.pathname==='/','HTTPS_ORIGIN_REQUIRED');need(/^[a-f0-9]{64}$/.test(o.rootPin),'ADMITTED_ROOT_REQUIRED');need(o.buyerKey.type==='private'&&o.buyerKey.asymmetricKeyType==='ed25519','BUYER_KEY_REQUIRED');this.origin=u.origin;this.rootPin=o.rootPin;this.buyerKey=o.buyerKey;this.publicKey=publicKey(o.buyerKey);this.journal=o.journal;this.transport=o.transport??defaultTransport;this.clock=o.clock??(()=>Math.floor(Date.now()/1000));}
+ private async call(method:string,path:string,raw:Uint8Array=new Uint8Array(),payment?:string,auth=true):Promise<UnverifiedResponse>{need(path.startsWith('/')&&!path.startsWith('//'),'PATH_INVALID');const h:Record<string,string>={'accept':'application/json','content-type':'application/json'};if(auth)h['whp-client-proof']=clientProof(this.buyerKey,method,path,raw,this.clock());if(payment)h['PAYMENT-SIGNATURE']=payment;const r=await this.transport(this.origin+path,method,h,raw);return {...r,body:r.raw.length?strictJson(r.raw):null,verified:false};}
+ discover(){return this.call('GET','/v1/contract',new Uint8Array(),undefined,false);}
+ async quote(raw:Uint8Array,bundle:Wire):Promise<Prepared>{const s=strictJson(raw);need(s.buyer_key===this.publicKey,'BUYER_KEY_MISMATCH');need(raw.length<=262144,'SUBMISSION_TOO_LARGE');const pid=digest({domain:'WHP-STANDING-PURCHASE-v1',root_pin:this.rootPin,buyer_key:s.buyer_key,client_reference:s.client_reference});need(!this.journal.load().purchases[pid],'PURCHASE_ALREADY_RESERVED');const r=await this.call('POST','/v1/evaluations',raw);need(r.status===402,'QUOTE_CHALLENGE_REQUIRED');const h=Object.entries(r.headers).find(([k])=>k.toLowerCase()==='payment-required')?.[1];need(h,'PAYMENT_REQUIRED_HEADER');const challenge=strictJson(b64(h));need(challenge.x402Version===2,'X402_VERSION');const e=challenge.extensions['whp-standing'].info.quote;const q=quoteBinding(e,bundle,this.rootPin,raw,this.origin,this.clock());need(canonical(challenge.accepts)===canonical([q.payment_requirements])&&canonical(challenge.resource)===canonical(q.resource),'CHALLENGE_BINDING');return {quote:e,trustBundle:bundle,submissionRaw:Buffer.from(raw).toString('base64'),purchaseId:pid,origin:this.origin};}
+ async authorize(prepared:Prepared,policy:PaymentPolicy,signer:TypedSigner):Promise<string>{need(prepared.origin===this.origin,'ORIGIN_MISMATCH');const raw=b64(prepared.submissionRaw),q=quoteBinding(prepared.quote,prepared.trustBundle,this.rootPin,raw,this.origin,this.clock()),r=q.payment_requirements;terms(r,policy);const s=strictJson(raw);need(s.buyer_key===this.publicKey&&prepared.purchaseId===q.purchase_id,'BUYER_BINDING');const pid=q.purchase_id;await this.journal.locked(async()=>{const state=this.journal.load();need(!state.purchases[pid],'ALREADY_AUTHORIZED_OR_AMBIGUOUS');need(BigInt(state.reserved)+BigInt(r.amount)<=policy.maxTotal,'AGGREGATE_LIMIT');const {authorization,typed}=typedPayment(q,signer.address,this.clock());const entry:Wire={...prepared,state:'SIGNING_RESERVED',payment:null,authorization,rootPin:this.rootPin,buyerKey:this.publicKey};state.purchases[pid]=entry;state.reserved=String(BigInt(state.reserved)+BigInt(r.amount));this.journal.save(state);const signature=await signer.signTypedData(typed);const recovered=await recoverTypedDataAddress({...typed,signature} as any);need(recovered.toLowerCase()===signer.address.toLowerCase(),'WALLET_SIGNATURE_MISMATCH');entry.payment=Buffer.from(canonical({x402Version:2,accepted:r,resource:q.resource,payload:{authorization,signature}})).toString('base64');entry.state='AUTHORIZED';this.journal.save(state);});return pid;}
+ private async entry(pid:string):Promise<Wire>{need(/^[a-f0-9]{64}$/.test(pid),'PURCHASE_ID');const e=this.journal.load().purchases[pid];need(e,'PURCHASE_NOT_IN_JOURNAL');need(e.rootPin===this.rootPin&&e.buyerKey===this.publicKey&&e.origin===this.origin,'JOURNAL_BINDING');const q=quoteBinding(e.quote,e.trustBundle,this.rootPin,b64(e.submissionRaw),this.origin,e.quote.payload.issued_at);need(q.purchase_id===pid,'JOURNAL_PURCHASE_BINDING');if(e.payment){const p=strictJson(b64(e.payment)),a=p.payload.authorization,r=q.payment_requirements;need(p.x402Version===2&&canonical(p.accepted)===canonical(r)&&canonical(p.resource)===canonical(q.resource)&&canonical(a)===canonical(e.authorization),'JOURNAL_PAYMENT_BINDING');need(a.nonce==='0x'+digest({domain:'WHP-STANDING-PURCHASE-BINDING-v1',quote:q})&&a.to.toLowerCase()===r.payTo.toLowerCase()&&a.value===r.amount,'JOURNAL_NONCE_BINDING');const {typed}=typedPayment(q,a.from,0,a);need((await recoverTypedDataAddress({...typed,signature:p.payload.signature} as any)).toLowerCase()===a.from.toLowerCase(),'JOURNAL_SIGNATURE_BINDING');}return e;}
+ async submit(pid:string){const e=await this.entry(pid);need(e.payment,'AUTHORIZATION_AMBIGUOUS');await this.journal.locked(async()=>{const state=this.journal.load();need(state.purchases[pid].state==='AUTHORIZED','REPLAY_REQUIRES_EXPLICIT_METHOD');state.purchases[pid].state='SUBMITTED_OR_UNCERTAIN';this.journal.save(state);});return this.call('POST','/v1/evaluations',b64(e.submissionRaw),e.payment);}
+ async replayOriginal(pid:string){const e=await this.entry(pid);need(e.payment,'AUTHORIZATION_AMBIGUOUS');return this.call('POST','/v1/evaluations',b64(e.submissionRaw),e.payment);}
+ async recover(pid:string){await this.entry(pid);return this.call('POST','/v1/purchases/'+pid+'/recover');}
+ async result(pid:string){await this.entry(pid);return this.call('GET','/v1/purchases/'+pid+'/result');}
+}
+export function verifyOffline(raw:Uint8Array,o:{rootPin:string,verifierPath:string,runtimeDirectory:string,registryRaw?:Uint8Array,resolutionRaw?:Uint8Array,at?:number}):{signedPayload:Wire,report:Wire}{
+ need(/^[a-f0-9]{64}$/.test(o.rootPin),'ADMITTED_ROOT_REQUIRED');need(!lstatSync(o.verifierPath).isSymbolicLink(),'VERIFIER_PATH');const result=strictJson(raw),expected=result.payload.protocol.verifier_sha256;need([VERIFIER,'bb8cb78205f1892dcbf00d845cf85e504a0efacf2a0d8a793313fa8c0e99b833'].includes(expected)&&bytehash(readFileSync(o.verifierPath))===expected,'VERIFIER_SOURCE_MISMATCH');const runtime=realpathSync(o.runtimeDirectory);need(existsSync(join(runtime,'bin/python')),'ISOLATED_RUNTIME_REQUIRED');const dir=mkdtempSync(join(tmpdir(),'whp-verify-'));try{writeFileSync(join(dir,'mark.json'),raw);const args=['--unshare-all','--die-with-parent','--ro-bind','/usr','/usr','--ro-bind','/lib','/lib','--ro-bind','/lib64','/lib64','--ro-bind',runtime,'/runtime','--ro-bind',realpathSync(o.verifierPath),'/verifier.py','--ro-bind',dir,'/input','--tmpfs','/tmp','--proc','/proc','--dev','/dev','--chdir','/input','--clearenv','--setenv','PYTHONDONTWRITEBYTECODE','1','/runtime/bin/python','/verifier.py','/input/mark.json','--root-pin',o.rootPin];for(const [flag,data] of [['registry',o.registryRaw],['resolution',o.resolutionRaw]] as const){if(data){writeFileSync(join(dir,flag+'.json'),data);args.push('--'+flag,'/input/'+flag+'.json');}}if(o.at!==undefined)args.push('--at',String(o.at));const base=dirname(dirname(realpathSync(join(runtime,'bin/python'))));if(!base.startsWith('/usr/')&&base!=='/usr'){need(base.startsWith('/opt/hostedtoolcache/Python/'),'UNSUPPORTED_PYTHON_RUNTIME');args.splice(0,0,'--ro-bind',base,base);}const run=spawnSync('bwrap',args,{timeout:30000,maxBuffer:100000,encoding:'utf8'});need(!run.error,'SANDBOX_UNAVAILABLE');need(run.stdout.trim().startsWith('{'),'VERIFIER_EXECUTION_FAILED:'+String(run.stderr).slice(0,500));const report=strictJson(run.stdout);need(run.status===0&&report.verified===true,'VERIFICATION_FAILED:'+String(report.error??'UNKNOWN'));return {signedPayload:result.payload,report};}finally{rmSync(dir,{recursive:true,force:true});}
+}
