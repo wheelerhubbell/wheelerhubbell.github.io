@@ -1,0 +1,19 @@
+[build-system]
+requires = ["hatchling>=1.26,<2"]
+build-backend = "hatchling.build"
+[project]
+name = "whp-standing-client"
+version = "0.1.0"
+description = "Explicit-payment client for the WHP Standing sealed assessment contract"
+requires-python = ">=3.10"
+dependencies = ["cryptography>=43,<51", "eth-account>=0.13,<0.14"]
+readme = "README.md"
+[project.urls]
+Repository = "https://github.com/wheelerhubbell/whp-standing-verifier"
+[tool.hatch.build.targets.wheel]
+packages = ["src/whp_standing"]
+[tool.hatch.build.targets.sdist]
+only-include = ["src/whp_standing", "README.md", "pyproject.toml"]
+exclude = [".gitignore", "**/__pycache__", "**/*.pyc"]
+
+ignore-vcs = true
