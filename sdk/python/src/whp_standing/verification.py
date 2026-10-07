@@ -26,10 +26,14 @@ def verify_offline(raw, *, root_pin, verifier_path, runtime_directory, registry_
             if data is not None:
                 (p/(flag+'.json')).write_bytes(data); args += ['--'+flag,'/input/'+flag+'.json']
         if at is not None: args += ['--at',str(at)]
+        base=(runtime/'bin/python').resolve().parent.parent
+        if base!=Path('/usr') and not str(base).startswith('/usr/'):
+            need(str(base).startswith('/opt/hostedtoolcache/Python/'), 'UNSUPPORTED_PYTHON_RUNTIME')
+            args[1:1]=['--ro-bind',str(base),str(base)]
         run=subprocess.run(args,capture_output=True,timeout=30)
         need(len(run.stdout)<=100000,'VERIFIER_OUTPUT_TOO_LARGE')
         try: report=strict_json(run.stdout)
-        except Exception: raise ValueError('VERIFIER_EXECUTION_FAILED')
+        except Exception: raise ValueError('VERIFIER_EXECUTION_FAILED:'+run.stderr.decode(errors='replace')[:500])
         need(run.returncode==0 and report.get('verified') is True,'VERIFICATION_FAILED:'+str(report.get('error','UNKNOWN')))
         # No RPC/network is enabled in this runner. Finality is honestly NOT_RECHECKED.
         return {'signed_payload':result['payload'],'report':report}
