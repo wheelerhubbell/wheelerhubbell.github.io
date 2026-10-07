@@ -1,6 +1,6 @@
 # WHP Standing verifier
 
-Independent verifier for WHP Standing v1. This repository contains only the standalone Python verifier and its dependency pins, not the service engine.
+Independent verifier for WHP Standing v1. This repository contains the standalone Python verifier, its dependency pins and the separate public SDK integration source under `sdk/`. It does not contain the service engine.
 
 ## Check the source
 
@@ -63,3 +63,7 @@ With that explicit pin, the historical example verifies its cryptographic integr
 The example's validity ended on October 6, 2026 at 01:00 UTC (October 5 at 9:00 PM New York). Expiry is expected: historical signatures and replay can still verify while current standing is EXPIRED. Current standing needs a fresh signed registry snapshot, not yesterday's cached state. Resolve the current service through the Mark's `discovery.resolution_url`, then fetch that resolution's registry template for this purchase ID. Supply them with `--resolution` and `--registry`; optionally use `--rpc` with your own trusted Base HTTPS RPC to recheck settlement.
 
 This example does not prove an outside buyer, ordinary-wallet completion on `/v1/evaluate`, current active standing, or commercial adoption. No free-tier endpoint is implied.
+
+## Client integration source
+
+The separate TypeScript and Python sealed-contract clients are under [`sdk/`](sdk/README.md). They are source/test builds, not published registry releases or a new sale claim. The independent verifier imports no SDK or producer modules; co-location does not change its signed source identity. See the SDK boundary and delivery limits before use.
