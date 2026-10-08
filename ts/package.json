@@ -1,0 +1,25 @@
+{
+  "name": "@whp/standing-client",
+  "version": "0.1.0",
+  "description": "Official client for WHP Standing: x402 (USDC on Base) payment handling with EIP-3009 signing, evaluate / getContract / getResult / recover.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" } },
+  "files": ["dist", "README.md", "LICENSE"],
+  "sideEffects": false,
+  "engines": { "node": ">=18.17" },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "tsc -p tsconfig.json && node --test dist-test/test/sdk.test.js",
+    "prepublishOnly": "npm run typecheck && npm run build && npm test"
+  },
+  "dependencies": { "@noble/curves": "^1.9.0", "@noble/hashes": "^1.8.0" },
+  "devDependencies": { "typescript": "^5.6.0", "@types/node": "^20.0.0" },
+  "repository": { "type": "git", "url": "git+https://github.com/wheelerhubbell/whp-standing-client.git" },
+  "keywords": ["WHP Standing", "x402", "USDC", "Base", "EIP-3009", "provenance"],
+  "publishConfig": { "access": "public" }
+}
