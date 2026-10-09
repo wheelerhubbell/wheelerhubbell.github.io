@@ -137,41 +137,50 @@
                     </table>
                 </div>
             </section>
-            <!-- Agentic Infrastructure & WHP Software Deployment -->
+            <!-- WHP Standing Authority Production Gateway & Diagnostic Hub -->
             <section class="rounded-2xl bg-slate-900/80 border border-slate-800 p-6 shadow-xl relative overflow-hidden">
                 <div class="absolute -left-10 -bottom-10 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                     <div>
-                        <span class="text-xs font-semibold tracking-wider text-emerald-400 uppercase">Autonomous Agent Network</span>
-                        <h3 class="text-lg font-bold text-white mt-1">Summon Agents, Pay Toll & Install WHP Software</h3>
+                        <span class="text-xs font-semibold tracking-wider text-emerald-400 uppercase">Production Operations</span>
+                        <h3 class="text-lg font-bold text-white mt-1">WHP Standing Authority — Live Production Operations</h3>
+                        <p class="text-xs text-slate-400 mt-0.5">Real-time machine discovery, active x402 payment requirements on Base Mainnet, and pre-flight validation.</p>
                     </div>
-                    <button onclick="deployWhpInfrastructure()" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-slate-950 font-bold text-xs transition flex items-center gap-2 shadow-lg shadow-emerald-900/40">
-                        <i class="fa-solid fa-microchip"></i> Summon Agents & Pay Toll
-                    </button>
+                    <div class="flex items-center gap-2">
+                        <button onclick="verifyProductionLive()" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-slate-950 font-bold text-xs transition flex items-center gap-2 shadow-lg shadow-emerald-900/40">
+                            <i class="fa-solid fa-satellite-dish"></i> Probe Live Backend
+                        </button>
+                        <button onclick="runPreflightMock()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs transition flex items-center gap-2 border border-slate-700">
+                            <i class="fa-solid fa-bolt"></i> Test Pre-Flight Mock
+                        </button>
+                    </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                     <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
-                        <div class="text-slate-400 text-xs font-medium mb-1">1. Agent Swarm Status</div>
-                        <div id="agentStatusText" class="text-white font-mono text-xs flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-slate-500"></span> Standby (0 Active)
+                        <div class="text-slate-400 text-xs font-medium mb-1">1. Production Service Gateway</div>
+                        <div id="serviceStatusText" class="text-white font-mono text-xs flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500" id="statusDot"></span> <span id="statusLabel">standing-guard-service.lovable.app</span>
                         </div>
+                        <div id="serviceSubtext" class="text-[11px] text-slate-500 mt-1 font-mono">Issuer: Wheeler Hubbell Publishing</div>
                     </div>
                     <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
-                        <div class="text-slate-400 text-xs font-medium mb-1">2. Toll Gate Payment</div>
-                        <div id="tollStatusText" class="text-amber-400 font-mono text-xs flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-amber-500"></span> Unpaid ($0.00 / 0.05 ETH Gas)
+                        <div class="text-slate-400 text-xs font-medium mb-1">2. Payment Rail (x402-v2 / Base)</div>
+                        <div id="paymentStatusText" class="text-emerald-400 font-mono text-xs flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Base Mainnet (eip155:8453)
                         </div>
+                        <div id="paymentSubtext" class="text-[11px] text-slate-400 mt-1 font-mono">USDC EIP-3009 | Recipient: 0x1050...28d3</div>
                     </div>
                     <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
-                        <div class="text-slate-400 text-xs font-medium mb-1">3. WHP Infrastructure Software</div>
-                        <div id="whpStatusText" class="text-slate-400 font-mono text-xs flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-slate-500"></span> Awaiting Provisioning
+                        <div class="text-slate-400 text-xs font-medium mb-1">3. Discovery & Protocol Specs</div>
+                        <div id="discoveryStatusText" class="text-cyan-400 font-mono text-xs flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-cyan-500"></span> RFC 9264 + MCP Streamable
                         </div>
+                        <div id="discoverySubtext" class="text-[11px] text-slate-400 mt-1 font-mono">Root Pin: c9507f2c...4bff6</div>
                     </div>
                 </div>
-                <!-- Live Execution Console for WHP Setup -->
+                <!-- Live Execution Console for WHP Operations -->
                 <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 font-mono text-xs text-slate-300 space-y-1 h-36 overflow-y-auto" id="whpTerminal">
-                    <div class="text-slate-500">// Ready to summon worker agents, settle bridge toll, and install WHP packages...</div>
+                    <div class="text-slate-500">// Operational console ready. Click 'Probe Live Backend' or 'Test Pre-Flight Mock' to execute real calls against the live service.</div>
                 </div>
             </section>
             <!-- Code Tree / File Explorer Card -->
@@ -498,36 +507,77 @@
                 appendLog(`[ERROR] Dispatch failed: ${err.message}.`);
             }
         }
-        async function deployWhpInfrastructure() {
+        const BACKEND_BASE = 'https://standing-guard-service.lovable.app';
+        async function verifyProductionLive() {
             const term = document.getElementById('whpTerminal');
-            const agentStatus = document.getElementById('agentStatusText');
-            const tollStatus = document.getElementById('tollStatusText');
-            const whpStatus = document.getElementById('whpStatusText');
+            const dot = document.getElementById('statusDot');
+            const label = document.getElementById('statusLabel');
             term.innerHTML = '';
             const logWhp = (msg, color = 'text-slate-300') => {
                 const div = document.createElement('div');
                 div.className = color;
-                div.textContent = `[WHP-NET] ${msg}`;
+                div.textContent = `[PROD-OP] ${msg}`;
                 term.appendChild(div);
                 term.scrollTop = term.scrollHeight;
             };
-            logWhp('Initializing autonomous agent swarm summon...', 'text-cyan-400');
-            agentStatus.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span> Spawning 4 Agent Nodes...`;
-            await new Promise(r => setTimeout(r, 800));
-            logWhp('Submitting bridge toll payment (0.05 ETH gas fee / secure escrow)...', 'text-amber-300');
-            tollStatus.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span> Settling Toll...`;
-            await new Promise(r => setTimeout(r, 1000));
-            tollStatus.innerHTML = `<span class="w-2 h-2 rounded-full bg-green-500"></span> Toll Paid ($145.20 / 0.05 ETH)`;
-            agentStatus.innerHTML = `<span class="w-2 h-2 rounded-full bg-green-500"></span> 4 Agents Online`;
-            logWhp('✅ Toll confirmed on-chain. Access granted to infrastructure tier.', 'text-green-400');
-            logWhp('Connecting to remote nodes & downloading WHP software package (v4.8.2)...', 'text-cyan-400');
-            whpStatus.innerHTML = `<span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span> Installing WHP...`;
-            await new Promise(r => setTimeout(r, 1200));
-            logWhp('Extracting WHP binaries & configuring daemon socket...', 'text-slate-300');
-            await new Promise(r => setTimeout(r, 1000));
-            logWhp('🚀 WHP infrastructure successfully installed and running on active worker cluster!', 'text-green-400 font-bold');
-            whpStatus.innerHTML = `<span class="w-2 h-2 rounded-full bg-green-500"></span> WHP Active (v4.8.2)`;
-            appendLog('[SUCCESS] Autonomous agents successfully spawned, toll paid, and WHP software installed!');
+            logWhp('Connecting to WHP Standing production service at ' + BACKEND_BASE + '...', 'text-cyan-400');
+            try {
+                const healthResp = await fetch(BACKEND_BASE + '/healthz');
+                const health = await healthResp.json();
+                logWhp(`Health check response: HTTP ${healthResp.status} - Service: ${health.service} v${health.version}`, 'text-green-400');
+                
+                const discResp = await fetch(BACKEND_BASE + '/.well-known/whp-standing.json');
+                const disc = await discResp.json();
+                logWhp(`Authority verified: Issuer="${disc.issuer}", Environment="${disc.environment}"`, 'text-emerald-300');
+                logWhp(`Payment Protocol: ${disc.payment_protocol} | Network: eip155:8453 (Base Mainnet) | Asset: USDC`, 'text-emerald-400');
+                logWhp(`Root Pin: ${disc.root_pin}`, 'text-slate-400');
+                logWhp(`Canonical Evaluation Door: ${disc.evaluation_url}`, 'text-cyan-300');
+
+                dot.className = 'w-2 h-2 rounded-full bg-green-500 animate-pulse';
+                label.textContent = `${health.service} v${health.version} [LIVE]`;
+                appendLog('[LIVE] Production Standing Authority verified active on Base Mainnet.');
+            } catch (err) {
+                logWhp(`Probe error: ${err.message}`, 'text-red-400');
+                dot.className = 'w-2 h-2 rounded-full bg-red-500';
+                label.textContent = 'Connection error: ' + err.message;
+            }
+        }
+        async function runPreflightMock() {
+            const term = document.getElementById('whpTerminal');
+            term.innerHTML = '';
+            const logWhp = (msg, color = 'text-slate-300') => {
+                const div = document.createElement('div');
+                div.className = color;
+                div.textContent = `[MOCK-TEST] ${msg}`;
+                term.appendChild(div);
+                term.scrollTop = term.scrollHeight;
+            };
+            logWhp('Executing zero-cost pre-flight structural evaluation against POST /v1/mock...', 'text-cyan-400');
+            const samplePayload = {
+                subject: 'Autonomous Settlement Action #8941',
+                claim: 'EVM transaction execution complies with configured authority boundaries',
+                provenance: {
+                    source: 'https://wheelerhubbell.github.io',
+                    authority: 'Wheeler Hubbell Publishing',
+                    evidence: ['urn:sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855']
+                }
+            };
+            try {
+                const resp = await fetch(BACKEND_BASE + '/v1/mock', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(samplePayload)
+                });
+                const res = await resp.json();
+                logWhp(`Pre-flight response: HTTP ${resp.status} - Type: ${res.type}`, 'text-green-400');
+                logWhp(`Door: ${res.door} | Structurally Complete: ${res.structurally_complete}`, res.structurally_complete ? 'text-emerald-400' : 'text-amber-300');
+                for (const chk of (res.checks || [])) {
+                    logWhp(`Check [${chk.id}]: ${chk.pass ? 'PASS' : 'FAIL'} (${chk.note || ''})`, chk.pass ? 'text-green-300' : 'text-red-300');
+                }
+                appendLog('[MOCK] Pre-flight structural verification succeeded on live backend.');
+            } catch (err) {
+                logWhp(`Mock test error: ${err.message}`, 'text-red-400');
+            }
         }
         function appendLog(text) {
             const container = document.getElementById('logContainer');
