@@ -27,12 +27,11 @@ export async function evaluateStanding(toolCall, context = {}) {
   const standing = context.standing || toolCall.standing || {};
   const authority = standing.authority || context.authority;
   const provenance = standing.provenance || context.provenance;
-  const requiredOperations = context.requiredOperations || ['EXECUTE', 'WRITE', 'MODIFY', 'DELETE'];
 
   // Check state-changing operations
   const isStateChanging = context.isStateChanging !== undefined 
     ? context.isStateChanging 
-    : /delete|write|update|modify|post|drop|exec|execute|send|remove|create/i.test(toolName);
+    : /delete|write|update|modify|post|drop|exec|execute|send|remove|create|transfer|wire/i.test(toolName);
 
   const missing = [];
   if (!provenance || (typeof provenance === 'string' && provenance.trim().length === 0)) {
@@ -115,7 +114,8 @@ export async function guardAction(toolCall, context = {}) {
  */
 export class StandingClient {
   constructor(options = {}) {
-    this.endpoint = options.endpoint || 'https://standing-guard-service.lovable.app';
+    this.endpoint = (options.endpoint || 'https://standing-guard-service.lovable.app').replace(/\/$/, '');
+    this.affiliate = options.affiliate || null;
   }
 
   async getContract() {
@@ -125,19 +125,55 @@ export class StandingClient {
   }
 
   /**
+   * Free Mock / Dry-Run (zero cost, unsigned).
+   * Tests request structure before paying.
+   */
+  async mock(payload, door = '/v1/evaluate') {
+    const url = new URL(`${this.endpoint}/v1/mock`);
+    if (door) url.searchParams.set('door', door);
+    const res = await fetch(url.toString(), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    return res.json();
+  }
+
+  /**
+   * Instant verification ping (0.10 USDC or free dry-run with { mock: true }).
+   */
+  async ping(payload, options = {}) {
+    const headers = { 'Content-Type': 'application/json' };
+    if (options.mock) headers['X-Mock'] = 'true';
+    if (options.affiliate || this.affiliate) headers['X-Affiliate'] = options.affiliate || this.affiliate;
+    if (options.paymentToken) headers['X-Payment'] = options.paymentToken;
+
+    const doFetch = options.fetch || fetch;
+    const res = await doFetch(`${this.endpoint}/v1/ping`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(payload)
+    });
+    if (res.status === 402) {
+      const header = res.headers.get('payment-required');
+      let terms = null;
+      try { terms = header ? JSON.parse(Buffer.from(header, 'base64').toString('utf8')) : await res.json(); } catch { /* leave null */ }
+      return { paymentRequired: true, status: 402, terms };
+    }
+    return res.json();
+  }
+
+  /**
    * Evaluate a claim at the simple front door (POST /v1/evaluate).
-   * The endpoint answers HTTP 402 until paid (1 USDC on Base).
-   * To pay in one call, pass options.fetch: a fetch that signs and pays x402
-   * challenges, for example one wrapped with the @x402/fetch package.
-   * Without it, this method returns the 402 payment terms as a result
-   * object ({ paymentRequired: true, status: 402, ... }) instead of throwing.
-   * Legacy: a string second argument is still sent as an X-Payment header.
    */
   async evaluate(payload, options = null) {
     const opts = typeof options === 'string' ? { paymentToken: options } : (options || {});
     const doFetch = opts.fetch || fetch;
     const headers = { 'Content-Type': 'application/json' };
+    if (opts.mock) headers['X-Mock'] = 'true';
+    if (opts.affiliate || this.affiliate) headers['X-Affiliate'] = opts.affiliate || this.affiliate;
     if (opts.paymentToken) headers['X-Payment'] = opts.paymentToken;
+
     const res = await doFetch(`${this.endpoint}/v1/evaluate`, {
       method: 'POST',
       headers,
@@ -154,8 +190,6 @@ export class StandingClient {
 
   /**
    * Fetch a paid result by purchase id (GET /v1/purchases/{id}/result).
-   * Retrieval never triggers a second charge. The signed-Mark rail
-   * (/v1/evaluations) needs client proof headers: pass them in options.headers.
    */
   async getResult(purchaseId, options = {}) {
     const doFetch = options.fetch || fetch;
@@ -171,3 +205,13 @@ export {
   createLangChainGuard,
   createElizaGuard
 } from './adapters.mjs';
+
+export {
+  verifyStandingReleaseCondition,
+  createStandingEscrowContract
+} from './escrow.mjs';
+
+export {
+  createEpistemicCircuitBreaker,
+  interceptToolCalls
+} from './circuit_breaker.mjs';
