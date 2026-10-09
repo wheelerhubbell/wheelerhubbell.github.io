@@ -1,65 +1,35 @@
-# Proof-of-Standing Escrow Protocol for Agent-to-Agent Commerce
+# Standing escrow references: current limits
 
-Autonomous agents operating on-chain frequently hire sub-agents or third-party swarms to perform complex, unobservable tasks (e.g., retrieval, research synthesis, contract analysis, code drafting).
+The repository contains a JavaScript condition helper and a Solidity escrow reference. Neither is a complete verifier of a canonical WHP Standing Mark or a fresh action-bound warrant. Do not use the JavaScript helper's `satisfied: true` as authorization to release funds.
 
-The primary risk in autonomous A2A commerce is **epistemic default**: paying for hallucinations, fictitious citations, or unauthorized claims.
+## JavaScript helper
 
-**Proof-of-Standing** solves this by turning the WHP Standing Mark into an algorithmic escrow release condition.
+`packages/client/escrow.mjs` exports `verifyStandingReleaseCondition(output, standingRecord, options)`.
 
----
+Its current checks are limited:
 
-## The Workflow
+- the supplied record is present;
+- the record contains a truthy `issuer` field;
+- subject matches `expectedSubject`, only when that option is supplied;
+- expiry is checked only if `valid_until` exists;
+- age is checked only if both `maxAgeSeconds` and `issued_at` exist;
+- epistemic status is checked only if `allowedStatuses` and a determination exist;
+- internal checks are checked only if the record supplies a `determination.checks` array.
 
-```
-[Hiring Agent] ---> Locks USDC in Escrow (with WHP condition)
-                          |
-[Worker Agent] ---> Performs task & submits to WHP Standing (/v1/audit or /v1/ping)
-                          |
-[WHP Standing] ---> Evaluates Invariant: A(c) <= P(c) & returns Signed Record
-                          |
-[Worker Agent] ---> Submits Deliverable + Signed Record to Escrow
-                          |
-[Escrow Contract / Arbiter] verifies signature & invariants ---> Funds Disbursed to Worker
-```
+It does not verify the Ed25519 signature, canonical record hash, admitted issuer/root authority, exact deliverable binding, fresh registry status, revocation, permitted operation, or executable transaction entitlement. The `output` argument is not inspected. `signature_present` only reports whether a signature field exists; it does not validate that signature.
 
----
+With default options, a fabricated object containing only `issuer` can return `satisfied: true`, `ESCROW_RELEASE_WARRANTED`, and a message recommending disbursement. Those returned labels are not proof that release is warranted. The helper must not be treated as a fail-closed standing gate in its current form.
 
-## 1. Algorithmic Verification (TypeScript)
+`createStandingEscrowContract` returns a condition-description object. It does not deploy a contract, verify a receipt, or enforce the described `require_signed_record` setting.
 
-Using `@wheelerhubbell/whp-standing-client`:
+## Solidity reference
 
-```javascript
-import { verifyStandingReleaseCondition } from '@wheelerhubbell/whp-standing-client';
+`contracts/StandingEscrow.sol` holds a token balance and accepts an ECDSA personal-message attestation from its configured `whpAuthorizedVerifier` over `escrowId`, the stored `taskHash`, and a supplied `recordHash`. It checks agreement state and the escrow deadline before transferring funds.
 
-const result = verifyStandingReleaseCondition(deliverable, standingRecord, {
-  expectedSubject: "Invoice #1042 approval",
-  maxAgeSeconds: 3600, // Issued within the past hour
-  allowedStatuses: ["observation", "report", "finding"]
-});
+The contract does not directly verify an Ed25519 WHP receipt, inspect its determination, or query fresh standing/revocation. It does not call `StandingVerifier.sol`. A separate authorized co-attestation process would have to establish the receipt's authority and exact release entitlement before signing. No complete deployed bridge is established by this reference code alone.
 
-if (result.satisfied) {
-  await releaseEscrowFunds(workerAgentAddress);
-} else {
-  console.error("Escrow release denied:", result.failed);
-}
-```
+Ordinary `/v1/audit` and `/v1/ping` front-door records are source-attributed receipts, not sealed Marks or execution permission. Paying for an evaluation, possessing a signed record, or passing the limited helper checks does not authorize an escrow release.
 
-## 2. Smart Contract Reference (Solidity on Base)
+## Status
 
-A full reference contract is available at [`contracts/StandingEscrow.sol`](./contracts/StandingEscrow.sol).
-
-```solidity
-function releaseWithProofOfStanding(
-    bytes32 escrowId,
-    bytes32 recordHash,
-    bytes calldata verifierSignature
-) external;
-```
-
----
-
-## Benefits for Autonomous Swarms
-
-1. **Deterministic Arbitration**: Eliminates human arbitration or ambiguous LLM-as-a-judge disputes.
-2. **Fail-Closed Guarantees**: Escrow contracts automatically refund the hiring agent if the worker fails to provide verifiable provenance.
-3. **Sybil Resistance**: Because WHP Standing evaluates structural authority against verified origins, automated hallucination farms cannot trigger escrow release.
+These are references with known verification gaps, not an end-to-end production escrow protocol. Canonical receipt verification, current standing, exact action entitlement, settlement and contract release are separate checks. Until those checks are designed and implemented together, funds release must not rely on the JavaScript helper's favorable result.
