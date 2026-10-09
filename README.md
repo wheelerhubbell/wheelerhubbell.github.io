@@ -121,3 +121,22 @@ Fail-closed middleware for LangChain, OpenAI function calling, and MCP tools. In
 Turn WHP Standing Marks into algorithmic escrow release conditions for autonomous agent swarms. Funds in escrow disburse only when tasks present valid, signed standing records meeting invariant $A(c) \le P(c)$.
 * Specification: [ESCROW.md](./ESCROW.md)
 * Smart Contract: [`contracts/StandingEscrow.sol`](./contracts/StandingEscrow.sol)
+
+## Coinbase AgentKit & Autonomous Agents
+
+Equip autonomous agents running on Base (`eip155:8453`) with pre-execution safety gates and epistemic verification:
+
+- **Action Provider:** `packages/client/agentkit.mjs`
+- **Guide:** [AGENTKIT.md](./AGENTKIT.md)
+- **Supported Tools:** `whp_standing_ping` (0.10 USDC), `whp_standing_audit` (2.00 USDC), `whp_standing_circuit_breaker`
+
+## CI/CD Pipeline Gate & Badge
+
+Automate epistemic standing audits on every pull request or deployment:
+
+- **Action:** `uses: wheelerhubbell/wheelerhubbell.github.io/.github/actions/standing-gate@main`
+- **Guide:** [CI_CD.md](./CI_CD.md)
+- **Badge:**
+  ```markdown
+  [![Standing Audit](https://img.shields.io/badge/standing--mark-verified-blue?style=flat-square)](https://standing-guard-service.lovable.app)
+  ```
