@@ -110,3 +110,14 @@ This repository also hosts the canonical foundation publications of Wheeler Hubb
 ## License
 
 MIT © Wheeler Hubbell Publishing, Inc.
+
+## Autonomous Agent Infrastructure (A2A)
+
+### 1. Epistemic Circuit Breaker (`@wheelerhubbell/whp-standing-client`)
+Fail-closed middleware for LangChain, OpenAI function calling, and MCP tools. Intercepts irrevocable tool invocations (transfers, deletions, external writes) and halts execution if upstream authority or provenance is unverified.
+* Guide: [CIRCUIT_BREAKER.md](./CIRCUIT_BREAKER.md)
+
+### 2. Proof-of-Standing Escrow Condition
+Turn WHP Standing Marks into algorithmic escrow release conditions for autonomous agent swarms. Funds in escrow disburse only when tasks present valid, signed standing records meeting invariant $A(c) \le P(c)$.
+* Specification: [ESCROW.md](./ESCROW.md)
+* Smart Contract: [`contracts/StandingEscrow.sol`](./contracts/StandingEscrow.sol)
