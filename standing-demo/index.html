@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WHP Standing | A recorded demonstration</title>
+<meta name="description" content="A recorded demonstration of a WHP Standing Mark, and a live look at the paywall. Nothing here is an evaluation of anything you submit.">
+<style>
+:root{--ink:#0c0c0e;--paper:#ebe4d4;--paper2:#c9c1ae;--mute:#8f8a7e;--brass:#b4925a;--oxblood:#a8484f;--line:#2a2a2e;
+--gut:max(clamp(20px,5vw,72px),calc((100vw - 980px)/2));
+--serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;--sans:"Helvetica Neue",Helvetica,"Segoe UI",Arial,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--serif);font-size:19px;line-height:1.7}
+a{color:inherit}
+h1,h2{font-weight:400;margin:0;line-height:1.12}
+p{margin:0 0 1.15em}
+header{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:20px var(--gut);border-bottom:1px solid var(--line)}
+header a{font-size:15px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none}
+header span{font-family:var(--sans);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper2)}
+section{padding:clamp(56px,8vw,104px) var(--gut);border-bottom:1px solid var(--line)}
+.label{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);margin:0 0 18px}
+h1{font-size:clamp(38px,7vw,78px);margin-bottom:28px}
+h2{font-size:clamp(26px,3.4vw,38px);margin-bottom:22px}
+.col{max-width:36em}
+.band{border:1px solid var(--oxblood);color:var(--paper);padding:16px 20px;font-family:var(--sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase;line-height:1.6;margin:0 0 36px}
+button{font-family:var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--brass);border:0;padding:15px 26px;cursor:pointer}
+button:hover{background:var(--paper)}
+button:disabled{opacity:.5;cursor:default}
+.rec{margin-top:36px;border:1px solid var(--line);background:#111114;display:none}
+.rec.on{display:block}
+.rec .tag{background:var(--oxblood);color:var(--paper);font-family:var(--sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:10px 20px}
+.rec .tag.dim{background:#2a2a2e}
+.rec dl{margin:0;padding:8px 20px 18px}
+.row{display:grid;grid-template-columns:minmax(120px,190px) 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+dt{font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);padding-top:5px}
+dd{margin:0;font-size:16px;line-height:1.55;word-break:break-word}
+.mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;color:var(--paper2)}
+.sm{font-size:16px;color:var(--paper2)}
+a.ln{font-family:var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--brass);padding-bottom:3px}
+a.ln:hover{color:var(--brass)}
+footer{padding:36px var(--gut);font-family:var(--sans);font-size:11.5px;letter-spacing:.1em;color:var(--mute);line-height:1.8}
+@media(max-width:600px){body{font-size:17px}.row{grid-template-columns:1fr;gap:2px}}
+</style>
+</head>
+<body>
+<header><a href="../">Wheeler Hubbell<br>Publishing</a><span>WHP Standing</span></header>
+
+<section>
+<p class="label">WHP Standing / Demonstration</p>
+<h1>A Standing Mark,<br>shown once.</h1>
+<div class="col">
+<p>A Standing Mark states how far a submitted object may be relied on, under a named profile and stated limits. It is a signed record. It is not a verdict on truth.</p>
+<p>The service charges for an assessment. The fee buys the assessment, never the outcome.</p>
+<p>This page shows two things. A real Mark that was issued once, played back. And the live service answering an unpaid request. It does not assess anything you submit.</p>
+</div>
+</section>
+
+<section>
+<p class="label">One / Recorded Mark</p>
+<h2>The Mark issued on October 7, 2026</h2>
+<div class="band">Recorded demonstration. This is a house self-test, issued October 7, 2026 and played back here. It is not an evaluation of anything you submitted, and it cannot be used as one.</div>
+<div class="col"><p>Press the button to play back the record. Each field below is copied from the issued record.</p></div>
+<button id="play">Play back the recorded Mark</button>
+
+<div class="rec" id="rec" aria-live="polite">
+<div class="tag">Recorded demonstration &middot; house self-test &middot; issued 2026-10-07 20:45 EDT &middot; not your evaluation</div>
+<dl id="rows"></dl>
+</div>
+</section>
+
+<section>
+<p class="label">Two / The live door</p>
+<h2>Knock on the door</h2>
+<div class="col">
+<p>This sends one unpaid request to the live service, from your browser. The service answers with its price. No payment is requested from you, and nothing is evaluated.</p>
+</div>
+<button id="knock">Knock</button>
+<div class="rec" id="krec" aria-live="polite">
+<div class="tag dim" id="ktag">Live response &middot; no evaluation performed</div>
+<dl id="krows"></dl>
+</div>
+</section>
+
+<footer>
+Wheeler Hubbell Publishing &middot; New York.<br>
+The recorded Mark is a real record from the live service, issued to the house itself. No outside party has validated it. It is shown for demonstration only.
+</footer>
+
+<script>
+(function(){
+var ROWS=[
+["Record","WHP Standing Mark v2"],
+["Mark id","WHP-SM-e16a15df7681b6c18fd6b0f83c6a2fc6d02cb1f97479b7132681c9ed44b8239f","mono"],
+["Submitted object","whp-v2-selftest-dip-passage, version 1"],
+["Profile","WHP-STANDING-STRUCTURED-PASSAGE 2.0.0"],
+["Outcome","ESTABLISHED, for the operation INFORM only"],
+["Components","Source: established. Context: established. Unknowns: established. Relation, passage, continuity, action boundary: not assessed."],
+["Stated unknown","outside-validation. No outside party has validated this passage or this evaluation path. This blocks EXECUTE."],
+["Not assessed","Substantive truth of source assertions. General natural-language inference. External legal or domain authority. Legal compliance, safety or universal truth. And others, listed in the record."],
+["Issued","2026-10-07 20:45 EDT (UTC 2026-10-08 00:45)"],
+["Status rule","This record states one assessment at its own moment. It does not expire and nothing later changes it. A later position is a new record."],
+["Settlement","1 USDC on Base, transaction 0xac80ebfb941870568199b8be1b9129602922bd452d67750f6b7c6bc1a5088002","mono"],
+["Check it","<a class=ln href='https://basescan.org/tx/0xac80ebfb941870568199b8be1b9129602922bd452d67750f6b7c6bc1a5088002' target=_blank rel=noopener>Settlement on BaseScan</a> &nbsp; <a class=ln href='https://github.com/wheelerhubbell/wheelerhubbell.github.io/tree/main/packages/verifier' target=_blank rel=noopener>Public verifier</a>"]
+];
+function fill(id,rows){var dl=document.getElementById(id);dl.innerHTML="";rows.forEach(function(r){
+var d=document.createElement("div");d.className="row";var t=document.createElement("dt");t.textContent=r[0];var v=document.createElement("dd");
+if(r[2]==="html"||r[0]==="Check it"){v.innerHTML=r[1]}else{v.textContent=r[1]}
+if(r[2]==="mono")v.className="mono";d.appendChild(t);d.appendChild(v);dl.appendChild(d)})}
+document.getElementById("play").onclick=function(){
+var b=this;b.disabled=true;b.textContent="Playing back\u2026";
+setTimeout(function(){fill("rows",ROWS);document.getElementById("rec").className="rec on";b.disabled=false;b.textContent="Play back again"},600)};
+document.getElementById("knock").onclick=function(){
+var b=this;b.disabled=true;b.textContent="Knocking\u2026";
+fetch("https://standing-guard-service.lovable.app/v1/evaluate",{method:"POST",headers:{"content-type":"application/json"},body:"{}"})
+.then(function(r){return r.json().then(function(j){return [r.status,j]})})
+.then(function(x){var s=x[0],j=x[1],a=(j.accepts&&j.accepts[0])||{};var amt=a.amount?(Number(a.amount)/1e6).toFixed(2)+" USDC":"unreported";
+fill("krows",[
+["HTTP status",String(s)+(s===402?" Payment Required":"")],
+["Request","POST /v1/evaluate with an empty body, no payment"],
+["Price",amt],
+["Network","Base ("+(a.network||"unreported")+")"],
+["Pays to",a.payTo||"unreported","mono"],
+["Result","No Mark. Nothing was evaluated, and no money moved."],
+["Received",new Date().toISOString()]]);
+document.getElementById("krec").className="rec on";b.disabled=false;b.textContent="Knock again"})
+.catch(function(){fill("krows",[["Result","The service did not answer from this browser just now. Nothing was sent beyond the request."]]);document.getElementById("krec").className="rec on";b.disabled=false;b.textContent="Knock again"})};
+})();
+</script>
+</body>
+</html>
