@@ -42,7 +42,7 @@ runs:
         URL="${{ inputs.service_url }}${{ inputs.door }}"
         echo "Calling Standing Gate at $URL..."
         
-        HEADERS=("-H" "Content-Type: application/json")
+        HEADERS=("-H" "Content-Type: application/json" "-H" "User-Agent: WHP-Standing-Gate/1.0")
         if [ "${{ inputs.mock }}" = "true" ]; then
           HEADERS+=("-H" "X-Mock: true")
         fi
@@ -79,11 +79,81 @@ runs:
           exit 1
         fi
 
-        echo "Standing Gate verified successfully:"
-        echo "$BODY"
-        
-        OUTCOME=$(echo "$BODY" | grep -o '"outcome":"[^"]*' | cut -d'"' -f4 || echo "RECOGNIZED")
-        HASH=$(echo "$BODY" | grep -o '"record_hash":"[^"]*' | cut -d'"' -f4 || echo "")
-        
+        VAL_OUT=$(python3 - <<PYEOF
+import sys, json
+
+body_raw = """$BODY""".strip()
+if not body_raw:
+    print("ERR:Empty response from Standing Gate")
+    sys.exit(1)
+
+try:
+    data = json.loads(body_raw)
+except Exception as e:
+    print(f"ERR:Invalid JSON response: {e}")
+    sys.exit(1)
+
+is_mock_req = "${{ inputs.mock }}".strip().lower() == "true"
+is_mock_resp = data.get("mock") is True or data.get("not_a_determination") is True
+
+if is_mock_resp:
+    if not is_mock_req:
+        print("ERR:Unauthenticated mock response returned when live determination was required. Gate failed closed.")
+        sys.exit(1)
+    struct_complete = data.get("structurally_complete")
+    failed = data.get("failed") or []
+    if struct_complete is False or (failed and len(failed) > 0):
+        print(f"ERR:Mock structural verification failed. Missing/invalid fields: {failed}")
+        sys.exit(1)
+    print("STATUS:DRY_RUN_PASSED")
+    print("OUTCOME:DRY_RUN_PASSED")
+    print("HASH:")
+    sys.exit(0)
+
+if "error" in data:
+    print(f"ERR:Standing Gate returned error: {data.get('error')}")
+    sys.exit(1)
+
+outcome = None
+if isinstance(data.get("determination"), dict):
+    outcome = data["determination"].get("outcome")
+elif isinstance(data.get("record"), dict) and isinstance(data["record"].get("determination"), dict):
+    outcome = data["record"]["determination"].get("outcome")
+elif isinstance(data.get("outcome"), str):
+    outcome = data["outcome"]
+
+if not outcome:
+    print(f"ERR:Gate response missing valid determination outcome: {data}")
+    sys.exit(1)
+
+allowed_outcomes = ["RECOGNIZED WITH BOUNDARIES", "ESTABLISHED", "CLEARED"]
+if outcome.upper() not in [o.upper() for o in allowed_outcomes]:
+    print(f"ERR:Standing Gate tripped (BLOCKED). Determination outcome rejected: {outcome}")
+    sys.exit(1)
+
+hash_val = data.get("record_hash") or data.get("hash") or ""
+print("STATUS:CLEARED")
+print(f"OUTCOME:{outcome}")
+print(f"HASH:{hash_val}")
+PYEOF
+)
+        PY_EXIT=$?
+        if [ $PY_EXIT -ne 0 ]; then
+          ERR_MSG=$(echo "$VAL_OUT" | grep '^ERR:' | sed 's/^ERR://')
+          if [ -z "$ERR_MSG" ]; then ERR_MSG="$VAL_OUT"; fi
+          echo "::error::$ERR_MSG"
+          exit 1
+        fi
+
+        OUTCOME=$(echo "$VAL_OUT" | grep '^OUTCOME:' | cut -d':' -f2)
+        HASH=$(echo "$VAL_OUT" | grep '^HASH:' | cut -d':' -f2)
+        STATUS=$(echo "$VAL_OUT" | grep '^STATUS:' | cut -d':' -f2)
+
+        echo "Standing Gate status: $STATUS"
+        echo "Determination outcome: $OUTCOME"
+        if [ -n "$HASH" ]; then
+          echo "Record hash: $HASH"
+        fi
+
         echo "outcome=$OUTCOME" >> $GITHUB_OUTPUT
         echo "hash=$HASH" >> $GITHUB_OUTPUT
