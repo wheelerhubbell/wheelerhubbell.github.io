@@ -60,7 +60,7 @@ contract StandingVerifier {
         bytes32 scopeHash;       // Scope identifier hash
         uint64 validFrom;        // Start of validity window (unix seconds)
         uint64 validUntil;       // Expiration timestamp (unix seconds)
-        uint8 determinationCode; // 1: ESTABLISHED / RECOGNIZED, 0: NOT_ESTABLISHED
+        uint8 determinationCode; // 1: ESTABLISHED, 0: NOT_ESTABLISHED
         uint256 nonce;           // Anti-replay nonce
     }
 

@@ -65,7 +65,7 @@ export class WHPStandingActionProvider {
             claim: JSON.stringify(args.action_payload)
           };
           const res = await this.evaluate('/v1/audit', body, { mock: false, walletProvider });
-          if (res.outcome !== 'RECOGNIZED' && res.outcome !== 'RECOGNIZED WITH BOUNDARIES') {
+          if (res.outcome !== 'ESTABLISHED') {
             throw new Error(`CIRCUIT_BREAKER_HALT: Standing check rejected: ${JSON.stringify(res)}`);
           }
           return { allowed: true, record_hash: res.record_hash };

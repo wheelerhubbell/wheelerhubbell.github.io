@@ -85,7 +85,7 @@ runs:
          const now=Math.floor(Date.now()/1000);if(!Number.isSafeInteger(record.issued_at)||!Number.isSafeInteger(record.valid_until)||record.issued_at>now||record.valid_until<=now||record.valid_until<=record.issued_at||now-record.issued_at>120)throw Error('Stale or invalid issuance window');
          if(canonical(record.input)!==canonical(input)||createHash('sha256').update(canonical(input)).digest('hex')!==record.input_hash)throw Error('Exact request binding mismatch');
          if(record.revoked===true||record.status==='REVOKED')throw Error('Revoked record');
-         if(!['RECOGNIZED WITH BOUNDARIES','ESTABLISHED'].includes(record.determination?.outcome))throw Error('Non-positive determination');
+         if(!['ESTABLISHED'].includes(record.determination?.outcome))throw Error('Non-positive determination');
          throw Error('Signed record integrity verified, but current standing and execution permission are not establishable under the ordinary front-door interface');
         }
         run().catch(()=>{console.error('BLOCKED: ordinary records cannot establish current standing or execution permission, or integrity checks failed');process.exitCode=1;});
