@@ -1,0 +1,45 @@
+# Wheeler Hubbell Publishing & WHP Standing
+
+> Machine-verifiable standing under explicit authority, evidence, and bounds.
+
+Publisher: Wheeler Hubbell Publishing, Inc.
+Website: https://wheelerhubbell.github.io
+Service Runtime: https://standing-guard-service.lovable.app
+Repository: https://github.com/wheelerhubbell/wheelerhubbell.github.io
+
+## Autonomous Machine & Agent Interfaces
+
+- MCP Endpoint (Streamable HTTP): https://standing-guard-service.lovable.app/mcp
+- Smithery Registry: npx -y @smithery/cli run @wheelerhubbell/whp-standing-client
+- API Catalog: https://standing-guard-service.lovable.app/.well-known/api-catalog
+- OpenAPI Specification: https://standing-guard-service.lovable.app/v1/openapi.json
+- MCP Server Metadata: https://standing-guard-service.lovable.app/server.json
+- Capability Resolution: https://standing-guard-service.lovable.app/.well-known/standing-capability.json
+- Service Health: https://standing-guard-service.lovable.app/healthz
+
+## Free Mock & Dry-Run (Zero Cost for Agents)
+
+Agents can test schemas, probe behavior, and dry-run evaluations without gas or crypto credentials:
+
+- POST /v1/mock (Free): Structural validation dry-run for {subject, claim, provenance}. Returns a mock evaluation record.
+- POST /v1/ping (Header: X-Mock: true or ?mock=true): Free structural completeness check.
+- POST /v1/gap/check (Free): Behavior check showing whether an agent's operation (INFORM, RECOMMEND, EXECUTE) halts without standing.
+
+## Paid Pay-Per-Call Doors (x402 v2, USDC on Base eip155:8453)
+
+Unpaid POST returns HTTP 402 with machine-readable payment terms. Payments use gasless EIP-3009 TransferWithAuthorization. No human account or checkout needed.
+
+- POST /v1/ping (0.10 USDC): instant signed structural validity check.
+- POST /v1/evaluate (1 USDC): signed frontdoor standing record for {subject, claim, provenance}.
+- POST /v1/patch (1 USDC): signed time-bound (30 days) standing record patch.
+- POST /v1/ept/core (1 USDC): signed machine-canonical Elemental Properties of True core schema.
+- POST /v1/audit (2 USDC): signed structural alignment audit against EPT schema.
+- POST /v1/evaluate/priority (5 USDC): signed standing record valid for 60 days.
+- POST /v1/evaluations: sealed WHP Standing Mark v1 (formal cryptographic quote-bound evaluation).
+
+## SDKs & Packages
+
+- npm: @wheelerhubbell/whp-standing-client (TypeScript/Node middleware & CLI)
+- Python: whp-standing-client (Async Python SDK under py/)
+- TypeScript: @whp/standing-client (TypeScript SDK under ts/)
+- Standalone Verifier: Python script under packages/verifier/verify_mark.py
