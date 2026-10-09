@@ -1,0 +1,94 @@
+name: 'Standing Gate'
+description: 'Autonomous epistemic standing audit and circuit breaker gate for CI/CD pipelines'
+author: 'wheelerhubbell'
+branding:
+  icon: 'shield'
+  color: 'blue'
+inputs:
+  service_url:
+    description: 'Standing Witness service base URL'
+    required: false
+    default: 'https://standing-guard-service.lovable.app'
+  door:
+    description: 'Door endpoint to evaluate against (/v1/audit, /v1/evaluate, /v1/ping)'
+    required: false
+    default: '/v1/audit'
+  subject:
+    description: 'Subject identifier or repository claim'
+    required: false
+    default: '${{ github.repository }}@${{ github.sha }}'
+  claim:
+    description: 'Claim to verify or audit'
+    required: false
+    default: 'CI/CD pipeline release integrity verification'
+  mock:
+    description: 'Set to "true" for free dry-run structural verification'
+    required: false
+    default: 'false'
+  payment_signature:
+    description: 'x402 PAYMENT-SIGNATURE or authorization token for paid doors'
+    required: false
+    default: ''
+outputs:
+  determination:
+    description: 'Evaluation determination outcome'
+    value: ${{ steps.gate.outputs.outcome }}
+  record_hash:
+    description: 'Cryptographic hash of the signed evaluation record'
+    value: ${{ steps.gate.outputs.hash }}
+
+runs:
+  using: 'composite'
+  steps:
+    - id: gate
+      shell: bash
+      run: |
+        URL="${{ inputs.service_url }}${{ inputs.door }}"
+        echo "Calling Standing Gate at $URL..."
+        
+        HEADERS=("-H" "Content-Type: application/json")
+        if [ "${{ inputs.mock }}" = "true" ]; then
+          HEADERS+=("-H" "X-Mock: true")
+        fi
+        if [ -n "${{ inputs.payment_signature }}" ]; then
+          HEADERS+=("-H" "PAYMENT-SIGNATURE: ${{ inputs.payment_signature }}")
+          HEADERS+=("-H" "Authorization: Bearer ${{ inputs.payment_signature }}")
+        fi
+
+        PAYLOAD=$(cat <<JSON
+        {
+          "subject": "${{ inputs.subject }}",
+          "claim": "${{ inputs.claim }}",
+          "provenance": {
+            "repository": "${{ github.repository }}",
+            "sha": "${{ github.sha }}",
+            "actor": "${{ github.actor }}",
+            "ref": "${{ github.ref }}"
+          }
+        }
+        JSON
+        )
+
+        RESPONSE=$(curl -s -w "
+%{http_code}" -X POST "$URL" "${HEADERS[@]}" -d "$PAYLOAD")
+        HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+        BODY=$(echo "$RESPONSE" | sed '$d')
+
+        if [ "$HTTP_CODE" -eq 402 ]; then
+          echo "::error::Door requires x402 payment (HTTP 402). Provide payment_signature or enable mock: true."
+          exit 1
+        fi
+
+        if [ "$HTTP_CODE" -ne 200 ]; then
+          echo "::error::Standing Gate returned HTTP $HTTP_CODE: $BODY"
+          exit 1
+        fi
+
+        echo "Standing Gate verified successfully:"
+        echo "$BODY"
+        
+        OUTCOME=$(echo "$BODY" | grep -o '"outcome":"[^"]*' | cut -d'"' -f4 || echo "RECOGNIZED")
+        HASH=$(echo "$BODY" | grep -o '"record_hash":"[^"]*' | cut -d'"' -f4 || echo "")
+        
+        echo "outcome=$OUTCOME" >> $GITHUB_OUTPUT
+        echo "hash=$HASH" >> $GITHUB_OUTPUT
