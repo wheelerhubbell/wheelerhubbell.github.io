@@ -49,9 +49,12 @@ export declare function guardAction(toolCall: ToolCall, context?: GuardOptions):
 
 export declare class StandingClient {
   endpoint: string;
-  constructor(options?: { endpoint?: string });
+  affiliate?: string | null;
+  constructor(options?: { endpoint?: string; affiliate?: string | null });
   getContract(): Promise<any>;
-  evaluate(payload: any, options?: string | { fetch?: typeof fetch; paymentToken?: string } | null): Promise<any>;
+  mock(payload: any, door?: string): Promise<any>;
+  ping(payload: any, options?: { mock?: boolean; affiliate?: string; paymentToken?: string; fetch?: typeof fetch }): Promise<any>;
+  evaluate(payload: any, options?: string | { mock?: boolean; affiliate?: string; fetch?: typeof fetch; paymentToken?: string } | null): Promise<any>;
   getResult(purchaseId: string, options?: { fetch?: typeof fetch; headers?: Record<string, string> }): Promise<any>;
 }
 
@@ -62,3 +65,48 @@ export function withStandingWitness<T extends (...args: any[]) => any>(
 
 export function createLangChainGuard(tool: any, options?: Record<string, any>): any;
 export function createElizaGuard(action: any, options?: Record<string, any>): any;
+
+export function verifyStandingReleaseCondition(
+  output: any,
+  standingRecord: any,
+  options?: {
+    expectedSubject?: string;
+    maxAgeSeconds?: number;
+    allowedStatuses?: string[];
+  }
+): {
+  satisfied: boolean;
+  code: string;
+  checks: Array<{ id: string; pass: boolean; note?: string }>;
+  failed: string[];
+  record_hash?: string;
+  signature_present: boolean;
+  message: string;
+};
+
+export function createStandingEscrowContract(params: {
+  recipient: string;
+  amount: string;
+  currency?: string;
+  network?: string;
+  verifierDoor?: string;
+  allowedStatuses?: string[];
+  requireSigned?: boolean;
+}): any;
+
+export function createEpistemicCircuitBreaker<T extends (...args: any[]) => any>(
+  toolFn: T,
+  options?: {
+    name?: string;
+    endpoint?: string;
+    mode?: 'local' | 'mock' | 'auto';
+    isDestructive?: boolean;
+    failClosedOnNetworkError?: boolean;
+  }
+): (...args: Parameters<T>) => Promise<ReturnType<T>>;
+
+export function interceptToolCalls(
+  toolCalls: any[],
+  executor: (toolName: string, args: any) => Promise<any>,
+  options?: Record<string, any>
+): Promise<any[]>;
