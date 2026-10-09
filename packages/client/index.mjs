@@ -215,3 +215,4 @@ export {
   createEpistemicCircuitBreaker,
   interceptToolCalls
 } from './circuit_breaker.mjs';
+export * from './beacon.mjs';
