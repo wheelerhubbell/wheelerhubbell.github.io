@@ -1,0 +1,42 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://wheelerhubbell.github.io/.well-known/api-catalog",
+      "item": [
+        {
+          "href": "https://standing-guard-service.lovable.app/mcp"
+        },
+        {
+          "href": "https://standing-guard-service.lovable.app/v1/mock"
+        },
+        {
+          "href": "https://standing-guard-service.lovable.app/v1/evaluations"
+        }
+      ]
+    },
+    {
+      "anchor": "https://standing-guard-service.lovable.app/v1/evaluations",
+      "service-desc": [
+        {
+          "href": "https://standing-guard-service.lovable.app/v1/openapi.json",
+          "type": "application/json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://wheelerhubbell.github.io/",
+          "type": "text/html"
+        },
+        {
+          "href": "https://wheelerhubbell.github.io/llms.txt",
+          "type": "text/plain"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://standing-guard-service.lovable.app/healthz"
+        }
+      ]
+    }
+  ]
+}
