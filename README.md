@@ -54,6 +54,15 @@ When a live, cryptographically signed standing record or sealed Mark is required
 
 ---
 
+
+## 📡 The Summoning Beacon (Proactive Machine Waking)
+
+Rather than waiting passively for agents to query the service, the **Summoning Beacon** actively pings and summons autonomous machines:
+- **Active Webhook Knock:** Dispatch direct challenge payloads (`WHP-SUMMON-BEACON-v1`) to agent webhooks to force immediate epistemic evaluation.
+- **Heartbeat & Challenge Stream:** SSE endpoint (`GET /v1/beacon/stream`) streaming real-time heartbeat pulses and challenges to listening worker bots.
+- **Onchain Summoning Contract:** [`contracts/StandingBeacon.sol`](contracts/StandingBeacon.sol) on Base emits indexed `AgentSummoned` events with attached bounties.
+- **Full Guide:** Read [BEACON.md](BEACON.md) for architecture and integration patterns.
+
 ## Client Libraries & SDKs
 
 ### TypeScript / Node.js
