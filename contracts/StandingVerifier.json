@@ -1,0 +1,451 @@
+{
+  "contractName": "StandingVerifier",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_authorizedSigner",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "markHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "purchaseId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "validUntil",
+          "type": "uint64"
+        }
+      ],
+      "name": "StandingMarkRegistered",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "markHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "purchaseId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "determinationCode",
+          "type": "uint8"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "verifierCaller",
+          "type": "address"
+        }
+      ],
+      "name": "StandingMarkVerified",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "DOMAIN_SEPARATOR",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "DOMAIN_TYPEHASH",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "STANDING_COMMITMENT_TYPEHASH",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "authorizedSigner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "consumedNonces",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "bytes32",
+              "name": "markHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "purchaseId",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "profileHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "scopeHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint64",
+              "name": "validFrom",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint64",
+              "name": "validUntil",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint8",
+              "name": "determinationCode",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint256",
+              "name": "nonce",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct StandingVerifier.StandingCommitment",
+          "name": "c",
+          "type": "tuple"
+        }
+      ],
+      "name": "hashCommitment",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "markHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "isMarkRegistered",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "bytes32",
+              "name": "markHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "purchaseId",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "profileHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "scopeHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint64",
+              "name": "validFrom",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint64",
+              "name": "validUntil",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint8",
+              "name": "determinationCode",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint256",
+              "name": "nonce",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct StandingVerifier.StandingCommitment",
+          "name": "commitment",
+          "type": "tuple"
+        },
+        {
+          "internalType": "bytes",
+          "name": "signature",
+          "type": "bytes"
+        }
+      ],
+      "name": "registerMark",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "name": "registeredMarks",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "bytes32",
+              "name": "markHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "purchaseId",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "profileHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "scopeHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint64",
+              "name": "validFrom",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint64",
+              "name": "validUntil",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint8",
+              "name": "determinationCode",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint256",
+              "name": "nonce",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct StandingVerifier.StandingCommitment",
+          "name": "commitment",
+          "type": "tuple"
+        },
+        {
+          "internalType": "bytes",
+          "name": "signature",
+          "type": "bytes"
+        }
+      ],
+      "name": "verifyAndConsume",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "bytes32",
+              "name": "markHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "purchaseId",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "profileHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "scopeHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint64",
+              "name": "validFrom",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint64",
+              "name": "validUntil",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint8",
+              "name": "determinationCode",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint256",
+              "name": "nonce",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct StandingVerifier.StandingCommitment",
+          "name": "commitment",
+          "type": "tuple"
+        },
+        {
+          "internalType": "bytes",
+          "name": "signature",
+          "type": "bytes"
+        }
+      ],
+      "name": "verifyStandingView",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "isValid",
+          "type": "bool"
+        },
+        {
+          "internalType": "string",
+          "name": "reason",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "60a060405234801561000f575f80fd5b50604051610edb380380610edb83398101604081905261002e9161008a565b6001600160a01b0381166100795760405162461bcd60e51b815260206004820152600e60248201526d24a72b20a624a22fa9a4a3a722a960911b604482015260640160405180910390fd5b6001600160a01b03166080526100b7565b5f6020828403121561009a575f80fd5b81516001600160a01b03811681146100b0575f80fd5b9392505050565b608051610df76100e45f395f81816101dd0152818161033e0152818161067c0152610a450152610df75ff3fe608060405234801561000f575f80fd5b50600436106100a6575f3560e01c80634593eb631161006e5780634593eb63146101585780638dee61fa146101825780639424e59f146101a357806394c090b9146101c5578063c771909c146101d8578063f1b474ea14610217575f80fd5b80631b59f274146100aa57806320606b70146100d257806333eb1516146101075780633644e515146101295780633f8699a514610131575b5f80fd5b6100bd6100b8366004610bf8565b61022a565b60405190151581526020015b60405180910390f35b6100f97f8b73c3c69bb8fe3d512ecc4cf759cc79239f7b179b0ffacaa9a75d522b39400f81565b6040519081526020016100c9565b6100bd610115366004610c77565b5f9081526001602052604090205460ff1690565b6100f9610468565b6100f97ff7262bc7ccbaee964872752d993f9b0673684f546c4439d6157ba0505a74edfb81565b6100bd610166366004610c8e565b5f60208181529281526040808220909352908152205460ff1681565b610195610190366004610bf8565b610545565b6040516100c9929190610cc3565b6100bd6101b1366004610c77565b60016020525f908152604090205460ff1681565b6100f96101d3366004610d18565b610764565b6101ff7f000000000000000000000000000000000000000000000000000000000000000081565b6040516001600160a01b0390911681526020016100c9565b6100bd610225366004610bf8565b61083e565b5f61023b60a0850160808601610d3a565b67ffffffffffffffff16421015801561026d575061025f60c0850160a08601610d3a565b67ffffffffffffffff164211155b6102af5760405162461bcd60e51b815260206004820152600e60248201526d494e56414c49445f57494e444f5760901b60448201526064015b60405180910390fd5b6102bf60e0850160c08601610d61565b60ff166001146103015760405162461bcd60e51b815260206004820152600d60248201526c15539154d51050931254d21151609a1b60448201526064016102a6565b5f61030a610468565b61031386610764565b604051602001610324929190610d81565b6040516020818303038152906040528051906020012090507f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03166103a58286868080601f0160208091040260200160405190810160405280939291908181526020018383808284375f92019190915250610b4292505050565b6001600160a01b0316146103ef5760405162461bcd60e51b8152602060048201526011602482015270494e56414c49445f5349474e415455524560781b60448201526064016102a6565b84355f818152600160208181526040909220805460ff19169091179055860135907f40d2073b8393f6e1ee33480a26bc4111a88428bea576e2aa85a16290dde4e38b61044160c0890160a08a01610d3a565b60405167ffffffffffffffff909116815260200160405180910390a3506001949350505050565b6040805180820182526016815275574850205374616e64696e6720417574686f7269747960501b6020918201528151808301835260018152603160f81b9082015281517f8b73c3c69bb8fe3d512ecc4cf759cc79239f7b179b0ffacaa9a75d522b39400f818301527fa8f45bc641f799dcf08bcae23fb79c06fca647dfd28ca8197ef821233c5cdf2e818401527fc89efdaa54c0f20c7adf612882df0950f5a951637e0307cdcb4c672f298b8bc660608201524660808201523060a0808301919091528351808303909101815260c0909101909252815191012090565b5f606061055860a0860160808701610d3a565b67ffffffffffffffff1642101561059b57505060408051808201909152601281527113505492d7d393d517d6515517d59053125160721b60208201525f9061075c565b6105ab60c0860160a08701610d3a565b67ffffffffffffffff164211156105e857505060408051808201909152600c81526b13505492d7d156141254915160a21b60208201525f9061075c565b6105f860e0860160c08701610d61565b60ff1660011461063f57505060408051808201909152601d81527f44455445524d494e4154494f4e5f4e4f545f45535441424c495348454400000060208201525f9061075c565b5f610648610468565b61065187610764565b604051602001610662929190610d81565b6040516020818303038152906040528051906020012090507f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03166106e38287878080601f0160208091040260200160405190810160405280939291908181526020018383808284375f92019190915250610b4292505050565b6001600160a01b03161461072f57505060408051808201909152601b81527f494e56414c49445f415554484f524954595f5349474e4154555245000000000060208201525f915061075c565b505060408051808201909152600f81526e56455249464945445f41435449564560881b6020820152600191505b935093915050565b5f7ff7262bc7ccbaee964872752d993f9b0673684f546c4439d6157ba0505a74edfb82356020840135604085013560608601356107a760a0880160808901610d3a565b6107b760c0890160a08a01610d3a565b6107c760e08a0160c08b01610d61565b6040805160208101999099528801969096526060870194909452608086019290925260a085015267ffffffffffffffff90811660c08501521660e08381019190915260ff90911661010083015283013561012082015261014001604051602081830303815290604052805190602001209050919050565b5f61084f60a0850160808601610d3a565b67ffffffffffffffff1642101561089d5760405162461bcd60e51b815260206004820152601260248201527113505492d7d393d517d6515517d59053125160721b60448201526064016102a6565b6108ad60c0850160a08601610d3a565b67ffffffffffffffff164211156108f55760405162461bcd60e51b815260206004820152600c60248201526b13505492d7d156141254915160a21b60448201526064016102a6565b61090560e0850160c08601610d61565b60ff166001146109615760405162461bcd60e51b815260206004820152602160248201527f494e56415249414e545f56494f4c4154494f4e5f554e45535441424c495348456044820152601160fa1b60648201526084016102a6565b335f9081526020818152604080832060e0880135845290915290205460ff16156109c65760405162461bcd60e51b81526020600482015260166024820152751393d390d157d053149150511657d0d3d394d553515160521b60448201526064016102a6565b5f6109cf610468565b6109d886610764565b6040516020016109e9929190610d81565b6040516020818303038152906040528051906020012090505f610a418286868080601f0160208091040260200160405190810160405280939291908181526020018383808284375f92019190915250610b4292505050565b90507f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316816001600160a01b031614610ac45760405162461bcd60e51b815260206004820152601b60248201527f494e56414c49445f415554484f524954595f5349474e4154555245000000000060448201526064016102a6565b335f8181526020818152604080832060e08b01803585529083529220805460ff19166001179055880135908835907ff5f22ff42ea4cdb6395925e2e31ddf768f139b01498c94eec140cdd59099272b90610b219060c08c01610d61565b60405160ff909116815260200160405180910390a450600195945050505050565b5f8151604114610b5357505f610bdb565b6020820151604083015160608401515f1a601b811015610b7b57610b78601b82610d9c565b90505b604080515f81526020810180835288905260ff831691810191909152606081018490526080810183905260019060a0016020604051602081039080840390855afa158015610bcb573d5f803e3d5ffd5b5050506020604051035193505050505b92915050565b5f6101008284031215610bf2575f80fd5b50919050565b5f805f6101208486031215610c0b575f80fd5b610c158585610be1565b925061010084013567ffffffffffffffff80821115610c32575f80fd5b818601915086601f830112610c45575f80fd5b813581811115610c53575f80fd5b876020828501011115610c64575f80fd5b6020830194508093505050509250925092565b5f60208284031215610c87575f80fd5b5035919050565b5f8060408385031215610c9f575f80fd5b82356001600160a01b0381168114610cb5575f80fd5b946020939093013593505050565b82151581525f602060408184015283518060408501525f5b81811015610cf757858101830151858201606001528201610cdb565b505f606082860101526060601f19601f830116850101925050509392505050565b5f6101008284031215610d29575f80fd5b610d338383610be1565b9392505050565b5f60208284031215610d4a575f80fd5b813567ffffffffffffffff81168114610d33575f80fd5b5f60208284031215610d71575f80fd5b813560ff81168114610d33575f80fd5b61190160f01b81526002810192909252602282015260420190565b60ff8181168382160190811115610bdb57634e487b7160e01b5f52601160045260245ffdfea26469706673582212206883df47895d6e31f6cdb143b87985f38f0fdbe2e614f6cb343a4912b7b7bcde64736f6c63430008140033"
+}
