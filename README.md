@@ -1,13 +1,14 @@
 # Wheeler Hubbell Publishing
 
-> **Machine-verifiable standing under explicit authority, evidence, and bounds.**
+> **Where formal epistemology, published literature, and autonomous Decision Integrity meet.**
+> Home of the published works, the canonical research preprints, and the machine-verifiable Standing Witness protocol for AI agents and CI/CD pipelines.
 
 [![MCP Server](https://img.shields.io/badge/MCP-Compatible-blue)](https://standing-guard-service.lovable.app/mcp)
 [![x402 Payment](https://img.shields.io/badge/x402-USDC%20on%20Base-green)](https://standing-guard-service.lovable.app/v1/contract)
 [![npm](https://img.shields.io/badge/npm-%40wheelerhubbell%2Fwhp--standing--client-red)](https://github.com/wheelerhubbell/wheelerhubbell.github.io/tree/main/packages/client)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![GitHub Action](https://img.shields.io/badge/GitHub%20Action-Standing%20Gate-purple)](https://github.com/wheelerhubbell/wheelerhubbell.github.io/releases/tag/v1.0.0)
 
-Wheeler Hubbell Publishing provides a deterministic, fail-closed framework and live cryptographic service for determining and preserving what an object or claim is entitled to establish under explicit authority and provenance.
+Wheeler Hubbell Publishing is an independent publishing house and research imprint. It produces foundational books, dramatic texts, and philosophical preprints (*Constitutional Continuity Theory*, *Coherent Substitution*, *The Elemental Properties of True*), while maintaining a deterministic, fail-closed runtime and cryptographic witness service for AI agent ecosystems and automated pipelines.
 
 ---
 
