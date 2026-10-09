@@ -1,0 +1,17 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.wheelerhubbell/whp-standing",
+  "title": "WHP Standing Witness",
+  "description": "Machine-verifiable standing under explicit authority and bounds. Epistemic guardrails and provenance validation for AI agents.",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://standing-guard-service.lovable.app/mcp"
+    }
+  ],
+  "websiteUrl": "https://standing-guard-service.lovable.app",
+  "repository": {
+    "url": "https://github.com/wheelerhubbell/wheelerhubbell.github.io",
+    "source": "github"
+  }
+}
