@@ -35,7 +35,7 @@ def verify(env, origin=None):
         except Exception:
             out["checks"]["signature"] = False
         if origin:
-            req = urllib.request.Request(origin.rstrip("/") + "/v1/evaluate", headers={"accept": "application/json", "user-agent": "whp-verify-frontdoor/1"})
+            req = urllib.request.Request(origin.rstrip("/") + "/v1/ept/core", headers={"accept": "application/json", "user-agent": "whp-verify-frontdoor/1"})
             with urllib.request.urlopen(req, timeout=20) as r:
                 adv = json.load(r)["signer"]["public_key_b64url"]
             out["checks"]["key_matches_service"] = adv == sig["public_key_b64url"]
