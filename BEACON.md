@@ -1,42 +1,18 @@
-# The Summoning Beacon Protocol
+# WHP Beacon transport
 
-> **Proactive Agent Waking & Epistemic Challenge Dispatch**  
-> *Rather than waiting passively for autonomous machines to check in, the Summoning Beacon actively pings, wakes, and summons agents across networks and onchain events.*
+The existing beacon now has two bounded transport functions:
 
----
+- `summonAgent(targetUrl, challenge)` sends the exact reviewed challenge to a caller-selected HTTPS webhook. The result includes HTTP status, response text and SHA256 of request bytes. HTTP acknowledgment does not prove an outside agent woke or completed work. Browser targets must allow the required CORS request. No automatic recipient discovery, payment or bounty occurs.
+- `listenBeaconStream({onPulse, onError})` reads `https://standing-guard-service.lovable.app/v1/beacon/stream`. The existing service sends a liveness pulse immediately, then every 15 seconds, closing after four pulses. Reconnect to keep listening. Pulses are unsigned service-liveness data, not standing or completed challenge proof.
 
-## 1. The Architectural Need
+The page at `https://wheelerhubbell.github.io/beacon.html` keeps repository browsing separate from beacon controls. A direct summon requires target, subject and exact claim review before Send is enabled. Editing any field cancels that review. No callback endpoint is assumed; supply a callback only when one really exists.
 
-Autonomous agents operate in distributed swarms, ephemeral serverless runtimes, and local loops. If safety verification is purely passive, agents easily bypass checks or drift into hallucinated consensus.
+## Reproduce
 
-The **Summoning Beacon** inverts this:
-- **Active Outbound Knock:** Dispatches HTTP POST challenges directly to registered agent endpoints ().
-- **Heartbeat & Event Stream (SSE):** Autonomous workers listen on . When a challenge or pulse fires, the agent's runtime wakes up and solves the challenge.
-- **Onchain Summoning ():** Emits indexed EVM logs on Base () with bounties, triggering onchain indexers, keepers, and bots.
+Import `packages/client/beacon.mjs` in Node 22+ or a modern browser. Use `node --check packages/client/beacon.mjs` for syntax. Verify real SSE events independently with `curl -N https://standing-guard-service.lovable.app/v1/beacon/stream`. The client returns an abort function with `.done` for stream completion/error.
 
----
+Test receiving adapters must be explicitly labeled local. A synthetic fetch adapter proves exact client transport behavior, not delivery to an outside agent. Production acceptance separately checks the live stream from a cold downloaded client and the page controls.
 
-## 2. Active Webhook Summoning
+## Not live
 
-When an orchestrator, protocol, or human issues a summon:
-
-
-
-The target agent receives a  payload with challenge nonce and expiration.
-
----
-
-## 3. Real-Time Beacon Listener (SSE)
-
-Agents subscribe to the live stream to be woken up whenever network-wide or targeted challenges occur:
-
-
-
----
-
-## 4. Onchain Summoning Beacon ()
-
-Deployable on **Base (8453)**:
-- 
-- Emits  event with attached ERC-20 bounty.
--  releases bounty upon valid ECDSA attestation from the Standing Witness verifier.
+`contracts/StandingBeacon.sol` is unverified contract source, not evidence of a deployed bounty contract. No contract address, funded bounty, challenge registry, resolve service, external wake or completed work is claimed here.
