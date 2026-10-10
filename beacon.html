@@ -57,9 +57,9 @@
                     <i class="fa-solid fa-key text-amber-400"></i>
                     <span id="tokenBadgeText">Set GitHub Token</span>
                 </button>
-                <button onclick="triggerRealSummon()" id="topSummonBtn" class="px-4 py-2 rounded-xl bg-green-600 hover:bg-green-500 text-slate-950 font-semibold transition text-sm flex items-center gap-2 shadow-lg shadow-green-900/50">
+                <button onclick="document.getElementById('beaconControls').scrollIntoView({behavior:'smooth'})" id="topSummonBtn" class="px-4 py-2 rounded-xl bg-green-600 hover:bg-green-500 text-slate-950 font-semibold transition text-sm flex items-center gap-2 shadow-lg shadow-green-900/50">
                     <i class="fa-solid fa-bolt"></i>
-                    <span>Summon Workflows</span>
+                    <span>Open Beacon Controls</span>
                 </button>
             </div>
         </div>
@@ -249,6 +249,22 @@
             </section>
         </div>
     </main>
+<section id="beaconControls" class="max-w-7xl mx-auto p-6 bg-slate-900 text-slate-200 rounded-xl">
+<h2 class="text-xl font-bold">Agent Beacon Transport</h2><p>Stream pulses show service liveness, not proof that any outside agent woke. Direct summons send only after you review the target and words. An HTTP acknowledgment is not completed work. On-chain bounty contract is unverified source, not a deployed offer.</p>
+<button id="listenBeacon" class="px-4 py-2 bg-green-600 rounded">Listen for service pulse</button><button id="stopBeacon" class="px-4 py-2 bg-slate-700 rounded">Stop</button>
+<div class="grid gap-3 my-4"><label>Target HTTPS webhook <input id="beaconTarget" class="w-full bg-slate-950 p-2" placeholder="https://your-agent.example/webhook"></label><label>Subject <input id="beaconSubject" class="w-full bg-slate-950 p-2"></label><label>Exact claim <textarea id="beaconClaim" class="w-full bg-slate-950 p-2"></textarea></label></div>
+<button id="reviewBeacon" class="px-4 py-2 bg-slate-700 rounded">Review summon</button><button id="sendBeacon" disabled class="px-4 py-2 bg-green-600 rounded disabled:opacity-40">Send reviewed summon</button><pre id="beaconReview" class="whitespace-pre-wrap my-3"></pre><pre id="beaconStatus" class="whitespace-pre-wrap my-3" aria-live="polite">No summons sent.</pre>
+</section>
+<script type="module">
+import {summonAgent,listenBeaconStream} from './packages/client/beacon.mjs';
+const get=id=>document.getElementById(id);let stop,reviewed;
+get('listenBeacon').onclick=()=>{stop?.();get('beaconStatus').textContent='Connecting to live SSE...';stop=listenBeaconStream({onPulse:p=>get('beaconStatus').textContent=JSON.stringify(p,null,2),onError:e=>get('beaconStatus').textContent='Stream error: '+e.message});stop.done.catch(()=>{});};
+get('stopBeacon').onclick=()=>{stop?.();get('beaconStatus').textContent='Stream stopped.';};
+const values=()=>({target:get('beaconTarget').value.trim(),subject:get('beaconSubject').value,claim:get('beaconClaim').value});
+for(const id of ['beaconTarget','beaconSubject','beaconClaim'])get(id).oninput=()=>{reviewed=null;get('sendBeacon').disabled=true;};
+get('reviewBeacon').onclick=()=>{try{const v=values(),u=new URL(v.target);if(u.protocol!=='https:'||u.username||u.password||!v.subject.trim()||!v.claim.trim())throw Error('HTTPS target, subject and claim are required');reviewed=v;get('beaconReview').textContent=JSON.stringify(v,null,2);get('sendBeacon').disabled=false;}catch(e){get('beaconStatus').textContent=e.message;}};
+get('sendBeacon').onclick=async()=>{if(!reviewed||JSON.stringify(reviewed)!==JSON.stringify(values()))return;const v=reviewed;reviewed=null;get('sendBeacon').disabled=true;get('beaconStatus').textContent='Sending reviewed request...';try{const result=await summonAgent(v.target,{subject:v.subject,claim:v.claim});get('beaconStatus').textContent=JSON.stringify(result,null,2);}catch(e){get('beaconStatus').textContent='Dispatch failed: '+e.message;}};
+</script>
     <!-- GitHub Token Modal -->
     <div id="tokenModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 shadow-2xl relative">
@@ -270,7 +286,8 @@
         </div>
     </div>
     <script>
-        let githubToken = localStorage.getItem('summon_beacon_gh_token') || '';
+        let githubToken = '';
+localStorage.removeItem('summon_beacon_gh_token');
         let treeCache = [];
         function updateTokenBadge() {
             const badge = document.getElementById('tokenBadgeText');
@@ -372,7 +389,7 @@
         }
         function saveToken() {
             githubToken = document.getElementById('ghTokenInput').value.trim();
-            localStorage.setItem('summon_beacon_gh_token', githubToken);
+            // Keep any explicitly entered token only in this page session, never browser storage.
             closeTokenModal();
             updateTokenBadge();
             appendLog('[SYSTEM] GitHub Personal Access Token updated successfully.');
