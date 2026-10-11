@@ -22,9 +22,9 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Verify Standing
-        uses: wheelerhubbell/wheelerhubbell.github.io/.github/actions/standing-gate@main
+        uses: wheelerhubbell/standing-gate@v0.1.1
         with:
-          door: '/v1/audit'
+          door: '/v1/evaluate'
           mock: 'true' # Set to 'false' with payment_signature for cryptographically signed determinations
           claim: 'Release candidate passes epistemic boundary audit'
 ```
