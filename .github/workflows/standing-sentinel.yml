@@ -1,0 +1,42 @@
+name: Standing Witness Autonomous Sentinel
+
+on:
+  schedule:
+    # Autonomous loop: evaluates every 6 hours
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  standing-sentinel:
+    name: Evaluate Decision Integrity
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Standing Witness Gate
+        id: gate
+        uses: wheelerhubbell/standing-gate@v0.1.1
+        with:
+          service_url: 'https://standing-guard-service.lovable.app'
+          door: '/v1/evaluate'
+          subject: '${{ github.repository }}@${{ github.sha }}'
+          claim: 'Continuous decision integrity and epistemic standing sentinel'
+          mock: 'true'
+
+      - name: Attestation Summary
+        run: |
+          echo "### 🛡️ Standing Witness Sentinel Evaluation" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Outcome:** \`${{ steps.gate.outputs.determination }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Service Door:** \`/v1/evaluate\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Subject:** \`${{ github.repository }}@${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Timestamp (UTC):** \`$(date -u +"%Y-%m-%dT%H:%M:%SZ")\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Verified via [Standing Gate on GitHub Marketplace](https://github.com/marketplace/actions/standing-gate)." >> $GITHUB_STEP_SUMMARY
