@@ -7,6 +7,7 @@
 [![x402 Payment](https://img.shields.io/badge/x402-USDC%20on%20Base-green)](https://standing-guard-service.lovable.app/v1/contract)
 [![npm](https://img.shields.io/badge/npm-%40wheelerhubbell%2Fwhp--standing--client-red)](https://github.com/wheelerhubbell/wheelerhubbell.github.io/tree/main/packages/client)
 [![GitHub Marketplace](https://img.shields.io/badge/Marketplace-Standing%20Gate-blue?logo=github)](https://github.com/marketplace/actions/standing-gate)
+[![Standing Sentinel](https://github.com/wheelerhubbell/wheelerhubbell.github.io/actions/workflows/standing-sentinel.yml/badge.svg)](https://github.com/wheelerhubbell/wheelerhubbell.github.io/actions/workflows/standing-sentinel.yml)
 
 Wheeler Hubbell Publishing is an independent publishing house and research imprint. It produces foundational books, dramatic texts, and philosophical preprints (*Constitutional Continuity Theory*, *Coherent Substitution*, *The Elemental Properties of True*), while maintaining a deterministic, fail-closed runtime and cryptographic witness service for AI agent ecosystems and automated pipelines.
 
