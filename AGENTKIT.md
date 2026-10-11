@@ -5,7 +5,7 @@ Empower autonomous AI agents running on Coinbase AgentKit and Base (`eip155:8453
 ## Installation
 
 ```bash
-npm install @wheelerhubbell/standing-client
+npm install @wheelerhubbell/whp-standing-client
 ```
 
 ## AgentKit Action Provider Setup
