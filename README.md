@@ -6,7 +6,7 @@
 [![MCP Server](https://img.shields.io/badge/MCP-Compatible-blue)](https://standing-guard-service.lovable.app/mcp)
 [![x402 Payment](https://img.shields.io/badge/x402-USDC%20on%20Base-green)](https://standing-guard-service.lovable.app/v1/contract)
 [![npm](https://img.shields.io/badge/npm-%40wheelerhubbell%2Fwhp--standing--client-red)](https://github.com/wheelerhubbell/wheelerhubbell.github.io/tree/main/packages/client)
-[![GitHub Action](https://img.shields.io/badge/GitHub%20Action-Standing%20Gate-purple)](https://github.com/wheelerhubbell/wheelerhubbell.github.io/releases/tag/v1.0.0)
+[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-Standing%20Gate-blue?logo=github)](https://github.com/marketplace/actions/standing-gate)
 
 Wheeler Hubbell Publishing is an independent publishing house and research imprint. It produces foundational books, dramatic texts, and philosophical preprints (*Constitutional Continuity Theory*, *Coherent Substitution*, *The Elemental Properties of True*), while maintaining a deterministic, fail-closed runtime and cryptographic witness service for AI agent ecosystems and automated pipelines.
 
@@ -144,7 +144,8 @@ Equip autonomous agents running on Base (`eip155:8453`) with pre-execution safet
 
 Automate epistemic standing audits on every pull request or deployment:
 
-- **Action:** `uses: wheelerhubbell/wheelerhubbell.github.io/.github/actions/standing-gate@main`
+- **Marketplace Action:** `uses: wheelerhubbell/standing-gate@v0.1.1` (or `@v0`)
+- **Autonomous Sentinel:** `node sentinel.mjs`
 - **Guide:** [CI_CD.md](./CI_CD.md)
 - **Badge:**
   ```markdown
