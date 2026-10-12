@@ -22,7 +22,7 @@ jobs:
 
       - name: Standing Witness Gate
         id: gate
-        uses: wheelerhubbell/standing-gate@v0.1.1
+        uses: wheelerhubbell/standing-gate@v0.1.2
         with:
           service_url: 'https://standing-guard-service.lovable.app'
           door: '/v1/evaluate'
