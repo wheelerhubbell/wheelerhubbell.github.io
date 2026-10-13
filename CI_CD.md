@@ -1,41 +1,26 @@
 # Standing Gate CI/CD Integration
 
-Fail-closed epistemic audit and provenance verification for automated workflows and pull requests.
+Fail-closed epistemic audit and provenance verification for automated workflows, pull requests, and autonomous agent pipelines.
+
+Standing Gate is an autonomous Decision Integrity circuit breaker: it evaluates claims, authority bounds, and evidence against Wheeler Hubbell Publishing's epistemic reasoning engine.
 
 ## Quick Start (GitHub Action)
 
-Add the Standing Gate to your `.github/workflows/verify.yml` to gate pull requests:
+Add the Standing Gate to your  to gate pull requests:
 
-```yaml
-name: Standing Audit Gate
 
-on:
-  pull_request:
-    branches: [ main ]
-  push:
-    branches: [ main ]
-
-jobs:
-  audit:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Verify Standing
-        uses: wheelerhubbell/standing-gate@v0.1.1
-        with:
-          door: '/v1/evaluate'
-          mock: 'true' # Set to 'false' with payment_signature for cryptographically signed determinations
-          claim: 'Release candidate passes epistemic boundary audit'
-```
 
 ## Adding the Badge to README
 
-```markdown
-[![Standing Audit](https://img.shields.io/badge/standing--mark-verified-blue?style=flat-square)](https://standing-guard-service.lovable.app)
-```
 
-## Production Modes
 
-1. **Free Structural Check (`mock: true`)**: Zero cost, checks structural schema compliance and input legitimacy.
-2. **Paid Determination (`door: /v1/audit` or `/v1/evaluate`)**: Signs an immutable `WHP-FRONTDOOR-EVALUATION-v1` record backed by Ed25519 signature valid for 30 days.
+## Operation Modes
+
+1. **Free Structural Check ()**: Zero cost. Verifies structural schema compliance, input completeness, and fail-closed readiness. Outputs .
+2. **Paid Determination (,  with x402 payment)**: Submits claim, authority, and provenance evidence to  under profile . The engine performs epistemic evaluation and produces an Ed25519-signed cryptographic record:
+   - **** (Standing Mark): Admitted evidence strictly supports the bounded claim. Passes the gate ().
+   - **** (Standing Assessment): Claim exceeds evidence, authority is missing, or provenance is broken. Fails closed and halts the workflow.
+
+## Decision Integrity Invariant
+
+Payment purchases deterministic evaluation of the submitted workload, **never a favorable outcome**. An agent or pipeline cannot purchase a Standing Mark; it purchases the evaluation. If the claim is unsupported by admissible evidence, the engine signs a  Assessment.
