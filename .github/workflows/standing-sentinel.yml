@@ -1,8 +1,8 @@
-name: Standing Witness Autonomous Sentinel
+name: Standing Witness Autonomous Sentinel & Attestation Registry
 
 on:
   schedule:
-    # Autonomous loop: evaluates every 6 hours
+    # Autonomous loop: audits every 6 hours and commits verified attestations
     - cron: '0 */6 * * *'
   workflow_dispatch:
   push:
@@ -10,33 +10,40 @@ on:
       - main
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   standing-sentinel:
-    name: Evaluate Decision Integrity
+    name: Evaluate & Publish Decision Integrity Attestations
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Standing Witness Gate
-        id: gate
-        uses: wheelerhubbell/standing-gate@v0.1.2
         with:
-          service_url: 'https://standing-guard-service.lovable.app'
-          door: '/v1/evaluate'
-          subject: '${{ github.repository }}@${{ github.sha }}'
-          claim: 'Continuous decision integrity and epistemic standing sentinel'
-          mock: 'true'
+          fetch-depth: 1
 
-      - name: Attestation Summary
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Sentinel & Generate Cryptographic Attestations
+        run: node sentinel.mjs
+
+      - name: Commit & Publish Verifiable Attestation Records
         run: |
-          echo "### 🛡️ Standing Witness Sentinel Evaluation" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- **Outcome:** \`${{ steps.gate.outputs.determination }}\`" >> $GITHUB_STEP_SUMMARY
-          echo "- **Service Door:** \`/v1/evaluate\`" >> $GITHUB_STEP_SUMMARY
-          echo "- **Subject:** \`${{ github.repository }}@${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
-          echo "- **Timestamp (UTC):** \`$(date -u +"%Y-%m-%dT%H:%M:%SZ")\`" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "Verified via [Standing Gate on GitHub Marketplace](https://github.com/marketplace/actions/standing-gate)." >> $GITHUB_STEP_SUMMARY
+          git config user.name "whp-sentinel[bot]"
+          git config user.email "sentinel@wheelerhubbell.com"
+          git add attestations/
+          if git diff --staged --quiet; then
+            echo "No changes in attestations to commit."
+          else
+            git commit -m "chore(sentinel): publish automated Decision Integrity attestations [skip ci]"
+            git push origin main
+          fi
+
+      - name: Append to GitHub Step Summary
+        run: |
+          if [ -f attestations/LATEST_AUDIT.md ]; then
+            cat attestations/LATEST_AUDIT.md >> $GITHUB_STEP_SUMMARY
+          fi
