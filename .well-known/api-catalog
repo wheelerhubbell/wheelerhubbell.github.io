@@ -7,15 +7,27 @@
           "href": "https://standing-guard-service.lovable.app/mcp"
         },
         {
+          "href": "https://standing-guard-service.lovable.app/v1/evaluate"
+        },
+        {
           "href": "https://standing-guard-service.lovable.app/v1/mock"
         },
         {
+          "href": "https://standing-guard-service.lovable.app/v1/ordinary/contract.json"
+        },
+        {
+          "href": "https://standing-guard-service.lovable.app/v1/ordinary/admission.json"
+        },
+        {
           "href": "https://standing-guard-service.lovable.app/v1/evaluations"
+        },
+        {
+          "href": "https://standing-guard-service.lovable.app/v1/contract"
         }
       ]
     },
     {
-      "anchor": "https://standing-guard-service.lovable.app/v1/evaluations",
+      "anchor": "https://standing-guard-service.lovable.app/v1/evaluate",
       "service-desc": [
         {
           "href": "https://standing-guard-service.lovable.app/v1/openapi.json",
