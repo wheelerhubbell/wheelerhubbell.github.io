@@ -1,0 +1,10 @@
+{
+  "name": "wheelerhubbell-github-io",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sentinel": "node sentinel.mjs",
+    "verify": "node verify-receipt.mjs",
+    "test": "node --test"
+  }
+}
