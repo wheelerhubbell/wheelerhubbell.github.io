@@ -1,7 +1,7 @@
 {
   "schema": "WHP-DECISION-INTEGRITY-ATTESTATION-v1",
-  "attestation_id": "whp-attest-whp-sentinel-template-1791908270953",
-  "timestamp": "2026-10-13T16:17:50.117Z",
+  "attestation_id": "whp-attest-whp-sentinel-template-1791929097252",
+  "timestamp": "2026-10-13T22:04:56.118Z",
   "target_repo": "https://github.com/wheelerhubbell/whp-sentinel-template",
   "subject": "wheelerhubbell/whp-sentinel-template",
   "tier": "Claim",

@@ -1,6 +1,186 @@
 [
   {
     "schema": "WHP-DECISION-INTEGRITY-ATTESTATION-v1",
+    "attestation_id": "whp-attest-coinbase-agentkit-1791929097134",
+    "timestamp": "2026-10-13T22:04:56.118Z",
+    "target_repo": "https://github.com/coinbase/agentkit",
+    "subject": "coinbase/agentkit",
+    "tier": "Claim",
+    "claim": "AgentKit codebase enforces fail-closed execution barriers across action providers",
+    "provenance": {
+      "source": "https://github.com/coinbase/agentkit",
+      "authority": "coinbase/agentkit@main",
+      "evidence": [
+        {
+          "uri": "https://github.com/coinbase/agentkit/blob/main/README.md",
+          "digest": "sha256-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    "evaluation": {
+      "door": "/v1/evaluate",
+      "type": "WHP-MOCK-DRY-RUN-v1",
+      "structurally_complete": true,
+      "checks": [
+        {
+          "id": "subject",
+          "pass": true,
+          "note": "string, 1-2000 chars"
+        },
+        {
+          "id": "claim",
+          "pass": true,
+          "note": "string, 1-4000 chars"
+        },
+        {
+          "id": "provenance.source",
+          "pass": true
+        },
+        {
+          "id": "provenance.authority",
+          "pass": true
+        },
+        {
+          "id": "provenance.evidence",
+          "pass": true,
+          "note": "at least one item"
+        }
+      ],
+      "failed": [],
+      "verdict": "STRUCTURALLY_SOUND"
+    },
+    "hashes": {
+      "payload_sha256": "db98cb4c2cae2564669383fd1ffe9534c4f95b5a4c4fa051c2290aa6e158bbf7",
+      "result_sha256": "4dfa7ddab65120a6cf4dd0d233ef77ea9d6775086f108954672e53976c7c2ab5"
+    },
+    "verification_reference": {
+      "engine": "https://wheelerhubbell.github.io",
+      "admission": "https://standing-guard-service.lovable.app/v1/ordinary/admission.json",
+      "action_marketplace": "https://github.com/marketplace/actions/standing-gate"
+    }
+  },
+  {
+    "schema": "WHP-DECISION-INTEGRITY-ATTESTATION-v1",
+    "attestation_id": "whp-attest-whp-standing-gate-1791929097189",
+    "timestamp": "2026-10-13T22:04:56.118Z",
+    "target_repo": "https://github.com/wheelerhubbell/standing-gate",
+    "subject": "wheelerhubbell/standing-gate",
+    "tier": "Claim",
+    "claim": "Standing Gate v0.1.2 discovers dynamic verification keys and produces fail-closed output",
+    "provenance": {
+      "source": "https://github.com/wheelerhubbell/standing-gate",
+      "authority": "wheelerhubbell/standing-gate@v0.1.2",
+      "evidence": [
+        {
+          "uri": "https://github.com/wheelerhubbell/standing-gate/blob/main/action.yml",
+          "digest": "sha256-8568518deaffc88271d7b598936f95b66794414ae69de29bb2d1d6434b8b29ae"
+        }
+      ]
+    },
+    "evaluation": {
+      "door": "/v1/evaluate",
+      "type": "WHP-MOCK-DRY-RUN-v1",
+      "structurally_complete": true,
+      "checks": [
+        {
+          "id": "subject",
+          "pass": true,
+          "note": "string, 1-2000 chars"
+        },
+        {
+          "id": "claim",
+          "pass": true,
+          "note": "string, 1-4000 chars"
+        },
+        {
+          "id": "provenance.source",
+          "pass": true
+        },
+        {
+          "id": "provenance.authority",
+          "pass": true
+        },
+        {
+          "id": "provenance.evidence",
+          "pass": true,
+          "note": "at least one item"
+        }
+      ],
+      "failed": [],
+      "verdict": "STRUCTURALLY_SOUND"
+    },
+    "hashes": {
+      "payload_sha256": "caf6fb026a1783643d2f6dae2d0f61195bdaef7e128f632020e9c124fca565a5",
+      "result_sha256": "4dfa7ddab65120a6cf4dd0d233ef77ea9d6775086f108954672e53976c7c2ab5"
+    },
+    "verification_reference": {
+      "engine": "https://wheelerhubbell.github.io",
+      "admission": "https://standing-guard-service.lovable.app/v1/ordinary/admission.json",
+      "action_marketplace": "https://github.com/marketplace/actions/standing-gate"
+    }
+  },
+  {
+    "schema": "WHP-DECISION-INTEGRITY-ATTESTATION-v1",
+    "attestation_id": "whp-attest-whp-sentinel-template-1791929097252",
+    "timestamp": "2026-10-13T22:04:56.118Z",
+    "target_repo": "https://github.com/wheelerhubbell/whp-sentinel-template",
+    "subject": "wheelerhubbell/whp-sentinel-template",
+    "tier": "Claim",
+    "claim": "Template repository provides plug-and-play Decision Integrity evaluation workflow for agents",
+    "provenance": {
+      "source": "https://github.com/wheelerhubbell/whp-sentinel-template",
+      "authority": "wheelerhubbell/whp-sentinel-template@main",
+      "evidence": [
+        {
+          "uri": "https://github.com/wheelerhubbell/whp-sentinel-template/blob/main/README.md",
+          "digest": "sha256-9321c6dc5fd544c29bead2deeea69355236358a8f8de9c43b6b658a0dd82c152"
+        }
+      ]
+    },
+    "evaluation": {
+      "door": "/v1/evaluate",
+      "type": "WHP-MOCK-DRY-RUN-v1",
+      "structurally_complete": true,
+      "checks": [
+        {
+          "id": "subject",
+          "pass": true,
+          "note": "string, 1-2000 chars"
+        },
+        {
+          "id": "claim",
+          "pass": true,
+          "note": "string, 1-4000 chars"
+        },
+        {
+          "id": "provenance.source",
+          "pass": true
+        },
+        {
+          "id": "provenance.authority",
+          "pass": true
+        },
+        {
+          "id": "provenance.evidence",
+          "pass": true,
+          "note": "at least one item"
+        }
+      ],
+      "failed": [],
+      "verdict": "STRUCTURALLY_SOUND"
+    },
+    "hashes": {
+      "payload_sha256": "5f31eaa7003d10dac973e8027b9bf3ced445097501f9ec8bdb2baa23976bed4a",
+      "result_sha256": "4dfa7ddab65120a6cf4dd0d233ef77ea9d6775086f108954672e53976c7c2ab5"
+    },
+    "verification_reference": {
+      "engine": "https://wheelerhubbell.github.io",
+      "admission": "https://standing-guard-service.lovable.app/v1/ordinary/admission.json",
+      "action_marketplace": "https://github.com/marketplace/actions/standing-gate"
+    }
+  },
+  {
+    "schema": "WHP-DECISION-INTEGRITY-ATTESTATION-v1",
     "attestation_id": "whp-attest-coinbase-agentkit-1791908270852",
     "timestamp": "2026-10-13T16:17:50.117Z",
     "target_repo": "https://github.com/coinbase/agentkit",
