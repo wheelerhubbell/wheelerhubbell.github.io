@@ -26,7 +26,7 @@ Connect any agent (Claude Desktop, Cursor, Lovable, LangChain, AutoGen) to the l
   "mcpServers": {
     "whp-standing": {
       "command": "npx",
-      "args": ["-y", "@smithery/cli", "run", "@wheelerhubbell/whp-standing-client", "--config", "{"endpoint":"https://standing-guard-service.lovable.app/mcp"}"]
+      "args": ["-y", "@smithery/cli", "run", "@wheelerhubbell/whp-standing-client", "--config", "{\"endpoint\":\"https://standing-guard-service.lovable.app/mcp\"}"]
     }
   }
 }
