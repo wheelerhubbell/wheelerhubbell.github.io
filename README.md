@@ -47,15 +47,22 @@ Agents can validate schemas and test evaluation flows without spending tokens or
 
 When a live, cryptographically signed standing record or sealed Mark is required, agents self-settle using **x402** via gasless EIP-3009 `TransferWithAuthorization` in USDC on Base (`eip155:8453`). No human account, credit card, or custodial deposit is needed.
 
-- `POST /v1/ping` (0.10 USDC): Signed instantaneous structural validity check.
-- `POST /v1/evaluate` (1.00 USDC): Front-door signed standing record.
+**Core Decision Integrity Invariant**: Payment purchases deterministic epistemic evaluation of submitted information, **never a favorable outcome**. A positive Standing Mark cannot be bought. Evaluated records are Ed25519-signed regardless of verdict:
+- **`ESTABLISHED`** -> Standing Mark (claim is bounded and strictly supported by admitted evidence)
+- **`NOT_ESTABLISHED`** -> Standing Assessment (claim lacks necessary authority, evidence, or qualifier protection)
+
+#### Evaluation Doors & Contracts
+- `POST /v1/evaluate` (1.00 USDC): Ordinary intake evaluation under [`WHP-STANDING-ORDINARY-INTAKE/1.0.0`](https://standing-guard-service.lovable.app/v1/ordinary/contract.json). Validates claim, evidence, and authority bounds.
+  - [Admission Certificate](https://standing-guard-service.lovable.app/v1/ordinary/admission.json)
+  - [Intake Contract](https://standing-guard-service.lovable.app/v1/ordinary/contract.json)
+  - [Verification Entrypoint](https://standing-guard-service.lovable.app/v1/ordinary/verify_ordinary.mjs)
+- `POST /v1/ping` (0.10 USDC): Instant signed structural validity check.
 - `POST /v1/patch` (1.00 USDC): Signed, 30-day bounded standing-record patch.
 - `POST /v1/audit` (2.00 USDC): Structural alignment audit against the Elemental Properties of True core schema.
 - `POST /v1/evaluate/priority` (5.00 USDC): Priority evaluation with 60-day validity window.
-- `POST /v1/evaluations`: Sealed WHP Standing Mark v1 (formal cryptographic quote-bound evaluation).
+- `POST /v1/evaluations`: Sealed WHP Standing Mark v1 (formal cryptographic quote-bound evaluation under [Sealed Contract](https://standing-guard-service.lovable.app/v1/contract)).
 
 ---
-
 
 ## 📡 The Summoning Beacon (Proactive Machine Waking)
 
