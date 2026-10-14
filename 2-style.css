@@ -1494,3 +1494,340 @@ body {
 .protocol-reading a:hover {
   text-decoration: underline;
 }
+
+
+/* ==========================================================================
+   Editorial Extensions for the 6 Intended Departments
+   ========================================================================== */
+
+/* Books & Excerpt Grid */
+.further-works-card {
+  margin-top: 3rem;
+  background: var(--bg-plate);
+  border: 1px solid var(--rule-medium);
+  padding: 2.25rem 2.5rem;
+}
+.further-works-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--ink-primary);
+  margin: 0 0 0.5rem 0;
+}
+.further-works-desc {
+  font-size: 0.9375rem;
+  color: var(--ink-secondary);
+  margin-bottom: 1.5rem;
+}
+.further-works-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.further-works-list li {
+  position: relative;
+  padding-left: 1.25rem;
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  color: var(--ink-primary);
+}
+.further-works-list li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--brass);
+  font-weight: bold;
+}
+
+/* Research & Methods Cards */
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.research-card {
+  background: var(--bg-ivory-light);
+  border: 1px solid var(--rule-hairline);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 0.2s ease;
+}
+.research-card:hover {
+  border-color: var(--raspberry-rule);
+}
+.research-card-head {
+  margin-bottom: 1.25rem;
+}
+.research-tag {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brass-dark);
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+.research-title {
+  font-family: var(--font-serif);
+  font-size: 1.625rem;
+  line-height: 1.2;
+  color: var(--ink-primary);
+  margin: 0 0 0.5rem 0;
+}
+.research-subtitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.0625rem;
+  color: var(--ink-secondary);
+  margin-bottom: 1rem;
+}
+.research-desc {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--ink-body);
+  margin-bottom: 1.5rem;
+}
+.research-meta-list {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  border-top: 1px solid var(--rule-hairline);
+  padding-top: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+.research-meta-list span {
+  display: block;
+}
+
+/* Decision Integrity Feature */
+.di-feature-box {
+  background: var(--bg-plate);
+  border: 1px solid var(--rule-medium);
+  padding: 2.5rem;
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+.di-portal-card {
+  background: var(--bg-ivory-light);
+  border: 2px solid var(--brass);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.di-portal-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--ink-primary);
+  margin: 0 0 0.75rem 0;
+}
+.di-portal-text {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ink-secondary);
+  margin-bottom: 1.5rem;
+}
+.di-capabilities-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.di-cap-item {
+  background: var(--bg-ivory-light);
+  border: 1px solid var(--rule-hairline);
+  padding: 1.5rem;
+}
+.di-cap-num {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--raspberry);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.di-cap-name {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--ink-primary);
+  margin: 0 0 0.5rem 0;
+}
+.di-cap-desc {
+  font-size: 0.875rem;
+  color: var(--ink-body);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Essays, Plays & Writing */
+.writing-duo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+@media (max-width: 800px) {
+  .writing-duo-grid { grid-template-columns: 1fr; }
+}
+.writing-panel {
+  background: var(--bg-ivory-light);
+  border: 1px solid var(--rule-hairline);
+  padding: 2.25rem;
+}
+.writing-panel-title {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  color: var(--ink-primary);
+  margin: 0 0 1rem 0;
+  border-bottom: 1px solid var(--brass);
+  padding-bottom: 0.75rem;
+}
+.writing-panel-text {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--ink-body);
+}
+
+/* Archive & Bibliography Table */
+.archive-wrap {
+  margin-top: 2rem;
+  background: var(--bg-ivory-light);
+  border: 1px solid var(--rule-hairline);
+  padding: 2.5rem;
+}
+.archive-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+.archive-table th {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  border-bottom: 2px solid var(--rule-medium);
+  padding: 0.75rem 1rem 0.75rem 0;
+}
+.archive-table td {
+  padding: 1.125rem 1rem 1.125rem 0;
+  border-bottom: 1px solid var(--rule-hairline);
+  vertical-align: top;
+  color: var(--ink-body);
+}
+.archive-year {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--brass-dark);
+  white-space: nowrap;
+}
+.archive-work {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--ink-primary);
+  display: block;
+}
+.archive-sub {
+  font-size: 0.8125rem;
+  color: var(--ink-secondary);
+  display: block;
+  margin-top: 0.25rem;
+}
+.archive-type {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--raspberry);
+  white-space: nowrap;
+}
+.archive-rights {
+  font-size: 0.8125rem;
+  color: var(--ink-muted);
+}
+
+/* Press Release Presentation */
+.press-release-container {
+  margin-top: 2.5rem;
+  background: var(--bg-ivory-light);
+  border: 1px solid var(--rule-hairline);
+  border-top: 4px solid var(--raspberry);
+  padding: 3rem;
+}
+@media (max-width: 768px) {
+  .press-release-container { padding: 1.75rem; }
+}
+.press-dateline-bar {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  border-bottom: 1px solid var(--rule-hairline);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+.press-headline {
+  font-family: var(--font-serif);
+  font-size: 2.125rem;
+  line-height: 1.2;
+  color: var(--ink-primary);
+  margin: 0 0 1rem 0;
+}
+@media (max-width: 768px) {
+  .press-headline { font-size: 1.625rem; }
+}
+.press-subhead {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1875rem;
+  line-height: 1.45;
+  color: var(--raspberry);
+  margin-bottom: 2rem;
+}
+.press-body {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--ink-body);
+}
+.press-body p {
+  margin-bottom: 1.25rem;
+}
+.press-body blockquote {
+  border-left: 3px solid var(--brass);
+  margin: 1.5rem 0;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-style: italic;
+  color: var(--ink-primary);
+  background: var(--bg-plate);
+}
+.press-subheading {
+  font-family: var(--font-serif);
+  font-size: 1.375rem;
+  color: var(--ink-primary);
+  margin: 2rem 0 0.75rem 0;
+}
+.press-footer-meta {
+  border-top: 1px solid var(--rule-medium);
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-secondary);
+}
