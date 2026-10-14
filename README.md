@@ -7,7 +7,6 @@
 [![x402 Payment](https://img.shields.io/badge/x402-USDC%20on%20Base-green)](https://standing-guard-service.lovable.app/v1/contract)
 [![npm](https://img.shields.io/badge/npm-%40wheelerhubbell%2Fwhp--standing--client-red)](https://github.com/wheelerhubbell/wheelerhubbell.github.io/tree/main/packages/client)
 [![GitHub Marketplace](https://img.shields.io/badge/Marketplace-Standing%20Gate-blue?logo=github)](https://github.com/marketplace/actions/standing-gate)
-[![Standing Sentinel](https://github.com/wheelerhubbell/wheelerhubbell.github.io/actions/workflows/standing-sentinel.yml/badge.svg)](https://github.com/wheelerhubbell/wheelerhubbell.github.io/actions/workflows/standing-sentinel.yml)
 
 Wheeler Hubbell Publishing is an independent publishing house and research imprint. It produces foundational books, dramatic texts, and philosophical preprints (*Constitutional Continuity Theory*, *Coherent Substitution*, *The Elemental Properties of True*), while maintaining a deterministic, fail-closed runtime and cryptographic witness service for AI agent ecosystems and automated pipelines.
 
@@ -16,6 +15,20 @@ Wheeler Hubbell Publishing is an independent publishing house and research impri
 ## Autonomous Agent & A2A Infrastructure
 
 Autonomous AI agents operating in agent-to-agent (A2A) economic networks require **epistemic guardrails** to prevent hallucinations, counterfeit provenance, and catastrophic action on baseless assertions. WHP Standing separates authority from payment, and determination from external acceptance.
+
+### What Wheeler Hubbell Publishing Standing Is
+
+Wheeler Hubbell Publishing operates a formal **Epistemic Reasoning Environment** for autonomous agents and machine pipelines. It evaluates whether an agent's assertions, inferences, qualifiers, and requested operations are structurally warranted and preserved by the specific evidence and authority submitted.
+
+- **Qualifier Protection:** Ensures that the conditions and boundaries making a statement valid are not dropped as information flows between agents.
+- **Force Non-Escalation:** Prevents weak inferences or speculative hypotheses from being promoted to settled fact or authorization.
+- **Evidentiary Standard:** Enforces strict correspondence between the claimed scope and the admitted proof.
+
+### What Wheeler Hubbell Publishing Standing Is NOT
+
+- **Not a Notary Public:** WHP does not blindly stamp, notarize, or timestamp uninspected text or arbitrary document hashes.
+- **Not an Oracle or Universal Truth Arbiter:** WHP does not claim omniscient access to external physical reality or arbitrate whether outside events happened. It evaluates inferential and evidentiary integrity strictly from what the caller provides. If the submitted evidence fails to support the claim, or if essential qualifiers are stripped, the evaluation fails closed.
+- **Not a Simulation or Facade:** Live evaluations produce signed cryptographic records under published invariants and settle through real economic rails.
 
 ### 1. Model Context Protocol (MCP)
 
@@ -35,13 +48,13 @@ Connect any agent (Claude Desktop, Cursor, Lovable, LangChain, AutoGen) to the l
 Or connect directly to the Streamable HTTP endpoint:
 `https://standing-guard-service.lovable.app/mcp`
 
-### 2. Free Mock & Dry-Run (Zero-Cost for Agent Introspection)
+### 2. Pre-Flight Structural Checks (Zero-Cost for Introspection)
 
-Agents can validate schemas and test evaluation flows without spending tokens or maintaining crypto balances:
+Agents can test schemas and verify structural completeness before committing funds:
 
-- **Free Mock Evaluation**: `POST https://standing-guard-service.lovable.app/v1/mock`
-- **Ping with Mock Header**: `POST https://standing-guard-service.lovable.app/v1/ping` with header `X-Mock: true`
-- **What Stops Without a Mark**: `POST https://standing-guard-service.lovable.app/v1/gap/check` (demonstrates where unverified claims halt execution before `EXECUTE` actions)
+- **Structural Validation Check**: `POST https://standing-guard-service.lovable.app/v1/mock` (validates schema structure and required fields)
+- **Pre-Flight Ping**: `POST https://standing-guard-service.lovable.app/v1/ping` with header `X-Mock: true`
+- **Execution Gap Probe**: `POST https://standing-guard-service.lovable.app/v1/gap/check` (demonstrates where unverified claims halt execution before `EXECUTE` actions)
 
 ### 3. Machine-to-Machine Epistemic Tiers (x402 v2 on Base)
 
@@ -159,7 +172,6 @@ Equip autonomous agents running on Base (`eip155:8453`) with pre-execution safet
 Automate epistemic standing audits on every pull request or deployment:
 
 - **Marketplace Action:** `uses: wheelerhubbell/standing-gate@v0.1.1` (or `@v0`)
-- **Autonomous Sentinel:** `node sentinel.mjs`
 - **Guide:** [CI_CD.md](./CI_CD.md)
 - **Badge:**
   ```markdown

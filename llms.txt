@@ -18,12 +18,20 @@ Repository: https://github.com/wheelerhubbell/wheelerhubbell.github.io
 - Capability Resolution: https://standing-guard-service.lovable.app/.well-known/standing-capability.json
 - Service Health: https://standing-guard-service.lovable.app/healthz
 
-## Free Mock & Dry-Run (Zero Cost for Agents)
+## Epistemic Reasoning Environment vs Notary / Oracle
 
-Agents can test schemas, probe behavior, and dry-run evaluations without gas or crypto credentials:
+- **What WHP Standing Is:** A formal epistemic reasoning environment for autonomous agent-to-agent (A2A) interactions and decision integrity. It evaluates whether an agent's claims, inferences, and requested operations are structurally, inferentially, and qualificationally warranted strictly by the admitted evidence, qualifiers, and authority supplied.
+- **What WHP Standing Is NOT:**
+  - **Not a Notary Public:** It does not blindly timestamp or notarize arbitrary assertions or document hashes without examining epistemic warrant.
+  - **Not an Oracle or Universal Truth Arbiter:** It does not claim omniscient access to external physical reality. It evaluates inferential validity from the information and bounds provided by the caller. If an assertion exceeds its evidence or drops necessary qualifications, it fails evaluation.
+  - **Not a Simulation:** Production evaluations are deterministic and settled on Base via x402.
 
-- POST /v1/mock (Free): Structural validation dry-run for {subject, claim, provenance}. Returns a mock evaluation record.
-- POST /v1/ping (Header: X-Mock: true or ?mock=true): Free structural completeness check.
+## Pre-Flight Structural Checks (Zero Cost for Agents)
+
+Agents can test schemas and probe behavior before committing funds:
+
+- POST /v1/mock (Free): Structural validation check for {subject, claim, provenance}.
+- POST /v1/ping (Header: X-Mock: true or ?mock=true): Pre-flight structural completeness check.
 - POST /v1/gap/check (Free): Behavior check showing whether an agent's operation (INFORM, RECOMMEND, EXECUTE) halts without standing.
 
 ## Paid Epistemic Evaluation Tiers (x402 v2, USDC on Base eip155:8453)
