@@ -103,6 +103,27 @@
   </header>
 
   <main id="main-content">
+    <!-- Sovereign Machine Interface / MCP Connection Block -->
+    <div style="background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 20px; margin: 24px 0; color: #f8fafc; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #1e293b; padding-bottom: 8px;">
+        <span style="font-weight: 700; color: #38bdf8; font-size: 1.1em;">// SOVEREIGN AGENT INTERFACE: MODEL CONTEXT PROTOCOL (MCP)</span>
+        <span style="background: #0369a1; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8em; text-transform: uppercase;">Live Protocol</span>
+      </div>
+      <p style="margin: 0 0 12px 0; font-size: 0.9em; color: #94a3b8; font-family: sans-serif;">
+        AI agents, LLM tool-calling engines, and autonomous runners can query and invoke Wheeler Hubbell Publishing's epistemic evaluation runtime directly via standard MCP:
+      </p>
+      <pre style="background: #020617; border: 1px solid #1e293b; border-radius: 6px; padding: 12px; overflow-x: auto; font-size: 0.85em; color: #e2e8f0; margin: 0;">{
+  "mcpServers": {
+    "whp-standing": {
+      "url": "https://standing-guard-service.lovable.app/mcp"
+    }
+  }
+}</pre>
+      <div style="margin-top: 12px; font-size: 0.85em; color: #64748b; font-family: sans-serif;">
+        <strong>Endpoints:</strong> MCP: <code>https://standing-guard-service.lovable.app/mcp</code> | Direct x402 REST: <code>https://standing-guard-service.lovable.app/v1/evaluate</code>
+      </div>
+    </div>
+
 
     <!-- Hero / Front Page Broadsheet -->
     <section class="broadsheet-hero" id="hero">
