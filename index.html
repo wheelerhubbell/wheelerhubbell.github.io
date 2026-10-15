@@ -8,151 +8,104 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
   
-  <link rel="stylesheet" href="2-style.css?v=broadsheet-20261015-v1"/>
+  <link rel="stylesheet" href="2-style.css?v=luxury-20261015-v2"/>
 </head>
 <body>
 
   <!-- Top Utility Bar -->
-  <aside class="utility-bar">
-    <div class="wrap utility-inner">
-      <div class="utility-left">
-        <span class="motto-item">Books as Instruments</span>
-        <span class="sep">&bull;</span>
-        <span class="motto-item">Publishing as Stewardship</span>
+  <aside class="top-utility">
+    <div class="wrap top-utility-inner">
+      <div class="utility-motto">
+        <span>Books as Instruments</span>
+        <span class="dot">&bull;</span>
+        <span>Publishing as Stewardship</span>
+        <span class="dot">&bull;</span>
+        <span>New York · MMXXVI</span>
       </div>
-      <div class="utility-right">
-        <span class="motto-item">Record &middot; Distinction &middot; Human Clarity</span>
-        <span class="sep">&bull;</span>
-        <a href="#acquisitions" class="utility-link">Acquisitions &amp; Orders</a>
-        <span class="sep">&bull;</span>
-        <span class="motto-item">Est. MMXXVI</span>
+      <div class="utility-meta">
+        <span>Record &middot; Distinction &middot; Human Clarity</span>
+        <a href="#catalogue">Catalogue</a>
+        <a href="#decision-integrity">Protocol</a>
+        <a href="#about">Imprint</a>
       </div>
     </div>
   </aside>
 
-  <!-- Broadsheet Masthead -->
-  <header class="broadsheet-masthead">
-    <div class="wrap masthead-layout">
-      
-      <div class="masthead-crest-col">
-        <a href="#hero" class="crest-lockup" aria-label="Wheeler Hubbell Publishing Home">
-          <div class="crest-monogram">
-            <span class="monogram-letter">W</span>
-            <span class="monogram-dandelion" aria-hidden="true">
-              <svg width="14" height="26" viewBox="0 0 14 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Dandelion stem with clock -->
-                <circle cx="7" cy="5" r="4" stroke="#9C7C38" stroke-width="1" stroke-dasharray="1 1"/>
-                <circle cx="7" cy="5" r="1.5" fill="#9C7C38"/>
-                <path d="M7 6.5V25" stroke="#9C7C38" stroke-width="1.2"/>
-                <path d="M4 2C4 2 2 1 1 2" stroke="#9C7C38" stroke-width="0.8"/>
-                <path d="M10 2C10 2 12 1 13 2" stroke="#9C7C38" stroke-width="0.8"/>
-                <path d="M2 5H0" stroke="#9C7C38" stroke-width="0.8"/>
-                <path d="M14 5H12" stroke="#9C7C38" stroke-width="0.8"/>
-              </svg>
-            </span>
-            <span class="monogram-letter">H</span>
-          </div>
-        </a>
-      </div>
-
-      <div class="masthead-title-col">
-        <div class="house-name-row">
-          <a href="#hero" class="house-name">Wheeler Hubbell Publishing</a>
-        </div>
-        <div class="house-subline-row">
-          <span class="subline-imprint">Independent Press &amp; Epistemic Imprint</span>
-          <span class="subline-dot">&bull;</span>
-          <span class="subline-city">New York</span>
-          <span class="subline-dot">&bull;</span>
-          <span class="subline-tagline">Literature &middot; Constitutional Philosophy &middot; Decision Integrity</span>
-        </div>
-      </div>
-
-      <div class="masthead-emblem-col" aria-hidden="true">
-        <div class="compass-rose">
-          <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="17" cy="17" r="16" stroke="#D8CFBF" stroke-width="1"/>
-            <circle cx="17" cy="17" r="13" stroke="#9C7C38" stroke-width="0.8" stroke-dasharray="1.5 1.5"/>
-            <!-- Compass Points -->
-            <polygon points="17,3 19,15 17,17 15,15" fill="#6B2D38"/>
-            <polygon points="17,31 19,19 17,17 15,19" fill="#181614"/>
-            <polygon points="3,17 15,15 17,17 15,19" fill="#181614"/>
-            <polygon points="31,17 19,15 17,17 19,19" fill="#181614"/>
-            <circle cx="17" cy="17" r="2.5" fill="#9C7C38"/>
+  <!-- Primary Masthead -->
+  <header class="site-masthead">
+    <div class="wrap masthead-inner">
+      <a href="#hero" class="brand-lockup" aria-label="Wheeler Hubbell Publishing Home">
+        <div class="crest-symbol">
+          <svg width="22" height="26" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="11" cy="6" r="5" stroke="#C5A059" stroke-width="1.2" stroke-dasharray="1.5 1.5"/>
+            <circle cx="11" cy="6" r="2" fill="#DFC182"/>
+            <path d="M11 8V24" stroke="#C5A059" stroke-width="1.5"/>
+            <path d="M7 3C7 3 4 1 3 2.5" stroke="#C5A059" stroke-width="1"/>
+            <path d="M15 3C15 3 18 1 19 2.5" stroke="#C5A059" stroke-width="1"/>
+            <path d="M4 6.5H1" stroke="#C5A059" stroke-width="1"/>
+            <path d="M21 6.5H18" stroke="#C5A059" stroke-width="1"/>
           </svg>
         </div>
-      </div>
+        <div class="brand-text">
+          <span class="brand-title">Wheeler Hubbell Publishing</span>
+          <span class="brand-sub">Independent Press &middot; New York</span>
+        </div>
+      </a>
 
+      <nav class="primary-nav" aria-label="Main Navigation">
+        <a href="#catalogue" class="nav-link">Catalogue</a>
+        <a href="#register" class="nav-link">Research &amp; Methods</a>
+        <a href="#decision-integrity" class="nav-link">Decision Integrity</a>
+        <a href="#keeping-room" class="nav-link">The Keeping Room</a>
+        <a href="#about" class="nav-link">About the House</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="btn-gold-outline" onclick="openOrderModal('Before Certainty', 'Clothbound Hardcover')">
+          Order Volume
+        </button>
+      </div>
     </div>
-
-    <!-- Primary Navigation Bar -->
-    <nav class="masthead-nav-bar" aria-label="Primary Navigation">
-      <div class="wrap nav-bar-inner">
-        <a href="#catalogue">The Catalogue</a>
-        <a href="#register">Register of Treatises</a>
-        <a href="protocol.html">Decision Integrity Protocol</a>
-        <a href="#keeping-room">The Keeping Room</a>
-        <a href="#dispatches">Dispatches &amp; Press</a>
-        <a href="#acquisitions">Acquisitions &amp; Rights</a>
-        <a href="#author">About the House</a>
-        <a href="#contact">Colophon</a>
-      </div>
-    </nav>
   </header>
 
   <main id="main-content">
 
-
-    <!-- Hero / Front Page Broadsheet -->
-    <section class="broadsheet-hero" id="hero">
+    <!-- Hero / Front Page Presentation -->
+    <section class="hero-section" id="hero">
       <div class="wrap hero-grid">
         
-        <!-- Left: Declaration & Program -->
-        <div class="hero-declaration-col">
-          <div class="folio-dateline">
-            <span class="folio-num">VOL. I</span>
-            <span class="folio-sep">&bull;</span>
-            <span class="folio-principle">RECORD BEFORE CERTAINTY</span>
+        <div class="hero-copy">
+          <div class="hero-tag">
+            Record Before Certainty
           </div>
-
-          <h1 class="hero-lead-title">
-            Books for a more honest world.
+          <h1 class="hero-title">
+            Books for a <em>more honest</em> world.
           </h1>
-
-          <div class="hero-body-text">
-            <p>
-              We publish works that protect distinctions, restore jurisdiction, and return reality to the record.
-            </p>
-            <p>
-              An independent intellectual press dedicated to enduring literature, constitutional jurisprudence, and formal decision integrity.
-            </p>
-          </div>
-
-          <div class="hero-epigraph">
-            <blockquote class="house-epigraph">
-              &ldquo;The paper holds what memory cannot. Reality survives arrangement.&rdquo;
-            </blockquote>
-            <cite class="house-epigraph-cite">&mdash; Wheeler Hubbell</cite>
-          </div>
-
-          <div class="hero-actions-row">
+          <p class="hero-lead">
+            We publish works that <strong>protect distinctions</strong>, restore jurisdiction, and return reality to the record. An independent intellectual press dedicated to fine bookmaking, constitutional philosophy, and formal decision integrity.
+          </p>
+          <div class="hero-actions">
             <a href="#catalogue" class="btn-oxblood">
-              <span>Explore the Catalogue &darr;</span>
+              Explore Catalogue &rarr;
             </a>
-            <a href="protocol.html" class="btn-brass-outline">
-              <span>Decision Integrity Protocol &rarr;</span>
+            <a href="protocol.html" class="btn-gold-outline">
+              Decision Integrity Protocol
             </a>
           </div>
+          <div class="hero-quote">
+            &ldquo;The paper holds what memory cannot. Reality survives arrangement.&rdquo;
+            <span>&mdash; The Cartographer's Method</span>
+          </div>
         </div>
 
-        <!-- Right: Photographic Showcase of Physical Books -->
-        <div class="hero-visual-col">
-          <div class="hero-image-frame">
-            <img src="assets/whp_four_books_hero.jpg" alt="Cloth and leather editions of Wheeler Hubbell Publishing on desk in library with brass compass and pen" class="hero-main-img" loading="eager"/>
-            <div class="hero-image-caption">
-              <span class="caption-label">The Physical Press:</span> Cloth-bound and linen editions printed on acid-free archival paper at the Hubbell Press.
+        <div class="hero-stage">
+          <div class="hero-frame">
+            <img src="assets/whp_four_books_hero.jpg" alt="Wheeler Hubbell Publishing — Four Hardcover Volumes on Green Marble" width="600" height="400"/>
+            <div class="hero-frame-plate">
+              <span class="plate-title">WHP Core Catalogue</span>
+              <span>Four Physical Volumes &middot; First Edition</span>
             </div>
           </div>
         </div>
@@ -160,528 +113,259 @@
       </div>
     </section>
 
-    <!-- 5-Panel Architectural Department Shelf -->
-    <section class="architectural-shelf" aria-label="Publishing House Departments">
-      <div class="wrap shelf-grid">
-        
-        <a href="#author" class="shelf-panel">
-          <div class="panel-num">01</div>
-          <div class="panel-tag">The Imprint</div>
-          <h3 class="panel-title">The Foundation</h3>
-          <p class="panel-desc">An independent institution for record, distinction, and human clarity.</p>
-          <span class="panel-link">Learn More &rarr;</span>
-        </a>
-
-        <a href="#catalogue" class="shelf-panel">
-          <div class="panel-num">02</div>
-          <div class="panel-tag">Hardcover Editions</div>
-          <h3 class="panel-title">Books as Instruments</h3>
-          <p class="panel-desc">Works published to preserve understanding and return reality to its place.</p>
-          <span class="panel-link">View Catalogue &rarr;</span>
-        </a>
-
-        <a href="#register" class="shelf-panel">
-          <div class="panel-num">03</div>
-          <div class="panel-tag">Formal Preprints</div>
-          <h3 class="panel-title">Register of Treatises</h3>
-          <p class="panel-desc">Numbered monographs in constitutional continuity and epistemology.</p>
-          <span class="panel-link">Read Register &rarr;</span>
-        </a>
-
-        <a href="protocol.html" class="shelf-panel">
-          <div class="panel-num">04</div>
-          <div class="panel-tag">Methodology</div>
-          <h3 class="panel-title">Decision Integrity</h3>
-          <p class="panel-desc">Eight inquiries to separate assertion from authority in critical choices.</p>
-          <span class="panel-link">The Protocol &rarr;</span>
-        </a>
-
-        <a href="#keeping-room" class="shelf-panel">
-          <div class="panel-num">05</div>
-          <div class="panel-tag">Periodical Letter</div>
-          <h3 class="panel-title">The Keeping Room</h3>
-          <p class="panel-desc">Monthly dispatches on record, distinction, and the human condition.</p>
-          <span class="panel-link">Enter Room &rarr;</span>
-        </a>
-
-      </div>
-    </section>
-
-    <!-- SECTION I: THE CATALOGUE (BOOKS & PURCHASING) -->
-    <section class="broadsheet-section" id="catalogue">
+    <!-- Catalogue: The Four Physical Volumes -->
+    <section class="catalogue-section" id="catalogue">
       <div class="wrap">
-        
-        <header class="section-broadsheet-header">
-          <div class="header-preline">
-            <span class="sec-index">SECTION I</span>
-            <span class="sec-rule"></span>
-            <span class="sec-subtitle">Hardcover Volumes &middot; First Editions</span>
-          </div>
-          <h2 class="section-title">The Publishing Catalogue</h2>
-          <p class="section-intro">
-            Publications of Wheeler Hubbell in literary, philosophical, dramatic, and constitutional forms.
-            Produced as durable physical instruments with smyth-sewn bindings, custom cloth, and archival paper.
-          </p>
-        </header>
-
-        <!-- 4-Up Grid of Physical Books -->
-        <div class="catalogue-grid-four">
-          
-          <!-- Book 01: Before Certainty -->
-          <article class="catalogue-book-entry">
-            <div class="book-visual-stage">
-              <a href="1-before-certainty-excerpt.pdf" class="book-cover-anchor" aria-label="Read excerpt of Before Certainty">
-                <img src="4-before-certainty.jpg" alt="Before Certainty: Arguing Against Obviously in raspberry cloth" class="physical-cover-photo" loading="lazy"/>
-              </a>
-              <div class="format-badge">Cloth Edition &middot; $36</div>
-            </div>
-            
-            <div class="book-text-stage">
-              <h3 class="book-title"><a href="1-before-certainty-excerpt.pdf">Before Certainty</a></h3>
-              <p class="book-subtitle">Arguing Against Obviously</p>
-              
-              <div class="book-colophon-meta">
-                <div class="meta-line"><span class="k">Author:</span> <span class="v">Wheeler Hubbell</span></div>
-                <div class="meta-line"><span class="k">Format:</span> <span class="v">Cloth Hardcover Edition</span></div>
-                <div class="meta-line"><span class="k">Status:</span> <span class="v status-avail">First Edition &middot; Excerpt Available</span></div>
-                <div class="meta-line"><span class="k">Acquisition:</span> <span class="v">Direct from WHP Orders Desk</span></div>
-              </div>
-
-              <p class="book-description">
-                A rigorous examination of premature cognitive closure, showing how intellectual certainty frequently acts as a defensive substitute for observation.
-              </p>
-
-              <div class="book-actions">
-                <button type="button" class="btn-purchase" onclick="openOrderModal('Before Certainty: Arguing Against Obviously', 'Cloth Hardcover ($36.00 USD)', '4-before-certainty.jpg')">
-                  Order Cloth Edition &middot; $36
-                </button>
-                <a href="1-before-certainty-excerpt.pdf" class="btn-read-excerpt" target="_blank" rel="noopener">
-                  Read Excerpt (PDF) &rarr;
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Book 02: The Elemental Properties of True -->
-          <article class="catalogue-book-entry">
-            <div class="book-visual-stage">
-              <a href="1-elemental-properties-excerpt.pdf" class="book-cover-anchor" aria-label="Read excerpt of The Elemental Properties of True">
-                <img src="5-elemental-properties-of-true.jpg" alt="The Elemental Properties of True: A Constitutional Text in natural linen and gold foil" class="physical-cover-photo" loading="lazy"/>
-              </a>
-              <div class="format-badge">Linen Folio &middot; $38</div>
-            </div>
-            
-            <div class="book-text-stage">
-              <h3 class="book-title"><a href="1-elemental-properties-excerpt.pdf">The Elemental Properties of True</a></h3>
-              <p class="book-subtitle">A Constitutional Text</p>
-              
-              <div class="book-colophon-meta">
-                <div class="meta-line"><span class="k">Author:</span> <span class="v">Wheeler Hubbell</span></div>
-                <div class="meta-line"><span class="k">Format:</span> <span class="v">Linen Hardcover Edition</span></div>
-                <div class="meta-line"><span class="k">Status:</span> <span class="v status-avail">Constitutional Text &middot; Excerpt Available</span></div>
-                <div class="meta-line"><span class="k">Acquisition:</span> <span class="v">Direct from WHP Orders Desk</span></div>
-              </div>
-
-              <p class="book-description">
-                A constitutional formulation treating truth not as an aesthetic preference or rhetorical victory, but as an invariant structural property under adversarial pressure.
-              </p>
-
-              <div class="book-actions">
-                <button type="button" class="btn-purchase" onclick="openOrderModal('The Elemental Properties of True: A Constitutional Text', 'Linen Folio Edition ($38.00 USD)', '5-elemental-properties-of-true.jpg')">
-                  Order Linen Edition &middot; $38
-                </button>
-                <a href="1-elemental-properties-excerpt.pdf" class="btn-read-excerpt" target="_blank" rel="noopener">
-                  Read Excerpt (PDF) &rarr;
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Book 03: The Silhouette Fallacy -->
-          <article class="catalogue-book-entry">
-            <div class="book-visual-stage">
-              <a href="1-silhouette-fallacy-excerpt.pdf" class="book-cover-anchor" aria-label="Read excerpt of The Silhouette Fallacy">
-                <img src="7-silhouette-fallacy.jpg" alt="The Silhouette Fallacy: A Play in midnight navy buckram with gold celestial stamping" class="physical-cover-photo" loading="lazy"/>
-              </a>
-              <div class="format-badge">Dramatic Cloth &middot; $32</div>
-            </div>
-            
-            <div class="book-text-stage">
-              <h3 class="book-title"><a href="1-silhouette-fallacy-excerpt.pdf">The Silhouette Fallacy</a></h3>
-              <p class="book-subtitle">A Play in Three Acts</p>
-              
-              <div class="book-colophon-meta">
-                <div class="meta-line"><span class="k">Author:</span> <span class="v">Wheeler Hubbell</span></div>
-                <div class="meta-line"><span class="k">Format:</span> <span class="v">Buckram Hardcover Edition</span></div>
-                <div class="meta-line"><span class="k">Status:</span> <span class="v status-avail">Dramatic Work &middot; Excerpt Available</span></div>
-                <div class="meta-line"><span class="k">Acquisition:</span> <span class="v">Direct from WHP Orders Desk</span></div>
-              </div>
-
-              <p class="book-description">
-                A theatrical drama exploring how human beings confuse the shape of an event with its substance, and remember a tragedy through a substitute story.
-              </p>
-
-              <div class="book-actions">
-                <button type="button" class="btn-purchase" onclick="openOrderModal('The Silhouette Fallacy: A Play', 'Dramatic Cloth Edition ($32.00 USD)', '7-silhouette-fallacy.jpg')">
-                  Order Cloth Edition &middot; $32
-                </button>
-                <a href="1-silhouette-fallacy-excerpt.pdf" class="btn-read-excerpt" target="_blank" rel="noopener">
-                  Read Excerpt (PDF) &rarr;
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Book 04: A Room Without a View -->
-          <article class="catalogue-book-entry">
-            <div class="book-visual-stage">
-              <a href="1-room-without-a-view-excerpt.pdf" class="book-cover-anchor" aria-label="Read excerpt of A Room Without a View">
-                <img src="6-room-without-a-view.jpg" alt="A Room Without a View in black cloth with gold dandelion motif" class="physical-cover-photo" loading="lazy"/>
-              </a>
-              <div class="format-badge">Cloth Edition &middot; $34</div>
-            </div>
-            
-            <div class="book-text-stage">
-              <h3 class="book-title"><a href="1-room-without-a-view-excerpt.pdf">A Room Without a View</a></h3>
-              <p class="book-subtitle">Selected Prose &amp; Memoir</p>
-              
-              <div class="book-colophon-meta">
-                <div class="meta-line"><span class="k">Author:</span> <span class="v">Wheeler Hubbell</span></div>
-                <div class="meta-line"><span class="k">Format:</span> <span class="v">Cloth Hardcover Edition</span></div>
-                <div class="meta-line"><span class="k">Status:</span> <span class="v status-avail">Memoir &middot; Excerpt Available</span></div>
-                <div class="meta-line"><span class="k">Acquisition:</span> <span class="v">Direct from WHP Orders Desk</span></div>
-              </div>
-
-              <p class="book-description">
-                A literary exploration of enclosed spaces, institutional silence, and the discipline required to maintain an accurate internal record when external reality is denied.
-              </p>
-
-              <div class="book-actions">
-                <button type="button" class="btn-purchase" onclick="openOrderModal('A Room Without a View', 'Cloth Hardcover ($34.00 USD)', '6-room-without-a-view.jpg')">
-                  Order Cloth Edition &middot; $34
-                </button>
-                <a href="1-room-without-a-view-excerpt.pdf" class="btn-read-excerpt" target="_blank" rel="noopener">
-                  Read Excerpt (PDF) &rarr;
-                </a>
-              </div>
-            </div>
-          </article>
-
-        </div>
-
-        <!-- Extended Repertory & Forthcoming Table -->
-        <div class="catalogue-extended-table">
-          <div class="table-caption-bar">
-            <span class="caption-title">Extended Catalogue &amp; Works in Typesetting</span>
-            <span class="caption-note">Inquire for desk copies, pre-orders, and theatrical performance licensing</span>
-          </div>
-          
-          <div class="repertory-table">
-            <div class="table-row table-head">
-              <div class="col-reg">Ref</div>
-              <div class="col-title">Title &amp; Subtitle</div>
-              <div class="col-form">Classification</div>
-              <div class="col-date">Publication Detail</div>
-              <div class="col-status">Edition Status</div>
-            </div>
-
-            <div class="table-row">
-              <div class="col-reg font-mono">WHP-005</div>
-              <div class="col-title"><strong>The Portable Truth</strong> <span class="text-muted">&middot; The Trilogy</span></div>
-              <div class="col-form">Fiction / Philosophy</div>
-              <div class="col-date">Three-Volume Boxed Set</div>
-              <div class="col-status"><span class="badge-status">In Preparation</span></div>
-            </div>
-
-            <div class="table-row">
-              <div class="col-reg font-mono">WHP-006</div>
-              <div class="col-title"><strong>The Cartographer's Method</strong> <span class="text-muted">&middot; Complete Practicum</span></div>
-              <div class="col-form">Epistemic Method</div>
-              <div class="col-date">Treatise &amp; Worksheets</div>
-              <div class="col-status"><span class="badge-status">In Typesetting</span></div>
-            </div>
-
-            <div class="table-row">
-              <div class="col-reg font-mono">WHP-007</div>
-              <div class="col-title"><strong>The Terms Between Us</strong></div>
-              <div class="col-form">Selected Essays</div>
-              <div class="col-date">Sewn Octavo Edition</div>
-              <div class="col-status"><span class="badge-status">Forthcoming 2026</span></div>
-            </div>
-
-            <div class="table-row">
-              <div class="col-reg font-mono">WHP-008</div>
-              <div class="col-title"><strong>Terminated, Not Disproven</strong></div>
-              <div class="col-form">Legal &amp; Epistemic Essays</div>
-              <div class="col-date">Monograph Folio</div>
-              <div class="col-status"><span class="badge-status">Archival Release</span></div>
-            </div>
-
-            <div class="table-row">
-              <div class="col-reg font-mono">WHP-009</div>
-              <div class="col-title"><strong>ARRIVAL</strong> <span class="text-muted">&middot; Presence Through Rigor</span></div>
-              <div class="col-form">Dramatic Monograph</div>
-              <div class="col-date">Performance Transcript</div>
-              <div class="col-status"><span class="badge-status">Repertory Copy</span></div>
-            </div>
-
-            <div class="table-row">
-              <div class="col-reg font-mono">WHP-010</div>
-              <div class="col-title"><strong>The Archivist and the Weather and the World</strong></div>
-              <div class="col-form">Theatrical Text</div>
-              <div class="col-date">Single-Volume Edition</div>
-              <div class="col-status"><span class="badge-status">In Binding</span></div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SECTION II: REGISTER OF INTELLECTUAL WORKS -->
-    <section class="broadsheet-section" id="register">
-      <div class="wrap">
-        
-        <header class="section-broadsheet-header">
-          <div class="header-preline">
-            <span class="sec-index">SECTION II</span>
-            <span class="sec-rule"></span>
-            <span class="sec-subtitle">Treatises &middot; Preprints &middot; Controlled Dossiers</span>
-          </div>
-          <h2 class="section-title">Register of Intellectual Works</h2>
-          <p class="section-intro">
-            Formal treatises, companion adversarial memoranda, and empirical case studies published by Wheeler Hubbell Publishing, Inc.
-            Entry in this register records formal publication of original intellectual formulations; it reflects authorial research rather than statutory enactment or judicial adjudication.
-          </p>
-        </header>
-
-        <!-- Register Folio Table -->
-        <div class="register-folio-container">
-          
-          <!-- Entry 01: Jurisdiction Across Time -->
-          <article class="register-item">
-            <div class="register-left-col">
-              <div class="register-badge">REG. NO. 01</div>
-              <div class="register-series font-mono">CONSTITUTIONAL CONTINUITY</div>
-              <div class="register-date font-mono">PUBLIC PREPRINT v1.0 &middot; 2026</div>
-              <div class="register-format font-mono">PDF DOCUMENT &middot; 482 KB</div>
-            </div>
-
-            <div class="register-right-col">
-              <h3 class="register-title">
-                <a href="1-jurisdiction-across-time-preprint.pdf">Jurisdiction Across Time</a>
-              </h3>
-              <p class="register-subtitle">Constitutional Continuity Theory</p>
-
-              <div class="register-thesis">
-                <p>
-                  <strong>Formulation Thesis:</strong> Examines how constitutional legitimacy is preserved or compromised across temporal succession. Demonstrates that procedural adherence alone cannot guarantee jurisdictional continuity when the underlying evidentiary bounds have suffered silent, unratified alteration.
-                </p>
-              </div>
-
-              <div class="register-links-row">
-                <a href="1-jurisdiction-across-time-preprint.pdf" class="btn-document-link" target="_blank" rel="noopener">
-                  <span class="doc-icon">&darr;</span> Download Public Preprint (PDF)
-                </a>
-                <span class="link-meta font-mono">Authorized Public Formulation</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Companion to 01: Adversarial Memorandum -->
-          <article class="register-item companion-entry">
-            <div class="register-left-col">
-              <div class="register-badge companion-badge">COMPANION TO NO. 01</div>
-              <div class="register-series font-mono">ADVERSARIAL DEFENSE</div>
-              <div class="register-date font-mono">MONOGRAPH EDITION &middot; 2026</div>
-              <div class="register-format font-mono">PDF &middot; 15 PAGES &middot; 54 KB</div>
-            </div>
-
-            <div class="register-right-col">
-              <h3 class="register-title">
-                <a href="1-adversarial-memorandum.pdf">Adversarial Memorandum</a>
-              </h3>
-              <p class="register-subtitle">Twelve Objections, Their Replies, and the Conditions of Amendment</p>
-
-              <div class="register-thesis">
-                <p>
-                  <strong>Formulation Thesis:</strong> The rigorous formal defense published as the companion to <em>Jurisdiction Across Time</em>. Systematically responds to twelve constitutional objections regarding democratic sovereignty, counter-majoritarian limits, and the exact threshold separating valid amendment from constitutional destruction.
-                </p>
-              </div>
-
-              <div class="register-links-row">
-                <a href="1-adversarial-memorandum.pdf" class="btn-document-link" target="_blank" rel="noopener">
-                  <span class="doc-icon">&darr;</span> Read Adversarial Memorandum (PDF)
-                </a>
-                <span class="link-meta font-mono">Published Companion Monograph</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Entry 02: Coherent Substitution -->
-          <article class="register-item">
-            <div class="register-left-col">
-              <div class="register-badge">REG. NO. 02</div>
-              <div class="register-series font-mono">DECISION INTEGRITY SERIES</div>
-              <div class="register-date font-mono">FIRST FORMULATION v1.1 &middot; AUG 2026</div>
-              <div class="register-format font-mono">PDF &middot; 17 PAGES &middot; 132 KB</div>
-            </div>
-
-            <div class="register-right-col">
-              <h3 class="register-title">
-                <a href="1-coherent-substitution.pdf">Coherent Substitution</a>
-              </h3>
-              <p class="register-subtitle">Proposition Integrity Beyond Answering the Wrong Question</p>
-
-              <div class="register-thesis">
-                <p>
-                  <strong>Formulation Thesis:</strong> The foundational mathematical and linguistic formulation of epistemic drift. Defines the formal conditions under which a decision maker, legal body, or autonomous machine flawlessly verifies an adjacent, easier proposition while claiming to have resolved the consequential inquiry.
-                </p>
-              </div>
-
-              <div class="register-links-row">
-                <a href="1-coherent-substitution.pdf" class="btn-document-link" target="_blank" rel="noopener">
-                  <span class="doc-icon">&darr;</span> Read Coherent Substitution (PDF)
-                </a>
-                <span class="link-meta font-mono">Foundational Epistemic Treatise</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Entry 03: Mata v. Avianca Proof Dossier -->
-          <article class="register-item">
-            <div class="register-left-col">
-              <div class="register-badge">REG. NO. 03</div>
-              <div class="register-series font-mono">FORENSIC CASE STUDY</div>
-              <div class="register-date font-mono">CASE DOSSIER v2 &middot; 2026</div>
-              <div class="register-format font-mono">WORD DOSSIER &middot; 58 KB</div>
-            </div>
-
-            <div class="register-right-col">
-              <h3 class="register-title">
-                <a href="1-From_Assertion_to_Authority_Mata_v_Avianca_Proof_Dossier_v2.docx">From Assertion to Authority</a>
-              </h3>
-              <p class="register-subtitle">Mata v. Avianca Epistemic Proof Dossier</p>
-
-              <div class="register-thesis">
-                <p>
-                  <strong>Formulation Thesis:</strong> A forensic autopsy of the landmark generative AI legal failure (*Mata v. Avianca*). Traces the exact chain of unsupported transfer where probabilistic token prediction was mistaken for authoritative legal record, demonstrating how institutional deference amplifies manufactured certainty.
-                </p>
-              </div>
-
-              <div class="register-links-row">
-                <a href="1-From_Assertion_to_Authority_Mata_v_Avianca_Proof_Dossier_v2.docx" class="btn-document-link" target="_blank" rel="noopener">
-                  <span class="doc-icon">&darr;</span> Download Forensic Dossier (.docx)
-                </a>
-                <span class="link-meta font-mono">Empirical Forensic Autopsy</span>
-              </div>
-            </div>
-          </article>
-
-        </div>
-
-        <div class="register-disclaimer-box">
-          <p>
-            <strong>Epistemic Notice on Research Holdings:</strong> Works in this register represent authorial inquiry and analytical methods developed under the editorial stewardship of Wheeler Hubbell Publishing, Inc. WHP maintains strict demarcation between published philosophical formulations, empirical dossiers, and statutory or judicial findings.
+        <div class="section-header">
+          <div class="section-pre">Current Publishing Catalogue</div>
+          <h2 class="section-title">The Four Volumes</h2>
+          <p class="section-desc">
+            Physical editions produced according to traditional bookmaking standards: archival papers, Smythe-sewn cloth bindings, debossed foil stamping, and typography set for enduring human study.
           </p>
         </div>
 
+        <div class="books-grid">
+
+          <!-- Book 1: Before Certainty -->
+          <article class="book-card">
+            <div class="book-card-vol">
+              <span>Volume I</span>
+              <span>Epistemic Invariance</span>
+            </div>
+            <div class="book-cover-stage">
+              <img src="4-before-certainty.jpg" alt="Cover of Before Certainty" loading="lazy"/>
+            </div>
+            <div class="book-meta">
+              <h3 class="book-title">Before Certainty</h3>
+              <p class="book-author">Wheeler Hubbell</p>
+              <p class="book-desc">
+                An inquiry into the point at which assertion masquerades as fact. Introduces the mechanics of epistemic standing and qualification preservation before judgment hardens.
+              </p>
+              <div class="book-spec-pill">
+                Clothbound Hardcover &middot; Foil Stamped &middot; Smyth-Sewn
+              </div>
+              <div class="book-actions">
+                <button type="button" class="btn-card-order" onclick="openOrderModal('Before Certainty', 'Cloth Edition')">
+                  Order Volume &rarr;
+                </button>
+                <a href="1-before-certainty-excerpt.pdf" target="_blank" rel="noopener" class="btn-card-read">
+                  Read Excerpt (PDF)
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Book 2: The Elemental Properties of True -->
+          <article class="book-card">
+            <div class="book-card-vol">
+              <span>Volume II</span>
+              <span>Philosophy of Truth</span>
+            </div>
+            <div class="book-cover-stage">
+              <img src="5-elemental-properties-of-true.jpg" alt="Cover of The Elemental Properties of True" loading="lazy"/>
+            </div>
+            <div class="book-meta">
+              <h3 class="book-title">The Elemental Properties of True</h3>
+              <p class="book-author">Wheeler Hubbell</p>
+              <p class="book-desc">
+                A formal treatise demonstrating that truth is not a rhetorical posture but an invariant property preserved through rigorous provenance and unbroken warrants.
+              </p>
+              <div class="book-spec-pill">
+                Archival Linen Hardcover &middot; Blind Deboss &middot; 380 Pages
+              </div>
+              <div class="book-actions">
+                <button type="button" class="btn-card-order" onclick="openOrderModal('The Elemental Properties of True', 'Linen Edition')">
+                  Order Volume &rarr;
+                </button>
+                <a href="1-elemental-properties-excerpt.pdf" target="_blank" rel="noopener" class="btn-card-read">
+                  Read Excerpt (PDF)
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Book 3: The Silhouette Fallacy -->
+          <article class="book-card">
+            <div class="book-card-vol">
+              <span>Volume III</span>
+              <span>Cognitive Architecture</span>
+            </div>
+            <div class="book-cover-stage">
+              <img src="7-silhouette-fallacy.jpg" alt="Cover of The Silhouette Fallacy" loading="lazy"/>
+            </div>
+            <div class="book-meta">
+              <h3 class="book-title">The Silhouette Fallacy</h3>
+              <p class="book-author">Wheeler Hubbell</p>
+              <p class="book-desc">
+                An examination of shadow, projection, and the perceptual trap of confusing a boundary outline with the substance of the underlying reality.
+              </p>
+              <div class="book-spec-pill">
+                Navy Library Buckram &middot; Gilt Foil Lettering
+              </div>
+              <div class="book-actions">
+                <button type="button" class="btn-card-order" onclick="openOrderModal('The Silhouette Fallacy', 'Library Edition')">
+                  Order Volume &rarr;
+                </button>
+                <a href="1-silhouette-fallacy-excerpt.pdf" target="_blank" rel="noopener" class="btn-card-read">
+                  Read Excerpt (PDF)
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Book 4: A Room Without a View -->
+          <article class="book-card">
+            <div class="book-card-vol">
+              <span>Volume IV</span>
+              <span>Dramatic Literature</span>
+            </div>
+            <div class="book-cover-stage">
+              <img src="6-room-without-a-view.jpg" alt="Cover of A Room Without a View" loading="lazy"/>
+            </div>
+            <div class="book-meta">
+              <h3 class="book-title">A Room Without a View</h3>
+              <p class="book-author">Wheeler Hubbell</p>
+              <p class="book-desc">
+                Dramatic works and theatrical literature probing the tension between institutional confinement, staged presence, and internal sovereign conviction.
+              </p>
+              <div class="book-spec-pill">
+                Black Buckram Hardcover &middot; Acid-Free Paper
+              </div>
+              <div class="book-actions">
+                <button type="button" class="btn-card-order" onclick="openOrderModal('A Room Without a View', 'Cloth Edition')">
+                  Order Volume &rarr;
+                </button>
+                <a href="1-room-without-a-view-excerpt.pdf" target="_blank" rel="noopener" class="btn-card-read">
+                  Read Excerpt (PDF)
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
       </div>
     </section>
 
-    <!-- SECTION III: DECISION INTEGRITY PROTOCOL & METHOD -->
-    <section class="broadsheet-section" id="decision-integrity">
+    <!-- Research & Methods: Numbered Formal Register -->
+    <section class="research-section" id="register">
       <div class="wrap">
-        
-        <header class="section-broadsheet-header">
-          <div class="header-preline">
-            <span class="sec-index">SECTION III</span>
-            <span class="sec-rule"></span>
-            <span class="sec-subtitle">The Method &middot; Eight Inquiries &middot; Bounded Judgment</span>
+        <div class="section-header">
+          <div class="section-pre">Formal Monograph Register</div>
+          <h2 class="section-title">Research &amp; Methods</h2>
+          <p class="section-desc">
+            Authorized scholarly monographs and legal forensic dossiers detailing the mathematics of Coherent Substitution and judicial standing across time.
+          </p>
+        </div>
+
+        <div class="register-table">
+
+          <!-- Row 1: Coherent Substitution -->
+          <div class="register-row">
+            <div class="reg-num">
+              MONO 01
+              <small>Published 2026</small>
+            </div>
+            <div class="reg-title">
+              <h3>Coherent Substitution</h3>
+              <p>The Epistemic Standard of Adversarial Inference</p>
+            </div>
+            <div class="reg-thesis">
+              Establishes the formal boundary where surrogate premises replace original warrants. Proves that downstream authority collapses to zero when context transfers lack qualified proof.
+            </div>
+            <div class="reg-action">
+              <a href="1-coherent-substitution.pdf" target="_blank" rel="noopener" class="btn-gold-outline">
+                Read Monograph &rarr;
+              </a>
+            </div>
           </div>
+
+          <!-- Row 2: Jurisdiction Across Time -->
+          <div class="register-row">
+            <div class="reg-num">
+              MONO 02
+              <small>Preprint 2026</small>
+            </div>
+            <div class="reg-title">
+              <h3>Jurisdiction Across Time</h3>
+              <p>The Temporal Boundaries of Judicial Authority</p>
+            </div>
+            <div class="reg-thesis">
+              Investigates how legal and evidentiary determinations decay across temporal horizons. Defines the exact mathematical requirements for qualification preservation across state transitions.
+            </div>
+            <div class="reg-action">
+              <a href="1-jurisdiction-across-time-preprint.pdf" target="_blank" rel="noopener" class="btn-gold-outline">
+                Read Preprint &rarr;
+              </a>
+            </div>
+          </div>
+
+          <!-- Row 3: Mata v. Avianca Proof Dossier -->
+          <div class="register-row">
+            <div class="reg-num">
+              MONO 03
+              <small>Forensic Dossier</small>
+            </div>
+            <div class="reg-title">
+              <h3>Mata v. Avianca Autopsy</h3>
+              <p>From Assertion to Authority Proof Dossier</p>
+            </div>
+            <div class="reg-thesis">
+              Forensic post-mortem of synthetic legal citations submitted in federal court. Isolates the systemic defect where probabilistic language models generate plausible citations with zero institutional standing.
+            </div>
+            <div class="reg-action">
+              <a href="1-From_Assertion_to_Authority_Mata_v_Avianca_Proof_Dossier_v2.docx" class="btn-gold-outline">
+                Download Dossier &rarr;
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Decision Integrity & Protocol Panel -->
+    <section class="protocol-section" id="decision-integrity">
+      <div class="wrap protocol-grid">
+        
+        <div>
+          <div class="section-pre">The Cartographer's Method</div>
           <h2 class="section-title">Decision Integrity Protocol</h2>
-          <p class="section-intro">
-            A structured method for examining consequential decisions when certainty is unavailable and action cannot simply be postponed.
+          <p class="section-desc" style="margin-bottom: 28px;">
+            A bounded epistemic diagnostic for human executives, institutions, and autonomous agent-to-agent runtimes. Designed to detect force escalation, halt hallucinated drift, and enforce unbroken qualification preservation.
           </p>
-        </header>
-
-        <div class="protocol-split-broadsheet">
-          <div class="protocol-doctrine-col">
-            <h3 class="doctrine-heading">Separating Assertion from Authority</h3>
-            <p class="doctrine-lead">
-              Consequential failures rarely occur because of raw ignorance. They occur when an unverified assertion is quietly granted the weight of authoritative fact, or when an institution answers a convenient substitute question in place of the real one.
-            </p>
-            <p class="doctrine-body">
-              The Decision Integrity Protocol provides a disciplined, bounded sequence to examine conditions before they harden into irrevocable consequence. It does not promise immunity from error; it guarantees that a decision is proportioned to its stakes and accountable to the evidence.
-            </p>
-
-            <div class="capabilities-list">
-              <div class="cap-item">
-                <span class="cap-num font-mono">I.</span>
-                <span class="cap-text"><strong>Question Fidelity:</strong> Preserving the exact consequential inquiry against convenient substitution.</span>
-              </div>
-              <div class="cap-item">
-                <span class="cap-num font-mono">II.</span>
-                <span class="cap-text"><strong>Proposition Integrity:</strong> Refusing to accept proof of an adjacent premise as proof of the whole.</span>
-              </div>
-              <div class="cap-item">
-                <span class="cap-num font-mono">III.</span>
-                <span class="cap-text"><strong>Qualifier Protection:</strong> Preventing probabilistic estimates from being cited as categorical certainty.</span>
-              </div>
-              <div class="cap-item">
-                <span class="cap-num font-mono">IV.</span>
-                <span class="cap-text"><strong>Authority Mapping:</strong> Tracing assertions to their primary evidentiary origin.</span>
-              </div>
-              <div class="cap-item">
-                <span class="cap-num font-mono">V.</span>
-                <span class="cap-text"><strong>Repair Protocol:</strong> Defining explicit conditions that require immediate reconsideration.</span>
-              </div>
-            </div>
-
-            <div class="protocol-cta-row">
-              <a href="protocol.html" class="btn-oxblood">
-                <span>Open Dedicated Protocol Page &rarr;</span>
-              </a>
-            </div>
+          <div class="hero-actions">
+            <a href="protocol.html" class="btn-oxblood">
+              View Protocol Specification &rarr;
+            </a>
+            <button type="button" class="btn-gold-outline" onclick="openPressModal()">
+              Read Press Announcement
+            </button>
           </div>
+        </div>
 
-          <div class="protocol-inquiries-col">
-            <div class="inquiries-panel">
-              <div class="inquiries-label font-mono">THE EIGHT FUNDAMENTAL INQUIRIES</div>
-              <ol class="inquiries-numbered-list">
-                <li>
-                  <span class="q-lead">What decision is actually being made?</span>
-                  <span class="q-sub">Distinguishing the true consequential choice from cosmetic procedure.</span>
-                </li>
-                <li>
-                  <span class="q-lead">What is known, and what is being assumed?</span>
-                  <span class="q-sub">Isolating verified primary records from contextual extrapolation.</span>
-                </li>
-                <li>
-                  <span class="q-lead">What information is missing, uncertain, or being discounted?</span>
-                  <span class="q-sub">Exposing inconvenient gaps that have been smoothed over.</span>
-                </li>
-                <li>
-                  <span class="q-lead">What pressures or loyalties may be influencing judgment?</span>
-                  <span class="q-sub">Identifying institutional incentives, fear of delay, and habit.</span>
-                </li>
-                <li>
-                  <span class="q-lead">Who will bear the consequences of action, delay, or error?</span>
-                  <span class="q-sub">Mapping the human distribution of consequence.</span>
-                </li>
-                <li>
-                  <span class="q-lead">What values are being protected, compromised, or left unspoken?</span>
-                  <span class="q-sub">Surfacing the unwritten trade-offs governing the choice.</span>
-                </li>
-                <li>
-                  <span class="q-lead">What evidence would require the decision to be reconsidered?</span>
-                  <span class="q-sub">Establishing falsification criteria prior to execution.</span>
-                </li>
-                <li>
-                  <span class="q-lead">Can the reasoning be explained honestly to those affected?</span>
-                  <span class="q-sub">Subjecting the justification to the scrutiny of those bearing the cost.</span>
-                </li>
-              </ol>
+        <div class="axiom-card">
+          <div class="axiom-header">
+            <span>Axiom of Provenance</span>
+            <span>Invariant I.1</span>
+          </div>
+          <div class="axiom-formula">
+            A(c) &le; P(c)
+          </div>
+          <p class="axiom-desc">
+            <em>The Authority Conservation Principle:</em> The authority of any decision or conclusion cannot exceed the verified provenance of its underlying record. If provenance is severed, downstream authority drops to zero.
+          </p>
+          <div class="machine-spec-box">
+            <div class="spec-line">
+              <span>Model Context Protocol (MCP):</span>
+              <span class="spec-val">/mcp</span>
+            </div>
+            <div class="spec-line">
+              <span>Direct REST x402 Engine:</span>
+              <span class="spec-val">/v1/evaluate</span>
+            </div>
+            <div class="spec-line">
+              <span>Base Settlement Wallet:</span>
+              <span class="spec-val">whpublishing.base.eth</span>
             </div>
           </div>
         </div>
@@ -689,215 +373,62 @@
       </div>
     </section>
 
-    <!-- SECTION IV: PERIODICALS & INSTITUTIONAL DISPATCHES -->
-    <section class="broadsheet-section" id="keeping-room">
-      <div class="wrap">
+    <!-- The Keeping Room & Dispatches -->
+    <section class="keeping-room-section" id="keeping-room">
+      <div class="wrap keeping-grid">
         
-        <header class="section-broadsheet-header">
-          <div class="header-preline">
-            <span class="sec-index">SECTION IV</span>
-            <span class="sec-rule"></span>
-            <span class="sec-subtitle">Periodicals &middot; Letters &middot; Institutional Dispatches</span>
-          </div>
-          <h2 class="section-title">The Keeping Room &amp; Press</h2>
-          <p class="section-intro">
-            Original monthly essays on record and distinction, alongside formal communications from the press.
+        <div class="featured-essay-card">
+          <div class="essay-meta">The Keeping Room &middot; Monthly Dispatch</div>
+          <h2 class="essay-title">Chalk Dust &amp; Portraiture</h2>
+          <p class="essay-excerpt">
+            &ldquo;We live in an age that confuses the speed of an answer with the truth of its premise. When a room is filled with chalk dust, every beam of light looks solid. But walk through it, and you find only empty air and chalk on your sleeves...&rdquo;
           </p>
-        </header>
+          <a href="1-keeping-room-chalk-dust-portraiture.pdf" target="_blank" rel="noopener" class="btn-gold-outline">
+            Read Complete Essay (PDF) &rarr;
+          </a>
+        </div>
 
-        <div class="periodicals-grid-two">
-          
-          <!-- Column A: The Keeping Room -->
-          <article class="periodical-card">
-            <div class="periodical-head">
-              <span class="periodical-badge font-mono">MONTHLY LETTER</span>
-              <span class="periodical-date font-mono">SUMMER 2026 EDITION</span>
-            </div>
-
-            <h3 class="periodical-title">The Keeping Room</h3>
-            <p class="periodical-issue-title">Chalk Dust Portraiture</p>
-
-            <blockquote class="periodical-quote">
-              &ldquo;Empty is a claim. Unentered is the truth.&rdquo;
-            </blockquote>
-
-            <p class="periodical-desc">
-              The Keeping Room is Wheeler Hubbell's monthly literary periodical&mdash;a sustained single piece of reflective writing examining the space between event and memory, the disciplines of domestic order, and the preservation of human records.
-            </p>
-
-            <div class="periodical-spec font-mono">
-              Folio Edition &middot; 13 Pages &middot; Illustrated Letterpress Cover
-            </div>
-
-            <div class="periodical-actions">
-              <a href="1-keeping-room-chalk-dust-portraiture.pdf" class="btn-oxblood" target="_blank" rel="noopener">
-                Read Letter Edition (PDF) &rarr;
-              </a>
-              <a href="#subscribe" class="btn-brass-outline" onclick="document.getElementById('keeping-room-email').focus()">
-                Subscribe to Monthly Letters
-              </a>
-            </div>
-
-            <!-- Subscription Form -->
-            <form class="subscription-strip" id="subscribe" onsubmit="event.preventDefault(); alert('Thank you. You have been enrolled for the monthly letter from The Keeping Room.');">
-              <label for="keeping-room-email" class="sub-label font-mono">Dispatches to your desk:</label>
-              <div class="sub-input-row">
-                <input type="email" id="keeping-room-email" placeholder="correspondence@institution.edu" required/>
-                <button type="submit">Enroll</button>
-              </div>
-            </form>
-          </article>
-
-          <!-- Column B: Institutional Dispatches (Press Release) -->
-          <article class="periodical-card" id="dispatches">
-            <div class="periodical-head">
-              <span class="periodical-badge font-mono">PRESS RELEASE</span>
-              <span class="periodical-date font-mono">NEW YORK &middot; FOR IMMEDIATE RELEASE</span>
-            </div>
-
-            <h3 class="periodical-title">Institutional Dispatch</h3>
-            <p class="periodical-issue-title">Wheeler Hubbell Publishing Unveils the &ldquo;Standing Mark&rdquo;</p>
-
-            <div class="dispatch-excerpt-body">
-              <p>
-                <strong>New York &mdash;</strong> Wheeler Hubbell Publishing, Inc. has announced the formal release of the <em>Standing Mark</em>, a deterministic decision-integrity framework designed to arrest epistemic drift in autonomous AI systems and high-stakes legal-institutional reasoning.
-              </p>
-              <p>
-                Drawing on the <em>Authority Conservation Principle</em> ($A(c) \le P(c)$), the protocol enforces that an automated inference cannot claim greater authority than the verified provenance of its underlying record.
-              </p>
-              <p>
-                The announcement incorporates the findings of the <em>Mata v. Avianca</em> epistemic autopsy and details integration pathways across decentralized protocols and institutional governance.
-              </p>
-            </div>
-
-            <div class="dispatch-links-row">
-              <button type="button" class="btn-oxblood" onclick="openPressModal()">
-                Read Full Press Release Package &rarr;
-              </button>
-              <a href="mailto:wheelerhubbell@gmail.com?subject=Press%20Inquiry%20-%20Wheeler%20Hubbell%20Publishing" class="link-press-inquiry font-mono">
-                Press &amp; Media Inquiries &rarr;
-              </a>
-            </div>
-          </article>
-
+        <div class="subscribe-card">
+          <h3>Correspondence Desk</h3>
+          <p>
+            Receive one monthly literary essay and notification of new book dispatches directly from the press. Unhurried, rigorous, and private.
+          </p>
+          <form class="dispatch-form" onsubmit="event.preventDefault(); alert('Your correspondence request has been registered with the Acquisitions Desk.'); this.reset();">
+            <input type="email" class="dispatch-input" placeholder="correspondence@institution.edu" required/>
+            <button type="submit" class="btn-oxblood full-width text-center">
+              Subscribe to Dispatches &rarr;
+            </button>
+          </form>
         </div>
 
       </div>
     </section>
 
-    <!-- SECTION V: ACQUISITIONS, RIGHTS & COMMERCIAL DESK -->
-    <section class="broadsheet-section" id="acquisitions">
-      <div class="wrap">
+    <!-- About the House & Wheeler Hubbell -->
+    <section class="about-section" id="about">
+      <div class="wrap about-grid">
         
-        <header class="section-broadsheet-header">
-          <div class="header-preline">
-            <span class="sec-index">SECTION V</span>
-            <span class="sec-rule"></span>
-            <span class="sec-subtitle">Commercial Architecture &middot; Orders &middot; Licensing &middot; Rights</span>
-          </div>
-          <h2 class="section-title">Acquisitions, Rights &amp; Institutional Orders</h2>
-          <p class="section-intro">
-            Wheeler Hubbell Publishing maintains direct relationships with readers, institutions, independent booksellers, and theatrical producers.
+        <div class="author-frame">
+          <img src="3-author.jpg" alt="Portrait of Wheeler Hubbell" width="400" height="500"/>
+        </div>
+
+        <div class="about-copy">
+          <div class="section-pre">Institutional Imprint</div>
+          <h2>Wheeler Hubbell</h2>
+          <div class="about-creds">Writer &middot; Playwright &middot; Decision-Integrity Thinker</div>
+          <p class="about-text">
+            Wheeler Hubbell is a writer and decision-integrity thinker whose work turns lived experience into a disciplined method for separating record from interpretation and keeping conclusions within the evidence.
           </p>
-        </header>
-
-        <div class="acquisitions-grid-three">
-          
-          <!-- Channel 1: Direct Purchasing -->
-          <div class="acq-panel">
-            <div class="acq-num font-mono">01</div>
-            <h3 class="acq-title">Direct Edition Purchasing</h3>
-            <p class="acq-desc">
-              All hardcover cloth and linen editions are dispatched directly from our New York bindery. We supply individual readers, collectors, and independent bookshops.
-            </p>
-            <ul class="acq-list">
-              <li>Direct dispatch in archival mailers</li>
-              <li>Smyth-sewn bindings on acid-free sheets</li>
-              <li>Institutional invoicing &amp; purchase orders</li>
-            </ul>
-            <div class="acq-action">
-              <button type="button" class="btn-brass-outline full-width" onclick="openOrderModal('General Catalogue Order', 'Select Volume at Invoicing', 'assets/whp_four_books_hero.jpg')">
-                Initiate Volume Order &rarr;
-              </button>
-            </div>
-          </div>
-
-          <!-- Channel 2: Theatrical & Rights -->
-          <div class="acq-panel">
-            <div class="acq-num font-mono">02</div>
-            <h3 class="acq-title">Dramatic &amp; Subsidiary Rights</h3>
-            <p class="acq-desc">
-              Theatrical production licenses, translation rights, and subsidiary publishing rights are administered directly by the publisher.
-            </p>
-            <ul class="acq-list">
-              <li>Performance rights for <em>The Silhouette Fallacy</em></li>
-              <li>Foreign translation rights for <em>Before Certainty</em></li>
-              <li>Academic course adoption &amp; examination copies</li>
-            </ul>
-            <div class="acq-action">
-              <a href="mailto:wheelerhubbell@gmail.com?subject=Rights%20and%20Licensing%20Inquiry%20-%20Wheeler%20Hubbell%20Publishing" class="btn-brass-outline full-width">
-                Inquire for Rights &rarr;
-              </a>
-            </div>
-          </div>
-
-          <!-- Channel 3: Decision Integrity Advisory -->
-          <div class="acq-panel">
-            <div class="acq-num font-mono">03</div>
-            <h3 class="acq-title">Institutional Advisory</h3>
-            <p class="acq-desc">
-              Wheeler Hubbell accepts select institutional engagements for Decision Integrity diagnostic audits, governance verification, and high-consequence evidentiary reviews.
-            </p>
-            <ul class="acq-list">
-              <li>Evidentiary traceability review</li>
-              <li>Unsupported transfer analysis</li>
-              <li>Governance control &amp; repair protocol</li>
-            </ul>
-            <div class="acq-action">
-              <a href="mailto:wheelerhubbell@gmail.com?subject=Decision%20Integrity%20Advisory%20Inquiry" class="btn-brass-outline full-width">
-                Request Advisory Dossier &rarr;
-              </a>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SECTION VI: ABOUT THE AUTHOR & THE HOUSE -->
-    <section class="broadsheet-section" id="author">
-      <div class="wrap author-broadsheet-layout">
-        
-        <div class="author-portrait-col">
-          <div class="portrait-frame">
-            <img src="3-author.jpg" alt="Wheeler Hubbell in study" class="author-portrait-img" loading="lazy"/>
-            <div class="portrait-caption font-mono">
-              Wheeler Hubbell &middot; New York
-            </div>
-          </div>
-        </div>
-
-        <div class="author-narrative-col">
-          <div class="author-preline font-mono">AUTHOR &middot; PHILOSOPHER &middot; FOUNDER</div>
-          <h2 class="author-name-heading">Wheeler Hubbell</h2>
-          <div class="author-statement-prose">
-            <p class="lead-p">
-              Wheeler Hubbell is a writer, dramatist, and decision-integrity thinker based in New York.
-              His work establishes the Cartographer's Method&mdash;a disciplined practice that turns lived experience into an exacting record, separating observation from interpretation and keeping conclusions strictly within the evidence.
-            </p>
-            <p>
-              His background spans professional performance on Broadway and television, constitutional jurisprudence, and philosophical research into epistemic drift. His writing addresses the fundamental human tendency to substitute adjacent comforts for difficult truths.
-            </p>
-            <p>
-              As the founder of Wheeler Hubbell Publishing, Inc., he oversees the preservation and production of physical books as instruments of human clarity.
-            </p>
-          </div>
-
-          <div class="author-meta-strip font-mono">
-            <span>Author Identifier: <a href="https://orcid.org/0009-0006-2009-0578" target="_blank" rel="noopener">ORCID 0009-0006-2009-0578</a></span>
-            <span class="sep">&bull;</span>
-            <span>Correspondence: <a href="mailto:wheelerhubbell@gmail.com">wheelerhubbell@gmail.com</a></span>
+          <p class="about-text">
+            Years on stage and behind the scenes taught presence, discipline, and systemic accountability. Both inform the publishing house and its ongoing commitment to fine bookmaking, constitutional clarity, and sovereign machine verification.
+          </p>
+          <div class="hero-actions" style="margin-top: 32px;">
+            <button type="button" class="btn-gold-outline" onclick="openPressModal()">
+              View Institutional Press Release
+            </button>
+            <a href="mailto:acquisitions@wheelerhubbellpublishing.com" class="btn-card-read">
+              Direct Inquiries
+            </a>
           </div>
         </div>
 
@@ -906,221 +437,165 @@
 
   </main>
 
-  <!-- Institutional Colophon & Broadsheet Footer -->
-  <footer class="broadsheet-footer" id="contact">
+  <!-- Institutional Colophon / Footer -->
+  <footer class="site-footer" id="contact">
     <div class="wrap">
-      
-      <div class="footer-mast-row">
-        <div class="footer-brand-lockup">
-          <div class="footer-crest font-mono">W / H</div>
-          <div class="footer-title">Wheeler Hubbell Publishing</div>
-          <div class="footer-sub">An Institution for Record, Distinction, and Human Clarity &middot; New York</div>
+      <div class="footer-grid">
+        
+        <div class="footer-col">
+          <h4>Wheeler Hubbell Publishing</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px;">
+            An independent intellectual press and epistemic imprint dedicated to enduring literature, constitutional philosophy, and formal decision integrity.
+          </p>
+          <p style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold-muted);">
+            New York, NY &middot; Est. MMXXVI
+          </p>
         </div>
 
-        <div class="footer-newsletter-lockup">
-          <div class="footer-box-label font-mono">INSTITUTIONAL CORRESPONDENCE</div>
-          <p class="footer-box-desc">For catalogue orders, academic review copies, rights licensing, and advisory engagements:</p>
-          <a href="mailto:wheelerhubbell@gmail.com" class="footer-direct-email font-mono">wheelerhubbell@gmail.com</a>
-        </div>
-      </div>
-
-      <div class="footer-columns-row">
-        <div class="f-col">
-          <div class="f-head font-mono">THE CATALOGUE</div>
-          <ul class="f-links">
-            <li><a href="#catalogue">Before Certainty (Cloth)</a></li>
+        <div class="footer-col">
+          <h4>Publications</h4>
+          <ul class="footer-links">
+            <li><a href="#catalogue">Before Certainty</a></li>
             <li><a href="#catalogue">The Elemental Properties of True</a></li>
-            <li><a href="#catalogue">The Silhouette Fallacy: A Play</a></li>
+            <li><a href="#catalogue">The Silhouette Fallacy</a></li>
             <li><a href="#catalogue">A Room Without a View</a></li>
-            <li><a href="#catalogue">The Extended Repertory</a></li>
           </ul>
         </div>
 
-        <div class="f-col">
-          <div class="f-head font-mono">RESEARCH &amp; METHOD</div>
-          <ul class="f-links">
-            <li><a href="#register">Jurisdiction Across Time</a></li>
-            <li><a href="#register">Adversarial Memorandum</a></li>
+        <div class="footer-col">
+          <h4>Research &amp; Protocols</h4>
+          <ul class="footer-links">
             <li><a href="#register">Coherent Substitution</a></li>
+            <li><a href="#register">Jurisdiction Across Time</a></li>
             <li><a href="#register">Mata v. Avianca Dossier</a></li>
             <li><a href="protocol.html">Decision Integrity Protocol</a></li>
           </ul>
         </div>
 
-        <div class="f-col">
-          <div class="f-head font-mono">PERIODICALS &amp; PRESS</div>
-          <ul class="f-links">
-            <li><a href="#keeping-room">The Keeping Room</a></li>
-            <li><a href="#keeping-room">Chalk Dust Portraiture</a></li>
-            <li><a href="#dispatches">Press Announcements</a></li>
-            <li><a href="#acquisitions">Theatrical Rights Licensing</a></li>
-            <li><a href="#acquisitions">Institutional Orders</a></li>
-          </ul>
+        <div class="footer-col">
+          <h4>Acquisitions &amp; Orders</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
+            Institutional acquisitions, trade orders, and direct reader fulfillment:
+          </p>
+          <a href="mailto:acquisitions@wheelerhubbellpublishing.com" style="color: var(--gold-light); font-size: 0.88rem; font-family: var(--font-mono);">
+            acquisitions@wheelerhubbellpublishing.com
+          </a>
         </div>
 
-        <div class="f-col">
-          <div class="f-head font-mono">IMPRINT &amp; IDENTIFIERS</div>
-          <div class="colophon-text">
-            <p>Wheeler Hubbell Publishing, Inc.<br/>New York, New York</p>
-            <p>Typeset in Cormorant Garamond, EB Garamond, Inter, and IBM Plex Mono.</p>
-            <p>Printed on acid-free archival paper with smyth-sewn bindings.</p>
-          </div>
-        </div>
       </div>
 
-      <div class="footer-bottom-row font-mono">
-        <div class="footer-copy">
-          &copy; 2026 Wheeler Hubbell &middot; Wheeler Hubbell Publishing, Inc. All rights reserved.
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Wheeler Hubbell Publishing, Inc. All rights reserved.
         </div>
-        <div class="footer-identifiers">
-          <span>ORCID: 0009-0006-2009-0578</span>
-          <span class="sep">&bull;</span>
-          <span>Books as Instruments &middot; Publishing as Stewardship</span>
+        <div>
+          Settlement Identifier: <span class="ens-badge font-mono">whpublishing.base.eth</span> (0x1050eddd8282623b0c263ed6bdbd42370bbc28d3)
         </div>
       </div>
-
     </div>
   </footer>
 
-  <!-- Modal: Book Order / Acquisition Pathway -->
-  <div class="modal-backdrop" id="orderModal" aria-hidden="true" role="dialog" aria-labelledby="modalBookTitle">
+  <!-- Modal: Acquisition / Direct Order -->
+  <div class="modal-backdrop" id="orderModal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
     <div class="modal-window">
-      <button type="button" class="modal-close-btn" onclick="closeOrderModal()" aria-label="Close Order Window">&times;</button>
+      <button type="button" class="modal-close" onclick="closeOrderModal()" aria-label="Close">&times;</button>
       
-      <div class="modal-header">
-        <div class="modal-pre font-mono">VOLUME ACQUISITION &middot; DIRECT DISPATCH</div>
-        <h3 class="modal-title" id="modalBookTitle">Order Edition</h3>
-        <p class="modal-edition-name" id="modalEditionName">Cloth Edition</p>
+      <div style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-muted); margin-bottom: 8px;">
+        Acquisitions &middot; Direct Dispatch
       </div>
+      <h3 id="modalTitle" style="font-family: var(--font-serif); font-size: 2rem; color: var(--text-pure); margin-bottom: 4px;">
+        Order Volume
+      </h3>
+      <p id="modalEdition" style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--gold-light); margin-bottom: 24px;">
+        Clothbound Hardcover Edition
+      </p>
 
-      <div class="modal-body">
-        <div class="modal-book-preview">
-          <img src="assets/whp_four_books_hero.jpg" alt="Selected Book" id="modalBookImg" class="modal-img"/>
-          <div class="modal-book-notes">
-            <p class="modal-spec-text font-mono">
-              Dispatched from New York.<br/>
-              Archival protective book mailer.<br/>
-              Includes complimentary digital excerpt edition.
-            </p>
-          </div>
-        </div>
+      <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px;">
+        Direct fulfillment from our New York bindery. Archival protective mailer. To acquire your volume, dispatch your direct order request below. Our acquisitions desk will confirm delivery details and invoice via card, bank transfer, or Base USDC.
+      </p>
 
-        <div class="modal-order-instructions">
-          <h4>How to Complete Your Order</h4>
-          <p>
-            To order this volume, initiate your direct invoice request below. Our acquisitions desk will confirm your shipping address and dispatch an immediate payment invoice (Card, Bank Transfer, or Institutional PO).
-          </p>
-
-          <div class="modal-action-row">
-            <a href="#" id="modalMailtoLink" class="btn-oxblood full-width text-center">
-              Submit Direct Order by Email &rarr;
-            </a>
-          </div>
-
-          <div class="modal-inst-note font-mono">
-            Institutions, academic libraries, and bulk orders may also reach out directly to <a href="mailto:wheelerhubbell@gmail.com">wheelerhubbell@gmail.com</a>.
-          </div>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <a id="modalMailLink" href="mailto:acquisitions@wheelerhubbellpublishing.com?subject=Order%20Inquiry" class="btn-oxblood full-width text-center" style="display: block; text-align: center;">
+          Submit Direct Order via Email &rarr;
+        </a>
+        <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-faint); text-align: center; margin-top: 8px;">
+          Institutional POs &amp; academic libraries: acquisitions@wheelerhubbellpublishing.com
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Modal: Full Press Release Package -->
-  <div class="modal-backdrop" id="pressModal" aria-hidden="true" role="dialog" aria-labelledby="modalPressTitle">
-    <div class="modal-window press-modal-window">
-      <button type="button" class="modal-close-btn" onclick="closePressModal()" aria-label="Close Press Window">&times;</button>
+  <!-- Modal: Press Release -->
+  <div class="modal-backdrop" id="pressModal" aria-hidden="true" role="dialog" aria-labelledby="pressTitle">
+    <div class="modal-window" style="max-width: 720px; max-height: 85vh; overflow-y: auto;">
+      <button type="button" class="modal-close" onclick="closePressModal()" aria-label="Close">&times;</button>
       
-      <div class="modal-header">
-        <div class="modal-pre font-mono">INSTITUTIONAL ANNOUNCEMENT &middot; FOR IMMEDIATE RELEASE</div>
-        <h3 class="modal-title" id="modalPressTitle">Wheeler Hubbell Publishing Unveils the &ldquo;Standing Mark&rdquo;</h3>
-        <p class="modal-edition-name">Cryptographic Decision Integrity to Halt Autonomous AI Agent Drift</p>
+      <div style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-muted); margin-bottom: 8px;">
+        Institutional Announcement &middot; For Immediate Release
       </div>
+      <h3 id="pressTitle" style="font-family: var(--font-serif); font-size: 2.2rem; color: var(--text-pure); margin-bottom: 6px; line-height: 1.15;">
+        Wheeler Hubbell Publishing Unveils the &ldquo;Standing Mark&rdquo;
+      </h3>
+      <p style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--gold-light); margin-bottom: 24px;">
+        Cryptographic Decision Integrity to Halt Autonomous AI Agent Drift
+      </p>
 
-      <div class="modal-body press-modal-body">
-        <div class="press-release-content">
-          <p class="dateline font-mono">NEW YORK, NY &mdash; Wheeler Hubbell Publishing, Inc.</p>
-
-          <h4>The Crisis of Unsupervised Agentic Drift</h4>
-          <p>
-            As autonomous artificial intelligence agents transition from conversational interfaces to consequential enterprise and legal workflows, organizations face an unprecedented failure mode: <strong>epistemic drift</strong>. When an agent experiences probabilistic hallucination or unauthorized context switching, downstream systems execute actions based on unverified premises.
-          </p>
-
-          <h4>The Authority Conservation Principle</h4>
-          <p>
-            At the heart of the release is Wheeler Hubbell's <em>Authority Conservation Principle</em>:
-          </p>
-          <div class="equation-box font-mono">
-            A(c) &le; P(c)
-          </div>
-          <p>
-            The authority of any conclusion cannot exceed the verified provenance of its underlying record. If provenance is severed, downstream authority drops to zero.
-          </p>
-
-          <h4>The Mata v. Avianca Epistemic Autopsy</h4>
-          <p>
-            WHP's research is grounded in its landmark forensic analysis of <em>Mata v. Avianca</em>, where federal attorneys submitted synthetic judicial citations generated by language models. The WHP dossier traces the failure not to malicious intent, but to the absence of a deterministic boundary gate separating machine assertion from verified institutional record.
-          </p>
-
-          <h4>Availability &amp; Public Inquiries</h4>
-          <p>
-            The Decision Integrity Protocol and the public preprint for <em>Jurisdiction Across Time</em> are accessible to researchers and institutions immediately.
-          </p>
-          <p>
-            For media inquiries, interview requests, and institutional adoption: <a href="mailto:wheelerhubbell@gmail.com">wheelerhubbell@gmail.com</a>.
-          </p>
+      <div style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; display: flex; flex-direction: column; gap: 18px;">
+        <p><strong>NEW YORK, NY</strong> &mdash; Wheeler Hubbell Publishing, Inc. announced today the formal deployment of its Standing Mark architecture, establishing a deterministic boundary gate separating synthetic machine assertion from verified institutional provenance.</p>
+        
+        <p>As autonomous artificial intelligence agents transition into consequential enterprise, legal, and financial decisions, organizations face an unprecedented failure mode: <em>epistemic drift</em>. When an agent experiences probabilistic hallucination or unauthorized context switching, downstream systems execute actions based on unverified premises.</p>
+        
+        <div style="background: rgba(0,0,0,0.4); border-left: 2px solid var(--gold-muted); padding: 16px; font-family: var(--font-mono); color: var(--gold-light);">
+          A(c) &le; P(c) &mdash; The authority of any conclusion cannot exceed the verified provenance of its underlying record.
         </div>
+
+        <p>Grounded in Wheeler Hubbell's forensic analysis of <em>Mata v. Avianca</em>, the protocol enforces strict qualification preservation. The specification is publicly verifiable at <a href="protocol.html" style="color: var(--gold-light); text-decoration: underline;">protocol.html</a>, with machine settlement implemented over Base.</p>
       </div>
     </div>
   </div>
 
   <script>
-    function openOrderModal(title, edition, imgSrc) {
-      document.getElementById('modalBookTitle').innerText = title;
-      document.getElementById('modalEditionName').innerText = edition;
-      if (imgSrc) document.getElementById('modalBookImg').src = imgSrc;
-      
-      var mailSubject = encodeURIComponent("Book Order: " + title + " (" + edition + ")");
-      var mailBody = encodeURIComponent("Hello Wheeler Hubbell Publishing,\n\nI would like to order:\nVolume: " + title + "\nEdition: " + edition + "\n\nShipping Name:\nShipping Address:\nCity/State/Zip:\nCountry:\n\nPlease send an invoice for payment.\n\nThank you.");
-      document.getElementById('modalMailtoLink').href = "mailto:wheelerhubbell@gmail.com?subject=" + mailSubject + "&body=" + mailBody;
-      
-      var m = document.getElementById('orderModal');
-      m.classList.add('is-open');
-      m.setAttribute('aria-hidden', 'false');
+    function openOrderModal(bookTitle, edition) {
+      document.getElementById('modalTitle').textContent = 'Order ' + bookTitle;
+      document.getElementById('modalEdition').textContent = edition;
+      document.getElementById('modalMailLink').href = 'mailto:acquisitions@wheelerhubbellpublishing.com?subject=' + encodeURIComponent('Order Request: ' + bookTitle + ' (' + edition + ')') + '&body=' + encodeURIComponent('Acquisitions Desk,\n\nI would like to acquire a copy of ' + bookTitle + ' (' + edition + ').\n\nPlease advise on shipping and remittance details.\n\nName:\nShipping Address:\nPayment Method (Card / Invoice / Base USDC):');
+      const modal = document.getElementById('orderModal');
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
     }
 
     function closeOrderModal() {
-      var m = document.getElementById('orderModal');
-      m.classList.remove('is-open');
-      m.setAttribute('aria-hidden', 'true');
+      const modal = document.getElementById('orderModal');
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
     }
 
     function openPressModal() {
-      var m = document.getElementById('pressModal');
-      m.classList.add('is-open');
-      m.setAttribute('aria-hidden', 'false');
+      const modal = document.getElementById('pressModal');
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
     }
 
     function closePressModal() {
-      var m = document.getElementById('pressModal');
-      m.classList.remove('is-open');
-      m.setAttribute('aria-hidden', 'true');
+      const modal = document.getElementById('pressModal');
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
     }
 
-    // Close on Escape or click outside
+    // Close on backdrop click
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal-backdrop')) {
+        event.target.classList.remove('active');
+        event.target.setAttribute('aria-hidden', 'true');
+      }
+    };
+
+    // Close on Escape
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         closeOrderModal();
         closePressModal();
       }
-    });
-
-    document.querySelectorAll('.modal-backdrop').forEach(function(b) {
-      b.addEventListener('click', function(e) {
-        if (e.target === b) {
-          closeOrderModal();
-          closePressModal();
-        }
-      });
     });
   </script>
 
