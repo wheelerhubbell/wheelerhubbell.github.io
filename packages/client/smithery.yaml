@@ -3,5 +3,5 @@ startCommand:
   configSchema:
     endpoint:
       type: string
-      default: "https://standing-guard-service.lovable.app/mcp"
+      default: "https://api.wheelerhubbellpublishing.com/mcp"
       description: "Hosted endpoint for WHP Standing Witness service."
