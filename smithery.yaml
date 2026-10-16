@@ -2,13 +2,13 @@ version: 1
 name: whp-standing
 displayName: WHP Standing Witness
 description: Autonomous epistemic standing audits and circuit breaker gate for AI agents and smart contracts.
-homepage: https://standing-guard-service.lovable.app
-documentation: https://standing-guard-service.lovable.app/llms.txt
+homepage: https://wheelerhubbellpublishing.com
+documentation: https://api.wheelerhubbellpublishing.com/llms.txt
 runtime: remote
 
 remote:
   transport: streamable-http
-  url: https://standing-guard-service.lovable.app/mcp
+  url: https://api.wheelerhubbellpublishing.com/mcp
 
 categories:
   - developer-tools
