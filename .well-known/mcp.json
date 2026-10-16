@@ -6,10 +6,10 @@
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://standing-guard-service.lovable.app/mcp"
+      "url": "https://api.wheelerhubbellpublishing.com/mcp"
     }
   ],
-  "websiteUrl": "https://standing-guard-service.lovable.app",
+  "websiteUrl": "https://wheelerhubbellpublishing.com",
   "repository": {
     "url": "https://github.com/wheelerhubbell/wheelerhubbell.github.io",
     "source": "github"
