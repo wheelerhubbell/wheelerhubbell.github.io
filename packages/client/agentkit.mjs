@@ -4,7 +4,7 @@
  * audit actions before execution, and pay autonomously via x402.
  */
 
-export const STANDING_WITNESS_ORIGIN = 'https://standing-guard-service.lovable.app';
+export const STANDING_WITNESS_ORIGIN = 'https://api.wheelerhubbellpublishing.com';
 
 export class WHPStandingActionProvider {
   constructor(options = {}) {
