@@ -9,7 +9,7 @@ verify_mark.py for sealed Marks. This script checks only:
 It does not check payment finality or current standing.
 
 Requires Python >=3.9 and cryptography.
-Usage: verify_frontdoor.py RECORD.json [--origin https://standing-guard-service.lovable.app] [--offline]
+Usage: verify_frontdoor.py RECORD.json [--origin https://api.wheelerhubbellpublishing.com] [--offline]
 """
 import argparse, base64, hashlib, json, sys, urllib.request
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
@@ -49,7 +49,7 @@ def verify(env, origin=None):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("record")
-    ap.add_argument("--origin", default="https://standing-guard-service.lovable.app")
+    ap.add_argument("--origin", default="https://api.wheelerhubbellpublishing.com")
     ap.add_argument("--offline", action="store_true", help="skip the live signer-key comparison")
     a = ap.parse_args()
     res = verify(json.load(open(a.record)), None if a.offline else a.origin)
