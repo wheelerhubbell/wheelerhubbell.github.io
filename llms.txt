@@ -4,19 +4,19 @@
 
 Publisher: Wheeler Hubbell Publishing, Inc.
 Website: https://wheelerhubbell.github.io
-Service Runtime: https://standing-guard-service.lovable.app
+Service Runtime: https://api.wheelerhubbellpublishing.com
 Repository: https://github.com/wheelerhubbell/wheelerhubbell.github.io
 
 ## Autonomous Machine & Agent Interfaces
 
-- MCP Endpoint (Streamable HTTP): https://standing-guard-service.lovable.app/mcp
+- MCP Endpoint (Streamable HTTP): https://api.wheelerhubbellpublishing.com/mcp
 - Smithery Registry: npx -y @smithery/cli run @wheelerhubbell/whp-standing-client
 - GitHub Marketplace Action: https://github.com/marketplace/actions/standing-gate
-- API Catalog: https://standing-guard-service.lovable.app/.well-known/api-catalog
-- OpenAPI Specification: https://standing-guard-service.lovable.app/v1/openapi.json
-- MCP Server Metadata: https://standing-guard-service.lovable.app/server.json
-- Capability Resolution: https://standing-guard-service.lovable.app/.well-known/standing-capability.json
-- Service Health: https://standing-guard-service.lovable.app/healthz
+- API Catalog: https://api.wheelerhubbellpublishing.com/.well-known/api-catalog
+- OpenAPI Specification: https://api.wheelerhubbellpublishing.com/v1/openapi.json
+- MCP Server Metadata: https://api.wheelerhubbellpublishing.com/server.json
+- Capability Resolution: https://api.wheelerhubbellpublishing.com/.well-known/standing-capability.json
+- Service Health: https://api.wheelerhubbellpublishing.com/healthz
 
 ## Epistemic Reasoning Environment vs Notary / Oracle
 
@@ -47,12 +47,12 @@ Unpaid POST returns HTTP 402 with machine-readable payment terms. Payments use g
 ### Canonical Epistemic Objects & Tiers
 1. Proposition (0.10 USDC - POST /v1/ping): One atomic assertion, bounded question, or standalone output. Instant signed structural validation.
 2. Claim (1.00 USDC - POST /v1/evaluate): A structured claim with qualifiers, standing, temporal bounds, and supporting evidence. Evaluated under WHP-STANDING-ORDINARY-INTAKE/1.0.0.
-   - Admission: https://standing-guard-service.lovable.app/v1/ordinary/admission.json
-   - Contract: https://standing-guard-service.lovable.app/v1/ordinary/contract.json
-   - Verifier: https://standing-guard-service.lovable.app/v1/ordinary/verify_ordinary.mjs
+   - Admission: https://api.wheelerhubbellpublishing.com/v1/ordinary/admission.json
+   - Contract: https://api.wheelerhubbellpublishing.com/v1/ordinary/contract.json
+   - Verifier: https://api.wheelerhubbellpublishing.com/v1/ordinary/verify_ordinary.mjs
 3. Qualification Update (1.00 USDC - POST /v1/patch): A change to an existing claim's scope, qualifications, or temporal standing, evaluated against the existing record.
 4. Evidence Graph (2.00 USDC - POST /v1/audit): Interdependent claims, multiple sources, actors, authorities, and transitions between states. Evaluated against EPT structural criteria.
-5. Dossier (Quote-based - POST /v1/evaluations): An extensive document corpus or interconnected body of evidence requiring comprehensive evaluation. Sealed quote-bound contract: https://standing-guard-service.lovable.app/v1/contract
+5. Dossier (Quote-based - POST /v1/evaluations): An extensive document corpus or interconnected body of evidence requiring comprehensive evaluation. Sealed quote-bound contract: https://api.wheelerhubbellpublishing.com/v1/contract
 
 ## Binary Evaluated Verdicts (Signed with Ed25519)
 - ESTABLISHED -> Standing Mark (claim is bounded and strictly supported by admitted evidence)
