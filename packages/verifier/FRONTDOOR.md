@@ -2,7 +2,7 @@
 
 The five ordinary doors now return admitted `WHP-STANDING-MARK-v2` or `WHP-STANDING-ASSESSMENT-v2` envelopes. They do not return the legacy `WHP-FRONTDOOR-EVALUATION-v1` format documented here.
 
-`verify_frontdoor.py` checks historical front-door records with envelope `{record, record_hash, signature}`. `record_hash` is SHA256 of canonical JSON (sorted keys, no whitespace, UTF-8); the Ed25519 signature covers those same bytes. The fields `public_key_b64url` and `value_b64url` are base64url. The matching current legacy/EPT signing key is advertised at `GET https://standing-guard-service.lovable.app/v1/ept/core`, under `signer.public_key_b64url`. `--offline` skips the live key comparison. Signature verification does not prove payment finality or present standing.
+`verify_frontdoor.py` checks historical front-door records with envelope `{record, record_hash, signature}`. `record_hash` is SHA256 of canonical JSON (sorted keys, no whitespace, UTF-8); the Ed25519 signature covers those same bytes. The fields `public_key_b64url` and `value_b64url` are base64url. The matching current legacy/EPT signing key is advertised at `GET https://api.wheelerhubbellpublishing.com/v1/ept/core`, under `signer.public_key_b64url`. `--offline` skips the live key comparison. Signature verification does not prove payment finality or present standing.
 
     pip install cryptography
     python3 verify_frontdoor.py examples/frontdoor-selftest.json
