@@ -1,6 +1,6 @@
 {
   "name": "@wheelerhubbell/whp-standing-client",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Fail-closed epistemic standing middleware and client SDK for autonomous AI agents.",
   "main": "index.mjs",
   "types": "index.d.ts",
@@ -43,5 +43,13 @@
   },
   "dependencies": {
     "viem": "^2.21.0"
+  },
+  "exports": {
+    ".": "./index.mjs",
+    "./adapters": "./adapters.mjs",
+    "./agentkit": "./agentkit.mjs",
+    "./circuit_breaker": "./circuit_breaker.mjs",
+    "./beacon": "./beacon.mjs",
+    "./escrow": "./escrow.mjs"
   }
 }

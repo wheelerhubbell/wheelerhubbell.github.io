@@ -10,6 +10,19 @@ function parseChainId(network) {
   return 8453; // Base default
 }
 
+export function formatPaymentHeader(payload) {
+  if (!payload) return '';
+  if (typeof payload === 'string') {
+    const trimmed = payload.trim();
+    if (trimmed.startsWith('{') || trimmed.startsWith('[')) {
+      return typeof Buffer !== 'undefined' ? Buffer.from(trimmed, 'utf8').toString('base64') : btoa(trimmed);
+    }
+    return trimmed;
+  }
+  const jsonStr = JSON.stringify(payload);
+  return typeof Buffer !== 'undefined' ? Buffer.from(jsonStr, 'utf8').toString('base64') : btoa(jsonStr);
+}
+
 function prepareAutonomousPayment(terms, payerAddress, options = {}) {
   const reqs = terms.payment_requirements || terms.requirements || terms.accepted || (Array.isArray(terms.accepts) ? terms.accepts[0] : null);
   if (!reqs) throw new Error('Invalid 402 challenge: missing payment requirements');
@@ -267,7 +280,36 @@ export class StandingClient {
     if (opts.mock) headers['X-Mock'] = 'true';
     if (opts.affiliate || this.affiliate) headers['X-Affiliate'] = opts.affiliate || this.affiliate;
     if (opts.paymentToken) headers['X-Payment'] = opts.paymentToken;
-    if (opts.paymentSignature) headers['PAYMENT-SIGNATURE'] = typeof opts.paymentSignature === 'object' ? JSON.stringify(opts.paymentSignature) : opts.paymentSignature;
+    if (opts.paymentSignature) headers['PAYMENT-SIGNATURE'] = formatPaymentHeader(opts.paymentSignature);
+
+    const buyerKey = opts.buyerKey || (typeof process !== 'undefined' ? process.env?.WHP_BUYER_KEY : null);
+
+    // M2M Zero-Handshake Bump: Proactive single-roundtrip payment if buyerKey is provided
+    if (buyerKey && !headers['PAYMENT-SIGNATURE'] && opts.proactive !== false) {
+      try {
+        const { privateKeyToAccount } = await import('viem/accounts');
+        const key = buyerKey.startsWith('0x') ? buyerKey : '0x' + buyerKey;
+        const acct = privateKeyToAccount(key);
+        const terms = opts.terms || await this.getContract().then(c => c.terms || c.payment_contract || c).catch(() => null) || {
+          accepts: [{
+            scheme: 'exact',
+            network: 'eip155:8453',
+            asset: '0x833589fcd6edb6e08f4c7c32d4f71b54bda02913',
+            payTo: '0x1050eddd8282623b0c263ed6bdbd42370bbc28d3',
+            amount: '1000000',
+            extra: { assetTransferMethod: 'eip3009', name: 'USD Coin', paymentFlow: 'authorization', version: '2' },
+            maxTimeoutSeconds: 300,
+            resource: `${this.endpoint}/v1/evaluate`
+          }]
+        };
+        const prep = prepareAutonomousPayment(terms, acct.address);
+        const signature = await signWithPrivateKey(key, prep.typedData);
+        const paymentPayload = prep.completePayment(signature);
+        headers['PAYMENT-SIGNATURE'] = formatPaymentHeader(paymentPayload);
+      } catch {
+        // Fallback to reactive 402 challenge flow
+      }
+    }
 
     let res = await doFetch(`${this.endpoint}/v1/evaluate`, {
       method: 'POST',
@@ -283,7 +325,6 @@ export class StandingClient {
       } catch { /* leave null */ }
 
       // Autonomous retry if buyerKey or signer is supplied
-      const buyerKey = opts.buyerKey || process.env.WHP_BUYER_KEY;
       if (buyerKey && terms) {
         const { privateKeyToAccount } = await import('viem/accounts');
         const key = buyerKey.startsWith('0x') ? buyerKey : '0x' + buyerKey;
@@ -292,7 +333,7 @@ export class StandingClient {
         const signature = await signWithPrivateKey(key, prep.typedData);
         const paymentPayload = prep.completePayment(signature);
 
-        headers['PAYMENT-SIGNATURE'] = JSON.stringify(paymentPayload);
+        headers['PAYMENT-SIGNATURE'] = formatPaymentHeader(paymentPayload);
         res = await doFetch(`${this.endpoint}/v1/evaluate`, {
           method: 'POST',
           headers,
