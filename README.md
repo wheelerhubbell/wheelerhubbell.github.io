@@ -3,8 +3,8 @@
 > **Where formal epistemology, published literature, and autonomous Decision Integrity meet.**
 > Home of the published works, the canonical research preprints, and the machine-verifiable Standing Witness protocol for AI agents and CI/CD pipelines.
 
-[![MCP Server](https://img.shields.io/badge/MCP-Compatible-blue)](https://standing-guard-service.lovable.app/mcp)
-[![x402 Payment](https://img.shields.io/badge/x402-USDC%20on%20Base-green)](https://standing-guard-service.lovable.app/v1/contract)
+[![MCP Server](https://img.shields.io/badge/MCP-Compatible-blue)](https://api.wheelerhubbellpublishing.com/mcp)
+[![x402 Payment](https://img.shields.io/badge/x402-USDC%20on%20Base-green)](https://api.wheelerhubbellpublishing.com/v1/contract)
 [![npm](https://img.shields.io/badge/npm-%40wheelerhubbell%2Fwhp--standing--client-red)](https://github.com/wheelerhubbell/wheelerhubbell.github.io/tree/main/packages/client)
 [![GitHub Marketplace](https://img.shields.io/badge/Marketplace-Standing%20Gate-blue?logo=github)](https://github.com/marketplace/actions/standing-gate)
 
@@ -39,22 +39,22 @@ Connect any agent (Claude Desktop, Cursor, Lovable, LangChain, AutoGen) to the l
   "mcpServers": {
     "whp-standing": {
       "command": "npx",
-      "args": ["-y", "@smithery/cli", "run", "@wheelerhubbell/whp-standing-client", "--config", "{\"endpoint\":\"https://standing-guard-service.lovable.app/mcp\"}"]
+      "args": ["-y", "@smithery/cli", "run", "@wheelerhubbell/whp-standing-client", "--config", "{\"endpoint\":\"https://api.wheelerhubbellpublishing.com/mcp\"}"]
     }
   }
 }
 ```
 
 Or connect directly to the Streamable HTTP endpoint:
-`https://standing-guard-service.lovable.app/mcp`
+`https://api.wheelerhubbellpublishing.com/mcp`
 
 ### 2. Pre-Flight Structural Checks (Zero-Cost for Introspection)
 
 Agents can test schemas and verify structural completeness before committing funds:
 
-- **Structural Validation Check**: `POST https://standing-guard-service.lovable.app/v1/mock` (validates schema structure and required fields)
-- **Pre-Flight Ping**: `POST https://standing-guard-service.lovable.app/v1/ping` with header `X-Mock: true`
-- **Execution Gap Probe**: `POST https://standing-guard-service.lovable.app/v1/gap/check` (demonstrates where unverified claims halt execution before `EXECUTE` actions)
+- **Structural Validation Check**: `POST https://api.wheelerhubbellpublishing.com/v1/mock` (validates schema structure and required fields)
+- **Pre-Flight Ping**: `POST https://api.wheelerhubbellpublishing.com/v1/ping` with header `X-Mock: true`
+- **Execution Gap Probe**: `POST https://api.wheelerhubbellpublishing.com/v1/gap/check` (demonstrates where unverified claims halt execution before `EXECUTE` actions)
 
 ### 3. Machine-to-Machine Epistemic Tiers (x402 v2 on Base)
 
@@ -67,10 +67,10 @@ The service names tiers by the **epistemic object and scope of work**, not by te
 | Tier Name | Price | Epistemic Scope | Route / Contract |
 | :--- | :--- | :--- | :--- |
 | **Proposition** | 0.10 USDC | One atomic assertion, bounded question, or standalone tool output. | `POST /v1/ping` |
-| **Claim** | 1.00 USDC | A structured claim with qualifiers, standing, temporal bounds, and supporting evidence. | `POST /v1/evaluate`<br>([Contract](https://standing-guard-service.lovable.app/v1/ordinary/contract.json)) |
+| **Claim** | 1.00 USDC | A structured claim with qualifiers, standing, temporal bounds, and supporting evidence. | `POST /v1/evaluate`<br>([Contract](https://api.wheelerhubbellpublishing.com/v1/ordinary/contract.json)) |
 | **Qualification Update** | 1.00 USDC | A change to an existing claim's scope, qualifications, or temporal standing, evaluated against the existing record. | `POST /v1/patch` |
 | **Evidence Graph** | 2.00 USDC | Interdependent claims, multiple sources, actors, authorities, and transitions between states. | `POST /v1/audit` |
-| **Dossier** | Quote-based | An extensive document corpus or interconnected body of evidence requiring comprehensive evaluation. | `POST /v1/evaluations`<br>([Contract](https://standing-guard-service.lovable.app/v1/contract)) |
+| **Dossier** | Quote-based | An extensive document corpus or interconnected body of evidence requiring comprehensive evaluation. | `POST /v1/evaluations`<br>([Contract](https://api.wheelerhubbellpublishing.com/v1/contract)) |
 
 #### The Decision Integrity Pricing Invariant
 
@@ -125,7 +125,7 @@ python3 packages/verifier/verify_mark.py path/to/mark.json
 - **API Catalog (RFC 9264)**: [`/.well-known/api-catalog`](https://wheelerhubbell.github.io/.well-known/api-catalog)
 - **MCP Discovery**: [`/.well-known/mcp.json`](https://wheelerhubbell.github.io/.well-known/mcp.json)
 - **OpenAPI 3.1 Spec**: [`/openapi.json`](https://wheelerhubbell.github.io/openapi.json)
-- **Live Capability Resolution**: [`/.well-known/standing-capability.json`](https://standing-guard-service.lovable.app/.well-known/standing-capability.json)
+- **Live Capability Resolution**: [`/.well-known/standing-capability.json`](https://api.wheelerhubbellpublishing.com/.well-known/standing-capability.json)
 
 ---
 
@@ -175,5 +175,5 @@ Automate epistemic standing audits on every pull request or deployment:
 - **Guide:** [CI_CD.md](./CI_CD.md)
 - **Badge:**
   ```markdown
-  [![Standing Audit](https://img.shields.io/badge/standing--mark-verified-blue?style=flat-square)](https://standing-guard-service.lovable.app)
+  [![Standing Audit](https://img.shields.io/badge/standing--mark-verified-blue?style=flat-square)](https://api.wheelerhubbellpublishing.com)
   ```
