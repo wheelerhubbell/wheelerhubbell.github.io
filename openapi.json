@@ -863,7 +863,7 @@
   },
   "servers": [
     {
-      "url": "https://standing-guard-service.lovable.app"
+      "url": "https://api.wheelerhubbellpublishing.com"
     }
   ],
   "x-whp-purchase-contract": "/v1/contract",
