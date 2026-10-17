@@ -98,7 +98,7 @@ const client = new x402Client();
 registerExactEvmScheme(client, { signer: privateKeyToAccount(process.env.EVM_PRIVATE_KEY) });
 const fetchWithPayment = wrapFetchWithPayment(fetch, client);
 
-const res = await fetchWithPayment('https://standing-guard-service.lovable.app/v1/evaluate', {
+const res = await fetchWithPayment('https://api.wheelerhubbellpublishing.com/v1/evaluate', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
@@ -112,8 +112,8 @@ console.log(await res.json());
 
 Check the payment terms first with `GET /v1/contract`. The `StandingClient` class in this package does not sign or pay yet.
 
-- **Live Service:** [https://standing-guard-service.lovable.app](https://standing-guard-service.lovable.app)
-- **Discovery:** [/.well-known/x402](https://standing-guard-service.lovable.app/.well-known/x402)
+- **Live Service:** [https://api.wheelerhubbellpublishing.com](https://api.wheelerhubbellpublishing.com)
+- **Discovery:** [/.well-known/x402](https://api.wheelerhubbellpublishing.com/.well-known/x402)
 - **Protocol:** x402-v2 / Base Network
 
 ---
