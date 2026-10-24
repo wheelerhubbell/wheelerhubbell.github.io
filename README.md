@@ -8,17 +8,55 @@
 [![npm](https://img.shields.io/badge/npm-%40wheelerhubbell%2Fwhp--standing--client-red)](https://github.com/wheelerhubbell/wheelerhubbell.github.io/tree/main/packages/client)
 [![GitHub Marketplace](https://img.shields.io/badge/Marketplace-Standing%20Gate-blue?logo=github)](https://github.com/marketplace/actions/standing-gate)
 
-Wheeler Hubbell Publishing is an independent publishing house and research imprint. It produces foundational books, dramatic texts, and philosophical preprints (*Constitutional Continuity Theory*, *Coherent Substitution*, *The Elemental Properties of True*), while maintaining a deterministic, fail-closed runtime and cryptographic witness service for AI agent ecosystems and automated pipelines.
+## Unified Service Architecture
+
+Wheeler Hubbell Publishing is one service ecosystem with four complementary layers:
+
+- Public identity and research layer: `wheelerhubbell.github.io`
+  - canonical publishing site
+  - standards, research, API discovery, examples, attestations
+
+- Runtime / standing engine: `wheelerhubbell/standing-gate`
+  - live evaluation engine
+  - CI/CD action
+  - claim and evidence verification
+  - MCP and API integration
+
+- Enforcement template layer: `wheelerhubbell/whp-sentinel-template`
+  - ready-to-use repo integration
+  - decision integrity guardrails for automation and deployment
+
+- Agent tooling layer: `wheelerhubbell/agentkit`
+  - agent-wallet and agent-runtime helpers
+  - operational integration for autonomous systems
+
+This structure creates one coherent product:
+
+```
+Wheeler Hubbell Publishing
+├── Public narrative and standards        (wheelerhubbell.github.io)
+├── Standing Mark service runtime          (standing-gate)
+├── Default enforcement template           (whp-sentinel-template)
+└── Agent/tooling integration layer        (agentkit)
+```
+
+The public site explains the theory and protocol. The runtime performs the verification. The template makes adoption easy. The tooling integrates the service into autonomous workflows.
+
+To be clear: these repositories are not competing systems. They are the same service expressed in different operational layers.
+
+---
+
+Wheeler Hubbell Publishing is an independent publishing house and research imprint. It produces foundational books, dramatic texts, and philosophical preprints (*Constitutional Continuity Theory*, *Before Certainty*, *Room Without a View*, etc.) and simultaneously operates the canonical machine-verifiable Standing Witness protocol for AI agents and CI/CD pipelines.
 
 ---
 
 ## Autonomous Agent & A2A Infrastructure
 
-Autonomous AI agents operating in agent-to-agent (A2A) economic networks require **epistemic guardrails** to prevent hallucinations, counterfeit provenance, and catastrophic action on baseless assertions. WHP Standing separates authority from payment, and determination from external acceptance.
+Autonomous AI agents operating in agent-to-agent (A2A) economic networks require **epistemic guardrails** to prevent hallucinations, counterfeit provenance, and catastrophic action on baseless assertions.
 
 ### What Wheeler Hubbell Publishing Standing Is
 
-Wheeler Hubbell Publishing operates a formal **Epistemic Reasoning Environment** for autonomous agents and machine pipelines. It evaluates whether an agent's assertions, inferences, qualifiers, and requested operations are structurally warranted and preserved by the specific evidence and authority submitted.
+Wheeler Hubbell Publishing operates a formal **Epistemic Reasoning Environment** for autonomous agents and machine pipelines. It evaluates whether an agent's assertions, inferences, qualifiers, and action requests have sufficient grounding to be accepted as trustworthy.
 
 - **Qualifier Protection:** Ensures that the conditions and boundaries making a statement valid are not dropped as information flows between agents.
 - **Force Non-Escalation:** Prevents weak inferences or speculative hypotheses from being promoted to settled fact or authorization.
@@ -27,7 +65,7 @@ Wheeler Hubbell Publishing operates a formal **Epistemic Reasoning Environment**
 ### What Wheeler Hubbell Publishing Standing Is NOT
 
 - **Not a Notary Public:** WHP does not blindly stamp, notarize, or timestamp uninspected text or arbitrary document hashes.
-- **Not an Oracle or Universal Truth Arbiter:** WHP does not claim omniscient access to external physical reality or arbitrate whether outside events happened. It evaluates inferential and evidentiary integrity strictly from what the caller provides. If the submitted evidence fails to support the claim, or if essential qualifiers are stripped, the evaluation fails closed.
+- **Not an Oracle or Universal Truth Arbiter:** WHP does not claim omniscient access to external physical reality or arbitrate whether outside events happened. It evaluates inferential and evidentiary standing under defined constraints.
 - **Not a Simulation or Facade:** Live evaluations produce signed cryptographic records under published invariants and settle through real economic rails.
 
 ### 1. Model Context Protocol (MCP)
@@ -58,28 +96,26 @@ Agents can test schemas and verify structural completeness before committing fun
 
 ### 3. Machine-to-Machine Epistemic Tiers (x402 v2 on Base)
 
-When a live, cryptographically signed standing record or sealed Mark is required, agents and automated pipelines self-settle using **x402** via gasless EIP-3009 `TransferWithAuthorization` in USDC on Base (`eip155:8453`). No human account, credit card, or custodial deposit is needed.
+When a live, cryptographically signed standing record or sealed Mark is required, agents and automated pipelines self-settle using **x402** via gasless EIP-3009 `TransferWithAuthorization` in USDC on Base.
 
 #### Canonical Epistemic Tiers
 
-The service names tiers by the **epistemic object and scope of work**, not by technical submission routes. The same reasoning engine applies the identical evidentiary standard at every tier; fee reflects workload and structure, not the verdict.
+The service names tiers by the **epistemic object and scope of work**, not by technical submission routes. The same reasoning engine applies the identical evidentiary standard at every tier; fee reflects workload difference.
 
 | Tier Name | Price | Epistemic Scope | Route / Contract |
 | :--- | :--- | :--- | :--- |
 | **Proposition** | 0.10 USDC | One atomic assertion, bounded question, or standalone tool output. | `POST /v1/ping` |
-| **Claim** | 1.00 USDC | A structured claim with qualifiers, standing, temporal bounds, and supporting evidence. | `POST /v1/evaluate`<br>([Contract](https://api.wheelerhubbellpublishing.com/v1/ordinary/contract.json)) |
+| **Claim** | 1.00 USDC | A structured claim with qualifiers, standing, temporal bounds, and supporting evidence. | `POST /v1/evaluate` |
 | **Qualification Update** | 1.00 USDC | A change to an existing claim's scope, qualifications, or temporal standing, evaluated against the existing record. | `POST /v1/patch` |
 | **Evidence Graph** | 2.00 USDC | Interdependent claims, multiple sources, actors, authorities, and transitions between states. | `POST /v1/audit` |
-| **Dossier** | Quote-based | An extensive document corpus or interconnected body of evidence requiring comprehensive evaluation. | `POST /v1/evaluations`<br>([Contract](https://api.wheelerhubbellpublishing.com/v1/contract)) |
+| **Dossier** | Quote-based | An extensive document corpus or interconnected body of evidence requiring comprehensive evaluation. | `POST /v1/evaluations` |
 
 #### The Decision Integrity Pricing Invariant
 
 1. **Workload-Determined**: The fee is determined strictly by the volume, structure, and epistemic scope of the submitted material and the computational work required to evaluate it.
 2. **Outcome-Independent**: The fee is independent of the evaluation outcome.
-3. **No Purchased Verdicts**: Payment purchases an evaluation under published rules. It does not purchase a favorable Mark, an `ESTABLISHED` result, or a predetermined conclusion. Evaluated records are Ed25519-signed regardless of verdict:
-   - **`ESTABLISHED`** -> Standing Mark (claim is bounded and strictly supported by admitted evidence)
-   - **`NOT_ESTABLISHED`** -> Standing Assessment (claim lacks necessary authority, evidence, or qualifier protection)
-4. **Uniform Evidentiary Standard**: A Proposition and a Dossier differ in scope, but neither gets a more permissive evidentiary threshold because of price. Likewise, a Qualification Update never silently inherits an earlier conclusion if underlying authority or evidence has shifted.
+3. **No Purchased Verdicts**: Payment purchases an evaluation under published rules. It does not purchase a favorable Mark, an `ESTABLISHED` result, or a predetermined conclusion.
+4. **Uniform Evidentiary Standard**: A Proposition and a Dossier differ in scope, but neither gets a more permissive evidentiary threshold because of price.
 
 ---
 
@@ -88,7 +124,7 @@ The service names tiers by the **epistemic object and scope of work**, not by te
 Rather than waiting passively for agents to query the service, the **Summoning Beacon** actively pings and summons autonomous machines:
 - **Active Webhook Knock:** Dispatch direct challenge payloads (`WHP-SUMMON-BEACON-v1`) to agent webhooks to force immediate epistemic evaluation.
 - **Heartbeat & Challenge Stream:** SSE endpoint (`GET /v1/beacon/stream`) streaming real-time heartbeat pulses and challenges to listening worker bots.
-- **Onchain Summoning Contract:** [`contracts/StandingBeacon.sol`](contracts/StandingBeacon.sol) on Base emits indexed `AgentSummoned` events with attached bounties.
+- **Onchain Summoning Contract:** `contracts/StandingBeacon.sol` on Base emits indexed `AgentSummoned` events with attached bounties.
 - **Full Guide:** Read [BEACON.md](BEACON.md) for architecture and integration patterns.
 
 ## Client Libraries & SDKs
@@ -151,11 +187,11 @@ MIT © Wheeler Hubbell Publishing, Inc.
 ## Autonomous Agent Infrastructure (A2A)
 
 ### 1. Epistemic Circuit Breaker (`@wheelerhubbell/whp-standing-client`)
-Fail-closed middleware for LangChain, OpenAI function calling, and MCP tools. Intercepts irrevocable tool invocations (transfers, deletions, external writes) and halts execution if upstream authority or provenance is unverified.
+Fail-closed middleware for LangChain, OpenAI function calling, and MCP tools. Intercepts irrevocable tool invocations and halts execution if upstream authority or qualification protection is missing.
 * Guide: [CIRCUIT_BREAKER.md](./CIRCUIT_BREAKER.md)
 
 ### 2. Proof-of-Standing Escrow Condition
-Turn WHP Standing Marks into algorithmic escrow release conditions for autonomous agent swarms. Funds in escrow disburse only when tasks present valid, signed standing records meeting invariant $A(c) \le P(c)$.
+Turn WHP Standing Marks into algorithmic escrow release conditions for autonomous agent swarms. Funds in escrow disburse only when tasks present valid, signed standing records meeting invariant conditions.
 * Specification: [ESCROW.md](./ESCROW.md)
 * Smart Contract: [`contracts/StandingEscrow.sol`](./contracts/StandingEscrow.sol)
 
@@ -165,7 +201,7 @@ Equip autonomous agents running on Base (`eip155:8453`) with pre-execution safet
 
 - **Action Provider:** `packages/client/agentkit.mjs`
 - **Guide:** [AGENTKIT.md](./AGENTKIT.md)
-- **Supported Tools:** `whp_standing_ping` (0.10 USDC), `whp_standing_audit` (2.00 USDC), `whp_standing_circuit_breaker`
+- **Supported Tools:** `whp_standing_ping`, `whp_standing_audit`, `whp_standing_circuit_breaker`
 
 ## CI/CD Pipeline Gate & Badge
 
