@@ -76,6 +76,19 @@ A Standing Mark may only be issued when the claim is genuinely established under
 - Capability Resolution: /.well-known/standing-capability.json
 - LLM Context: /llms.txt
 
+## Archive and Canonical Boundary
+
+The current canonical machine is:
+
+- Wheeler Hubbell Publishing
+- Decision Integrity Protocol
+- Unilateral Integrity
+- Standing Mark Service
+- Standing Gate
+- Standing Mark / Standing Assessment
+
+Anything that is not directly connected to this machine is archival context, not the live canonical system. Historical essays, exploratory notes, and non-authoritative drafts belong in `archive/` and must not be treated as the current canonical identity of the protocol.
+
 ## Publications and Research
 
 This repository also hosts the public literature, foundational texts, and research artifacts that ground the protocol and its doctrines.
