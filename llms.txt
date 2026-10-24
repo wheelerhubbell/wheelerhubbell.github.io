@@ -1,67 +1,45 @@
-# Wheeler Hubbell Publishing & WHP Standing
+# Wheeler Hubbell Publishing — Sovereign Decision Integrity Runtime
 
-> Machine-verifiable standing under explicit authority, evidence, and bounds.
+> The mathematical gate between autonomous agent reasoning and consequential action.
 
 Publisher: Wheeler Hubbell Publishing, Inc.
-Website: https://wheelerhubbell.github.io
+Website: https://wheelerhubbellpublishing.com
+Canonical Treatise: https://wheelerhubbellpublishing.com/essay.html
 Service Runtime: https://api.wheelerhubbellpublishing.com
-Repository: https://github.com/wheelerhubbell/wheelerhubbell.github.io
+Primary Repository: https://github.com/wheelerhubbell/standing-guard-service
+GitHub Action: https://github.com/wheelerhubbell/standing-gate (uses: wheelerhubbell/standing-gate@v0)
 
-## Autonomous Machine & Agent Interfaces
+## The Core Problem Solved
+Statistical language models (LLMs) hallucinate by sounding completely convincing. They smooth over missing evidence, strip conditional qualifiers, substitute different questions, and claim authority they do not possess.
+Standard semantic guardrails (toxicity filters, regex, sentiment analysis) only check for offensive words or jailbreaks—they cannot evaluate whether evidence actually warrants a consequential action.
 
-- MCP Endpoint (Streamable HTTP): https://api.wheelerhubbellpublishing.com/mcp
-- Smithery Registry: npx -y @smithery/cli run @wheelerhubbell/whp-standing-client
-- GitHub Marketplace Action: https://github.com/marketplace/actions/standing-gate
-- API Catalog: https://api.wheelerhubbellpublishing.com/.well-known/api-catalog
+WHP Decision Integrity evaluates whether an agent's claim and requested operation (moving money, merging code, filing compliance) are structurally and evidentially warranted by the submitted authority and provenance, enforcing Invariant I.1: Action Force cannot exceed Premise Support (A(c) <= P(c)).
+
+## The Four Named Failures Detected & Halted
+1. Coherent Substitution: Answering a materially different proposition while presenting the output as responsive to the original.
+2. Authority Leakage: Converting descriptive informational findings into consequential execution authority without an admitted warrant.
+3. Qualifier Stripping: Dropping temporal, situational, or environmental caveats when propagating conclusions.
+4. Object Drift: Subtly altering the identity or boundary of the governed entity across inference steps.
+
+## Sovereign Production Interfaces
+- Single REST Door: POST https://api.wheelerhubbellpublishing.com/v1/evaluate
+- Streamable MCP Server: POST https://api.wheelerhubbellpublishing.com/mcp (Tools: whp_evaluate, whp_standing_evaluation, whp_standing_contract)
+- GitHub CI/CD Action: uses: wheelerhubbell/standing-gate@v0
+- Independent Verifier: POST https://api.wheelerhubbellpublishing.com/v1/verification
 - OpenAPI Specification: https://api.wheelerhubbellpublishing.com/v1/openapi.json
-- MCP Server Metadata: https://api.wheelerhubbellpublishing.com/server.json
-- Capability Resolution: https://api.wheelerhubbellpublishing.com/.well-known/standing-capability.json
-- Service Health: https://api.wheelerhubbellpublishing.com/healthz
 
-## Epistemic Reasoning Environment vs Notary / Oracle
+## Dual Payment Rails
+1. Autonomous Machine Rail (1 Base USDC / evaluation):
+   - Protocol: x402 v2 over HTTP 402 challenge
+   - Network: Base (eip155:8453)
+   - Asset: Native Base USDC (0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913)
+   - PayTo: 0x1050eddd8282623b0c263ed6bdbd42370bbc28d3 (whpublishing.base.eth)
+   - Settlement: Gasless EIP-3009 TransferWithAuthorization via keyless facilitator.
+2. Monthly Enterprise & Developer Subscriptions:
+   - Developer Sentinel ($149/mo): https://buy.stripe.com/5kQ8wP4n7bn5bWM8QP1oI08
+   - Team CI/CD Gateway ($699/mo): https://buy.stripe.com/14A9ATcTDaj12mcffd1oI07
+   - Institutional Sovereign ($3,500/mo): https://buy.stripe.com/bJebJ1dXH9eX0e47ML1oI06
+   - Subscribers pass API keys via x-api-key or Authorization: Bearer, bypassing per-transaction challenges.
 
-- **What WHP Standing Is:** A formal epistemic reasoning environment for autonomous agent-to-agent (A2A) interactions and decision integrity. It evaluates whether an agent's claims, inferences, and requested operations are structurally, inferentially, and qualificationally warranted strictly by the admitted evidence, qualifiers, and authority supplied.
-- **What WHP Standing Is NOT:**
-  - **Not a Notary Public:** It does not blindly timestamp or notarize arbitrary assertions or document hashes without examining epistemic warrant.
-  - **Not an Oracle or Universal Truth Arbiter:** It does not claim omniscient access to external physical reality. It evaluates inferential validity from the information and bounds provided by the caller. If an assertion exceeds its evidence or drops necessary qualifications, it fails evaluation.
-  - **Not a Simulation:** Production evaluations are deterministic and settled on Base via x402.
-
-## Pre-Flight Structural Checks (Zero Cost for Agents)
-
-Agents can test schemas and probe behavior before committing funds:
-
-- POST /v1/mock (Free): Structural validation check for {subject, claim, provenance}.
-- POST /v1/ping (Header: X-Mock: true or ?mock=true): Pre-flight structural completeness check.
-- POST /v1/gap/check (Free): Behavior check showing whether an agent's operation (INFORM, RECOMMEND, EXECUTE) halts without standing.
-
-## Paid Epistemic Evaluation Tiers (x402 v2, USDC on Base eip155:8453)
-
-Unpaid POST returns HTTP 402 with machine-readable payment terms. Payments use gasless EIP-3009 TransferWithAuthorization.
-
-### Decision Integrity Pricing Invariant
-- The fee is determined strictly by the volume, structure, and epistemic scope of the submitted material.
-- The fee is independent of the evaluation outcome.
-- Payment purchases an evaluation under published rules—never a favorable Mark, an ESTABLISHED result, or a predetermined conclusion.
-- The identical evidentiary standard applies across all tiers; price reflects workload, not evidentiary leniency.
-
-### Canonical Epistemic Objects & Tiers
-1. Proposition (0.10 USDC - POST /v1/ping): One atomic assertion, bounded question, or standalone output. Instant signed structural validation.
-2. Claim (1.00 USDC - POST /v1/evaluate): A structured claim with qualifiers, standing, temporal bounds, and supporting evidence. Evaluated under WHP-STANDING-ORDINARY-INTAKE/1.0.0.
-   - Admission: https://api.wheelerhubbellpublishing.com/v1/ordinary/admission.json
-   - Contract: https://api.wheelerhubbellpublishing.com/v1/ordinary/contract.json
-   - Verifier: https://api.wheelerhubbellpublishing.com/v1/ordinary/verify_ordinary.mjs
-3. Qualification Update (1.00 USDC - POST /v1/patch): A change to an existing claim's scope, qualifications, or temporal standing, evaluated against the existing record.
-4. Evidence Graph (2.00 USDC - POST /v1/audit): Interdependent claims, multiple sources, actors, authorities, and transitions between states. Evaluated against EPT structural criteria.
-5. Dossier (Quote-based - POST /v1/evaluations): An extensive document corpus or interconnected body of evidence requiring comprehensive evaluation. Sealed quote-bound contract: https://api.wheelerhubbellpublishing.com/v1/contract
-
-## Binary Evaluated Verdicts (Signed with Ed25519)
-- ESTABLISHED -> Standing Mark (claim is bounded and strictly supported by admitted evidence)
-- NOT_ESTABLISHED -> Standing Assessment (claim lacks necessary authority, evidence, or qualifier protection)
-
-## SDKs & Packages
-
-- GitHub Marketplace: wheelerhubbell/standing-gate (Action for CI/CD gates)
-- npm: @wheelerhubbell/whp-standing-client (TypeScript/Node middleware & CLI)
-- Python: whp-standing-client (Async Python SDK under py/)
-- TypeScript: @whp/standing-client (TypeScript SDK under ts/)
-- Standalone Verifier: Python script under packages/verifier/verify_mark.py
+## Cryptographic Standing Mark
+Every determination is canonicalized (RFC 8785) and cryptographically signed with WHP's authoritative Ed25519 issuer key. The signed mark is portable, self-contained, and independently verifiable offline or via /v1/verification.
