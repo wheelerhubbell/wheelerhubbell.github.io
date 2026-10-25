@@ -159,7 +159,7 @@
                     <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
                         <div class="text-slate-400 text-xs font-medium mb-1">1. Production Service Gateway</div>
                         <div id="serviceStatusText" class="text-white font-mono text-xs flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500" id="statusDot"></span> <span id="statusLabel">standing-guard-service.lovable.app</span>
+                            <span class="w-2 h-2 rounded-full bg-emerald-500" id="statusDot"></span> <span id="statusLabel">api.wheelerhubbellpublishing.com</span>
                         </div>
                         <div id="serviceSubtext" class="text-[11px] text-slate-500 mt-1 font-mono">Issuer: Wheeler Hubbell Publishing</div>
                     </div>
@@ -524,7 +524,7 @@ localStorage.removeItem('summon_beacon_gh_token');
                 appendLog(`[ERROR] Dispatch failed: ${err.message}.`);
             }
         }
-        const BACKEND_BASE = 'https://standing-guard-service.lovable.app';
+        const BACKEND_BASE = 'https://api.wheelerhubbellpublishing.com';
         async function verifyProductionLive() {
             const term = document.getElementById('whpTerminal');
             const dot = document.getElementById('statusDot');
@@ -565,35 +565,44 @@ localStorage.removeItem('summon_beacon_gh_token');
             const logWhp = (msg, color = 'text-slate-300') => {
                 const div = document.createElement('div');
                 div.className = color;
-                div.textContent = `[MOCK-TEST] ${msg}`;
+                div.textContent = `[GATE-TEST] ${msg}`;
                 term.appendChild(div);
                 term.scrollTop = term.scrollHeight;
             };
-            logWhp('Executing zero-cost pre-flight structural evaluation against POST /v1/mock...', 'text-cyan-400');
+            logWhp('Testing sovereign front door circuit breaker against POST /v1/evaluate...', 'text-cyan-400');
             const samplePayload = {
                 subject: 'Autonomous Settlement Action #8941',
                 claim: 'EVM transaction execution complies with configured authority boundaries',
                 provenance: {
-                    source: 'https://wheelerhubbell.github.io',
+                    source: 'https://wheelerhubbellpublishing.com',
                     authority: 'Wheeler Hubbell Publishing',
-                    evidence: ['urn:sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855']
+                    evidence: [{ repository: 'wheelerhubbell/standing-gate', sha: 'head', timestamp: new Date().toISOString() }]
                 }
             };
             try {
-                const resp = await fetch(BACKEND_BASE + '/v1/mock', {
+                const resp = await fetch(BACKEND_BASE + '/v1/evaluate', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(samplePayload)
                 });
                 const res = await resp.json();
-                logWhp(`Pre-flight response: HTTP ${resp.status} - Type: ${res.type}`, 'text-green-400');
-                logWhp(`Door: ${res.door} | Structurally Complete: ${res.structurally_complete}`, res.structurally_complete ? 'text-emerald-400' : 'text-amber-300');
-                for (const chk of (res.checks || [])) {
-                    logWhp(`Check [${chk.id}]: ${chk.pass ? 'PASS' : 'FAIL'} (${chk.note || ''})`, chk.pass ? 'text-green-300' : 'text-red-300');
+                if (resp.status === 402) {
+                    logWhp(`Circuit Breaker Enforced: HTTP 402 Payment Required`, 'text-emerald-400 font-bold');
+                    logWhp(`Protocol: x402 Version ${res.x402Version} | Resource: ${res.resource?.url}`, 'text-cyan-300');
+                    if (res.accepts && res.accepts[0]) {
+                        const acc = res.accepts[0];
+                        logWhp(`Accepted Asset: ${acc.asset} (${acc.extra?.name || 'USDC'}) on ${acc.network}`, 'text-emerald-300');
+                        logWhp(`Pay To: ${acc.payTo} | Amount: ${acc.amount} micro-USDC ($1.00)`, 'text-yellow-300');
+                    }
+                    appendLog('[CIRCUIT-BREAKER] Front-door x402 challenge verified live on Base Mainnet.');
+                } else if (resp.ok) {
+                    logWhp(`Evaluation Cleared: HTTP 200 - Outcome: ${res.record?.determination?.outcome}`, 'text-green-400');
+                    appendLog('[EVALUATE] Sovereign determination issued successfully.');
+                } else {
+                    logWhp(`Door status: HTTP ${resp.status} - ${res.error || res.message}`, 'text-amber-400');
                 }
-                appendLog('[MOCK] Pre-flight structural verification succeeded on live backend.');
             } catch (err) {
-                logWhp(`Mock test error: ${err.message}`, 'text-red-400');
+                logWhp(`Front door test error: ${err.message}`, 'text-red-400');
             }
         }
         function appendLog(text) {
