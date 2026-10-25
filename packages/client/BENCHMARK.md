@@ -69,15 +69,15 @@ Autonomous agents running in Claude Desktop, Cursor, Goose, or custom LangChain/
 
 ### Direct Programmatic Verification
 
-See the README for the front-door request format (`subject`, `claim`, `provenance`) and the x402 payment example. Sealed Marks use the signed-submission contract at https://standing-guard-service.lovable.app/v1/contract.
+See the README for the front-door request format (`subject`, `claim`, `provenance`) and the x402 payment example. Sealed Marks use the signed-submission contract at https://api.wheelerhubbellpublishing.com/v1/contract.
 
 ---
 
 ## Registry & Verification Endpoints
 
-- **Live Service Endpoint:** `https://standing-guard-service.lovable.app`
-- **MCP Route:** `https://standing-guard-service.lovable.app/mcp`
-- **Machine Discovery (llms.txt):** `https://standing-guard-service.lovable.app/llms.txt`
+- **Live Service Endpoint:** `https://api.wheelerhubbellpublishing.com`
+- **MCP Route:** `https://api.wheelerhubbellpublishing.com/mcp`
+- **Machine Discovery (llms.txt):** `https://api.wheelerhubbellpublishing.com/llms.txt`
 - **Public Client Repository:** [github.com/wheelerhubbell/whp-standing-client](https://github.com/wheelerhubbell/whp-standing-client)
 
 ---

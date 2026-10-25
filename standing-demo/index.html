@@ -112,7 +112,7 @@ var b=this;b.disabled=true;b.textContent="Playing back\u2026";
 setTimeout(function(){fill("rows",ROWS);document.getElementById("rec").className="rec on";b.disabled=false;b.textContent="Play back again"},600)};
 document.getElementById("knock").onclick=function(){
 var b=this;b.disabled=true;b.textContent="Knocking\u2026";
-fetch("https://standing-guard-service.lovable.app/v1/evaluate",{method:"POST",headers:{"content-type":"application/json"},body:"{}"})
+fetch("https://api.wheelerhubbellpublishing.com/v1/evaluate",{method:"POST",headers:{"content-type":"application/json"},body:"{}"})
 .then(function(r){return r.json().then(function(j){return [r.status,j]})})
 .then(function(x){var s=x[0],j=x[1],a=(j.accepts&&j.accepts[0])||{};var amt=a.amount?(Number(a.amount)/1e6).toFixed(2)+" USDC":"unreported";
 fill("krows",[

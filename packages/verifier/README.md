@@ -32,9 +32,9 @@ The verifier embeds its wire schemas and imports no producer modules. Cryptograp
 
 ## Source and scope
 
-Ratified source: https://standing-guard-service.lovable.app/v1/verification/0980eb6bb156f4251a935a65a6e2ef6c7441fc06de8b2a05f1e57c511d19cb5e.py
+Ratified source: https://api.wheelerhubbellpublishing.com/v1/verification/0980eb6bb156f4251a935a65a6e2ef6c7441fc06de8b2a05f1e57c511d19cb5e.py
 
-Service verification information: https://standing-guard-service.lovable.app/v1/verification
+Service verification information: https://api.wheelerhubbellpublishing.com/v1/verification
 
 No engine files, keys, payment authorizations, customer records, or private repository history are included. Publication does not add a software license or grant broader rights.
 

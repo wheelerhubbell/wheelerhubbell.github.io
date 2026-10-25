@@ -31,7 +31,7 @@ test("client proof is a valid Ed25519 seal bound to method/path/body", async () 
 });
 
 // ---- mock service ----
-const ORIGIN = "https://standing-guard-service.lovable.app";
+const ORIGIN = "https://api.wheelerhubbellpublishing.com";
 const ROOT = "c".repeat(64);
 const NOW = 1791430000;
 const template = { profile: { id: "P", version: "2.0.0", sha256: "d".repeat(64) }, object: { id: "o", version: "1", root: "e".repeat(64) }, bounds: { jurisdiction: "j", scope: "s", valid_from: NOW - 10, valid_until: NOW + 1000 }, requested_operation: "INFORM" };

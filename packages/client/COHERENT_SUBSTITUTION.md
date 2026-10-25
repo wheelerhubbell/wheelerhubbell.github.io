@@ -45,4 +45,4 @@ await guardAction(toolCall, {
 
 - **Case Study Demonstration:** [Mata v. Avianca Epistemic Autopsy](./MATA_V_AVIANCA_AUTOPSY.md)
 - **Package:** [@wheelerhubbell/whp-standing-client](https://www.npmjs.com/package/@wheelerhubbell/whp-standing-client)
-- **Engine & x402 Gateway:** [https://standing-guard-service.lovable.app](https://standing-guard-service.lovable.app)
+- **Engine & x402 Gateway:** [https://api.wheelerhubbellpublishing.com](https://api.wheelerhubbellpublishing.com)

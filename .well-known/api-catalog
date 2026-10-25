@@ -4,33 +4,33 @@
       "anchor": "https://wheelerhubbell.github.io/.well-known/api-catalog",
       "item": [
         {
-          "href": "https://standing-guard-service.lovable.app/mcp"
+          "href": "https://api.wheelerhubbellpublishing.com/mcp"
         },
         {
-          "href": "https://standing-guard-service.lovable.app/v1/evaluate"
+          "href": "https://api.wheelerhubbellpublishing.com/v1/evaluate"
         },
         {
-          "href": "https://standing-guard-service.lovable.app/v1/mock"
+          "href": "https://api.wheelerhubbellpublishing.com/v1/mock"
         },
         {
-          "href": "https://standing-guard-service.lovable.app/v1/ordinary/contract.json"
+          "href": "https://api.wheelerhubbellpublishing.com/v1/ordinary/contract.json"
         },
         {
-          "href": "https://standing-guard-service.lovable.app/v1/ordinary/admission.json"
+          "href": "https://api.wheelerhubbellpublishing.com/v1/ordinary/admission.json"
         },
         {
-          "href": "https://standing-guard-service.lovable.app/v1/evaluations"
+          "href": "https://api.wheelerhubbellpublishing.com/v1/evaluations"
         },
         {
-          "href": "https://standing-guard-service.lovable.app/v1/contract"
+          "href": "https://api.wheelerhubbellpublishing.com/v1/contract"
         }
       ]
     },
     {
-      "anchor": "https://standing-guard-service.lovable.app/v1/evaluate",
+      "anchor": "https://api.wheelerhubbellpublishing.com/v1/evaluate",
       "service-desc": [
         {
-          "href": "https://standing-guard-service.lovable.app/v1/openapi.json",
+          "href": "https://api.wheelerhubbellpublishing.com/v1/openapi.json",
           "type": "application/json"
         }
       ],
@@ -46,7 +46,7 @@
       ],
       "status": [
         {
-          "href": "https://standing-guard-service.lovable.app/healthz"
+          "href": "https://api.wheelerhubbellpublishing.com/healthz"
         }
       ]
     }

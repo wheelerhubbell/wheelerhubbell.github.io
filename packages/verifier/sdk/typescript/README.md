@@ -46,7 +46,7 @@ import { createPrivateKey } from 'node:crypto';
 import { StandingClient, FileJournal } from './dist/index.js';
 
 const client = new StandingClient({
-  origin: 'https://standing-guard-service.lovable.app',
+  origin: 'https://api.wheelerhubbellpublishing.com',
   rootPin: admittedRootPin, // chosen by your own trust policy, never copied blindly
   buyerKey: createPrivateKey(buyerKeyFromSecureCustody), // Ed25519, not the wallet key
   journal: new FileJournal(privateDurableJournalDirectory)

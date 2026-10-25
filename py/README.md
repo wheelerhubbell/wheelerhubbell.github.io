@@ -1,6 +1,6 @@
 # whp-standing-client
 
-Async Python client for WHP Standing (https://standing-guard-service.lovable.app). Answers the x402 v2 challenge (USDC on Base, `eip155:8453`) with a gasless EIP-3009 `TransferWithAuthorization` signed by a key you provide.
+Async Python client for WHP Standing (https://api.wheelerhubbellpublishing.com). Answers the x402 v2 challenge (USDC on Base, `eip155:8453`) with a gasless EIP-3009 `TransferWithAuthorization` signed by a key you provide.
 
 ```python
 from whp_standing_client import StandingClient, BuyerKey

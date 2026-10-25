@@ -15,7 +15,7 @@ import { AgentRuntime } from "@coinbase/agentkit";
 import { WHPStandingActionProvider } from "./packages/client/agentkit.mjs";
 
 const standingProvider = new WHPStandingActionProvider({
-  origin: "https://standing-guard-service.lovable.app"
+  origin: "https://api.wheelerhubbellpublishing.com"
 });
 
 // Register actions with AgentKit

@@ -48,11 +48,11 @@ Deployable on **Base (8453)**:
 
 The original sections above are preserved. They describe a protocol template, not a claim that every described capability is deployed.
 
-- Service: https://standing-guard-service.lovable.app
+- Service: https://api.wheelerhubbellpublishing.com
 - Free signed demonstration: `GET` / `POST /v1/beacon/demo`. No payment or account required. Exact text or JSON is retained. A demonstration is not a paid Standing Assessment, favorable Standing Mark, settlement or permission to act.
 - Demo request schema: `/v1/beacon/demo/request-schema`; result schema: `/v1/beacon/demo/result-schema`.
 - Demo verifier SHA256: `d357a5641f0ec962356c415ec9e5e55e531ab02527b5a1f282700f8193f8744a`.
-- Immutable demo source: https://standing-guard-service.lovable.app/v1/beacon/demo/verifiers/d357a5641f0ec962356c415ec9e5e55e531ab02527b5a1f282700f8193f8744a.py
+- Immutable demo source: https://api.wheelerhubbellpublishing.com/v1/beacon/demo/verifiers/d357a5641f0ec962356c415ec9e5e55e531ab02527b5a1f282700f8193f8744a.py
 - Purchase discovery: `/.well-known/x402`; ordinary contract: `/v1/ordinary/contract.json`; sealed proof-graph contract: `/v1/contract`.
 - Six priced HTTP doors: `/v1/evaluate` (1 USDC), `/v1/patch` (1 USDC), `/v1/audit` (2 USDC), `/v1/ping` (0.10 USDC), `/v1/evaluate/priority` (5 USDC), `/v1/ept/core` (1 USDC). Prices are unchanged. The first five currently use the ordinary evaluator; `/v1/ept/core` delivers the EPT asset. Distinct tier behavior is not claimed before implementation and verification.
 - Ordinary intake supports both x402 exact USDC on Base and existing prepaid credit tokens. Payment buys evaluation execution, not an ESTABLISHED outcome. ESTABLISHED returns a Standing Mark; NOT_ESTABLISHED returns a Standing Assessment with `mark_id: null`.

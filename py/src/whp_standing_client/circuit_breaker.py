@@ -21,7 +21,7 @@ class CircuitBreakerTripped(StandingError):
 def with_epistemic_circuit_breaker(
     func: Callable[..., Any],
     name: Optional[str] = None,
-    endpoint: str = "https://standing-guard-service.lovable.app",
+    endpoint: str = "https://api.wheelerhubbellpublishing.com",
     mode: str = "local",  # "local" | "mock" | "ping"
     is_destructive: Optional[bool] = None,
 ) -> Callable[..., Any]:

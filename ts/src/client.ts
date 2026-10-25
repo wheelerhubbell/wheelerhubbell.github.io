@@ -3,7 +3,7 @@ import { BuyerKey, addressOf, signTransferAuthorization, type TransferAuthorizat
 import { StandingError } from "./errors.js";
 import type { PaymentPolicy, PaymentRequired, PaymentRequirements, PurchaseOutcome, Submission, SubmissionTemplate, SignedNode } from "./types.js";
 
-export const DEFAULT_ORIGIN = "https://standing-guard-service.lovable.app";
+export const DEFAULT_ORIGIN = "https://api.wheelerhubbellpublishing.com";
 export const DEFAULT_POLICY: PaymentPolicy = {
   network: "eip155:8453",
   asset: "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913", // USDC on Base

@@ -16,7 +16,7 @@ from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 from eth_account import Account
 
 Json = Any
-DEFAULT_ORIGIN = "https://standing-guard-service.lovable.app"
+DEFAULT_ORIGIN = "https://api.wheelerhubbellpublishing.com"
 _HEX64 = re.compile(r"^[0-9a-f]{64}$")
 _ADDR = re.compile(r"^0x[0-9a-fA-F]{40}$")
 

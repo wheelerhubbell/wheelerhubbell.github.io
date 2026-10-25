@@ -5,7 +5,7 @@ from whp_standing_client import (BuyerKey, MemoryPurchaseStore, StandingClient, 
 
 vec = json.loads((pathlib.Path(__file__).parent / "vector.json").read_text())
 DOMAIN = {"name": "USD Coin", "version": "2", "chainId": "8453", "verifyingContract": DEFAULT_POLICY.asset}
-ORIGIN, ROOT, NOW, REF = "https://standing-guard-service.lovable.app", "c" * 64, 1791430000, "ref_0123456789abcdef"
+ORIGIN, ROOT, NOW, REF = "https://api.wheelerhubbellpublishing.com", "c" * 64, 1791430000, "ref_0123456789abcdef"
 TEMPLATE = {"profile": {"id": "P", "version": "2.0.0", "sha256": "d" * 64}, "object": {"id": "o", "version": "1", "root": "e" * 64},
             "bounds": {"jurisdiction": "j", "scope": "s", "valid_from": NOW - 10, "valid_until": NOW + 1000}, "requested_operation": "INFORM"}
 

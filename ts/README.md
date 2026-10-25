@@ -1,6 +1,6 @@
 # @whp/standing-client
 
-Client for WHP Standing (https://standing-guard-service.lovable.app). It answers the service's x402 v2 challenge (USDC on Base, `eip155:8453`) with a gasless EIP-3009 `TransferWithAuthorization` signed by a key you provide.
+Client for WHP Standing (https://api.wheelerhubbellpublishing.com). It answers the service's x402 v2 challenge (USDC on Base, `eip155:8453`) with a gasless EIP-3009 `TransferWithAuthorization` signed by a key you provide.
 
 ```ts
 import { StandingClient, BuyerKey } from "@whp/standing-client";

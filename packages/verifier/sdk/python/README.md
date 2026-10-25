@@ -45,7 +45,7 @@ No funded SDK purchase has been performed. This source gate is not a five-minute
 from whp_standing import StandingClient, FileJournal
 
 client = StandingClient(
-    origin='https://standing-guard-service.lovable.app',
+    origin='https://api.wheelerhubbellpublishing.com',
     root_pin=admitted_root_pin, # selected under your own trust policy
     buyer_key=buyer_ed25519_key_from_secure_custody,
     journal=FileJournal(private_durable_journal_directory),

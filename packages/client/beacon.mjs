@@ -1,5 +1,5 @@
 /** WHP beacon transport. Delivery acknowledgment is not proof of agent work. */
-export const DEFAULT_STREAM='https://standing-guard-service.lovable.app/v1/beacon/stream';
+export const DEFAULT_STREAM='https://api.wheelerhubbellpublishing.com/v1/beacon/stream';
 const publicUrl=value=>{const u=new URL(value);if(u.protocol!=='https:'||u.username||u.password)throw Error('HTTPS endpoint required');return u.href;};
 export async function summonAgent(targetUrl,challenge,options={}){
  const target=publicUrl(targetUrl);if(!challenge||typeof challenge.subject!=='string'||typeof challenge.claim!=='string'||!challenge.subject.trim()||!challenge.claim.trim())throw Error('subject and claim required');
