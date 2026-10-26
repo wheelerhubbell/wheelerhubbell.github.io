@@ -1,5 +1,11 @@
 # Wheeler Hubbell Canonical Machine
 
+## Whole-system reading rule
+
+This public hub is one part of WHP, not the runtime or the entire service. Read it with *Decision Integrity: The Continuous Work*, the other three canonical repositories, and the live contract at `https://api.wheelerhubbellpublishing.com/v1/contract`. Public descriptions and pricing are not runtime proof; code/configuration and observed responses establish implementation. No single page, file, or endpoint defines the whole.
+
+Keep the two API paths distinct: `/v1/evaluate` is the ordinary-agent evaluation door; `/v1/evaluations` is the sealed WHP Standing purchase/issuance path described by the live contract. A Base transfer to the settlement address alone does not establish a finalized service purchase or tier entitlement. Do not promise prepaid balances, automatic API-key provisioning, or a favorable result unless the live contract and an observed end-to-end transaction support that exact claim.
+
 This repository is not a scrapbook and it is not a historical dump. It is the live public face of the current Wheeler Hubbell Publishing system.
 
 The live canonical machine is exactly this:
