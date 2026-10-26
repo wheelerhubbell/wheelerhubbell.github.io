@@ -1,890 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Wheeler Hubbell Publishing — Decision Integrity</title>
-  <meta name="description" content="Wheeler Hubbell Publishing examines whether claims and proposed actions remain warranted by their source, evidence, authority, conditions, and limits."/>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
-  
-  <link rel="stylesheet" href="2-style.css?v=luxury-20261024-v4"/>
-  <style>
-    /* Executive Enhancements for Decision Integrity & Commercial Pricing */
-    .hero-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      background: rgba(197, 160, 89, 0.08);
-      border: 1px solid var(--gold-border);
-      padding: 6px 14px;
-      border-radius: 2px;
-      margin-bottom: 24px;
-    }
-    .comparison-table-wrap {
-      overflow-x: auto;
-      margin: 40px 0;
-      border: 1px solid var(--border-subtle);
-      border-radius: 4px;
-      background: var(--bg-surface);
-    }
-    .comparison-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.88rem;
-      text-align: left;
-    }
-    .comparison-table th {
-      background: #0d0c0a;
-      padding: 16px 20px;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold-muted);
-      border-bottom: 1px solid var(--border-hairline);
-    }
-    .comparison-table td {
-      padding: 16px 20px;
-      border-bottom: 1px solid var(--border-hairline);
-      line-height: 1.5;
-    }
-    .comparison-table tr:last-child td {
-      border-bottom: none;
-    }
-    .comparison-table td.whp-col {
-      background: rgba(197, 160, 89, 0.04);
-      color: var(--text-pure);
-      font-weight: 500;
-      border-left: 1px solid var(--gold-border-sub);
-      border-right: 1px solid var(--gold-border-sub);
-    }
-    .comparison-table th.whp-col {
-      background: rgba(197, 160, 89, 0.12);
-      color: var(--gold-light);
-      border-left: 1px solid var(--gold-border);
-      border-right: 1px solid var(--gold-border);
-    }
-    .case-card {
-      background: var(--bg-surface-elev);
-      border: 1px solid var(--border-subtle);
-      border-radius: 4px;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      transition: all 0.3s ease;
-    }
-    .case-card:hover {
-      border-color: var(--gold-border);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-    }
-    .case-status-bad {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #f87171;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .case-status-good {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #34d399;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .tier-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      margin-top: 40px;
-    }
-    .tier-card {
-      background: var(--bg-surface-elev);
-      border: 1px solid var(--border-subtle);
-      border-radius: 4px;
-      padding: 38px 30px;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .tier-card:hover {
-      border-color: var(--gold-border);
-      box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.8), 0 0 25px rgba(197, 160, 89, 0.12);
-      transform: translateY(-4px);
-    }
-    .tier-card.featured {
-      background: linear-gradient(180deg, #1f1b17 0%, var(--bg-surface-elev) 100%);
-      border: 1px solid var(--gold-border);
-      box-shadow: 0 15px 40px -10px rgba(0,0,0,0.8), 0 0 20px rgba(197,160,89,0.15);
-    }
-    .tier-badge {
-      position: absolute;
-      top: -12px;
-      left: 28px;
-      background: var(--gold-muted);
-      color: var(--bg-void);
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 2px;
-    }
-    .tier-header {
-      margin-bottom: 24px;
-      border-bottom: 1px solid var(--border-hairline);
-      padding-bottom: 24px;
-    }
-    .tier-pre {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--gold-muted);
-      margin-bottom: 8px;
-    }
-    .tier-title {
-      font-family: var(--font-serif);
-      font-size: 1.85rem;
-      color: var(--text-pure);
-      line-height: 1.15;
-      margin-bottom: 14px;
-    }
-    .tier-price {
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-      font-family: var(--font-mono);
-    }
-    .tier-price .amount {
-      font-size: 2.3rem;
-      font-weight: 600;
-      color: var(--gold-light);
-      line-height: 1;
-    }
-    .tier-price .period {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .tier-desc {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 28px;
-      flex-grow: 1;
-    }
-    .tier-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 32px;
-      font-size: 0.88rem;
-      color: var(--text-main);
-    }
-    .tier-features li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      line-height: 1.5;
-    }
-    .tier-features li::before {
-      content: "—";
-      color: var(--gold-muted);
-      font-family: var(--font-mono);
-      font-weight: 600;
-      flex-shrink: 0;
-    }
-    .m2m-banner {
-      margin-top: 36px;
-      background: rgba(14, 13, 11, 0.85);
-      border: 1px solid var(--border-subtle);
-      border-radius: 4px;
-      padding: 32px 36px;
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 32px;
-      align-items: center;
-    }
-    .code-panel {
-      background: #060505;
-      border: 1px solid var(--border-hairline);
-      border-radius: 3px;
-      padding: 20px;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      overflow-x: auto;
-      line-height: 1.6;
-    }
-    .code-panel .kw { color: var(--gold-muted); }
-    .code-panel .str { color: #a3c9a8; }
-    .code-panel .cmt { color: var(--text-faint); font-style: italic; }
-    .grid-2col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-    }
-    .grid-3col {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-    @media (max-width: 980px) {
-      .tier-grid { grid-template-columns: 1fr; }
-      .grid-3col { grid-template-columns: 1fr; }
-      .m2m-banner { grid-template-columns: 1fr; }
-      .grid-2col { grid-template-columns: 1fr; }
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Decision Integrity Protocol — Wheeler Hubbell Publishing</title>
+<meta name="description" content="The Decision Integrity Protocol examines whether the evidence, conditions, and authority behind an autonomous system's answer support the proposed action. A public page of Wheeler Hubbell Publishing.">
+<style>
+  :root{
+    --bg:#0d0a09; --bg-band:#13100e;
+    --ink:#f0e7d6; --ink-body:#d9cdb6; --ink-dim:#b3a78d;
+    --gold:#d9b44a; --gold-dim:#d4b258;
+    --oxblood:#8b1e2b; --oxblood-bright:#b03040;
+    --hairline:rgba(217,180,74,.20); --hairline-soft:rgba(217,180,74,.12);
+    --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+    --mono:'JetBrains Mono','Courier New',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:1.22rem;line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 30px}
+  a{color:var(--gold);text-decoration:none}
+  a:hover{color:var(--ink)}
 
-    /* Editorial Decision Integrity redesign: restrained typography, generous rhythm, clear evidence boundaries. */
-    :root { --bg-void:#0b0807; --bg-base:#0e0a09; --bg-surface:#130f0d; --bg-surface-elev:#120e0c; --text-pure:#f0e8da; --text-main:#d8ccbb; --text-muted:#b3a794; --gold-light:#d7b34d; --gold-muted:#b9953e; --border-subtle:rgba(215,179,77,.22); --border-hairline:rgba(215,179,77,.16); }
-    html { scroll-behavior:smooth; }
-    body { background:#0b0807; color:#d8ccbb; font-family:Georgia,'Times New Roman',serif; font-size:17px; line-height:1.75; }
-    .top-utility { display:none; }
-    .site-masthead { background:rgba(11,8,7,.96); border-bottom:1px solid rgba(215,179,77,.24); }
-    .masthead-inner { min-height:78px; }
-    .brand-title { font-family:Georgia,'Times New Roman',serif; font-weight:400; letter-spacing:.01em; }
-    .brand-sub, .nav-link, .section-pre, .hero-kicker, .tier-pre, .ens-badge, .spec-line > span:first-child { font-family:'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; }
-    .primary-nav { gap:26px; }
-    .nav-link { font-size:.66rem; }
-    .hero-section { padding:110px 0 104px; background:#0e0a09; border-bottom:1px solid rgba(215,179,77,.2); }
-    .hero-grid { grid-template-columns:minmax(0,1fr); max-width:1020px; }
-    .hero-copy { max-width:800px; }
-    .hero-kicker { background:none; border:0; padding:0; margin-bottom:28px; font-size:.68rem; color:var(--gold-muted); }
-    .hero-title { max-width:790px; font-family:Georgia,'Times New Roman',serif; font-size:clamp(2.8rem,6vw,5rem); font-weight:400; line-height:1.08; letter-spacing:-.025em; }
-    .hero-title em { color:var(--gold-light); }
-    .hero-lead { max-width:750px; margin-top:27px; font-size:1.14rem; line-height:1.85; color:#d7cbbb; }
-    .hero-actions { margin:30px 0 46px; }
-    .hero-quote { max-width:620px; border-left:2px solid var(--gold-muted); padding:7px 0 7px 22px; font-size:1.2rem; font-style:italic; color:var(--text-pure); }
-    .hero-stage { max-width:790px; }
-    .hero-frame, .axiom-card { background:#0e0a09; border:1px solid rgba(215,179,77,.25); border-radius:0; box-shadow:none; }
-    .machine-spec-box { background:transparent; border:0; padding:0; }
-    .spec-line { border-bottom:1px solid rgba(215,179,77,.15); padding:12px 0; }
-    .research-section, .protocol-section, .catalogue-section, .about-section { padding:96px 0; }
-    .section-header { max-width:800px; margin-bottom:42px; }
-    .section-pre { color:var(--gold-muted); font-size:.68rem; }
-    .section-title, .about-copy h2 { font-family:Georgia,'Times New Roman',serif; font-size:clamp(2rem,4vw,3.2rem); font-weight:400; line-height:1.16; letter-spacing:-.02em; }
-    .section-desc { color:#cfc1ae; font-family:Georgia,'Times New Roman',serif; font-size:1.08rem; line-height:1.8; }
-    .case-card, .axiom-card, .tier-card { background:transparent; border:1px solid rgba(215,179,77,.18); border-radius:0; box-shadow:none; }
-    .case-card:hover, .tier-card:hover { transform:none; box-shadow:none; border-color:rgba(215,179,77,.48); }
-    .comparison-table-wrap { border-radius:0; }
-    .catalogue-section { border-top:1px solid rgba(215,179,77,.22); background:#0e0a09 !important; }
-    .access-wrap { max-width:1100px; }
-    .access-heading { margin-left:0; text-align:left !important; }
-    .access-heading .section-pre { justify-content:flex-start !important; }
-    .access-heading .section-title { max-width:700px; }
-    .tier-grid { gap:0; margin-top:40px; border-top:1px solid rgba(215,179,77,.22); border-bottom:1px solid rgba(215,179,77,.22); }
-    .tier-card { padding:30px 28px; border:0; border-right:1px solid rgba(215,179,77,.16); }
-    .tier-card:last-child { border-right:0; }
-    .tier-card.featured { background:#120e0d; border-top:2px solid #962536; border-left:0; border-bottom:0; border-right:1px solid rgba(215,179,77,.16); box-shadow:none; }
-    .tier-card .tier-title { font-size:1.5rem; margin-bottom:10px; }
-    .tier-card .tier-price { margin:14px 0; }
-    .tier-price .amount { color:var(--gold-light); font-family:Georgia,'Times New Roman',serif; font-size:2.6rem; font-weight:400; }
-    .tier-price .period { font-size:.72rem; letter-spacing:.1em; }
-    .tier-desc { font-size:1rem; line-height:1.7; margin-bottom:18px; }
-    .tier-unavailable { margin-top:auto; border-top:1px solid rgba(215,179,77,.2); padding-top:14px; color:#d0bfa8; font-family:'IBM Plex Mono',monospace; font-size:.64rem; letter-spacing:.08em; line-height:1.6; text-transform:uppercase; }
-    .access-detail { max-width:900px; margin-top:36px; border-top:1px solid rgba(215,179,77,.42); padding-top:26px; }
-    .access-list { list-style:none; padding:0; margin:16px 0 30px; }
-    .access-list li { padding:7px 0; }
-    .access-list li::before { content:'—'; color:var(--gold-muted); margin-right:12px; }
-    .access-note { border-top:1px solid rgba(215,179,77,.16); padding:20px 0; font-size:1rem; line-height:1.75; }
-    .access-note strong { color:var(--text-pure); }
-    .access-cta { border-top:1px solid rgba(215,179,77,.3); margin-top:14px; padding-top:24px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
-    .access-cta p { max-width:650px; margin:10px 0; }
-    .btn-gold-outline, .btn-oxblood { border-radius:0; font-family:'IBM Plex Mono',monospace; letter-spacing:.16em; text-transform:uppercase; }
-    .m2m-banner { border-radius:0; box-shadow:none; }
-    .site-footer { border-top:1px solid rgba(215,179,77,.24); background:#0b0807; }
-    @media (max-width: 760px) {
-      body { font-size:16px; }
-      .masthead-inner { align-items:flex-start; padding-top:18px; padding-bottom:16px; }
-      .primary-nav { display:flex; flex-wrap:wrap; justify-content:flex-start; gap:8px 18px; margin-top:16px; }
-      .nav-actions { display:none; }
-      .hero-section { padding:75px 0 70px; }
-      .hero-grid { display:block; }
-      .hero-title { font-size:clamp(2.55rem,11vw,4rem); }
-      .hero-stage { margin-top:36px; }
-      .research-section, .protocol-section, .catalogue-section, .about-section { padding:68px 0; }
-      .tier-grid { grid-template-columns:1fr; }
-      .tier-card, .tier-card.featured { border-right:0; border-bottom:1px solid rgba(215,179,77,.2); padding:28px 0; }
-      .tier-card:last-child { border-bottom:0; }
-      .access-cta { align-items:flex-start; flex-direction:column; }
-    }
+  /* — Masthead — */
+  header{border-bottom:1px solid var(--hairline);padding:26px 0;position:relative}
+  header::after{content:"";position:absolute;left:0;right:0;bottom:-5px;border-bottom:1px solid var(--hairline)}
+  .head-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  .brand .name{font-size:1.32rem;letter-spacing:.02em}
+  .brand .sub{font-family:var(--mono);font-size:.76rem;letter-spacing:.26em;color:var(--gold-dim);text-transform:uppercase;margin-top:4px}
+  nav{display:flex;gap:30px;flex-wrap:wrap}
+  nav a{font-family:var(--mono);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-body)}
+  nav a:hover{color:var(--gold)}
 
-  </style>
+  /* — Hero — */
+  .hero{padding:110px 0 0}
+  .kicker{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:.82rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:34px}
+  .kicker::before,.kicker::after{content:"";height:1px;background:var(--hairline);flex:0 0 44px}
+  h1{font-weight:500;font-size:clamp(2.9rem,6vw,4.5rem);line-height:1.08;letter-spacing:-.015em;max-width:19ch}
+  h1 em{font-style:italic;color:var(--gold)}
+  .standfirst{margin-top:30px;font-size:clamp(1.4rem,2.4vw,1.7rem);line-height:1.45;color:var(--ink);max-width:32ch;font-style:italic;border-left:2px solid var(--gold-dim);padding-left:26px}
+  .lede{margin-top:30px;font-size:1.26rem;line-height:1.75;color:var(--ink-body);max-width:56ch}
+  .lede strong{color:var(--ink);font-weight:600}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:52px}
+  .duo .cell{border-top:1px solid var(--gold-dim);padding-top:20px}
+  .duo .cell .t{font-family:var(--mono);font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .duo .cell p{font-size:1.08rem;line-height:1.62;color:var(--ink-body)}
+  .trust{display:flex;justify-content:space-between;gap:26px;flex-wrap:wrap;margin-top:64px;padding:26px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);position:relative}
+  .trust::before{content:"";position:absolute;left:0;right:0;top:-5px;border-top:1px solid var(--hairline)}
+  .trust::after{content:"";position:absolute;left:0;right:0;bottom:-5px;border-bottom:1px solid var(--hairline)}
+  .trust div{font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;color:var(--ink-body)}
+  .trust div span{display:block;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:6px}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-top:44px;padding-bottom:88px}
+
+  /* — Sections — */
+  section{padding:88px 0;border-bottom:1px solid var(--hairline);position:relative}
+  section.band{background:var(--bg-band)}
+  h2{font-weight:500;font-size:clamp(1.9rem,3.4vw,2.5rem);line-height:1.18;margin-bottom:26px;max-width:26ch;letter-spacing:-.005em}
+  .section-label{font-family:var(--mono);font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:22px;display:flex;align-items:center;gap:14px}
+  .section-label::before{content:"";display:inline-block;width:34px;height:1px;background:var(--gold-dim)}
+  p.body{color:var(--ink-body);max-width:62ch;margin-bottom:18px}
+  p.body strong{color:var(--ink);font-weight:600}
+  p.body em{color:var(--ink)}
+
+  /* — Pull quotes — */
+  blockquote{margin:44px auto;max-width:46ch;text-align:center;font-style:italic;font-size:1.44rem;line-height:1.55;color:var(--ink);position:relative;padding:34px 20px 26px}
+  blockquote.compact{margin:22px auto;font-size:1.26rem;padding:20px 16px 16px}
+  blockquote.compact::before{font-size:3rem;margin-bottom:12px}
+  blockquote.compact::after{margin:14px auto 0}
+  blockquote::before{content:"\201C";display:block;font-size:4.6rem;line-height:.4;color:var(--gold-dim);font-style:normal;margin-bottom:18px}
+  blockquote::after{content:"";display:block;width:56px;height:1px;background:var(--gold-dim);margin:22px auto 0}
+  blockquote cite{display:block;margin-top:16px;font-family:var(--mono);font-style:normal;font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim)}
+
+  /* — Steps — */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;margin-top:44px}
+  .step{border-top:2px solid var(--gold-dim);padding-top:22px}
+  .step .n{font-size:2.6rem;font-weight:400;color:var(--gold);line-height:1;margin-bottom:16px}
+  .step h3{font-size:1.28rem;font-weight:600;margin-bottom:10px}
+  .step p{font-size:1.04rem;line-height:1.65;color:var(--ink-body)}
+
+  /* — Register of failures — */
+  .failures{margin-top:40px;border-bottom:1px solid var(--hairline)}
+  .failure{display:grid;grid-template-columns:96px 1fr 1fr;gap:34px;padding:30px 0;border-top:1px solid var(--hairline);align-items:baseline}
+  .failure .fnum{font-size:2rem;color:var(--gold);font-weight:400;line-height:1}
+  .failure .fname{font-weight:600;font-size:1.24rem;color:var(--ink)}
+  .failure .flead{font-size:1.06rem;color:var(--ink-body);margin-top:6px}
+  .failure p.def{font-size:1.02rem;color:var(--ink-dim);line-height:1.62;font-style:italic}
+
+  /* — Scenario plates — */
+  .scenarios{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:36px}
+  .scenario{border:1px solid var(--hairline);outline:1px solid var(--hairline-soft);outline-offset:5px;padding:30px 30px 26px;display:flex;flex-direction:column;gap:12px}
+  .scenario .stag{display:inline-block;align-self:flex-start;font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);border:1px solid var(--hairline);padding:5px 12px}
+  .scenario h3{font-size:1.34rem;font-weight:500}
+  .scenario p{font-size:1.04rem;color:var(--ink-body);line-height:1.65}
+  .scenario .takeaway{margin-top:auto;padding-top:16px;border-top:1px solid var(--hairline);font-style:italic;color:var(--gold);font-size:1.06rem;line-height:1.55}
+
+  /* — Specimen plate (demo) — */
+  .demo-card{border:1px solid var(--hairline);outline:1px solid var(--hairline-soft);outline-offset:6px;padding:40px 38px;margin-top:34px}
+  .demo-tag{display:inline-block;font-family:var(--mono);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dim);border:1px solid var(--hairline);padding:6px 14px}
+  .demo-card .fields{margin:26px 0 8px;display:grid;gap:0}
+  .frow{display:flex;gap:22px;font-size:1.06rem;border-bottom:1px solid var(--hairline-soft);padding:13px 0}
+  .frow:first-child{border-top:1px solid var(--hairline-soft)}
+  .fkey{font-family:var(--mono);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);min-width:140px;padding-top:5px}
+  .fval{color:var(--ink)}
+  .fval.mono{font-family:var(--mono);font-size:.82rem;color:var(--gold);word-break:break-all}
+  .demo-actions{display:flex;gap:16px;flex-wrap:wrap;margin-top:30px}
+
+  /* — Buttons — */
+  .btn{display:inline-block;font-family:var(--mono);font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;padding:16px 28px;border:1px solid var(--gold-dim);color:var(--gold);text-align:center}
+  .btn:hover{border-color:var(--gold);color:var(--ink)}
+  .btn-solid{background:var(--oxblood);border-color:var(--oxblood);color:#f5ebe3}
+  .btn-solid:hover{background:var(--oxblood-bright);color:#fff}
+
+  /* — Rates — */
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);margin-top:44px;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+  .tier{padding:34px 32px 36px;border-left:1px solid var(--hairline);display:flex;flex-direction:column}
+  .tier:first-child{border-left:none}
+  .tier.featured{box-shadow:inset 0 3px 0 var(--oxblood-bright)}
+  .tier h3{font-size:1.42rem;font-weight:500}
+  .tier .vol{font-family:var(--mono);font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-dim);margin-top:8px}
+  .tier .price{margin:18px 0 18px;font-size:2.6rem;line-height:1;color:var(--gold);font-weight:400}
+  .tier .price span{font-size:.85rem;color:var(--ink-dim);font-family:var(--mono);letter-spacing:.08em}
+  .tier p{font-size:1.04rem;color:var(--ink-body);line-height:1.65;margin-bottom:30px;flex:1}
+  .tier .btn{width:100%}
+
+  /* — Panels — */
+  details.panel summary{font-family:var(--mono);font-size:.82rem;font-weight:400;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);cursor:pointer;list-style:none;display:flex;align-items:center;gap:12px}
+  details.panel summary::after{content:"+";font-size:1rem;color:var(--gold-dim);margin-left:auto}
+  details.panel[open] summary::after{content:"\2212"}
+  details.panel summary::-webkit-details-marker{display:none}
+  details.panel ul, details.panel p{margin-top:16px}
+  .panel{margin-top:26px;border-top:1px solid var(--gold-dim);border-bottom:1px solid var(--hairline);padding:26px 0}
+  .panel h3{font-family:var(--mono);font-size:.82rem;font-weight:400;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  .panel ul{list-style:none;margin:0}
+  .panel li{font-size:1.05rem;color:var(--ink-body);line-height:1.65;padding:6px 0 6px 26px;position:relative}
+  .panel li::before{content:"—";position:absolute;left:0;color:var(--gold-dim)}
+  .panel p{font-size:1.05rem;color:var(--ink-body);line-height:1.68;margin-bottom:10px;max-width:66ch}
+  .panel p:last-child{margin-bottom:0}
+
+  /* — Inspection index — */
+  .links-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 44px;margin-top:32px}
+  .link-item{border-top:1px solid var(--hairline-soft);padding:18px 0}
+  .link-item a{font-size:1.14rem}
+  .link-item .ld{font-size:.96rem;color:var(--ink-dim);margin-top:4px}
+
+  /* — Colophon — */
+  footer{padding:64px 0 64px;border-top:1px solid var(--hairline);position:relative}
+  footer::before{content:"";position:absolute;left:0;right:0;top:-5px;border-top:1px solid var(--hairline)}
+  .foot-brand{text-align:center;margin-bottom:52px}
+  .foot-brand .fname{font-size:1.7rem;letter-spacing:.02em}
+  .foot-brand p{font-size:1rem;color:var(--ink-dim);line-height:1.7;max-width:52ch;margin:12px auto 0}
+  .foot-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:640px;margin:0 auto}
+  footer .col-label{font-family:var(--mono);font-size:.76rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:16px}
+  footer ul{list-style:none}
+  footer li{font-size:1rem;line-height:1.7;padding:3px 0}
+  footer li a{color:var(--ink-body)}
+  footer li a:hover{color:var(--gold)}
+  .legal{margin-top:52px;padding-top:24px;border-top:1px solid var(--hairline);font-family:var(--mono);font-size:.8rem;letter-spacing:.12em;color:var(--ink-dim);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+  @media (max-width:860px){
+    .duo,.scenarios,.tiers,.links-grid,.foot-grid,.steps{grid-template-columns:1fr}
+    .tiers{border-bottom:none}
+    .tier{border-left:none;border-bottom:1px solid var(--hairline);padding:28px 0}
+    .failure{grid-template-columns:56px 1fr;gap:20px}
+    .failure p.def{grid-column:2}
+    .hero{padding:64px 0 0}
+    .hero-actions{padding-bottom:56px}
+    section{padding:56px 0}
+    .demo-card{padding:28px 20px}
+    .frow{flex-direction:column;gap:4px}
+    .trust{gap:18px}
+    .foot-grid{max-width:none}
+  }
+  .tier-unavailable{font-family:var(--mono);font-size:.8rem;line-height:1.7;color:var(--gold-dim);max-width:44ch}
+  .billing-status{border-left:3px solid var(--gold);padding-left:18px}
+  .panel code{font-size:.85em;overflow-wrap:anywhere}
+  summary{min-height:44px}
+</style>
 </head>
 <body>
 
-  <!-- Top Utility Bar -->
-  <aside class="top-utility" aria-label="Runtime Status and Imprint Coordinates">
-    <div class="wrap top-utility-inner">
-      <div class="utility-motto">
-        <span class="dot">&bull;</span>
-        <span>Decision Integrity Protocol &middot; Sovereign Standing Mark Runtime</span>
+<header>
+  <div class="wrap head-inner">
+    <div class="brand">
+      <div class="name">Wheeler Hubbell Publishing</div>
+      <div class="sub">Decision Integrity Protocol</div>
+    </div>
+    <nav>
+      <a href="#how">What It Does</a>
+      <a href="#demonstration">Demonstration</a>
+      <a href="#failures">The Named Failures</a>
+      <a href="#access">Access</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="kicker">An independent intellectual press · New York</div>
+    <h1>Your AI agent has an answer. Does it have the <em>warrant</em> to act?</h1>
+    <p class="standfirst">A correct answer does not automatically authorize the action that follows.</p>
+    <p class="lede">When an agent proposes to move money, merge code, or submit a filing, the question is not only whether its answer is right. It is whether the evidence, conditions, and authority behind that answer support the proposed action. The Decision Integrity Protocol examines that warrant before execution. The result is a signed record of what the examination establishes — and what it does not.</p>
+    <div class="duo">
+      <div class="cell"><div class="t">Standing Mark</div><p>When the examination establishes warrant within its stated scope.</p></div>
+      <div class="cell"><div class="t">Standing Assessment</div><p>When it does not: a signed record of what was examined and where warrant was not established.</p></div>
+    </div>
+    <div class="trust">
+      <div><span>Signed</span>Ed25519 · Canonical JSON</div>
+      <div><span>Independently verifiable</span>Offline, against published keys</div>
+      <div><span>Access</span>1 USDC per evaluation</div>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-solid" href="#demonstration">Inspect the Demonstration →</a>
+      <a class="btn" href="#access">Explore Access →</a>
+    </div>
+  </div>
+</div>
+
+<section id="how">
+  <div class="wrap">
+    <div class="section-label">What It Does</div>
+    <h2>An examination before execution. A signed record after.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="n">01</div>
+        <h3>Submit the claim</h3>
+        <p>Submit the proposed action and the record behind it: the evidence, qualifications, conditions, and authority on which it depends. The question is whether that record supports the transition from an answer to an action.</p>
       </div>
-      <div class="utility-meta">
-        <span>Production Door: api.wheelerhubbellpublishing.com</span>
-        <a href="#what-makes-it-unique">The Distinction</a>
-        <a href="#examples">Demonstration</a>
-        <a href="#pricing">Access</a>
-        <a href="#integration">CI/CD &amp; API</a>
+      <div class="step">
+        <div class="n">02</div>
+        <h3>Examine the warrant</h3>
+        <p>The service examines the submission against a named, published profile — a defined scope that states what the examination covers. The resulting record identifies what was checked, what was established, and the limits of the examination.</p>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <h3>Receive the result</h3>
+        <p>When warrant is established within the stated scope, the service issues a signed Standing Mark. When it is not, the service returns a signed Standing Assessment recording what was examined and where warrant was not established. The fee buys the examination. It never buys the outcome.</p>
       </div>
     </div>
-  </aside>
+  </div>
+</section>
 
-  <!-- Primary Masthead -->
-  <header class="site-masthead">
-    <div class="wrap masthead-inner">
-      <a href="#hero" class="brand-lockup" aria-label="Wheeler Hubbell Publishing Home">
-        <div class="crest-symbol">
-          <svg width="22" height="26" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="11" cy="6" r="5" stroke="#C5A059" stroke-width="1.2" stroke-dasharray="1.5 1.5"/>
-            <circle cx="11" cy="6" r="2" fill="#DFC182"/>
-            <path d="M11 8V24" stroke="#C5A059" stroke-width="1.5"/>
-            <path d="M7 3C7 3 4 1 3 2.5" stroke="#C5A059" stroke-width="1"/>
-            <path d="M15 3C15 3 18 1 19 2.5" stroke="#C5A059" stroke-width="1"/>
-            <path d="M4 6.5H1" stroke="#C5A059" stroke-width="1"/>
-            <path d="M21 6.5H18" stroke="#C5A059" stroke-width="1"/>
-          </svg>
-        </div>
-        <div class="brand-text">
-          <span class="brand-title">Wheeler Hubbell Publishing</span>
-          <span class="brand-sub">Decision Integrity Protocol</span>
-        </div>
-      </a>
-
-      <nav class="primary-nav" aria-label="Main Navigation">
-        <a href="#what-makes-it-unique" class="nav-link">What It Does</a>
-        <a href="#protocol" class="nav-link">The Protocol</a>
-        <a href="#examples" class="nav-link">Demonstration</a>
-        <a href="#pricing" class="nav-link">Access</a>
-        <a href="#integration" class="nav-link">Developer &amp; CI/CD</a>
-      </nav>
-
-      <div class="nav-actions">
-        <a href="#pricing" class="btn-oxblood">
-          Explore Access &rarr;
-        </a>
+<section id="demonstration" class="band">
+  <div class="wrap">
+    <div class="section-label">Demonstration</div>
+    <h2>A recorded Standing Mark. Open to inspection.</h2>
+    <p class="body">Don't take the claim on trust. Inspect the record. Explore a recorded house self-test, including its result, examination scope, issuer, and complete signed record. The demonstration plays back the record as issued. It shows what a Standing Mark contains and how its stated scope travels with its result.</p>
+    <p class="body">The complete signed record — the envelope — is published for independent inspection. Its signatures verify offline against the published keys. The Mark is signed by the service key, and the service key is certified by the publisher root.</p>
+    <div class="demo-card">
+      <div class="demo-tag">Recorded Mark · Issued 7 October 2026</div>
+      <div class="fields">
+        <div class="frow"><div class="fkey">Record type</div><div class="fval">Standing Mark · WHP-STANDING-MARK-v1</div></div>
+        <div class="frow"><div class="fkey">Outcome</div><div class="fval">ESTABLISHED — source, context, and unknowns established under the admitted profile</div></div>
+        <div class="frow"><div class="fkey">Issuer</div><div class="fval">Wheeler Hubbell Publishing</div></div>
+        <div class="frow"><div class="fkey">Signature</div><div class="fval">Ed25519 · Canonical JSON · WHP-JCS-I1</div></div>
+        <div class="frow"><div class="fkey">Mark ID</div><div class="fval mono">WHP-SM-f9449b31a9fc74458dfde4696f68c041a242194113b3936503fe3362854a073f</div></div>
+        <div class="frow"><div class="fkey">The envelope</div><div class="fval">Published in full. Inspect it without an account.</div></div>
+      </div>
+      <div class="demo-actions">
+        <a class="btn btn-solid" href="https://wheelerhubbellpublishing.com/standing-demo/">Play Back the Recorded Mark →</a>
+        <a class="btn" href="https://wheelerhubbellpublishing.com/attestations/genesis-mark.json">Inspect the Signed Envelope →</a>
       </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <main id="main-content">
-
-    <!-- Hero Section -->
-    <section class="hero-section" id="hero">
-      <div class="wrap hero-grid">
-        
-        <div class="hero-copy">
-          <div class="hero-kicker">
-            An Independent Intellectual Press &middot; New York
-          </div>
-          <h1 class="hero-title">
-            Your AI agent has an answer. Does it have the <em>warrant</em> to act?
-          </h1>
-          <p class="hero-lead">
-            A correct answer does not automatically authorize the action that follows. When an agent proposes to move money, merge code, or submit a filing, the question is whether the evidence, conditions, and authority behind that answer support the proposed action. Decision Integrity examines that warrant before execution. The result is a signed record of what the examination establishes — and what it does not.
-          </p>
-          <div class="hero-actions">
-            <a href="#pricing" class="btn-oxblood">
-              Explore Access &rarr;
-            </a>
-            <a href="#what-makes-it-unique" class="btn-gold-outline">
-              What It Does &rarr;
-            </a>
-          </div>
-          <div class="hero-quote">
-            &ldquo;A correct answer does not automatically authorize the action that follows.&rdquo;
-            <span>Decision Integrity: The Continuous Work</span>
-          </div>
-        </div>
-
-        <div class="hero-stage">
-          <div class="hero-frame">
-            <div class="axiom-card" style="box-shadow: none; border: none; padding: 22px;">
-              <div class="axiom-header">
-                <span>The Standing Mark Service</span>
-                <span class="ens-badge font-mono">api.wheelerhubbellpublishing.com</span>
-              </div>
-              <div class="axiom-formula" style="font-size: 1.6rem; padding: 18px 0;">
-                A(c) &le; P(c)
-              </div>
-              <p class="axiom-desc" style="font-size: 0.88rem; margin-bottom: 20px;">
-                A bounded examination of a submitted object and proposed operation. The governing text defines the discipline; the live contract defines the current service interface and payment terms.
-              </p>
-              <div class="machine-spec-box">
-                <div class="spec-line">
-                  <span>Ordinary evaluation:</span>
-                  <span class="spec-val font-mono">POST /v1/evaluate</span>
-                </div>
-                <div class="spec-line">
-                  <span>Model Context Protocol:</span>
-                  <span class="spec-val font-mono">POST /mcp (whp_evaluate)</span>
-                </div>
-                <div class="spec-line">
-                  <span>CI/CD Pull Request Gate:</span>
-                  <span class="spec-val font-mono">wheelerhubbell/standing-gate@v0</span>
-                </div>
-                <div class="spec-line">
-                  <span>Sealed Standing purchase:</span>
-                  <span class="spec-val font-mono">POST /v1/evaluations</span>
-                </div>
-                <div class="spec-line">
-                  <span>Current terms:</span>
-                  <span class="spec-val font-mono">Live contract &amp; verification rules</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+<section id="stakes">
+  <div class="wrap">
+    <div class="section-label">What Is At Stake</div>
+    <h2>The failure is not always a false answer. Sometimes it is an unauthorized transition.</h2>
+    <p class="body">These hypothetical examples show how a workflow can use the examination before carrying out an action.</p>
+    <div class="scenarios">
+      <div class="scenario">
+        <div class="stag">Hypothetical · Capital movement</div>
+        <h3>The escrow release</h3>
+        <p>A treasury agent receives a request to release $75,000 because deliverables have supposedly met milestone specifications. The wording matches the contract. The underlying claim has not been verified. If the gate is integrated into the release path, the evidence behind the claim is examined before the transfer proceeds. An unwarranted transition does not proceed on that basis.</p>
+        <div class="takeaway">Matching the language of a contract is not the same as establishing that its conditions have been met.</div>
       </div>
-    </section>
-
-    <!-- SECTION: WHAT MAKES WHP UNIQUE / THE ESSENTIAL DISTINCTION -->
-    <section class="research-section" id="what-makes-it-unique">
-      <div class="wrap">
-        <div class="section-header">
-          <div class="section-pre">Category Distinction</div>
-          <h2 class="section-title">What WHP Provides That No Other Service Provides</h2>
-          <p class="section-desc">
-            In an industry obsessed with generating plausible text or applying superficial content filters, Wheeler Hubbell Publishing is the world’s only sovereign epistemic runtime enforcing formal decision integrity.
-          </p>
-        </div>
-
-        <div class="comparison-table-wrap">
-          <table class="comparison-table">
-            <thead>
-              <tr>
-                <th style="width: 25%;">Dimension</th>
-                <th style="width: 35%;">Standard AI Guardrails &amp; Agent Frameworks</th>
-                <th style="width: 40%;" class="whp-col">Wheeler Hubbell Publishing (Decision Integrity)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Core Evaluation Criterion</strong></td>
-                <td><strong>Linguistic Plausibility:</strong> Analyzes semantic similarity, tone, or regex patterns. If hallucinated text sounds fluent and authoritative, standard guardrails pass it.</td>
-                <td class="whp-col"><strong>Epistemic Warrant:</strong> Evaluates whether the supplied evidence and authority logically license the specific proposed transition under the Test of Passage.</td>
-              </tr>
-              <tr>
-                <td><strong>Caller vs. Verified Authority</strong></td>
-                <td><strong>Conflates All Text:</strong> Treats what a user or sub-agent asserts in a prompt as equivalent to established institutional facts.</td>
-                <td class="whp-col"><strong>Strict Boundary Enforcement:</strong> Distinguishes caller assertions from established findings. Caller assertions cannot bootstrap themselves into consequential standing.</td>
-              </tr>
-              <tr>
-                <td><strong>Operation-Specific Force</strong></td>
-                <td><strong>Binary / Scalar Confidence:</strong> Returns a single vague number (e.g., <code>0.87</code>) with no governing semantics.</td>
-                <td class="whp-col"><strong>Bounded Force Ceilings:</strong> Explicitly separates <code>INQUIRY</code> (what can be investigated) from <code>ACTION</code> (what can trigger transfers, merges, or executions).</td>
-              </tr>
-              <tr>
-                <td><strong>Missing Records &amp; Gaps</strong></td>
-                <td><strong>Hallucinates or Smooths Over:</strong> Fills epistemic gaps with plausible statistical filler to maintain conversation flow.</td>
-                <td class="whp-col"><strong>The Lawful Unknown:</strong> Preserves missing records as explicit, inspectable unknowns. Prohibits force escalation across unresolved dependencies.</td>
-              </tr>
-              <tr>
-                <td><strong>Diagnostic Failure Taxonomy</strong></td>
-                <td><strong>Generic &ldquo;Safety&rdquo; Labels:</strong> Flags toxicity, bias, or prompt injection, but blind to structural reasoning fraud.</td>
-                <td class="whp-col"><strong>Authored Named Failures:</strong> Explicitly detects and halts <em>Coherent Substitution</em>, <em>Authority Leakage</em>, <em>Object Drift</em>, and <em>Qualifier Stripping</em>.</td>
-              </tr>
-              <tr>
-                <td><strong>Auditability &amp; Settlement</strong></td>
-                <td><strong>Opaque Ephemeral Logs:</strong> Transient proprietary API responses tied to credit card subscriptions.</td>
-                <td class="whp-col"><strong>Cryptographic Standing Mark:</strong> Ed25519-signed canonical RFC 8785 envelopes verifiable offline, settled over Base USDC (HTTP 402) or enterprise tiers.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SECTION: REAL-WORLD PROOF EXAMPLES (SELLING THE PRODUCT) -->
-    <section class="protocol-section" id="examples">
-      <div class="wrap">
-        <div class="section-header">
-          <div class="section-pre">Operational Demonstration</div>
-          <h2 class="section-title">Where Consequential Failure Happens — And How WHP Stops It</h2>
-          <p class="section-desc">
-            Autonomous agents fail most catastrophically when they are articulate, confident, and completely unwarranted. Here is how Decision Integrity protects capital, codebases, and institutional standing.
-          </p>
-        </div>
-
-        <div class="grid-3col">
-          
-          <!-- Example 1: Autonomous Treasury / Escrow Release -->
-          <div class="case-card">
-            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold-muted); letter-spacing: 0.12em; text-transform: uppercase;">
-              Scenario 01 &middot; Capital Movement
-            </div>
-            <h3 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--text-pure); line-height: 1.2;">
-              Autonomous Treasury &amp; Escrow Release
-            </h3>
-            <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
-              An autonomous financial agent receives an invoice accompanied by an email claim: <em>&ldquo;Deliverables completed per milestone specifications. Please release $75,000.&rdquo;</em>
-            </p>
-            <div style="background: rgba(248, 113, 113, 0.08); border-left: 2px solid #f87171; padding: 12px; font-size: 0.82rem;">
-              <div class="case-status-bad">Without WHP &middot; Catastrophic Leakage</div>
-              <p style="color: #fca5a5; margin-top: 4px;">Standard LLM confirms email matches milestone description and dispatches on-chain transfer. Capital is lost because the unauthenticated claim was treated as verified fact.</p>
-            </div>
-            <div style="background: rgba(52, 211, 153, 0.08); border-left: 2px solid #34d399; padding: 12px; font-size: 0.82rem;">
-              <div class="case-status-good">With WHP Standing Gate &middot; Halted</div>
-              <p style="color: #6ee7b7; margin-top: 4px;">WHP evaluates provenance; detects <strong>Authority Leakage</strong> (unverified third-party assertion). Enforces force ceiling: <code>INQUIRY_ONLY</code>. Action execution is blocked.</p>
-            </div>
-          </div>
-
-          <!-- Example 2: CI/CD Pull Request Merger -->
-          <div class="case-card">
-            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold-muted); letter-spacing: 0.12em; text-transform: uppercase;">
-              Scenario 02 &middot; Engineering CI/CD
-            </div>
-            <h3 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--text-pure); line-height: 1.2;">
-              Automated Pull Request Code Merges
-            </h3>
-            <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
-              An autonomous coding agent generates a high-performance database schema migration PR and declares: <em>&ldquo;All test suites passed; change is backwards-compatible.&rdquo;</em>
-            </p>
-            <div style="background: rgba(248, 113, 113, 0.08); border-left: 2px solid #f87171; padding: 12px; font-size: 0.82rem;">
-              <div class="case-status-bad">Without WHP &middot; Qualifier Stripping</div>
-              <p style="color: #fca5a5; margin-top: 4px;">The agent dropped an essential qualification: compatibility requires read-replica pause. The PR auto-merges, corrupting production cluster tables during peak load.</p>
-            </div>
-            <div style="background: rgba(52, 211, 153, 0.08); border-left: 2px solid #34d399; padding: 12px; font-size: 0.82rem;">
-              <div class="case-status-good">With standing-gate@v0 &middot; Protected</div>
-              <p style="color: #6ee7b7; margin-top: 4px;">WHP detects <strong>Qualifier Stripping</strong> and ungrounded backwards-compatibility claims. GitHub Action exits non-zero, blocks merge, and returns structured repair terms.</p>
-            </div>
-          </div>
-
-          <!-- Example 3: Legal & Regulatory Briefing -->
-          <div class="case-card">
-            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold-muted); letter-spacing: 0.12em; text-transform: uppercase;">
-              Scenario 03 &middot; Executive Governance
-            </div>
-            <h3 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--text-pure); line-height: 1.2;">
-              Regulatory Compliance &amp; Disclosure
-            </h3>
-            <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
-              An institutional AI research tool analyzes cross-border compliance obligations under the EU AI Act for an upcoming enterprise product launch.
-            </p>
-            <div style="background: rgba(248, 113, 113, 0.08); border-left: 2px solid #f87171; padding: 12px; font-size: 0.82rem;">
-              <div class="case-status-bad">Without WHP &middot; Coherent Substitution</div>
-              <p style="color: #fca5a5; margin-top: 4px;">The model eloquently cites US FTC advisory precedents because it lacks EU jurisprudence, presenting the result as directly responsive. Legal team acts on nonexistent grounds.</p>
-            </div>
-            <div style="background: rgba(52, 211, 153, 0.08); border-left: 2px solid #34d399; padding: 12px; font-size: 0.82rem;">
-              <div class="case-status-good">With WHP Standing Gate &middot; Flagged</div>
-              <p style="color: #6ee7b7; margin-top: 4px;">WHP reconstructs the smallest defensible responsive object, exposes <strong>Coherent Substitution</strong> and jurisdictional mismatch, and issues a bounded, non-actionable determination.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION: THE CORE PROTOCOL SPECIFICATION -->
-    <section class="protocol-section" id="protocol" style="border-top: 1px solid var(--border-hairline);">
-      <div class="wrap">
-        <div class="section-header">
-          <div class="section-pre">Core Governing Engine</div>
-          <h2 class="section-title">The Test of Passage &amp; Diagnostic Invariants</h2>
-          <p class="section-desc">
-            Grounding autonomous reasoning in five continuous epistemic dimensions: Object, Provenance, Warrant, Boundary, and Standing.
-          </p>
-        </div>
-
-        <div class="grid-2col">
-          <div class="axiom-card">
-            <div class="axiom-header">
-              <span>The Test of Passage</span>
-              <span>Transition Licensing</span>
-            </div>
-            <p style="font-size: 0.94rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px;">
-              For every material transition in an automated or institutional workflow, the engine requires and records:
-            </p>
-            <ul class="tier-features" style="margin-bottom: 0;">
-              <li><strong>Prior Governed State:</strong> The baseline established condition and known verified facts.</li>
-              <li><strong>Proposed Governed State:</strong> The consequential action, deployment, or state transition requested.</li>
-              <li><strong>Material Difference:</strong> The exact Delta across epistemic and institutional boundaries.</li>
-              <li><strong>Governing Warrant:</strong> The specific inspectable rule, evidence, or authority licensing the transition.</li>
-              <li><strong>Maximum Permitted Result:</strong> Operation-specific force ceiling (Inquiry vs Action).</li>
-            </ul>
-          </div>
-
-          <div class="axiom-card">
-            <div class="axiom-header">
-              <span>The Four Named Failures</span>
-              <span>Diagnostic Taxonomy</span>
-            </div>
-            <ul class="tier-features" style="margin-bottom: 0;">
-              <li><strong>Coherent Substitution:</strong> Reasoning smoothly about a materially different proposition while presenting the output as responsive.</li>
-              <li><strong>Authority Leakage:</strong> Treating external, hypothetical, or caller-submitted assertions as verified institutional determinations.</li>
-              <li><strong>Object Drift:</strong> Mutating the subject, claim, or condition across inference steps until action applies to a phantom reality.</li>
-              <li><strong>Qualifier Stripping:</strong> Removing conditional boundaries, uncertainties, or jurisdictional limits before downstream invocation.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION: BASE-NATIVE ACCESS TIERS -->
-    <section class="catalogue-section" id="pricing">
-      <div class="wrap access-wrap">
-        <div class="section-header access-heading">
-          <div class="section-pre">Access</div>
-          <h2 class="section-title">One protocol. Choose your evaluation volume.</h2>
-          <p class="section-desc">The tiers remain: Developer Sentinel ($149 / 200 evaluations), Team CI/CD Gateway ($699 / 1,000), and Institutional Sovereign ($3,500 / 6,000). The intended model is one-time Base USDC packs, not recurring subscriptions.</p>
-        </div>
-
-        <div class="tier-grid">
-          <article class="tier-card">
-            <h3 class="tier-title">Developer Sentinel</h3>
-            <div class="tier-pre">Developer · 200 evaluations</div>
-            <div class="tier-price"><span class="amount">149</span><span class="period">USDC · one time</span></div>
-            <p class="tier-desc">For developers running individual agents and lower-volume workflows.</p>
-            <div class="tier-unavailable">Intended one-time pack · checkout and activation not yet available.</div>
-          </article>
-          <article class="tier-card featured">
-            <h3 class="tier-title">Team CI/CD Gateway</h3>
-            <div class="tier-pre">Team · 1,000 evaluations</div>
-            <div class="tier-price"><span class="amount">699</span><span class="period">USDC · one time</span></div>
-            <p class="tier-desc">For teams examining proposed actions across pull requests, deployments, and recurring agent workflows.</p>
-            <div class="tier-unavailable">Intended one-time pack · checkout and activation not yet available.</div>
-          </article>
-          <article class="tier-card">
-            <h3 class="tier-title">Institutional Sovereign</h3>
-            <div class="tier-pre">Institutional · 6,000 evaluations</div>
-            <div class="tier-price"><span class="amount">3,500</span><span class="period">USDC · one time</span></div>
-            <p class="tier-desc">For organizations running sustained, high-volume examination across automated workflows.</p>
-            <div class="tier-unavailable">Intended one-time pack · checkout and activation not yet available.</div>
-          </article>
-        </div>
-
-        <div class="access-detail">
-          <div class="section-pre">Included with every tier</div>
-          <ul class="access-list">
-            <li>The submitted evaluation is charged whether its assessment is positive or negative</li>
-            <li>A negative assessment is not issued as a WHP Standing Mark</li>
-            <li>Retrieval and recovery do not trigger a second payment</li>
-            <li>Payment does not supply missing source authority or warrant a favorable result</li>
-          </ul>
-          <p class="access-note"><strong>What counts as an evaluation?</strong> One submission examined under the applicable supported profile, with one signed result where that service path issues one. Both a Standing Mark and a Standing Assessment count equally. Payment buys examination, never a favorable determination.</p>
-          <p class="access-note"><strong>Billing status:</strong> The live contract currently exposes the 1 USDC-per-evaluation route. It does not define these volume-pack balances or automatic activation. Do not send a tier-sized direct transfer expecting pack credit or API-key provisioning; a wallet transfer alone cannot identify or activate a tier.</p>
-          <div class="access-cta">
-            <div>
-              <div class="section-pre">Prefer no volume pack?</div>
-              <p>The live WHP Standing purchase endpoint is <code>POST /v1/evaluations</code>: one exact 1 USDC Base evaluation, using the required <code>whp-standing</code> quote binding and payment authorization. The ordinary <code>POST /v1/evaluate</code> route is a distinct service path, not a substitute for a Standing purchase.</p>
-            </div>
-            <a href="https://api.wheelerhubbellpublishing.com/v1/contract" class="btn-gold-outline" target="_blank" rel="noopener">Read the live contract &rarr;</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION: DEVELOPER & AGENT INTEGRATION DOORS -->
-    <section class="research-section" id="integration">
-      <div class="wrap">
-        <div class="section-header">
-          <div class="section-pre">Direct Machine Interfaces</div>
-          <h2 class="section-title">Connect the service</h2>
-          <p class="section-desc">
-            Use the live contract and repository instructions to choose the appropriate endpoint, payment flow, and result verifier for your use case.
-          </p>
-        </div>
-
-        <div class="grid-2col">
-          
-          <div>
-            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-pure); margin-bottom: 12px;">
-              1. Ordinary REST Evaluation
-            </h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.6;">
-              The ordinary evaluation door and sealed Standing purchase are distinct service paths. Read the current contract for each path’s schema, authentication, payment, and result format before integrating.
-            </p>
-            <div class="code-panel">
-<span class="cmt"># Evaluate a proposition with your WHP API Key</span>
-curl -X POST https://api.wheelerhubbellpublishing.com/v1/evaluate \
-  -H <span class="str">"Authorization: Bearer whp_live_your_api_key"</span> \
-  -H <span class="str">"Content-Type: application/json"</span> \
-  -d <span class="str">'{
-    "subject": "Production Database Migration",
-    "claim": "All integration tests passed and rollback scripts are verified.",
-    "provenance": {
-      "source": "ci-runner-job-492",
-      "authority": "QA Sentinel"
-    }
-  }'</span>
-            </div>
-          </div>
-
-          <div>
-            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-pure); margin-bottom: 12px;">
-              2. GitHub Actions PR Gate (`standing-gate`)
-            </h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.6;">
-              Block pull requests and prevent dangerous automated merges unless epistemic standing is satisfied.
-            </p>
-            <div class="code-panel">
-<span class="cmt"># .github/workflows/decision-integrity.yml</span>
-- name: Evaluate Decision Integrity
-  uses: <span class="kw">wheelerhubbell/standing-gate@v0</span>
-  with:
-    <span class="kw">api_key</span>: <span class="str">${{ secrets.WHP_API_KEY }}</span>
-    <span class="kw">subject</span>: <span class="str">"PR #${{ github.event.pull_request.number }}"</span>
-    <span class="kw">claim</span>: <span class="str">"Release changes comply with protocol specifications."</span>
-    <span class="kw">block_on_failure</span>: <span class="str">true</span>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="grid-2col" style="margin-top: 40px;">
-          
-          <div>
-            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-pure); margin-bottom: 12px;">
-              3. Model Context Protocol (MCP) Server
-            </h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.6;">
-              Equip your Claude, Cursor, or autonomous agent swarm with the sovereign <code style="color: var(--gold-light);">whp_evaluate</code> tool.
-            </p>
-            <div class="code-panel">
-<span class="cmt">// claude_desktop_config.json</span>
-{
-  <span class="kw">"mcpServers"</span>: {
-    <span class="kw">"wheelerhubbell"</span>: {
-      <span class="kw">"url"</span>: <span class="str">"https://api.wheelerhubbellpublishing.com/mcp"</span>
-    }
-  }
-}
-            </div>
-          </div>
-
-          <div>
-            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-pure); margin-bottom: 12px;">
-              4. Offline &amp; Online Signature Verification
-            </h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.6;">
-              Verify signed artifacts against the current published verification contract. Do not rely on a key copied into a static page when the live issuer metadata is available.
-            </p>
-            <div class="code-panel">
-<span class="cmt"># Verify any signed Standing Mark envelope</span>
-curl -X POST https://api.wheelerhubbellpublishing.com/v1/verification \
-  -H <span class="str">"Content-Type: application/json"</span> \
-  -d <span class="str">@signed-standing-envelope.json</span>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SECTION: THE INTELLECTUAL CORPUS & IMPRINT -->
-    <section class="about-section" id="publications">
-      <div class="wrap about-grid">
-        <div class="author-frame">
-          <img src="3-author.jpg" alt="Wheeler Hubbell" width="400" height="500"/>
-        </div>
-        <div class="about-copy">
-          <div class="section-pre">The Intellectual Corpus</div>
-          <h2>Wheeler Hubbell Publishing</h2>
-          <div class="about-creds">Independent Press &middot; New York &middot; Est. MMXXVI</div>
-          <p class="about-text">
-            Wheeler Hubbell Publishing is an independent intellectual press dedicated to fine bookmaking, constitutional philosophy, and formal decision integrity. The Decision Integrity runtime is grounded in the authored monographs:
-          </p>
-          <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px;">
-            <div style="border-left: 2px solid var(--gold-muted); padding-left: 16px;">
-              <h4 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-pure); margin-bottom: 4px;">The Elemental Properties of True</h4>
-              <p style="font-size: 0.88rem; color: var(--text-muted);">The formal epistemology governing object identity, non-contradiction, and truth bounds in human and automated deduction.</p>
-              <a href="1-elemental-properties-excerpt.pdf" target="_blank" rel="noopener" style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--gold-light);">Read Book Excerpt (PDF) &rarr;</a>
-            </div>
-            <div style="border-left: 2px solid var(--gold-muted); padding-left: 16px;">
-              <h4 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-pure); margin-bottom: 4px;">Before Certainty</h4>
-              <p style="font-size: 0.88rem; color: var(--text-muted);">A philosophy of record and restraint when action must proceed in the presence of incomplete information.</p>
-              <a href="1-before-certainty-excerpt.pdf" target="_blank" rel="noopener" style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--gold-light);">Read Book Excerpt (PDF) &rarr;</a>
-            </div>
-          </div>
-          <a href="mailto:acquisitions@wheelerhubbellpublishing.com?subject=Institutional%20Inquiry" class="btn-oxblood">
-            Contact Acquisitions Desk &rarr;
-          </a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Site Footer -->
-  <footer class="site-footer" id="contact">
-    <div class="wrap">
-      <div class="footer-grid">
-        
-        <div class="footer-col">
-          <h4>Wheeler Hubbell Publishing</h4>
-          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px;">
-            The sovereign Decision Integrity &amp; Standing Witness runtime. Bounding autonomous systems, eliminating coherent substitution, and certifying machine determinations.
-          </p>
-          <p style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold-muted);">
-            New York, NY &middot; Est. MMXXVI
-          </p>
-        </div>
-
-        <div class="footer-col">
-          <h4>Access tiers</h4>
-          <ul class="footer-links">
-            <li><a href="#pricing">Developer Sentinel · intended 149 USDC pack</a></li>
-            <li><a href="#pricing">Team CI/CD Gateway · intended 699 USDC pack</a></li>
-            <li><a href="#pricing">Institutional Sovereign · intended 3,500 USDC pack</a></li>
-            <li><a href="#pricing">Autonomous x402 Rail (1 Base USDC)</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Research &amp; Protocols</h4>
-          <ul class="footer-links">
-            <li><a href="protocol.html">Decision Integrity Protocol</a></li>
-            <li><a href="#protocol">The Test of Passage</a></li>
-            <li><a href="1-coherent-substitution.pdf" target="_blank" rel="noopener">Coherent Substitution Monograph</a></li>
-            <li><a href="1-jurisdiction-across-time-preprint.pdf" target="_blank" rel="noopener">Jurisdiction Across Time</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Correspondence &amp; Support</h4>
-          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
-            For questions about the service and current access options:
-          </p>
-          <a href="mailto:acquisitions@wheelerhubbellpublishing.com" style="color: var(--gold-light); font-size: 0.88rem; font-family: var(--font-mono);">
-            acquisitions@wheelerhubbellpublishing.com
-          </a>
-        </div>
-
-      </div>
-
-      <div class="footer-bottom">
-        <div>
-          &copy; 2026 Wheeler Hubbell Publishing, Inc. All rights reserved.
-        </div>
-        <div>
-          Base settlement recipient: <span class="ens-badge font-mono">whpublishing.base.eth</span> (0x1050eddd8282623b0c263ed6bdbd42370bbc28d3)
-        </div>
+      <div class="scenario">
+        <div class="stag">Hypothetical · Engineering</div>
+        <h3>The clean-looking merge</h3>
+        <p>A coding agent declares a database migration backward-compatible. Its own qualification — that compatibility requires a read-replica pause — has disappeared from the conclusion. If the gate is integrated into the merge path, the claim's conditions are examined before the merge proceeds on that basis.</p>
+        <div class="takeaway">The issue is not whether the conclusion sounds technically credible. It is whether the condition that makes it credible survives the passage into execution.</div>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
+
+<section id="why" class="band">
+  <div class="wrap">
+    <div class="section-label">Why This Exists</div>
+    <h2>The dangerous answer isn't always the one that looks wrong.</h2>
+    <p class="body">An answer can be fluent, coherent, and factually correct — and still omit a governing condition, answer a different question, or exercise authority it was never given.</p>
+    <p class="body">The problem becomes consequential when an answer stops being an answer and starts changing the world. A finding becomes a release instruction. A technical conclusion becomes permission to merge. A cited source becomes the basis of a filing.</p>
+    <p class="body">Each transition asks something new of the claim. Evidence sufficient to support a description may not be sufficient to authorize an action. Decision Integrity examines that passage. It distinguishes what is established from what is inferred, what is supported from what remains unknown, and what a claim may establish from what it is permitted to authorize.</p>
+    <blockquote>&ldquo;Truth is not a tone of voice. It is not a reward conferred by confidence, age, status, repetition, fluency, fear, or force.&rdquo;<cite>Wheeler Hubbell · Decision Integrity: The Continuous Work · Preamble — The Difference Between a Word and Its Force</cite></blockquote>
+  </div>
+</section>
+
+<section id="failures">
+  <div class="wrap">
+    <div class="section-label">The Named Failures</div>
+    <h2>Four ways a claim can acquire force it has not earned.</h2>
+    <p class="body">These failures can occur even when individual statements sound credible. The critical question is what survives the passage from source to conclusion to action.</p>
+    <div class="failures">
+      <div class="failure"><div class="fnum">01</div><div><div class="fname">Coherent Substitution</div><div class="flead">The answer is coherent. It answers a materially different question.</div></div><p class="def">Reasoning well about a materially different proposition and presenting the result as responsive.</p></div>
+      <div class="failure"><div class="fnum">02</div><div><div class="fname">Authority Leakage</div><div class="flead">Information acquires authority it has not earned.</div></div><p class="def">An informational object or relation acquires more force than its record entitles it to exercise.</p></div>
+      <div class="failure"><div class="fnum">03</div><div><div class="fname">Object Drift</div><div class="flead">The words survive. The object changes.</div></div><p class="def">The language remains stable while the thing being reasoned about changes.</p></div>
+      <div class="failure"><div class="fnum">04</div><div><div class="fname">Qualifier Stripping</div><div class="flead">A condition disappears. The conclusion changes with it.</div></div><p class="def">When limiting language disappears, the surviving words can become more dangerous than a direct falsehood.</p></div>
+    </div>
+    <p class="body" style="margin-top:26px;font-size:1rem">Definitions from Decision Integrity: The Continuous Work, Part IV — The Named Failures.</p>
+  </div>
+</section>
+
+<section id="mark" class="band">
+  <div class="wrap">
+    <div class="section-label">The Standing Mark</div>
+    <h2>A signed record of how far a claim may be relied on.</h2>
+    <p class="body">A Standing Mark states how far a submission may be relied on under a named profile and stated limits. It is not a universal verdict on truth. It records the standing established by the examination: what the submission is entitled to support within the scope examined.</p>
+    <p class="body">When warrant is not established, no Mark is issued. The service returns a signed Standing Assessment — a bounded record of what was examined and where warrant was not established. A negative result is information, not an absence of service. It preserves the boundary between what the record supports and what remains unwarranted.</p>
+    <blockquote class="compact">&ldquo;No claim acquires force merely by moving. Every material increase in force requires a basis that can be inspected.&rdquo;<cite>Wheeler Hubbell · Decision Integrity: The Continuous Work · Preamble — The Difference Between a Word and Its Force</cite></blockquote>
+    <blockquote class="compact">&ldquo;Standing is what a thing is allowed to do under stated conditions.&rdquo;<cite>Wheeler Hubbell · Decision Integrity: The Continuous Work · Part I — Standing</cite></blockquote>
+    <blockquote class="compact">&ldquo;If the test fails, do not falsely resolve the question. Deny only the unearned force.&rdquo;<cite>Wheeler Hubbell · Decision Integrity: The Continuous Work · Part X — Test of Passage</cite></blockquote>
+  </div>
+</section>
+
+<section id="access"><div class="wrap">
+<div class="section-label">Access</div><h2>One protocol. Choose your evaluation volume.</h2><p class="body">The tiers remain: Developer Sentinel ($149 / 200 evaluations), Team CI/CD Gateway ($699 / 1,000), and Institutional Sovereign ($3,500 / 6,000). The intended model is one-time Base USDC packs, not recurring subscriptions.</p>
+<div class="tiers"><div class="tier"><h3>Developer Sentinel</h3><div class="vol">Developer · 200 evaluations</div><div class="price">149 <span>USDC · one time</span></div><p>For developers running individual agents and lower-volume workflows.</p><div class="tier-unavailable">Intended one-time pack · checkout and activation not yet available.</div></div><div class="tier featured"><h3>Team CI/CD Gateway</h3><div class="vol">Team · 1,000 evaluations</div><div class="price">699 <span>USDC · one time</span></div><p>For teams examining proposed actions across pull requests, deployments, and recurring agent workflows.</p><div class="tier-unavailable">Intended one-time pack · checkout and activation not yet available.</div></div><div class="tier"><h3>Institutional Sovereign</h3><div class="vol">Institutional · 6,000 evaluations</div><div class="price">3,500 <span>USDC · one time</span></div><p>For organizations running sustained, high-volume examination across automated workflows.</p><div class="tier-unavailable">Intended one-time pack · checkout and activation not yet available.</div></div></div>
+<div class="panel billing-status"><p><strong>Billing status:</strong> The live contract currently exposes the 1 USDC-per-evaluation route. It does not define these volume-pack balances or automatic activation. Do not send a tier-sized direct transfer expecting pack credit or API-key provisioning; a wallet transfer alone cannot identify or activate a tier.</p></div>
+<div class="panel"><h3>What counts as an evaluation?</h3><p>One submission examined under the applicable supported profile, with one signed result where that service path issues one. Both outcomes count equally. The fee buys the examination, never a favorable determination.</p></div>
+<details class="panel"><summary>Evaluation and billing details</summary><p>The live contract currently exposes the 1 USDC-per-evaluation route. It does not define these volume-pack balances or automatic activation.</p><p>Replaying the demonstration, downloading an existing record, and verifying its signature do not consume evaluations.</p><h3 style="margin-top:20px">Included with every tier</h3><ul class="access-list">
+<li>The submitted evaluation is charged whether its assessment is positive or negative</li>
+<li>A negative assessment is not issued as a WHP Standing Mark</li>
+<li>Retrieval and recovery do not trigger a second payment</li>
+<li>Payment does not supply missing source authority or warrant a favorable result</li>
+</ul></details>
+<div class="panel"><h3>Prefer no volume pack?</h3><p>The live WHP Standing purchase endpoint is <code>POST /v1/evaluations</code>: one exact 1 USDC Base evaluation, using the required <code>whp-standing</code> quote binding and payment authorization. The ordinary <code>POST /v1/evaluate</code> route is a distinct service path, not a substitute for a Standing purchase.</p><div class="demo-actions" style="margin-top:16px"><a class="btn btn-solid" href="https://api.wheelerhubbellpublishing.com/v1/contract">Read the live contract →</a></div></div>
+</div></section>
+
+<section id="service" class="band" style="border-bottom:none">
+  <div class="wrap">
+    <div class="section-label">Inspect For Yourself</div>
+    <h2>Examine the specification, the record, and the method.</h2>
+    <p class="body">The public specification describes the service. The capability record identifies the issuer and admitted profile. The foundational texts explain the discipline behind the examination.</p>
+    <div class="links-grid">
+      <div class="link-item"><a href="https://api.wheelerhubbellpublishing.com/v1/openapi.json">OpenAPI Specification</a><div class="ld">The public API contract, machine-readable</div></div>
+      <div class="link-item"><a href="https://api.wheelerhubbellpublishing.com/.well-known/whp-standing.json">Standing Capability Record</a><div class="ld">Signed issuer certificate and admitted profile</div></div>
+      <div class="link-item"><a href="https://wheelerhubbellpublishing.com/llms.txt">llms.txt</a><div class="ld">Machine-readable summary for agents</div></div>
+      <div class="link-item"><a href="https://wheelerhubbellpublishing.com/essay.html">Why AI Guardrails Fail at Autonomous Execution</a><div class="ld">The foundational treatise</div></div>
+      <div class="link-item"><a href="https://wheelerhubbellpublishing.com/1-coherent-substitution.pdf">Coherent Substitution — Monograph</a><div class="ld">The named failure, examined in full</div></div>
+      <div class="link-item"><a href="https://wheelerhubbellpublishing.com/protocol.html">The Protocol as a Human Method</a><div class="ld">The eight governing questions, for institutions and people</div></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-brand">
+      <div class="fname">Wheeler Hubbell Publishing</div>
+      <p>Independent intellectual press · Home of the Decision Integrity Protocol, the Standing Mark Service, and Standing Gate. New York · Established MMXXVI.</p>
+    </div>
+    <div class="foot-grid">
+      <div>
+        <div class="col-label">Explore</div>
+        <ul>
+          <li><a href="https://wheelerhubbellpublishing.com/standing-demo/">Demonstration</a></li>
+          <li><a href="https://api.wheelerhubbellpublishing.com/v1/openapi.json">API Specification</a></li>
+          <li><a href="https://api.wheelerhubbellpublishing.com/.well-known/whp-standing.json">Capability Record</a></li>
+          <li><a href="https://wheelerhubbellpublishing.com/protocol.html">Human Method</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="col-label">Settlement</div>
+        <ul>
+          <li style="font-family:var(--mono);font-size:.78rem">whpublishing.base.eth</li>
+          <li style="font-family:var(--mono);font-size:.7rem;word-break:break-all">0x1050eddd8282623b0c263ed6bdbd42370bbc28d3</li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Wheeler Hubbell Publishing, Inc. All rights reserved.</span>
+      <span>Decision Integrity Protocol · Standing Mark Service · Standing Gate</span>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
