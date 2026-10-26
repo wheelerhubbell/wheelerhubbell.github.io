@@ -56,33 +56,45 @@
   <main style="padding: 100px 0 120px 0;">
     <div class="wrap" style="max-width: 820px;">
       
-      <div class="axiom-card" style="padding: 50px 44px;">
+            <div class="axiom-card" style="padding: 50px 44px;">
         <div class="axiom-header">
           <span>Subscription Settled</span>
-          <span class="ens-badge font-mono" style="color: #6ee7b7;">ACTIVE SUBSCRIPTION</span>
+          <span id="status-badge" class="ens-badge font-mono" style="color: #6ee7b7;">ACTIVE SUBSCRIPTION</span>
         </div>
         
         <h1 style="font-family: var(--font-serif); font-size: 2.8rem; color: var(--text-pure); margin-bottom: 18px; line-height: 1.15;">
           Welcome to Decision Integrity.
         </h1>
         
-        <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 28px;">
-          Your Stripe checkout has completed. Subscription access is not ready until signature-verified provisioning and secure API-key delivery are confirmed. For onboarding, contact our desk with your Stripe receipt. Do not share your API key in this page or in a public issue.
+        <p id="status-desc" style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px;">
+          Your Stripe subscription checkout has completed. Your organization holds active standing on the Wheeler Hubbell Publishing sovereign runtime and CI/CD circuit breaker.
         </p>
+
+        <!-- Dynamic Key Claim Container -->
+        <div id="key-container" style="display: none;"></div>
 
         <div style="background: rgba(0,0,0,0.4); border: 1px solid var(--border-subtle); border-radius: 4px; padding: 24px; margin-bottom: 32px;">
           <h3 style="font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-muted); margin-bottom: 14px;">
             Immediate Onboarding Protocol
           </h3>
-          <ol style="margin-left: 20px; font-size: 0.92rem; color: var(--text-main); display: flex; flex-direction: column; gap: 12px; line-height: 1.6;">
+          <ol style="margin-left: 20px; font-size: 0.92rem; color: var(--text-main); display: flex; flex-direction: column; gap: 14px; line-height: 1.6;">
             <li>
-              <strong>Secure API Key Setup:</strong> Do not retrieve a key using a checkout session ID or expose one in a browser URL. Contact our desk with your Stripe invoice receipt to complete secure key issuance and confirm your subscription allowance: <a href="mailto:acquisitions@wheelerhubbellpublishing.com?subject=Secure%20Subscriber%20Onboarding" style="color: var(--gold-light);">acquisitions@wheelerhubbellpublishing.com</a>.
+              <strong>Configure GitHub Secrets:</strong> In your organization or repository settings, navigate to <em>Settings &rarr; Secrets and variables &rarr; Actions</em> and add repository secret:
+              <div style="margin-top: 6px;"><code style="color: var(--gold-light); font-family: var(--font-mono); background: rgba(0,0,0,0.5); padding: 4px 8px; border-radius: 2px;">WHP_API_KEY</code></div>
             </li>
             <li>
-              <strong>Configure GitHub Secrets:</strong> In your organization repository, navigate to <em>Settings &rarr; Secrets and variables &rarr; Actions</em> and add <code style="color: var(--gold-light);">WHP_API_KEY</code>.
+              <strong>Enforce Your Pipeline Boundary:</strong> Call <code style="color: var(--gold-light); font-family: var(--font-mono);">wheelerhubbell/standing-gate@v0</code> in your GitHub Actions workflows:
+              <pre style="background: rgba(0,0,0,0.7); border: 1px solid rgba(197, 160, 89, 0.25); border-radius: 3px; padding: 14px; margin-top: 8px; overflow-x: auto; font-family: var(--font-mono); font-size: 0.82rem; color: #DFC182; line-height: 1.5;">- name: Evaluate Decision Integrity Gate
+  uses: wheelerhubbell/standing-gate@v0
+  env:
+    WHP_API_KEY: ${{ secrets.WHP_API_KEY }}
+  with:
+    subject: "production-deploy"
+    claim: "Release candidate passes regression boundary"
+    provenance: '{"source": "main-merge", "authority": "release-lead"}'</pre>
             </li>
             <li>
-              <strong>Plug In Your CI/CD Gate:</strong> Add <code style="color: var(--gold-light);">wheelerhubbell/standing-gate@v0</code> to your workflow files to block unqualified autonomous merges.
+              <strong>Support &amp; Enterprise Governance:</strong> For key rotation, additional developer seats, or institutional audit inquiries, contact our desk directly at <a href="mailto:acquisitions@wheelerhubbellpublishing.com" style="color: var(--gold-light);">acquisitions@wheelerhubbellpublishing.com</a>.
             </li>
           </ol>
         </div>
@@ -91,7 +103,7 @@
           <a href="index.html#integration" class="btn-oxblood">
             View Developer Documentation &rarr;
           </a>
-          <a href="mailto:acquisitions@wheelerhubbellpublishing.com?subject=New%20Subscriber%20Onboarding" class="btn-gold-outline">
+          <a href="mailto:acquisitions@wheelerhubbellpublishing.com?subject=Subscriber%20Onboarding%20Assistance" class="btn-gold-outline">
             Contact Engineering Support
           </a>
         </div>
@@ -106,6 +118,117 @@
       <div>Settlement Identifier: <span class="ens-badge font-mono">whpublishing.base.eth</span></div>
     </div>
   </footer>
+
+
+  <script>
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const sessionId = params.get('session_id');
+      const container = document.getElementById('key-container');
+      if (!sessionId || !container) return;
+
+      container.style.display = 'block';
+      container.innerHTML = `
+        <div style="background: rgba(15, 12, 8, 0.85); border: 1px solid rgba(197, 160, 89, 0.5); border-radius: 4px; padding: 22px; margin-bottom: 28px;">
+          <div style="font-family: var(--font-mono); font-size: 0.85rem; color: #DFC182; display: flex; align-items: center; gap: 10px;">
+            <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #DFC182; animation: pulse 1.5s infinite;"></span>
+            <span>Settlement recorded. Provisioning sovereign API key...</span>
+          </div>
+        </div>
+        <style>
+          @keyframes pulse {
+            0% { opacity: 0.3; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.1); }
+            100% { opacity: 0.3; transform: scale(0.9); }
+          }
+        </style>
+      `;
+
+      let attempts = 0;
+      const maxAttempts = 12;
+
+      async function checkKey() {
+        attempts++;
+        try {
+          const res = await fetch('https://api.wheelerhubbellpublishing.com/v1/webhook/stripe?session_id=' + encodeURIComponent(sessionId));
+          if (res.status === 200) {
+            const data = await res.json();
+            if (data.status === 'ready' && data.key) {
+              container.innerHTML = `
+                <div style="background: rgba(15, 12, 8, 0.95); border: 1px solid #C5A059; border-radius: 4px; padding: 24px; margin-bottom: 30px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+                    <span style="font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.1em; color: #DFC182; text-transform: uppercase;">
+                      AUTHORIZED API KEY &middot; ${String(data.tier).toUpperCase()} (${data.allowance} EVALS/MO)
+                    </span>
+                    <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #6ee7b7; border: 1px solid rgba(110, 231, 183, 0.4); padding: 2px 8px; border-radius: 2px;">
+                      SINGLE DISPLAY &middot; STORE SECURELY
+                    </span>
+                  </div>
+                  <div style="display: flex; gap: 10px; align-items: center; background: rgba(0,0,0,0.7); border: 1px solid rgba(197, 160, 89, 0.4); padding: 12px 14px; border-radius: 3px;">
+                    <code id="api-key-code" style="font-family: var(--font-mono); color: #fff; font-size: 0.95rem; word-break: break-all; flex-grow: 1;">${data.key}</code>
+                    <button id="copy-btn" onclick="copyApiKey()" style="background: #C5A059; color: #0b0a08; border: none; padding: 8px 16px; font-family: var(--font-mono); font-size: 0.82rem; font-weight: 600; cursor: pointer; border-radius: 2px; white-space: nowrap; transition: background 0.2s;">
+                      Copy Key
+                    </button>
+                  </div>
+                  <p style="font-size: 0.82rem; color: #cbd5e1; margin-top: 12px; margin-bottom: 0; line-height: 1.5;">
+                    <strong style="color: #DFC182;">Important:</strong> For your security, this key is revealed only once upon settlement and cannot be displayed again. Save it immediately in your secrets manager.
+                  </p>
+                </div>
+              `;
+              return;
+            } else if (data.status === 'already_claimed') {
+              container.innerHTML = `
+                <div style="background: rgba(15, 12, 8, 0.85); border: 1px solid rgba(197, 160, 89, 0.4); border-radius: 4px; padding: 20px; margin-bottom: 28px;">
+                  <div style="font-family: var(--font-mono); font-size: 0.8rem; color: #DFC182; text-transform: uppercase; margin-bottom: 6px;">
+                    SUBSCRIPTION ACTIVE &middot; KEY PREVIOUSLY CLAIMED
+                  </div>
+                  <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0; line-height: 1.6;">
+                    The API key for this checkout session was already claimed and recorded. For security reasons, keys are only revealed once upon initial settlement. If you need key rotation, contact <a href="mailto:acquisitions@wheelerhubbellpublishing.com" style="color: #DFC182;">acquisitions@wheelerhubbellpublishing.com</a>.
+                  </p>
+                </div>
+              `;
+              return;
+            }
+          }
+        } catch (e) {
+          console.warn('Poll error:', e);
+        }
+
+        if (attempts < maxAttempts) {
+          setTimeout(checkKey, 1500);
+        } else {
+          container.innerHTML = `
+            <div style="background: rgba(15, 12, 8, 0.85); border: 1px solid rgba(197, 160, 89, 0.4); border-radius: 4px; padding: 20px; margin-bottom: 28px;">
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: #DFC182; margin-bottom: 6px;">
+                PROVISIONING TAKING LONGER THAN USUAL
+              </div>
+              <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0; line-height: 1.6;">
+                Your payment was received. Webhook delivery may be queued. Refresh this page in a moment or contact our desk at <a href="mailto:acquisitions@wheelerhubbellpublishing.com" style="color: #DFC182;">acquisitions@wheelerhubbellpublishing.com</a> with your Stripe receipt.
+              </p>
+            </div>
+          `;
+        }
+      }
+
+      checkKey();
+    })();
+
+    function copyApiKey() {
+      const code = document.getElementById('api-key-code');
+      const btn = document.getElementById('copy-btn');
+      if (!code || !btn) return;
+      navigator.clipboard.writeText(code.textContent.trim()).then(() => {
+        btn.textContent = 'Copied!';
+        btn.style.background = '#6ee7b7';
+        setTimeout(() => {
+          btn.textContent = 'Copy Key';
+          btn.style.background = '#C5A059';
+        }, 2500);
+      }).catch(() => {
+        btn.textContent = 'Failed';
+      });
+    }
+  </script>
 
 </body>
 </html>
