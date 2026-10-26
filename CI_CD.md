@@ -35,9 +35,9 @@ jobs:
 ## Ingress & Authentication Rails
 
 1. **Commercial Subscription Rails (CI/CD Teams & Enterprise Pipelines):**
-   - **Developer Sentinel:** $149/mo (500 evaluations/mo)
-   - **Team CI/CD Gateway:** $699/mo (5,000 evaluations/mo)
-   - **Institutional Sovereign:** $3,500/mo (High throughput & critical governance)
+   - **Developer Sentinel:** $149/mo (200 evaluations/mo)
+   - **Team CI/CD Gateway:** $699/mo (1,000 evaluations/mo)
+   - **Institutional Sovereign:** $3,500/mo (6,000 evaluations/mo & critical governance)
    - Authenticates directly via provisioned API key (`WHP_API_KEY`).
 2. **Autonomous M2M Micropayment Rail (Agent-to-Agent):**
    - 1 Base USDC per evaluation via HTTP 402 challenge, EIP-3009 transfer authorization, and keyless facilitator settlement (`0x1050eddd8282623b0c263ed6bdbd42370bbc28d3` / `whpublishing.base.eth`).
