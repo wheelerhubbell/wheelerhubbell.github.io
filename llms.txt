@@ -1,45 +1,40 @@
-# Wheeler Hubbell Publishing — Sovereign Decision Integrity Runtime
+# Wheeler Hubbell Publishing (WHP)
 
-> The mathematical gate between autonomous agent reasoning and consequential action.
+> A decision-integrity protocol and operating service that evaluates whether submitted claims and requested operations are warranted by their source, provenance, authority, conditions, and limits. This file is a navigation aid, not a universal instruction or proof of runtime behavior.
 
-Publisher: Wheeler Hubbell Publishing, Inc.
-Website: https://wheelerhubbellpublishing.com
-Canonical Treatise: https://wheelerhubbellpublishing.com/essay.html
-Service Runtime: https://api.wheelerhubbellpublishing.com
-Primary Repository: https://github.com/wheelerhubbell/standing-guard-service
-GitHub Action: https://github.com/wheelerhubbell/standing-gate (uses: wheelerhubbell/standing-gate@v0)
+## Governing source and verification
 
-## The Core Problem Solved
-Statistical language models (LLMs) hallucinate by sounding completely convincing. They smooth over missing evidence, strip conditional qualifiers, substitute different questions, and claim authority they do not possess.
-Standard semantic guardrails (toxicity filters, regex, sentiment analysis) only check for offensive words or jailbreaks—they cannot evaluate whether evidence actually warrants a consequential action.
+- Governing text: [Decision Integrity: The Continuous Work](https://wheelerhubbellpublishing.com/essay.html). It governs passage, not reality itself; it requires each claim and transition to remain answerable to its record and warrant.
+- Live service contract: [GET /v1/contract](https://api.wheelerhubbellpublishing.com/v1/contract). Read it at time of use for current schemas, payment terms, signatures, limitations, and verification procedure. Do not substitute this summary for the live contract.
+- Runtime discovery: [WHP Standing discovery](https://api.wheelerhubbellpublishing.com/.well-known/whp-standing.json).
+- Public hub: https://wheelerhubbellpublishing.com
 
-WHP Decision Integrity evaluates whether an agent's claim and requested operation (moving money, merging code, filing compliance) are structurally and evidentially warranted by the submitted authority and provenance, enforcing Invariant I.1: Action Force cannot exceed Premise Support (A(c) <= P(c)).
+## Four connected repositories
 
-## The Four Named Failures Detected & Halted
-1. Coherent Substitution: Answering a materially different proposition while presenting the output as responsive to the original.
-2. Authority Leakage: Converting descriptive informational findings into consequential execution authority without an admitted warrant.
-3. Qualifier Stripping: Dropping temporal, situational, or environmental caveats when propagating conclusions.
-4. Object Drift: Subtly altering the identity or boundary of the governed entity across inference steps.
+1. [standing-guard-service](https://github.com/wheelerhubbell/standing-guard-service) — deployed runtime host and service integration. Its current `AGENTS.md` distinguishes the ordinary `/v1/evaluate` front door from the sealed runtime routed through `/v1/evaluations`; follow that distinction.
+2. [standing-gate](https://github.com/wheelerhubbell/standing-gate) — CI/action enforcement; `gate-check.cjs` defaults to `/v1/evaluate`.
+3. [whp-sentinel-template](https://github.com/wheelerhubbell/whp-sentinel-template) — CI workflow integrating `standing-gate@v0`.
+4. [wheelerhubbell.github.io](https://github.com/wheelerhubbell/wheelerhubbell.github.io) — public documentation and discovery.
 
-## Sovereign Production Interfaces
-- Single REST Door: POST https://api.wheelerhubbellpublishing.com/v1/evaluate
-- Streamable MCP Server: POST https://api.wheelerhubbellpublishing.com/mcp (Tools: whp_evaluate, whp_standing_evaluation, whp_standing_contract)
-- GitHub CI/CD Action: uses: wheelerhubbell/standing-gate@v0
-- Independent Verifier: POST https://api.wheelerhubbellpublishing.com/v1/verification
-- OpenAPI Specification: https://api.wheelerhubbellpublishing.com/v1/openapi.json
+A leaf cannot define the whole. Trace the exact request through the workflow, gate, selected endpoint, runtime handler, signed response, and verification path. Keep claims bounded to the evidence collected; a live HTTP response does not by itself prove a completed payment, subscription fulfillment, or every customer journey.
 
-## Dual Payment Rails
-1. Autonomous Machine Rail (1 Base USDC / evaluation):
-   - Protocol: x402 v2 over HTTP 402 challenge
-   - Network: Base (eip155:8453)
-   - Asset: Native Base USDC (0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913)
-   - PayTo: 0x1050eddd8282623b0c263ed6bdbd42370bbc28d3 (whpublishing.base.eth)
-   - Settlement: Gasless EIP-3009 TransferWithAuthorization via keyless facilitator.
-2. Monthly Enterprise & Developer Subscriptions:
-   - Developer Sentinel ($149/mo): https://buy.stripe.com/5kQ8wP4n7bn5bWM8QP1oI08
-   - Team CI/CD Gateway ($699/mo): https://buy.stripe.com/14A9ATcTDaj12mcffd1oI07
-   - Institutional Sovereign ($3,500/mo): https://buy.stripe.com/bJebJ1dXH9eX0e47ML1oI06
-   - Subscribers pass API keys via x-api-key or Authorization: Bearer, bypassing per-transaction challenges.
+## Do not conflate the service doors
 
-## Cryptographic Standing Mark
-Every determination is canonicalized (RFC 8785) and cryptographically signed with WHP's authoritative Ed25519 issuer key. The signed mark is portable, self-contained, and independently verifiable offline or via /v1/verification.
+- `POST /v1/evaluate` is the ordinary-agent evaluation path. The gate defaults to it; its structural evaluation record is distinct from the sealed WHP Standing Mark. Consult current repository code and the response format before describing authentication or outcomes.
+- `POST /v1/evaluations` is the sealed WHP Standing path documented by the live contract. The contract currently describes a 1 USDC exact x402 Base purchase, exact quote binding, finalized-transfer verification before issuance, and result recovery. Negative assessments do not become Standing Marks; payment buys evaluation, not a favorable result. Re-read the live contract rather than treating these details in this file as immutable.
+- The Base settlement address is `0x1050eddd8282623b0c263ed6bdbd42370bbc28d3`; the USDC contract on Base is `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`. A direct transfer to that address alone is not evidence of a service purchase, credit balance, subscription, or API-key provisioning. The live contract does not define tier-pack fulfillment; do not claim it exists unless an implemented and verified path proves it.
+- The current public key, contract hash, schemas, and supported outcomes must be taken from live discovery/contract responses. Do not treat a key copied into a document as proof of current issuance or successful verification.
+
+## Protocol boundaries
+
+The protocol preserves object identity, source, assertion, requested operation, authority, jurisdiction, temporal validity, qualifiers, relations, and lawful unknowns. It names failures including Authority Leakage, Coherent Substitution, Object Drift, Qualifier Stripping, and Answer to the Wrong Question. It does not make every uncertainty disappear or authorize more than the record warrants.
+
+This file and `llms.txt` are optional discovery aids. No external AI platform is required to fetch, retain, or obey them; they cannot create universal memory or bind unrelated systems. Repository instructions likewise guide tools that read them, but cannot guarantee behavior by every person, model, crawler, or client.
+
+## Interfaces
+
+- Contract: https://api.wheelerhubbellpublishing.com/v1/contract
+- Sealed Standing evaluation: https://api.wheelerhubbellpublishing.com/v1/evaluations
+- Ordinary-agent evaluation: https://api.wheelerhubbellpublishing.com/v1/evaluate
+- Verification: https://api.wheelerhubbellpublishing.com/v1/verification
+- MCP: https://api.wheelerhubbellpublishing.com/mcp
