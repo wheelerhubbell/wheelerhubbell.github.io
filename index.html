@@ -208,7 +208,7 @@
     <div class="trust">
       <div><span>Signed</span>Ed25519 · Canonical JSON</div>
       <div><span>Independently verifiable</span>Offline, against published keys</div>
-      <div><span>Access</span>1 USDC per evaluation</div>
+      <div><span>Access</span>Monthly Subscriptions · 1 USDC x402</div>
     </div>
     <div class="hero-actions">
       <a class="btn btn-solid" href="#demonstration">Inspect the Demonstration →</a>
@@ -326,17 +326,46 @@
 </section>
 
 <section id="access"><div class="wrap">
-<div class="section-label">Access</div><h2>One protocol. Choose your evaluation volume.</h2><p class="body">The tiers remain: Developer Sentinel ($149 / 200 evaluations), Team CI/CD Gateway ($699 / 1,000), and Institutional Sovereign ($3,500 / 6,000). The intended model is one-time Base USDC packs, not recurring subscriptions.</p>
-<div class="tiers"><div class="tier"><h3>Developer Sentinel</h3><div class="vol">Developer · 200 evaluations</div><div class="price">149 <span>USDC · one time</span></div><p>For developers running individual agents and lower-volume workflows.</p><div class="tier-unavailable">Intended one-time pack · checkout and activation not yet available.</div></div><div class="tier featured"><h3>Team CI/CD Gateway</h3><div class="vol">Team · 1,000 evaluations</div><div class="price">699 <span>USDC · one time</span></div><p>For teams examining proposed actions across pull requests, deployments, and recurring agent workflows.</p><div class="tier-unavailable">Intended one-time pack · checkout and activation not yet available.</div></div><div class="tier"><h3>Institutional Sovereign</h3><div class="vol">Institutional · 6,000 evaluations</div><div class="price">3,500 <span>USDC · one time</span></div><p>For organizations running sustained, high-volume examination across automated workflows.</p><div class="tier-unavailable">Intended one-time pack · checkout and activation not yet available.</div></div></div>
-<div class="panel billing-status"><p><strong>Billing status:</strong> The live contract currently exposes the 1 USDC-per-evaluation route. It does not define these volume-pack balances or automatic activation. Do not send a tier-sized direct transfer expecting pack credit or API-key provisioning; a wallet transfer alone cannot identify or activate a tier.</p></div>
+<div class="section-label">Access</div><h2>One protocol. Choose your evaluation volume.</h2><p class="body">Subscriptions are billed monthly for a defined evaluation allowance. Upon checkout, your sovereign API key and onboarding instructions are delivered immediately to your email for instant integration into GitHub Actions, CI/CD pipelines, or agent runtimes.</p>
+<div class="tiers"><div class="tier"><h3>Developer Sentinel</h3><div class="vol">Developer · 200 evaluations / mo</div><div class="price">$149 <span>/ month</span></div><p>For individual engineers running automated agent workflows, pull request gates, and development testing.</p><a class="btn btn-solid" href="mailto:desk@wheelerhubbellpublishing.com?subject=Subscribe%20to%20Developer%20Sentinel%20Tier">Subscribe · $149/mo →</a></div><div class="tier featured"><h3>Team CI/CD Gateway</h3><div class="vol">Team · 1,000 evaluations / mo</div><div class="price">$699 <span>/ month</span></div><p>For engineering teams examining proposed actions across production pull requests, deployment gates, and recurring agent workflows.</p><a class="btn btn-solid" href="mailto:desk@wheelerhubbellpublishing.com?subject=Subscribe%20to%20Team%20CI%2FCD%20Gateway%20Tier">Subscribe · $699/mo →</a></div><div class="tier"><h3>Institutional Sovereign</h3><div class="vol">Institutional · 6,000 evaluations / mo</div><div class="price">$3,500 <span>/ month</span></div><p>For organizations running sustained, high-volume decision-integrity examination across enterprise automated workflows.</p><a class="btn btn-solid" href="mailto:desk@wheelerhubbellpublishing.com?subject=Subscribe%20to%20Institutional%20Sovereign%20Tier">Subscribe · $3,500/mo →</a></div></div>
+
+<div class="panel" style="margin-top:32px">
+<h3>How to submit evaluations</h3>
+<p class="body" style="margin-bottom:20px">Once subscribed, you receive your sovereign API key (<code>whp_live_...</code>) via email. Plug it directly into your workflow:</p>
+
+<div style="margin-bottom:20px">
+<strong style="color:var(--gold);font-family:var(--mono);font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;">1. In GitHub Actions (Standing Gate & Sentinel)</strong>
+<p style="font-size:0.95rem;margin:6px 0 10px;color:var(--ink-body);">Add <code>WHP_API_KEY</code> to your repository secrets, then add this step to your workflow file (<code>.github/workflows/sentinel.yml</code>):</p>
+<pre style="background:var(--oxblood-deep);padding:14px;border:1px solid var(--hairline);border-radius:4px;overflow-x:auto;font-size:0.85rem;color:var(--gold-dim);"><code>- name: Run Decision Integrity Gate
+  uses: wheelerhubbell/standing-gate@v0
+  env:
+    WHP_API_KEY: ${{ secrets.WHP_API_KEY }}</code></pre>
+</div>
+
+<div style="margin-bottom:20px">
+<strong style="color:var(--gold);font-family:var(--mono);font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;">2. Direct REST API (cURL / Python / Node)</strong>
+<p style="font-size:0.95rem;margin:6px 0 10px;color:var(--ink-body);">Submit claims to <code>POST https://api.wheelerhubbellpublishing.com/v1/evaluate</code> with your bearer token:</p>
+<pre style="background:var(--oxblood-deep);padding:14px;border:1px solid var(--hairline);border-radius:4px;overflow-x:auto;font-size:0.85rem;color:var(--gold-dim);"><code>curl -X POST https://api.wheelerhubbellpublishing.com/v1/evaluate   -H "Authorization: Bearer whp_live_..."   -H "Content-Type: application/json"   -d '{
+    "claim": "Deploy release to production",
+    "subject": "Production Release",
+    "provenance": { "source": "ci/cd pipeline", "authority": "release-engineering" }
+  }'</code></pre>
+</div>
+
+<div>
+<strong style="color:var(--gold);font-family:var(--mono);font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;">3. AI Agent MCP (Model Context Protocol)</strong>
+<p style="font-size:0.95rem;margin:6px 0 10px;color:var(--ink-body);">Point Claude Desktop, Cursor, or your custom agent to <code>https://api.wheelerhubbellpublishing.com/mcp</code> and invoke tool <code>whp_evaluate</code>.</p>
+</div>
+</div>
+
 <div class="panel"><h3>What counts as an evaluation?</h3><p>One submission examined under the applicable supported profile, with one signed result where that service path issues one. Both outcomes count equally. The fee buys the examination, never a favorable determination.</p></div>
-<details class="panel"><summary>Evaluation and billing details</summary><p>The live contract currently exposes the 1 USDC-per-evaluation route. It does not define these volume-pack balances or automatic activation.</p><p>Replaying the demonstration, downloading an existing record, and verifying its signature do not consume evaluations.</p><h3 style="margin-top:20px">Included with every tier</h3><ul class="access-list">
+<details class="panel"><summary>Evaluation and billing details</summary><p>Replaying the demonstration, downloading an existing record, and verifying its signature do not consume evaluations.</p><h3 style="margin-top:20px">Included with every tier</h3><ul class="access-list">
 <li>The submitted evaluation is charged whether its assessment is positive or negative</li>
 <li>A negative assessment is not issued as a WHP Standing Mark</li>
 <li>Retrieval and recovery do not trigger a second payment</li>
 <li>Payment does not supply missing source authority or warrant a favorable result</li>
 </ul></details>
-<div class="panel"><h3>Prefer no volume pack?</h3><p>The live WHP Standing purchase endpoint is <code>POST /v1/evaluations</code>: one exact 1 USDC Base evaluation, using the required <code>whp-standing</code> quote binding and payment authorization. The ordinary <code>POST /v1/evaluate</code> route is a distinct service path, not a substitute for a Standing purchase.</p><div class="demo-actions" style="margin-top:16px"><a class="btn btn-solid" href="https://api.wheelerhubbellpublishing.com/v1/contract">Read the live contract →</a></div></div>
+<div class="panel"><h3>Autonomous Machine Payment (No Subscription Needed)</h3><p>For autonomous AI agents paying per execution without human intervention: <code>POST /v1/evaluations</code> accepts 1 USDC on Base via the published <code>whp-standing</code> x402 exact-quote binding.</p><div class="demo-actions" style="margin-top:16px"><a class="btn btn-solid" href="https://api.wheelerhubbellpublishing.com/v1/contract">Read the live contract →</a></div></div>
 </div></section>
 
 <section id="service" class="band" style="border-bottom:none">
