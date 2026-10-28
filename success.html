@@ -191,7 +191,7 @@
 - name: Verify Decision Integrity
   uses: wheelerhubbell/standing-gate@v0
   with:
-    whp-api-key: ${{ secrets.WHP_API_KEY }}</pre>
+    api_key: ${{ secrets.WHP_API_KEY }}</pre>
                   </div>
                 </div>
               `;
@@ -234,7 +234,7 @@
     })();
 
         function copyCiSnippet() {
-      const snippet = `# Add this to your .github/workflows/ci.yml\n- name: Verify Decision Integrity\n  uses: wheelerhubbell/standing-gate@v0\n  with:\n    whp-api-key: \${{ secrets.WHP_API_KEY }}`;
+      const snippet = `# Add this to your .github/workflows/ci.yml\n- name: Verify Decision Integrity\n  uses: wheelerhubbell/standing-gate@v0\n  with:\n    api_key: \${{ secrets.WHP_API_KEY }}`;
       const btn = document.getElementById('copy-snippet-btn');
       navigator.clipboard.writeText(snippet).then(() => {
         if (btn) {
