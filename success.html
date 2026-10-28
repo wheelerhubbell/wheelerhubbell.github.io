@@ -113,9 +113,12 @@
   </main>
 
   <footer class="site-footer">
-    <div class="wrap footer-bottom" style="border: none; padding-top: 0;">
+    <div class="wrap footer-bottom" style="border: none; padding-top: 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
       <div>&copy; 2026 Wheeler Hubbell Publishing, Inc. All rights reserved.</div>
-      <div>Settlement Identifier: <span class="ens-badge font-mono">whpublishing.base.eth</span></div>
+      <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+        <a href="https://api.wheelerhubbellpublishing.com/v1/portal" target="_blank" rel="noopener" style="color: var(--gold-light); font-size: 0.85rem; text-decoration: none; border-bottom: 1px dotted var(--gold-muted); padding-bottom: 2px;">Manage Subscription &rarr;</a>
+        <div>Settlement Identifier: <span class="ens-badge font-mono">whpublishing.base.eth</span></div>
+      </div>
     </div>
   </footer>
 
@@ -173,6 +176,23 @@
                   <p style="font-size: 0.82rem; color: #cbd5e1; margin-top: 12px; margin-bottom: 0; line-height: 1.5;">
                     <strong style="color: #DFC182;">Important:</strong> For your security, this key is revealed only once upon settlement and cannot be displayed again. Save it immediately in your secrets manager.
                   </p>
+
+                  <!-- Drop-in GitHub Action Snippet -->
+                  <div style="margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(197, 160, 89, 0.25);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
+                      <span style="font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em; color: #DFC182; text-transform: uppercase;">
+                        Drop-in CI Setup (.github/workflows/ci.yml)
+                      </span>
+                      <button id="copy-snippet-btn" onclick="copyCiSnippet()" style="background: rgba(197, 160, 89, 0.15); color: #DFC182; border: 1px solid rgba(197, 160, 89, 0.5); padding: 6px 14px; font-family: var(--font-mono); font-size: 0.78rem; font-weight: 500; cursor: pointer; border-radius: 2px; transition: all 0.2s;">
+                        Copy GitHub Action Snippet
+                      </button>
+                    </div>
+                    <pre id="ci-snippet" style="background: rgba(0,0,0,0.85); border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 3px; padding: 14px 16px; margin: 0; font-family: var(--font-mono); font-size: 0.84rem; color: #DFC182; overflow-x: auto; line-height: 1.55;"># Add this to your .github/workflows/ci.yml
+- name: Verify Decision Integrity
+  uses: wheelerhubbell/standing-gate@v0
+  with:
+    whp-api-key: ${{ secrets.WHP_API_KEY }}</pre>
+                  </div>
                 </div>
               `;
               return;
@@ -212,6 +232,25 @@
 
       checkKey();
     })();
+
+        function copyCiSnippet() {
+      const snippet = `# Add this to your .github/workflows/ci.yml\n- name: Verify Decision Integrity\n  uses: wheelerhubbell/standing-gate@v0\n  with:\n    whp-api-key: \${{ secrets.WHP_API_KEY }}`;
+      const btn = document.getElementById('copy-snippet-btn');
+      navigator.clipboard.writeText(snippet).then(() => {
+        if (btn) {
+          btn.textContent = 'Copied Snippet!';
+          btn.style.borderColor = '#6ee7b7';
+          btn.style.color = '#6ee7b7';
+          setTimeout(() => {
+            btn.textContent = 'Copy GitHub Action Snippet';
+            btn.style.borderColor = 'rgba(197, 160, 89, 0.5)';
+            btn.style.color = '#DFC182';
+          }, 2500);
+        }
+      }).catch(() => {
+        if (btn) btn.textContent = 'Failed';
+      });
+    }
 
     function copyApiKey() {
       const code = document.getElementById('api-key-code');
