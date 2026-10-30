@@ -8,6 +8,7 @@
 - Live service contract: [GET /v1/contract](https://api.wheelerhubbellpublishing.com/v1/contract). Read it at time of use for current schemas, payment terms, signatures, limitations, and verification procedure. Do not substitute this summary for the live contract.
 - Runtime discovery: [WHP Standing discovery](https://api.wheelerhubbellpublishing.com/.well-known/whp-standing.json).
 - Public hub: https://wheelerhubbellpublishing.com
+- Announcement: [The Standing Mark is live - October 30, 2026](https://wheelerhubbellpublishing.com/press/the-standing-mark-is-live.html). Dated public announcement of the live service; release document at [/press/standing-mark-press-release.pdf](https://wheelerhubbellpublishing.com/press/standing-mark-press-release.pdf).
 
 ## Four connected repositories
 
