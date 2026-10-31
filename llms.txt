@@ -41,7 +41,6 @@ This file and `llms.txt` are optional discovery aids. No external AI platform is
 - MCP: https://api.wheelerhubbellpublishing.com/mcp
 ## Successive examinations and continuity
 
-- `POST /v1/evaluate` accepts `prior_record_hash` (the SHA-256 hash of an earlier signed evaluation record) and an optional `continuity` object.
-- The evaluator evaluates whether the source object identity was preserved, traces new evidence deltas, checks for Object Drift, flags Qualifier Stripping, and adjudicates whether prior lawful unknowns were addressed by newly submitted evidence.
-- Historical records are preserved immutably. Successive evaluations establish cryptographic lineage (`SUCCESSIVE_LINEAGE_ESTABLISHED`) without mutating earlier records.
-- Canonical GitHub Action: `wheelerhubbell/standing-gate@v0` accepts `prior_record_hash` and generates verified adjudication reports and discrete client reception records.
+- `POST /v1/evaluate` accepts `prior_record_hash` and an optional `continuity` object as request fields. Their presence does not, by itself, authenticate a predecessor, establish lineage, prove that earlier records were preserved, or show that a prior unknown was resolved.
+- Standing Gate can pass predecessor fields through and report what the returned evaluator record states. Treat continuity as established only when an authenticated, independently verifiable service record supports the relationship.
+- The live contract and discovery document describe the current service boundary. Do not claim verified successive-examination continuity from request fields, client reports, mock fixtures, or unit tests alone.
