@@ -20,6 +20,29 @@ def canonical(x):
 def b64u(s):
     return base64.urlsafe_b64decode(s + "=" * (-len(s) % 4))
 
+
+def fetch_advertised_key(origin):
+    """Return the issuer key the service advertises now, failing closed.
+
+    Reads GET {origin}/v1/verification and requires an exact shape:
+    authoritative_public_key with alg "Ed25519" and a base64url key that
+    decodes to exactly 32 valid bytes. Any other response shape raises, so
+    a changed or spoofed response is reported as an error and can never be
+    mistaken for a key match. Key rotation is normal: a historical record
+    signed under a retired key verifies hash and signature while
+    key_matches_service is false.
+    """
+    req = urllib.request.Request(origin.rstrip("/") + "/v1/verification", headers={"accept": "application/json", "user-agent": "whp-verify-frontdoor/2"})
+    with urllib.request.urlopen(req, timeout=20) as r:
+        body = json.load(r)
+    apk = body["authoritative_public_key"]
+    if apk.get("alg") != "Ed25519":
+        raise ValueError("advertised key is not Ed25519")
+    if len(b64u(apk["public_key_b64url"])) != 32:
+        raise ValueError("advertised key is not 32 bytes")
+    Ed25519PublicKey.from_public_bytes(b64u(apk["public_key_b64url"]))
+    return apk["public_key_b64url"]
+
 def verify(env, origin=None):
     out = {"verified": False, "checks": {}}
     try:
@@ -35,9 +58,7 @@ def verify(env, origin=None):
         except Exception:
             out["checks"]["signature"] = False
         if origin:
-            req = urllib.request.Request(origin.rstrip("/") + "/v1/ept/core", headers={"accept": "application/json", "user-agent": "whp-verify-frontdoor/1"})
-            with urllib.request.urlopen(req, timeout=20) as r:
-                adv = json.load(r)["signer"]["public_key_b64url"]
+            adv = fetch_advertised_key(origin)
             out["checks"]["key_matches_service"] = adv == sig["public_key_b64url"]
         out["not_sealed_mark"] = rec.get("not_sealed_mark")
         out["valid_until"] = rec.get("valid_until")

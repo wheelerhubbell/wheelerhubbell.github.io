@@ -2,6 +2,10 @@
 
 Independent verifier for WHP Standing v1. This repository contains the standalone Python verifier, its dependency pins and the separate public SDK integration source under `sdk/`. It does not contain the service engine.
 
+## Generation status
+
+This package carries the historical v1 verifier generation: `bb8cb78205f1892dcbf00d845cf85e504a0efacf2a0d8a793313fa8c0e99b833` (v1.0.0) and `0980eb6bb156f4251a935a65a6e2ef6c7441fc06de8b2a05f1e57c511d19cb5e` (v1.0.1), both bound to contract hash `dd433c055fe0ad0bdb0326479b3339eea018204ccef44cd6ef247520a29c8e75`. The current live generation is v2. Its verifier is not duplicated here: each current Mark names its exact verifier by SHA-256 in its signed profile authorization, and the service serves those bytes content-addressed at `GET /v1/verification/<sha256>.py`. Verify a Mark only with the verifier its own authorization names.
+
 ## Check the source
 
 `verify_mark.py` is published byte-for-byte from the source identified by the live service's signed profile authorization. Expected SHA-256:
