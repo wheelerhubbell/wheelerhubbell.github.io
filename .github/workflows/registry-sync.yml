@@ -1,0 +1,64 @@
+name: Sync MCP Registry listing on release
+
+# On each published release (or manual dispatch), republishes the checked-in
+# server.json to the official MCP Registry, so the public listing stays
+# pointed at the current service. The run publishes exactly the reviewed
+# server.json and fails unless that file's version already equals the
+# release tag, so a release can never publish unstamped or unreviewed text.
+# Authenticates with GitHub OIDC; no stored secrets. It makes no calls to
+# the WHP service; outbound contact is limited to GitHub (tool download and
+# OIDC), Sigstore (binary verification) and registry.modelcontextprotocol.io.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # Required for OIDC authentication
+      contents: read
+    env:
+      MCP_PUBLISHER_VERSION: v1.8.1
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Install cosign
+        uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
+
+      - name: Download and verify mcp-publisher
+        run: |
+          set -euo pipefail
+          os="$(uname -s | tr '[:upper:]' '[:lower:]')"
+          arch="$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')"
+          archive="mcp-publisher_${os}_${arch}.tar.gz"
+          base_url="https://github.com/modelcontextprotocol/registry/releases/download/${MCP_PUBLISHER_VERSION}"
+          curl --fail --location --silent --show-error --output "$archive" "$base_url/$archive"
+          curl --fail --location --silent --show-error --output "$archive.sigstore.json" "$base_url/$archive.sigstore.json"
+          cosign verify-blob \
+            --bundle "$archive.sigstore.json" \
+            --certificate-identity "https://github.com/modelcontextprotocol/registry/.github/workflows/release.yml@refs/tags/${MCP_PUBLISHER_VERSION}" \
+            --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \
+            "$archive"
+          tar xzf "$archive" mcp-publisher
+          rm -f "$archive" "$archive.sigstore.json"
+
+      - name: Authenticate to MCP Registry
+        run: ./mcp-publisher login github-oidc
+
+      - name: Require the checked-in server.json to match the release tag
+        if: github.event_name == 'release'
+        run: |
+          set -euo pipefail
+          VERSION="${GITHUB_REF_NAME#v}"
+          CHECKED_IN="$(jq -r .version server.json)"
+          # Publish exactly the reviewed server.json. A release tag can never
+          # inject an unstamped version or unreviewed text: the run fails
+          # unless the checked-in file already carries the tag's version.
+          test "$CHECKED_IN" = "$VERSION"
+
+      - name: Publish server to MCP Registry
+        run: ./mcp-publisher publish
