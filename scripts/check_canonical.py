@@ -13,7 +13,7 @@ allowed = {
     'sitemap.xml', 'smithery.yaml', 'index.html', 'essay.html',
     'protocol.html', 'success.html', 'beacon.html', 'action.yml',
     'assets', 'attestations', 'benchmarks', 'contracts', 'docs', 'examples',
-    'p', 'packages', 'py', 'ts', 'AGENTKIT.md', 'BEACON.md',
+    'p', 'packages', 'press', 'py', 'ts', 'AGENTKIT.md', 'BEACON.md',
     'CIRCUIT_BREAKER.md', 'CI_CD.md', 'DIS_BENCHMARK.md', 'ESCROW.md',
     '.gitignore', '.git', '1-From_Assertion_to_Authority_Mata_v_Avianca_Proof_Dossier_v2.docx',
     '1-adversarial-memorandum.pdf', '1-before-certainty-excerpt.pdf', '1-coherent-substitution.pdf',
