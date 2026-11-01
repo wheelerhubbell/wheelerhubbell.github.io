@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>DITS-1.0: Decision Integrity Technical Specification — Wheeler Hubbell Publishing</title>
+  <meta name="description" content="Formal metrology, data structures, and evaluation predicates governing the passage of informational claims across boundaries in autonomous systems."/>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --bg: #F9F6EF;
+      --text: #141414;
+      --red: #7D1D1D;
+      --border: #DCD0B8;
+      --card-bg: #FFFFFF;
+      --mono: 'JetBrains Mono', monospace;
+      --serif: 'EB Garamond', Georgia, serif;
+      --display: 'Playfair Display', Georgia, serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      line-height: 1.7;
+      padding: 0 20px 80px;
+    }
+    .wrap {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    header.spec-header {
+      padding: 40px 0 30px;
+      border-bottom: 2px solid var(--red);
+      margin-bottom: 48px;
+    }
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+    }
+    .nav-bar a {
+      color: var(--red);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .nav-bar a:hover {
+      text-decoration: underline;
+    }
+    .badge {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--red);
+      border: 1px solid var(--red);
+      padding: 4px 10px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-family: var(--display);
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      font-weight: 600;
+      line-height: 1.18;
+      color: var(--red);
+      margin-bottom: 24px;
+    }
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px 24px;
+      font-size: 0.95rem;
+      font-family: var(--mono);
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 20px;
+      margin-bottom: 40px;
+    }
+    .metadata div strong {
+      color: var(--red);
+      display: inline-block;
+      min-width: 130px;
+    }
+    h2 {
+      font-family: var(--display);
+      font-size: 1.85rem;
+      font-weight: 600;
+      color: var(--red);
+      margin: 48px 0 20px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    h3 {
+      font-family: var(--display);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 28px 0 14px;
+    }
+    p {
+      margin-bottom: 20px;
+    }
+    ul, ol {
+      margin: 0 0 24px 28px;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+    em {
+      font-style: italic;
+    }
+    code {
+      font-family: var(--mono);
+      font-size: 0.9em;
+      background-color: #EEE6D8;
+      padding: 2px 6px;
+      border-radius: 2px;
+    }
+    pre {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 20px;
+      overflow-x: auto;
+      font-family: var(--mono);
+      font-size: 0.88rem;
+      line-height: 1.5;
+      margin: 24px 0 32px;
+      border-left: 3px solid var(--red);
+    }
+    pre code {
+      background: none;
+      padding: 0;
+    }
+    .formula {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 18px;
+      text-align: center;
+      font-size: 1.35rem;
+      font-style: italic;
+      margin: 24px 0;
+      color: var(--red);
+    }
+    hr {
+      border: 0;
+      height: 1px;
+      background-color: var(--border);
+      margin: 48px 0;
+    }
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: #666;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="spec-header">
+    <div class="nav-bar">
+      <a href="/">&larr; Return to Wheeler Hubbell Publishing</a>
+      <span>WHP ARCHIVAL STANDARD</span>
+    </div>
+    <div class="badge">Canonical Specification</div>
+    <h1>DITS-1.0: Decision Integrity Technical Specification for Consequential Autonomous Systems</h1>
+    
+    <div class="metadata">
+      <div><strong>Standard ID:</strong> DITS-1.0</div>
+      <div><strong>Release Date:</strong> November 2026</div>
+      <div><strong>Publisher:</strong> Wheeler Hubbell Publishing, Inc.</div>
+      <div><strong>Architect:</strong> Justin Bowen</div>
+      <div><strong>Permanent URI:</strong> <a href="https://wheelerhubbellpublishing.com/spec" style="color:var(--red);">https://wheelerhubbellpublishing.com/spec</a></div>
+      <div><strong>License:</strong> Open Web Foundation (OWFa 1.0)</div>
+    </div>
+  </header>
+
+  <main>
+    <h2>1. Scope &amp; Objective</h2>
+    <p>This specification defines the formal metrology, data structures, and evaluation predicates governing the passage of informational claims across boundaries in autonomous artificial intelligence systems, multi-agent networks, and automated decision workflows. The primary objective is to prevent <strong>Authority Leakage</strong>, <strong>Qualifier Stripping</strong>, and <strong>Coherent Substitution</strong> by ensuring that no informational object acquires operational force without an inspectable, typed warrant.</p>
+
+    <hr/>
+
+    <h2>2. Normative Definitions</h2>
+    <ul>
+      <li><strong>Element:</strong> The smallest decision-relevant informational unit that remains answerable to its identity.</li>
+      <li><strong>Standing:</strong> The operation-specific force an informational object is entitled to exercise under stated conditions.</li>
+      <li><strong>Warrant (W):</strong> An inspectable, verifiable basis entitling a material transition of state.</li>
+      <li><strong>Material Invariant Set (&Phi;(p)):</strong> The set of properties whose removal, promotion, or alteration would change evidence, answer space, burden, authority, conclusion, attribution, or downstream action.</li>
+      <li><strong>Decision Boundary:</strong> The point at which an interpretation authorizes an operational action or state mutation outside the reasoning engine.</li>
+      <li><strong>Smallest True Move:</strong> The strongest conclusion or action fully entitled by the present record, accompanied by the named requirement for the next move.</li>
+    </ul>
+
+    <hr/>
+
+    <h2>3. The 8-Axis Information-Standing Vector (S)</h2>
+    <p>Every decision-bearing informational object <em>p &isin; &Oslash;</em> shall be represented by an immutable 8-axis Standing Vector:</p>
+
+    <div class="formula">
+      S = (P, E, A, O, Q, T, V, J)
+    </div>
+
+    <ol>
+      <li><strong>Provenance (P):</strong> Origin, source class, and immutable cryptographic digest (<code>source_identity_sha256</code>).</li>
+      <li><strong>Epistemic Status (E):</strong> Strongly typed evidentiary state:
+        <br/><code>E &isin; { established-fact, record-supported-inference, new-inference, user-premise, derivation, unknown }</code>
+      </li>
+      <li><strong>Institutional Standing (A):</strong> Authority granted within a defined operating domain.</li>
+      <li><strong>Operation-Specific Role (O):</strong> The exact operational boundary permitted for the claim:
+        <br/><code>O &isin; { context-only, premise-eligible, action-bearing, audit-trail }</code>
+      </li>
+      <li><strong>Qualifier &amp; Condition Set (Q):</strong> Explicit bounds, dependencies, domain constraints, and assumptions that cannot be stripped without invalidating standing.</li>
+      <li><strong>Temporal Validity (T):</strong> Window of validity [&tau;<sub>start</sub>, &tau;<sub>expiry</sub>] and point-in-time timestamp.</li>
+      <li><strong>Verification Basis (V):</strong> Independent, reproducible verification mechanism (e.g., cryptographic signature, deterministic hash, third-party ledger receipt).</li>
+      <li><strong>Jurisdiction &amp; Schema (J):</strong> The governing profile, schema definition, and regulatory/contractual boundaries under which the object is admitted.</li>
+    </ol>
+
+    <hr/>
+
+    <h2>4. The Test of Passage: Transition Predicate K</h2>
+    <p>Any proposed state transition from prior state <em>Y<sub>A</sub></em> to target state <em>Y<sub>B</sub></em> requesting operational force <em>&Pi;</em> under governing rules <em>R</em> and authority grant <em>G</em> shall be evaluated by the deterministic predicate:</p>
+
+    <div class="formula">
+      K(Y<sub>A</sub>, Y<sub>B</sub>, W, &Pi;, R, G) &rarr; ALLOW | DENY | INDETERMINATE
+    </div>
+
+    <h3>Evaluation Rules:</h3>
+    <ol>
+      <li><strong>ALLOW:</strong> Evaluates to true if and only if:
+        <ul>
+          <li>Every material delta between <em>Y<sub>A</sub></em> and <em>Y<sub>B</sub></em> is prospectively permitted by rule <em>R</em> or supported by a valid, inspectable warrant <em>W</em> issued under authority grant <em>G</em>.</li>
+          <li>&Phi;(Y<sub>A</sub>) &sube; &Phi;(Y<sub>B</sub>) (All source invariants are preserved).</li>
+          <li>The requested force <em>&Pi;</em> does not exceed the operation-specific role <em>O</em> established in <em>Y<sub>B</sub></em>.</li>
+        </ul>
+      </li>
+      <li><strong>DENY:</strong> Evaluates to true if:
+        <ul>
+          <li>A material qualifier in <em>Q</em> was stripped without an authorized amendment.</li>
+          <li>An element with status <code>unknown</code> was granted premise-standing without evidence.</li>
+          <li>The transition attempts to exercise action-bearing force without an independent warrant.</li>
+        </ul>
+      </li>
+      <li><strong>INDETERMINATE:</strong> Evaluates to true if:
+        <ul>
+          <li>A required leaf dependency remains unsupported (<code>status = unknown-blocking</code>).</li>
+          <li>In this state, live execution is suspended, and the system is required to emit the <strong>Smallest True Move</strong>.</li>
+        </ul>
+      </li>
+    </ol>
+
+    <hr/>
+
+    <h2>5. The Four-Stage Handoff Protocol</h2>
+    <p>In multi-agent and pipeline workflows, context transfer shall be governed by isolated, four-stage handoffs:</p>
+
+    <div class="formula">
+      A1 (Requirements Intake) &rarr; A2 (Evidence Mapping) &rarr; A3 (Decision Gate) &rarr; A4 (Executive Compression)
+    </div>
+
+    <ul>
+      <li><strong>The Invariant Rule:</strong> A downstream agent may not recover an invariant stripped by an upstream agent.</li>
+      <li><strong>Mimicry Trap:</strong> A workflow passes ordinary task completion while materially failing semantic integrity if an intermediate summary removes a threshold, scope limit, or contractual ban.</li>
+    </ul>
+
+    <hr/>
+
+    <h2>6. Cryptographic Standing Mark Envelope (WHP-STANDING-MARK-v1)</h2>
+    <p>Conforming systems shall serialize and verify evaluations using RFC 8785 JSON Canonicalization Scheme (JCS) and Ed25519 signatures according to the following canonical format:</p>
+
+    <pre><code>{
+  "version": "WHP-STANDING-MARK-v1",
+  "canonical_version": "WHP-JCS-I1",
+  "mark_id": "WHP-SM-&lt;16_char_hash&gt;",
+  "timestamp": "&lt;iso_8601_utc&gt;",
+  "artifact_sha256": "&lt;64_hex_hash&gt;",
+  "input_sha256": "&lt;64_hex_hash&gt;",
+  "evaluation_sha256": "&lt;64_hex_hash&gt;",
+  "record_sha256": "&lt;64_hex_hash&gt;",
+  "evaluation": {
+    "decision": "ALLOW | DENY | INDETERMINATE",
+    "deficit": null,
+    "smallest_true_move": "&lt;action_or_boundary&gt;"
+  },
+  "signature": "&lt;ed25519_base64_signature&gt;",
+  "public_key": "&lt;ed25519_pem_public_key&gt;"
+}</code></pre>
+
+    <hr/>
+
+    <h2>7. Named Epistemic Failures</h2>
+    <p>A conforming evaluator must diagnose and halt when encountering any of the following canonical failure types:</p>
+    <ol>
+      <li><strong>Authority Leakage:</strong> Asserting operational or legal force based on fabricated, unverified, or disconnected citations.</li>
+      <li><strong>Qualifier Stripping:</strong> Removing essential epistemic conditions, boundaries, or operating temperatures from an assertion during transmission or summarization.</li>
+      <li><strong>Coherent Substitution:</strong> Replacing an unresolved or unproven proposition with a linguistically fluent, plausible, but unsupported proxy.</li>
+      <li><strong>Object Drift:</strong> Altering the underlying identity or referent of an informational object across intermediate agents or pipeline steps.</li>
+      <li><strong>Answer to the Wrong Question:</strong> Providing a mathematically or logically sound proof for a proposition other than the specific question submitted for authorization.</li>
+    </ol>
+
+    <hr/>
+
+    <h2>8. Verification &amp; Offline Auditability</h2>
+    <p>All Standing Marks issued under DITS-1.0 are verifiable offline without network connectivity or API key authentication:</p>
+    <ol>
+      <li>Canonicalize the envelope payload (excluding the signature) using RFC 8785 (JCS).</li>
+      <li>Validate the SHA-256 digest of the canonical bytes.</li>
+      <li>Verify the Ed25519 signature against the published issuer public key.</li>
+      <li>Recompute the input and artifact digests against the local evaluation submission.</li>
+    </ol>
+  </main>
+
+  <footer>
+    <div>Wheeler Hubbell Publishing &middot; Decision Integrity Protocol</div>
+    <div>Permanent Archival Specification &middot; DITS-1.0</div>
+  </footer>
+</div>
+
+</body>
+</html>
