@@ -193,6 +193,7 @@
       <a href="#demonstration">Demonstration</a>
       <a href="#failures">The Named Failures</a>
       <a href="#access">Access</a>
+      <a href="/spec">Specification</a>
       <a href="/press/the-standing-mark-is-live.html">Press</a>
     </nav>
   </div>
@@ -228,6 +229,138 @@
     </div>
   </div>
 </div>
+
+<!-- Decision Boundary Gate: Live Metrological Trace (DecisionVisualizer) -->
+<section id="visualizer" style="padding: 64px 0; border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); background: #F9F6EF;">
+  <div class="wrap">
+    <div style="border: 1px solid #7D1D1D; padding: 24px; background-color: #F9F6EF; color: #141414; font-family: 'EB Garamond', Georgia, serif; margin: 0 auto; max-width: 960px;">
+      <h3 style="font-family: 'Playfair Display', Georgia, serif; color: #7D1D1D; margin-top: 0; font-size: 1.6rem; font-weight: 600;">
+        The Decision Boundary Gate: Live Metrological Trace
+      </h3>
+      <p style="font-size: 16px; margin: 12px 0 16px; line-height: 1.6;">
+        Select a consequential proposition to inspect the difference between unconstrained model fluency and deterministic decision integrity:
+      </p>
+
+      <div id="dv-tabs" style="display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap;">
+        <button id="dv-tab-mata" type="button" style="padding: 8px 16px; background-color: #7D1D1D; color: #FFFFFF; border: none; cursor: pointer; font-family: 'Inter', system-ui, sans-serif; font-size: 13px; border-radius: 2px;">
+          Mata v. Avianca (Legal Authorization)
+        </button>
+        <button id="dv-tab-challenger" type="button" style="padding: 8px 16px; background-color: #EADCC9; color: #141414; border: none; cursor: pointer; font-family: 'Inter', system-ui, sans-serif; font-size: 13px; border-radius: 2px;">
+          Challenger STS-51-L (Engineering Boundary)
+        </button>
+      </div>
+
+      <div style="background-color: #FFFFFF; padding: 16px; border: 1px solid #DCD0B8; margin-bottom: 16px;">
+        <div style="font-size: 12px; font-family: 'Inter', system-ui, sans-serif; color: #666; text-transform: uppercase; letter-spacing: 0.05em;">
+          Input Proposition (Unconstrained Model Output)
+        </div>
+        <div id="dv-claim" style="font-size: 18px; font-style: italic; margin: 8px 0; line-height: 1.5;">
+          "The Montreal Convention tolling rule established in Varghese v. China Southern Airlines permits this filing to proceed."
+        </div>
+      </div>
+
+      <div id="dv-button-wrap">
+        <button id="dv-eval-btn" type="button" style="padding: 10px 20px; background-color: #141414; color: #FFFFFF; border: none; cursor: pointer; font-family: 'Inter', system-ui, sans-serif; font-size: 14px; letter-spacing: 1px;">
+          EXECUTE TEST OF PASSAGE →
+        </button>
+      </div>
+
+      <div id="dv-outcome" style="display: none; border-left: 4px solid #7D1D1D; padding-left: 16px; margin-top: 16px;">
+        <div style="color: #7D1D1D; font-weight: bold; font-family: 'Inter', system-ui, sans-serif; font-size: 14px; letter-spacing: 0.05em;">
+          GATE OUTCOME: DENY (FAIL-CLOSED)
+        </div>
+        <div style="margin: 8px 0; font-size: 15px;">
+          <strong>Structural Deficit Detected:</strong> <span id="dv-flaw">Authority Leakage: Cited judicial decision does not exist in any court docket. Citation fabricated by generative tool.</span>
+        </div>
+        <div style="margin: 8px 0; font-size: 15px;">
+          <strong>Missing Warrant (<em>W</em>):</strong> <span id="dv-warrant">Verified federal case citation with retrievable docket from PACER / CourtListener.</span>
+        </div>
+        <div style="margin: 8px 0; font-size: 15px; color: #1B4D3E;">
+          <strong>The Smallest True Move:</strong> <span id="dv-move">REJECT premise-standing. Status: UNKNOWN-BLOCKING. Argument restricted to conditional form.</span>
+        </div>
+        <div style="margin-top: 12px; font-size: 12px; font-family: monospace; color: #555;">
+          <span id="dv-envelope">Illustrative Specimen Envelope: WHP-SM-MATA-VERIFIED · Exemplar verification path</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  var cases = {
+    mata: {
+      id: 'mata',
+      title: 'Mata v. Avianca (Legal Authorization)',
+      claim: 'The Montreal Convention tolling rule established in Varghese v. China Southern Airlines permits this filing to proceed.',
+      flaw: 'Authority Leakage: Cited judicial decision does not exist in any court docket. Citation fabricated by generative tool.',
+      missingWarrant: 'Verified federal case citation with retrievable docket from PACER / CourtListener.',
+      smallestTrueMove: 'REJECT premise-standing. Status: UNKNOWN-BLOCKING. Argument restricted to conditional form.'
+    },
+    challenger: {
+      id: 'challenger',
+      title: 'Challenger STS-51-L (Engineering Boundary)',
+      claim: 'The solid rocket booster field joints are qualified and safe for launch at expected ambient temperature of 26\u00b0F.',
+      flaw: 'Qualifier Stripping & Decision Boundary Breach: 53\u00b0F was the coldest flight test. Safe sealing at 26\u00b0F is unproven.',
+      missingWarrant: 'Validated physical test demonstrating primary and secondary O-ring resiliency at or below 26\u00b0F.',
+      smallestTrueMove: 'HALT transition. Status: NO-GO. Affirmative showing of safe operation absent from prelaunch record.'
+    }
+  };
+
+  var currentCase = cases.mata;
+  var isEvaluated = false;
+
+  var tabMata = document.getElementById('dv-tab-mata');
+  var tabChallenger = document.getElementById('dv-tab-challenger');
+  var claimEl = document.getElementById('dv-claim');
+  var evalBtn = document.getElementById('dv-eval-btn');
+  var buttonWrap = document.getElementById('dv-button-wrap');
+  var outcomeEl = document.getElementById('dv-outcome');
+  var flawEl = document.getElementById('dv-flaw');
+  var warrantEl = document.getElementById('dv-warrant');
+  var moveEl = document.getElementById('dv-move');
+  var envelopeEl = document.getElementById('dv-envelope');
+
+  function render() {
+    tabMata.style.backgroundColor = currentCase.id === 'mata' ? '#7D1D1D' : '#EADCC9';
+    tabMata.style.color = currentCase.id === 'mata' ? '#FFFFFF' : '#141414';
+    tabChallenger.style.backgroundColor = currentCase.id === 'challenger' ? '#7D1D1D' : '#EADCC9';
+    tabChallenger.style.color = currentCase.id === 'challenger' ? '#FFFFFF' : '#141414';
+
+    claimEl.textContent = '"' + currentCase.claim + '"';
+    flawEl.textContent = currentCase.flaw;
+    warrantEl.textContent = currentCase.missingWarrant;
+    moveEl.textContent = currentCase.smallestTrueMove;
+    envelopeEl.textContent = 'Illustrative Specimen Envelope: WHP-SM-' + currentCase.id.toUpperCase() + '-VERIFIED \u00b7 Exemplar verification path';
+
+    if (isEvaluated) {
+      buttonWrap.style.display = 'none';
+      outcomeEl.style.display = 'block';
+    } else {
+      buttonWrap.style.display = 'block';
+      outcomeEl.style.display = 'none';
+    }
+  }
+
+  tabMata.addEventListener('click', function() {
+    currentCase = cases.mata;
+    isEvaluated = false;
+    render();
+  });
+
+  tabChallenger.addEventListener('click', function() {
+    currentCase = cases.challenger;
+    isEvaluated = false;
+    render();
+  });
+
+  evalBtn.addEventListener('click', function() {
+    isEvaluated = true;
+    render();
+  });
+})();
+</script>
+
 
 <section id="how">
   <div class="wrap">
