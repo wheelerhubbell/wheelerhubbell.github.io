@@ -11,7 +11,7 @@ allowed = {
     'README.md', 'CANONICAL.md', 'archive', '.github', '.well-known',
     '.nojekyll', 'CNAME', 'llms.txt', 'openapi.json', 'robots.txt',
     'sitemap.xml', 'smithery.yaml', 'index.html', 'essay.html',
-    'protocol.html', 'success.html', 'beacon.html', 'action.yml',
+    'protocol.html', 'spec.html', 'success.html', 'beacon.html', 'action.yml',
     'assets', 'attestations', 'benchmarks', 'contracts', 'docs', 'examples',
     'p', 'packages', 'press', 'py', 'ts', 'AGENTKIT.md', 'BEACON.md',
     'CIRCUIT_BREAKER.md', 'CI_CD.md', 'DIS_BENCHMARK.md', 'ESCROW.md',
