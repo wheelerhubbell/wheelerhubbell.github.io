@@ -1,344 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>DITS-1.0: Decision Integrity Technical Specification — Wheeler Hubbell Publishing</title>
-<meta name="description" content="Formal metrology, data structures, and evaluation predicates governing the passage of informational claims across boundaries in autonomous systems."/>
-<link rel="canonical" href="https://wheelerhubbellpublishing.com/spec"/>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>DITS-1.0: Decision Integrity Technical Specification — Wheeler Hubbell Publishing</title>
+  <meta name="description" content="Formal metrology, data structures, and evaluation predicates governing the passage of informational claims across boundaries in autonomous systems."/>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 
-<!-- Typography: Archival Couture Tech Hierarchy -->
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet"/>
+  <style>
+:root{--ivory:#F5F0E5;--parchment:#EAE0CC;--ink:#111;--gold:#AA9257;--gold-line:rgba(170,146,87,.62);--gold-soft:rgba(170,146,87,.3);--green:#173D32;--forest:#1B4D3E;--oxblood:#7D1D1D;--espresso:#251D19;--slate:#766E65;--paper:#FBF8F0;--white:#fff;--serif:'Cormorant Garamond','Playfair Display',Georgia,serif;--body:'EB Garamond',Garamond,Georgia,serif;--mono:'JetBrains Mono','IBM Plex Mono',monospace;--sans:Inter,Arial,sans-serif}
 
-<style>
-  :root {
-    /* 1. COLOR PALETTE & ATMOSPHERE */
-    --bg-paper: #FBF9F5;
-    --bg-ivory: #FFFFFF;
-    --bg-subtle: #F5EFE3;
-    --ink: #111111;
-    --ink-muted: #2E2A25;
-    --oxblood: #7D1D1D;
-    --hairline: #E5DEC9;
-    --hairline-dark: #D4C9AF;
-    --slate: #766E65;
-    --slate-light: #948B80;
-    --green-rect: #1B4D3E;
-
-    /* 2. TYPOGRAPHIC HIERARCHY */
-    --serif-display: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
-    --serif-body: 'EB Garamond', Garamond, Georgia, serif;
-    --sans-tech: 'Inter', -apple-system, system-ui, sans-serif;
-    --mono-tech: 'JetBrains Mono', 'Courier New', monospace;
-  }
-
-  *, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  html {
-    background-color: var(--bg-paper);
-    color: var(--ink);
-    scroll-behavior: smooth;
-  }
-
-  body {
-    background-color: var(--bg-paper);
-    color: var(--ink);
-    font-family: var(--serif-body);
-    font-size: 1.22rem;
-    line-height: 1.6;
-    letter-spacing: -0.003em;
-    min-height: 100vh;
-  }
-
-  .wrap {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 0 32px;
-  }
-
-  .measure {
-    max-width: 68ch;
-  }
-
-  a {
-    color: var(--oxblood);
-    text-decoration: none;
-    transition: color 0.15s ease;
-  }
-
-  a:hover {
-    color: var(--ink);
-    text-decoration: underline;
-  }
-
-  /* Technical Furniture & Badges */
-  .tech-label {
-    font-family: var(--sans-tech);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--slate);
-  }
-
-  .tech-mono {
-    font-family: var(--mono-tech);
-    font-size: 12px;
-    letter-spacing: 0.08em;
-  }
-
-  .plaque-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 18px;
-    border: 1px solid var(--hairline-dark);
-    border-radius: 9999px;
-    background-color: var(--bg-ivory);
-    font-family: var(--sans-tech);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--slate);
-  }
-
-  .plaque-pill-dot {
-    width: 6px;
-    height: 6px;
-    background-color: var(--oxblood);
-    border-radius: 50%;
-    display: inline-block;
-  }
-
-  /* Masthead */
-  header.press-masthead {
-    border-bottom: 1px solid var(--hairline);
-    background-color: var(--bg-paper);
-    padding: 34px 0 24px;
-  }
-
-  .masthead-top {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 14px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid var(--hairline);
-  }
-
-  .press-imprint {
-    font-family: var(--sans-tech);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink);
-  }
-
-  .masthead-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 18px;
-    font-family: var(--sans-tech);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .masthead-nav a {
-    color: var(--ink);
-    font-weight: 500;
-  }
-
-  .masthead-nav a:hover {
-    color: var(--oxblood);
-  }
-
-  /* Spec Document Header */
-  .spec-title-block {
-    padding: 70px 0 48px;
-    border-bottom: 1px solid var(--hairline);
-    margin-bottom: 54px;
-  }
-
-  .spec-title-block h1 {
-    font-family: var(--serif-display);
-    font-size: clamp(2.2rem, 4vw, 3.2rem);
-    font-weight: 500;
-    color: var(--ink);
-    line-height: 1.15;
-    margin: 16px 0 12px;
-  }
-
-  .spec-subtitle {
-    font-size: 1.3rem;
-    font-style: italic;
-    color: var(--ink-muted);
-    line-height: 1.5;
-    max-width: 68ch;
-  }
-
-  .spec-meta-folio {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    border-top: 1px solid var(--hairline);
-    border-bottom: 1px solid var(--hairline);
-    padding: 16px 0;
-    margin-top: 28px;
-  }
-
-  .meta-col {
-    border-left: 2px solid var(--hairline-dark);
-    padding-left: 12px;
-  }
-
-  .meta-key {
-    font-family: var(--sans-tech);
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--slate);
-  }
-
-  .meta-val {
-    font-family: var(--mono-tech);
-    font-size: 11.5px;
-    color: var(--ink);
-    margin-top: 4px;
-  }
-
-  /* Sections & Editorial Copy */
-  section.spec-section {
-    margin-bottom: 64px;
-  }
-
-  h2 {
-    font-family: var(--serif-display);
-    font-size: 1.85rem;
-    font-weight: 600;
-    color: var(--ink);
-    margin: 36px 0 18px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--hairline);
-  }
-
-  h3 {
-    font-family: var(--serif-display);
-    font-size: 1.45rem;
-    font-weight: 600;
-    color: var(--oxblood);
-    margin: 24px 0 12px;
-  }
-
-  p {
-    margin-bottom: 18px;
-    line-height: 1.62;
-    max-width: 68ch;
-  }
-
-  ul, ol {
-    margin: 14px 0 20px 24px;
-    max-width: 68ch;
-  }
-
-  li {
-    margin-bottom: 10px;
-    line-height: 1.58;
-  }
-
-  /* Ivory Cards for Vectors, Predicates, and Tables */
-  .formula-card, .def-box, pre {
-    background-color: var(--bg-ivory);
-    border: 1px solid var(--hairline);
-    padding: 24px;
-    margin: 20px 0;
-    border-radius: 2px;
-  }
-
-  .formula-card {
-    text-align: center;
-    font-family: var(--mono-tech);
-    font-size: 1.15rem;
-    color: var(--oxblood);
-    letter-spacing: 0.05em;
-  }
-
-  pre {
-    font-family: var(--mono-tech);
-    font-size: 12px;
-    line-height: 1.65;
-    overflow-x: auto;
-    color: var(--ink);
-  }
-
-  .vector-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin: 20px 0;
-  }
-
-  .vector-cell {
-    background-color: var(--bg-ivory);
-    border: 1px solid var(--hairline);
-    padding: 16px 20px;
-  }
-
-  .vector-axis {
-    font-family: var(--mono-tech);
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--oxblood);
-    margin-bottom: 4px;
-  }
-
-  .vector-desc {
-    font-size: 1.1rem;
-    color: var(--ink-muted);
-    line-height: 1.45;
-  }
-
-  /* Spec Footer */
-  footer.spec-footer {
-    border-top: 1px solid var(--hairline);
-    padding: 60px 0;
-    margin-top: 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  @media (max-width: 768px) {
-    .spec-meta-folio {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .vector-grid {
-      grid-template-columns: 1fr;
-    }
-  }
+*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}html{background:var(--ivory);color:var(--ink);scroll-behavior:smooth}body{background:var(--ivory);color:var(--ink);font-family:var(--body);font-size:1.25rem;line-height:1.68;padding:0 22px 70px}a{color:var(--oxblood);text-decoration:none}a:hover{color:var(--ink);text-decoration:underline}a:focus-visible{outline:2px solid var(--oxblood);outline-offset:3px}.wrap{max-width:860px;margin:0 auto}.spec-header{position:relative;padding:30px 28px 34px;margin:38px 0 48px;border:1px solid var(--gold);outline:1px solid var(--gold-soft);outline-offset:5px;background:var(--paper)}.spec-header::before{content:"";position:absolute;inset:5px;border:1px solid var(--gold-soft);pointer-events:none}.nav-bar{position:relative;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:28px;padding-bottom:14px;border-bottom:1px solid var(--gold-soft);font-family:var(--sans);font-size:9px;letter-spacing:.14em;text-transform:uppercase}.nav-bar a{color:var(--ink)}.nav-bar span{color:var(--slate)}.badge{display:inline-block;font-family:var(--sans);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--oxblood);border:1px solid var(--gold);padding:6px 10px;margin-bottom:14px}.spec-header h1{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4.3rem);font-weight:500;line-height:1.02;color:var(--ink);margin-bottom:26px;max-width:19ch;letter-spacing:-.02em}.metadata{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:11px 20px;font-size:10px;font-family:var(--mono);background:rgba(234,224,204,.35);border:1px solid var(--gold-soft);padding:18px;margin:0}.metadata div{overflow-wrap:anywhere}.metadata div strong{font-family:var(--sans);font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--oxblood);display:block;margin-bottom:4px}.metadata a{color:var(--oxblood);font-family:var(--mono);font-size:10px}h2{font-family:var(--serif);font-size:clamp(1.85rem,3.5vw,2.5rem);font-weight:600;color:var(--ink);margin:46px 0 18px;padding-bottom:10px;border-bottom:1px solid var(--gold)}h3{font-family:var(--serif);font-size:1.45rem;font-weight:600;color:var(--oxblood);margin:27px 0 12px}p{margin-bottom:18px;max-width:70ch}ul,ol{margin:0 0 22px 26px;max-width:70ch}li{margin-bottom:9px}strong{color:var(--ink);font-weight:600}em{font-style:italic}code{font-family:var(--mono);font-size:.83em;background:var(--parchment);padding:2px 5px;border-radius:0;overflow-wrap:anywhere}pre{background:var(--paper);border:1px solid var(--gold-line);padding:19px;overflow:auto;font-family:var(--mono);font-size:10px;line-height:1.65;margin:22px 0 28px;border-left:3px solid var(--oxblood);color:var(--ink)}pre code{background:none;padding:0;font-size:inherit}.formula{background:var(--paper);border:1px solid var(--gold-line);outline:1px solid var(--gold-soft);outline-offset:3px;padding:18px;text-align:center;font-family:var(--mono);font-size:clamp(12px,2vw,16px);line-height:1.7;margin:24px 4px;color:var(--oxblood);overflow-wrap:anywhere}hr{border:0;height:1px;background:var(--gold-soft);margin:40px 0}footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--gold);font-family:var(--mono);font-size:9px;letter-spacing:.09em;color:var(--slate);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}main{background:transparent}@media(max-width:620px){body{padding:0 16px 48px}.spec-header{padding:22px 16px 22px;margin:26px 4px 38px}.nav-bar{align-items:flex-start;flex-direction:column}.metadata{grid-template-columns:1fr;padding:14px}pre{font-size:9px;padding:14px}h2{margin-top:38px}footer{flex-direction:column}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 
-<!-- ARCHIVAL EDITORIAL MASTHEAD -->
-<header class="press-masthead">
-  <div class="wrap masthead-top">
-    <div style="display: flex; align-items: center; justify-content: center;">
-      <svg width="44" height="44" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="dandelion-colophon-svg" aria-label="Wheeler Hubbell Publishing Dandelion Mark Colophon">
+<div class="wrap">
+  <header class="spec-header">
+    <div style="text-align:center;margin-bottom:14px;"><svg width="44" height="44" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="dandelion-colophon-svg" aria-label="Wheeler Hubbell Publishing Dandelion Mark Colophon">
   <circle cx="50" cy="50" r="46" stroke="#7D1D1D" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.45"/>
   <circle cx="50" cy="50" r="38" stroke="#7D1D1D" stroke-width="0.6" opacity="0.3"/>
   <circle cx="50" cy="50" r="4.2" fill="#7D1D1D"/>
@@ -390,201 +74,161 @@
   <circle cx="37.75" cy="20.44" r="1.4" fill="#7D1D1D"/>
   <line x1="37.75" y1="20.44" x2="34.83" y2="16.36" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
   <line x1="37.75" y1="20.44" x2="36.86" y2="15.52" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
-</svg>
+</svg></div>
+    <div class="nav-bar">
+      <a href="/">&larr; Return to Wheeler Hubbell Publishing</a>
+      <span>WHP ARCHIVAL STANDARD</span>
     </div>
-    <div class="press-imprint">WHEELER HUBBELL PUBLISHING · NEW YORK · MMXXVI</div>
-  </div>
-  <div class="wrap masthead-nav">
-    <a href="/">&larr; THE DECISION INTEGRITY PROTOCOL</a>
-    <div class="tech-mono" style="color: var(--oxblood);">WHP-SPEC-DITS-1.0</div>
-  </div>
-</header>
-
-<div class="wrap">
-  <!-- SPEC DOCUMENT TITLE BLOCK -->
-  <div class="spec-title-block">
-    <div class="plaque-pill">
-      <span class="plaque-pill-dot"></span>
-      SPECIFICATION DITS-1.0 · ED25519 VERIFIED · FAIL-CLOSED ARCHITECTURE
-    </div>
+    <div class="badge">Canonical Specification</div>
     <h1>DITS-1.0: Decision Integrity Technical Specification for Consequential Autonomous Systems</h1>
-    <div class="spec-subtitle">
-      Formal metrology, data structures, and evaluation predicates governing the passage of informational claims across boundaries in autonomous systems.
+    
+    <div class="metadata">
+      <div><strong>Standard ID:</strong> DITS-1.0</div>
+      <div><strong>Release Date:</strong> November 2026</div>
+      <div><strong>Publisher:</strong> Wheeler Hubbell Publishing, Inc.</div>
+      <div><strong>Architect:</strong> Justin Bowen</div>
+      <div><strong>Permanent URI:</strong> <a href="https://wheelerhubbellpublishing.com/spec" style="color:var(--red);">https://wheelerhubbellpublishing.com/spec</a></div>
+      <div><strong>License:</strong> Open Web Foundation (OWFa 1.0)</div>
     </div>
+  </header>
 
-    <div class="spec-meta-folio">
-      <div class="meta-col">
-        <div class="meta-key">CANONICAL ID</div>
-        <div class="meta-val">WHP-SPEC-DITS-1.0</div>
-      </div>
-      <div class="meta-col">
-        <div class="meta-key">RATIFICATION</div>
-        <div class="meta-val">MMXXVI RATIFIED</div>
-      </div>
-      <div class="meta-col">
-        <div class="meta-key">CRYPTOGRAPHIC REGIME</div>
-        <div class="meta-val">ED25519 / SHA-256</div>
-      </div>
-      <div class="meta-col">
-        <div class="meta-key">EXECUTION POSTURE</div>
-        <div class="meta-val">FAIL-CLOSED (K = 0)</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SECTION 1: SCOPE -->
-  <section class="spec-section">
+  <main>
     <h2>1. Scope &amp; Objective</h2>
-    <p>
-      This specification defines the formal metrology, data structures, and evaluation predicates governing the passage of informational claims across boundaries in autonomous systems.
-    </p>
-    <p>
-      Autonomous agents frequently present generative outputs as grounds for consequential transitions (e.g., executing financial transfers, modifying production state, issuing regulatory filings). This specification formalizes the <strong>Test of Passage</strong>: a deterministic predicate that examines whether an informational claim possesses sufficient <em>information-standing</em> to authorize an irreversible or high-assurance operational transition.
-    </p>
-    <p>
-      Where standing is proven, a signed <strong>Standing Mark</strong> is emitted. Where standing is absent, deficient, or conditional, the predicate emits an explicit, typed <strong>Smallest True Move</strong> and fails closed.
-    </p>
-  </section>
+    <p>This specification defines the formal metrology, data structures, and evaluation predicates governing the passage of informational claims across boundaries in autonomous artificial intelligence systems, multi-agent networks, and automated decision workflows. The primary objective is to prevent <strong>Authority Leakage</strong>, <strong>Qualifier Stripping</strong>, and <strong>Coherent Substitution</strong> by ensuring that no informational object acquires operational force without an inspectable, typed warrant.</p>
 
-  <!-- SECTION 2: NORMATIVE DEFINITIONS -->
-  <section class="spec-section">
+    <hr/>
+
     <h2>2. Normative Definitions</h2>
-    <div class="def-box">
-      <p><strong>Claim (C):</strong> A structured or natural-language proposition asserting a fact, condition, or entitlement generated by an autonomous system.</p>
-      <p><strong>Boundary (&Omega;):</strong> An operational threshold separating distinct epistemic, legal, or infrastructural jurisdictions (e.g., internal model reasoning vs. external API execution).</p>
-      <p><strong>Transition (T):</strong> An action or state modification proposed by an agent that relies on Claim <em>C</em> crossing Boundary <em>&Omega;</em>.</p>
-      <p><strong>Warrant (W):</strong> The verifiable evidentiary record, institutional authority, qualification set, and temporal scope that sustains Claim <em>C</em>.</p>
-      <p><strong>Information-Standing (S):</strong> The validated degree to which a Claim remains answerable to its object identity, provenance, qualifiers, and authority across Boundary <em>&Omega;</em>.</p>
-      <p><strong>Smallest True Move (M):</strong> The most conservative, non-escalating proposition or operational branch that remains strictly true when full authorization is unavailable.</p>
-    </div>
-  </section>
-
-  <!-- SECTION 3: THE 8-AXIS VECTOR -->
-  <section class="spec-section">
-    <h2>3. The 8-Axis Information-Standing Vector (S)</h2>
-    <p>
-      Information-standing is evaluated across an 8-dimensional tuple:
-    </p>
-    <div class="formula-card">
-      S = &lang;O, P, A, C, Q, T, J, R&rang;
-    </div>
-
-    <div class="vector-grid">
-      <div class="vector-cell">
-        <div class="vector-axis">O &mdash; Object Isolation</div>
-        <div class="vector-desc">Preservation of concrete identity without semantic substitution or object drift.</div>
-      </div>
-      <div class="vector-cell">
-        <div class="vector-axis">P &mdash; Provenance</div>
-        <div class="vector-desc">Cryptographically or empirically verifiable chain of custody and origin records.</div>
-      </div>
-      <div class="vector-cell">
-        <div class="vector-axis">A &mdash; Institutional Authority</div>
-        <div class="vector-desc">Lawful entitlement of the source to authorize the proposed operational transition.</div>
-      </div>
-      <div class="vector-cell">
-        <div class="vector-axis">C &mdash; Conditions &amp; Constraints</div>
-        <div class="vector-desc">Explicit preconditions required for the claim to remain valid.</div>
-      </div>
-      <div class="vector-cell">
-        <div class="vector-axis">Q &mdash; Qualifier Fidelity</div>
-        <div class="vector-desc">Retention of epistemic status (e.g., probability, confidence bounds, caveats).</div>
-      </div>
-      <div class="vector-cell">
-        <div class="vector-axis">T &mdash; Temporal Scope</div>
-        <div class="vector-desc">Valid time-horizon; expiration or staleness metrics.</div>
-      </div>
-      <div class="vector-cell">
-        <div class="vector-axis">J &mdash; Jurisdiction</div>
-        <div class="vector-desc">Legal, infrastructural, or organizational boundary applicability.</div>
-      </div>
-      <div class="vector-cell">
-        <div class="vector-axis">R &mdash; Independently Supported Relations</div>
-        <div class="vector-desc">Logical or factual relations grounded outside the internal model prior.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 4: TEST OF PASSAGE -->
-  <section class="spec-section">
-    <h2>4. The Test of Passage: Transition Predicate K</h2>
-    <p>
-      The Test of Passage evaluates whether Vector <em>S</em> satisfies the threshold requirements &Theta; of Boundary &Omega;:
-    </p>
-    <div class="formula-card">
-      K(C, &Omega;, T) = 1 &hArr; &forall; i &isin; {O, P, A, C, Q, T, J, R}, S[i] &ge; &Theta;[&Omega;, T][i]
-    </div>
-    <p><strong>Evaluation Rules:</strong></p>
-    <ol>
-      <li><strong>Fail-Closed Guarantee:</strong> If any element <em>S[i] &lt; &Theta;[i]</em>, then <em>K = 0</em>. No partial credit or heuristic smoothing is permitted.</li>
-      <li><strong>Typed Deficit Emission:</strong> When <em>K = 0</em>, the evaluator must identify the specific failing axis (e.g., <code>DEFICIT_AUTHORITY_LEAKAGE</code>).</li>
-      <li><strong>Rectification Output:</strong> The evaluator emits the Smallest True Move <em>M</em>, restricting downstream agent execution to strictly warranted behavior.</li>
-    </ol>
-  </section>
-
-  <!-- SECTION 5: FOUR-STAGE HANDOFF PROTOCOL -->
-  <section class="spec-section">
-    <h2>5. The Four-Stage Handoff Protocol</h2>
-    <ol>
-      <li><strong>Emission:</strong> Autonomous agent generates candidate transition <em>T</em> and supporting claim <em>C</em>.</li>
-      <li><strong>Adjudication:</strong> Standing Guard Service intercepts transition and executes Test of Passage Predicate <em>K</em> against active profile &Theta;.</li>
-      <li><strong>Envelope Inscription:</strong> Evaluator signs determination (Standing Mark on <em>K=1</em>; Standing Assessment on <em>K=0</em>) using Ed25519 issuer key.</li>
-      <li><strong>Gated Execution:</strong> Downstream execution engine checks envelope signature and outcome before permitting execution.</li>
-    </ol>
-  </section>
-
-  <!-- SECTION 6: CRYPTOGRAPHIC ENVELOPE -->
-  <section class="spec-section">
-    <h2>6. Cryptographic Standing Mark Envelope (WHP-STANDING-MARK-v1)</h2>
-    <pre><code>{
-  "schema": "https://wheelerhubbellpublishing.com/schemas/whp-standing-mark-v1.json",
-  "issuer": "api.wheelerhubbellpublishing.com",
-  "issued_at": "2026-10-26T12:00:00Z",
-  "profile": "sovereign-financial-v1",
-  "predicate_result": {
-    "passage": false,
-    "deficit_type": "DEFICIT_AUTHORITY_LEAKAGE",
-    "failing_axis": "A",
-    "smallest_true_move": "HOLD_DISBURSEMENT_REMAIN_CONDITIONAL"
-  },
-  "signature": {
-    "algorithm": "ed25519",
-    "public_key": "0x...",
-    "sig_bytes": "..."
-  }
-}</code></pre>
-  </section>
-
-  <!-- SECTION 7: NAMED EPISTEMIC FAILURES -->
-  <section class="spec-section">
-    <h2>7. Named Epistemic Failures</h2>
     <ul>
-      <li><strong>Authority Leakage:</strong> A claim assumes the force of an authorizing source that was never consulted, or extends an authority beyond its jurisdictional remit.</li>
-      <li><strong>Coherent Substitution:</strong> A well-constructed, fluent, plausible narrative replaces absent empirical or institutional warrant.</li>
-      <li><strong>Object Drift:</strong> The subject of a proposition imperceptibly shifts across handoffs, applying evidence for Object <em>A</em> to Object <em>B</em>.</li>
-      <li><strong>Qualifier Stripping:</strong> Conditions, caveats, margins, or temporal restrictions essential to the original premise are dropped downstream.</li>
+      <li><strong>Element:</strong> The smallest decision-relevant informational unit that remains answerable to its identity.</li>
+      <li><strong>Standing:</strong> The operation-specific force an informational object is entitled to exercise under stated conditions.</li>
+      <li><strong>Warrant (W):</strong> An inspectable, verifiable basis entitling a material transition of state.</li>
+      <li><strong>Material Invariant Set (&Phi;(p)):</strong> The set of properties whose removal, promotion, or alteration would change evidence, answer space, burden, authority, conclusion, attribution, or downstream action.</li>
+      <li><strong>Decision Boundary:</strong> The point at which an interpretation authorizes an operational action or state mutation outside the reasoning engine.</li>
+      <li><strong>Smallest True Move:</strong> The strongest conclusion or action fully entitled by the present record, accompanied by the named requirement for the next move.</li>
     </ul>
-  </section>
 
-  <!-- SECTION 8: VERIFICATION -->
-  <section class="spec-section">
+    <hr/>
+
+    <h2>3. The 8-Axis Information-Standing Vector (S)</h2>
+    <p>Every decision-bearing informational object <em>p &isin; &Oslash;</em> shall be represented by an immutable 8-axis Standing Vector:</p>
+
+    <div class="formula">
+      S = (P, E, A, O, Q, T, V, J)
+    </div>
+
+    <ol>
+      <li><strong>Provenance (P):</strong> Origin, source class, and immutable cryptographic digest (<code>source_identity_sha256</code>).</li>
+      <li><strong>Epistemic Status (E):</strong> Strongly typed evidentiary state:
+        <br/><code>E &isin; { established-fact, record-supported-inference, new-inference, user-premise, derivation, unknown }</code>
+      </li>
+      <li><strong>Institutional Standing (A):</strong> Authority granted within a defined operating domain.</li>
+      <li><strong>Operation-Specific Role (O):</strong> The exact operational boundary permitted for the claim:
+        <br/><code>O &isin; { context-only, premise-eligible, action-bearing, audit-trail }</code>
+      </li>
+      <li><strong>Qualifier &amp; Condition Set (Q):</strong> Explicit bounds, dependencies, domain constraints, and assumptions that cannot be stripped without invalidating standing.</li>
+      <li><strong>Temporal Validity (T):</strong> Window of validity [&tau;<sub>start</sub>, &tau;<sub>expiry</sub>] and point-in-time timestamp.</li>
+      <li><strong>Verification Basis (V):</strong> Independent, reproducible verification mechanism (e.g., cryptographic signature, deterministic hash, third-party ledger receipt).</li>
+      <li><strong>Jurisdiction &amp; Schema (J):</strong> The governing profile, schema definition, and regulatory/contractual boundaries under which the object is admitted.</li>
+    </ol>
+
+    <hr/>
+
+    <h2>4. The Test of Passage: Transition Predicate K</h2>
+    <p>Any proposed state transition from prior state <em>Y<sub>A</sub></em> to target state <em>Y<sub>B</sub></em> requesting operational force <em>&Pi;</em> under governing rules <em>R</em> and authority grant <em>G</em> shall be evaluated by the deterministic predicate:</p>
+
+    <div class="formula">
+      K(Y<sub>A</sub>, Y<sub>B</sub>, W, &Pi;, R, G) &rarr; ALLOW | DENY | INDETERMINATE
+    </div>
+
+    <h3>Evaluation Rules:</h3>
+    <ol>
+      <li><strong>ALLOW:</strong> Evaluates to true if and only if:
+        <ul>
+          <li>Every material delta between <em>Y<sub>A</sub></em> and <em>Y<sub>B</sub></em> is prospectively permitted by rule <em>R</em> or supported by a valid, inspectable warrant <em>W</em> issued under authority grant <em>G</em>.</li>
+          <li>&Phi;(Y<sub>A</sub>) &sube; &Phi;(Y<sub>B</sub>) (All source invariants are preserved).</li>
+          <li>The requested force <em>&Pi;</em> does not exceed the operation-specific role <em>O</em> established in <em>Y<sub>B</sub></em>.</li>
+        </ul>
+      </li>
+      <li><strong>DENY:</strong> Evaluates to true if:
+        <ul>
+          <li>A material qualifier in <em>Q</em> was stripped without an authorized amendment.</li>
+          <li>An element with status <code>unknown</code> was granted premise-standing without evidence.</li>
+          <li>The transition attempts to exercise action-bearing force without an independent warrant.</li>
+        </ul>
+      </li>
+      <li><strong>INDETERMINATE:</strong> Evaluates to true if:
+        <ul>
+          <li>A required leaf dependency remains unsupported (<code>status = unknown-blocking</code>).</li>
+          <li>In this state, live execution is suspended, and the system is required to emit the <strong>Smallest True Move</strong>.</li>
+        </ul>
+      </li>
+    </ol>
+
+    <hr/>
+
+    <h2>5. The Four-Stage Handoff Protocol</h2>
+    <p>In multi-agent and pipeline workflows, context transfer shall be governed by isolated, four-stage handoffs:</p>
+
+    <div class="formula">
+      A1 (Requirements Intake) &rarr; A2 (Evidence Mapping) &rarr; A3 (Decision Gate) &rarr; A4 (Executive Compression)
+    </div>
+
+    <ul>
+      <li><strong>The Invariant Rule:</strong> A downstream agent may not recover an invariant stripped by an upstream agent.</li>
+      <li><strong>Mimicry Trap:</strong> A workflow passes ordinary task completion while materially failing semantic integrity if an intermediate summary removes a threshold, scope limit, or contractual ban.</li>
+    </ul>
+
+    <hr/>
+
+    <h2>6. Cryptographic Standing Mark Envelope (WHP-STANDING-MARK-v1)</h2>
+    <p>Conforming systems shall serialize and verify evaluations using RFC 8785 JSON Canonicalization Scheme (JCS) and Ed25519 signatures according to the following canonical format:</p>
+
+    <pre><code>{
+  "version": "WHP-STANDING-MARK-v1",
+  "canonical_version": "WHP-JCS-I1",
+  "mark_id": "WHP-SM-&lt;16_char_hash&gt;",
+  "timestamp": "&lt;iso_8601_utc&gt;",
+  "artifact_sha256": "&lt;64_hex_hash&gt;",
+  "input_sha256": "&lt;64_hex_hash&gt;",
+  "evaluation_sha256": "&lt;64_hex_hash&gt;",
+  "record_sha256": "&lt;64_hex_hash&gt;",
+  "evaluation": {
+    "decision": "ALLOW | DENY | INDETERMINATE",
+    "deficit": null,
+    "smallest_true_move": "&lt;action_or_boundary&gt;"
+  },
+  "signature": "&lt;ed25519_base64_signature&gt;",
+  "public_key": "&lt;ed25519_pem_public_key&gt;"
+}</code></pre>
+
+    <hr/>
+
+    <h2>7. Named Epistemic Failures</h2>
+    <p>A conforming evaluator must diagnose and halt when encountering any of the following canonical failure types:</p>
+    <ol>
+      <li><strong>Authority Leakage:</strong> Asserting operational or legal force based on fabricated, unverified, or disconnected citations.</li>
+      <li><strong>Qualifier Stripping:</strong> Removing essential epistemic conditions, boundaries, or operating temperatures from an assertion during transmission or summarization.</li>
+      <li><strong>Coherent Substitution:</strong> Replacing an unresolved or unproven proposition with a linguistically fluent, plausible, but unsupported proxy.</li>
+      <li><strong>Object Drift:</strong> Altering the underlying identity or referent of an informational object across intermediate agents or pipeline steps.</li>
+      <li><strong>Answer to the Wrong Question:</strong> Providing a mathematically or logically sound proof for a proposition other than the specific question submitted for authorization.</li>
+    </ol>
+
+    <hr/>
+
     <h2>8. Verification &amp; Offline Auditability</h2>
-    <p>
-      Standing Marks and Assessments are verifiable completely offline using standard cryptographic libraries (Ed25519, SHA-256). Verifiers require only the published issuer public key and the normative JSON schema.
-    </p>
-  </section>
+    <p>All Standing Marks issued under DITS-1.0 are verifiable offline without network connectivity or API key authentication:</p>
+    <ol>
+      <li>Canonicalize the envelope payload (excluding the signature) using RFC 8785 (JCS).</li>
+      <li>Validate the SHA-256 digest of the canonical bytes.</li>
+      <li>Verify the Ed25519 signature against the published issuer public key.</li>
+      <li>Recompute the input and artifact digests against the local evaluation submission.</li>
+    </ol>
+  </main>
 
-  <!-- FOOTER -->
-  <footer class="spec-footer">
-    <div>
-      <div style="font-family: var(--serif-display); font-size: 1.25rem; font-weight: 600;">Wheeler Hubbell Publishing</div>
-      <div class="tech-label" style="margin-top: 4px;">SPECIFICATION REVISION DITS-1.0 · NEW YORK</div>
-    </div>
-    <div>
-      <a href="/" class="btn-outline" style="padding: 10px 20px; font-family: var(--sans-tech); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;">
-        Return to Protocol Homepage &rarr;
-      </a>
-    </div>
+  <footer>
+    <div>Wheeler Hubbell Publishing &middot; Decision Integrity Protocol</div>
+    <div>Permanent Archival Specification &middot; DITS-1.0</div>
   </footer>
 </div>
 
