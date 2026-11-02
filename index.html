@@ -5,196 +5,513 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Decision Integrity Protocol — Wheeler Hubbell Publishing</title>
 <meta name="description" content="The Decision Integrity Protocol examines whether the evidence, conditions, and authority behind an autonomous system's answer support the proposed action. A public page of Wheeler Hubbell Publishing.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--ivory:#F5F0E5;--parchment:#EAE0CC;--ink:#111;--gold:#AA9257;--gold-line:rgba(170,146,87,.62);--gold-soft:rgba(170,146,87,.3);--green:#173D32;--forest:#1B4D3E;--oxblood:#7D1D1D;--espresso:#251D19;--slate:#766E65;--paper:#FBF8F0;--white:#fff;--serif:'Cormorant Garamond','Playfair Display',Georgia,serif;--body:'EB Garamond',Garamond,Georgia,serif;--mono:'JetBrains Mono','IBM Plex Mono',monospace;--sans:Inter,Arial,sans-serif}
-
-*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}html{background:var(--ivory);color:var(--ink);scroll-behavior:smooth}body{background:var(--ivory);color:var(--ink);font-family:var(--body);font-size:1.25rem;line-height:1.66}.wrap{max-width:1080px;margin:0 auto;padding:0 38px}a{color:var(--oxblood);text-decoration:none;transition:color .18s ease}a:hover{color:var(--ink);text-decoration:underline}button{font:inherit}button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--oxblood);outline-offset:3px}
-header{background:var(--ivory);border-bottom:1px solid var(--gold-line);padding:22px 0 18px;position:relative}header::after{content:"";position:absolute;left:0;right:0;bottom:-5px;border-bottom:1px solid var(--gold-line)}.head-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}.brand{display:flex;align-items:center;gap:14px}.brand::before{content:"";width:38px;height:38px;flex:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='43' fill='none' stroke='%23AA9257' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='3' fill='%237D1D1D'/%3E%3Cpath d='M50 50V13M50 50L76 24M50 50H87M50 50L76 76M50 50V87M50 50L24 76M50 50H13M50 50L24 24' stroke='%23AA9257' stroke-width='1.5'/%3E%3C/svg%3E");background-size:contain}.brand .name{font-family:var(--serif);font-weight:600;font-size:1.35rem;letter-spacing:.11em;text-transform:uppercase}.brand .sub{font-family:var(--sans);font-size:10px;letter-spacing:.17em;color:var(--slate);text-transform:uppercase;margin-top:4px}nav{display:flex;gap:20px 26px;flex-wrap:wrap;align-items:center}nav a{font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);font-weight:500}.announce{border-bottom:1px solid var(--gold-soft);background:var(--parchment);padding:12px 0}.announce .wrap{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}.announce .a-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate)}.announce a{font-family:var(--body);font-style:italic;font-size:1.12rem;color:var(--oxblood)}
-.hero{padding:92px 300px 68px 0;position:relative}.hero-cover{position:absolute!important;z-index:0!important;right:26px;top:68px;width:235px;aspect-ratio:2/3;background:url("/5-elemental-properties-of-true.jpg") center/cover no-repeat;border:1px solid var(--gold);outline:1px solid var(--gold-soft);outline-offset:5px}.hero>*{position:relative;z-index:1}.kicker{display:flex;align-items:center;gap:12px;font-family:var(--sans);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);margin-bottom:28px}.kicker::before{content:"";height:1px;background:var(--gold);width:34px;flex:none}.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(3rem,6vw,5.4rem);line-height:.98;letter-spacing:-.025em;max-width:15ch;position:relative;z-index:1}.hero h1 em{font-style:italic;color:var(--oxblood)}.standfirst{margin-top:28px;font-size:clamp(1.4rem,2.3vw,1.85rem);line-height:1.42;color:var(--espresso);max-width:34ch;font-style:italic;border-left:1px solid var(--gold);padding-left:22px}.lede{margin-top:25px;font-size:1.24rem;line-height:1.66;color:#322c25;max-width:61ch}.lede strong{color:var(--ink);font-weight:600}.duo{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:36px;max-width:760px}.duo .cell{border-top:1px solid var(--gold-line);padding-top:15px}.duo .cell .t{font-family:var(--sans);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--oxblood);margin-bottom:7px}.duo .cell p{font-size:1.1rem;line-height:1.55;color:var(--slate)}.trust{display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap;margin-top:42px;padding:20px 0;border-top:1px solid var(--gold-line);border-bottom:1px solid var(--gold-line);position:relative}.trust::before,.trust::after{content:"";position:absolute;left:0;right:0;border-top:1px solid var(--gold-soft)}.trust::before{top:-5px}.trust::after{bottom:-5px}.trust div{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--ink)}.trust div span{display:block;font-family:var(--sans);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--slate);margin-bottom:6px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}.btn{display:inline-block;font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:13px 20px;border:1px solid var(--gold);color:var(--ink);text-align:center;background:transparent;border-radius:1px}.btn:hover{border-color:var(--oxblood);color:var(--oxblood);text-decoration:none}.btn-solid{background:var(--ink);border-color:var(--ink);color:var(--ivory)}.btn-solid:hover{background:var(--oxblood);border-color:var(--oxblood);color:#fff}.hero-actions .btn-solid{background:var(--ink);color:var(--ivory)}
-section{padding:88px 0;border-bottom:1px solid var(--gold-soft);position:relative}section.band{background:var(--parchment)}h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.8vw,3.15rem);line-height:1.08;margin-bottom:24px;max-width:24ch;letter-spacing:-.01em}.section-label{font-family:var(--sans);font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:var(--slate);margin-bottom:18px;display:flex;align-items:center;gap:12px}.section-label::before{content:"";display:inline-block;width:26px;height:1px;background:var(--gold)}p.body{color:#342e27;max-width:65ch;margin-bottom:18px}p.body strong{color:var(--ink);font-weight:600}p.body em{color:var(--ink)}blockquote{margin:40px auto;max-width:46ch;text-align:center;font-style:italic;font-size:1.5rem;line-height:1.5;color:var(--espresso);position:relative;padding:25px 18px 18px;border-top:1px solid var(--gold-line);border-bottom:1px solid var(--gold-line)}blockquote.compact{margin:22px auto;font-size:1.25rem;padding:18px}blockquote::before{content:"“";display:block;font-size:3.6rem;line-height:.55;color:var(--gold);font-style:normal;margin:0 0 12px}blockquote::after{content:"";display:block;width:42px;height:1px;background:var(--gold);margin:17px auto 0}blockquote.compact::before{font-size:2.8rem;margin-bottom:10px}blockquote.compact::after{margin:12px auto 0}blockquote cite{display:block;margin-top:13px;font-family:var(--sans);font-style:normal;font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--slate)}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:36px}.step{border-top:1px solid var(--gold);padding-top:18px}.step .n{font-family:var(--serif);font-size:2.5rem;font-weight:400;color:var(--gold);line-height:1;margin-bottom:12px}.step h3{font-family:var(--serif);font-size:1.35rem;font-weight:600;margin-bottom:8px}.step p{font-size:1.08rem;line-height:1.58;color:#4a433a}.failures{margin-top:32px;border-bottom:1px solid var(--gold-soft)}.failure{display:grid;grid-template-columns:72px 1fr 1fr;gap:24px;padding:22px 0;border-top:1px solid var(--gold-soft);align-items:baseline}.failure .fnum{font-family:var(--serif);font-size:1.9rem;color:var(--gold);font-weight:400;line-height:1}.failure .fname{font-family:var(--serif);font-weight:600;font-size:1.28rem;color:var(--ink)}.failure .flead{font-size:1.06rem;color:var(--slate);margin-top:4px}.failure p.def{font-size:1.04rem;color:#4a433a;line-height:1.55;font-style:italic}.scenarios{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:30px}.scenario{border:1px solid var(--gold);outline:1px solid var(--gold-soft);outline-offset:4px;padding:25px;display:flex;flex-direction:column;gap:10px;background:var(--paper)}.scenario .stag{display:inline-block;align-self:flex-start;font-family:var(--sans);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--oxblood);border:1px solid var(--gold-line);padding:5px 9px}.scenario h3{font-family:var(--serif);font-size:1.42rem;font-weight:500}.scenario p{font-size:1.08rem;color:#403a33;line-height:1.58}.scenario .takeaway{margin-top:auto;padding-top:14px;border-top:1px solid var(--gold-soft);font-style:italic;color:var(--forest);font-size:1.1rem;line-height:1.5}
-.demo-card{border:1px solid var(--gold);outline:1px solid var(--gold-soft);outline-offset:5px;padding:32px;margin-top:28px;background:var(--paper)}.demo-tag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);border:1px solid var(--gold-line);padding:6px 12px}.demo-card .fields{margin:22px 0 8px;display:grid;gap:0}.frow{display:flex;gap:20px;font-size:1.08rem;border-bottom:1px solid var(--gold-soft);padding:12px 0}.frow:first-child{border-top:1px solid var(--gold-soft)}.fkey{font-family:var(--sans);font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);min-width:140px;padding-top:5px}.fval{color:var(--ink)}.fval.mono{font-family:var(--mono);font-size:10px;color:var(--oxblood);word-break:break-all}.demo-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
-.tiers{display:grid;grid-template-columns:repeat(3,1fr);margin-top:34px;border-top:1px solid var(--gold-line);border-bottom:1px solid var(--gold-line);background:rgba(255,255,255,.26)}.tier{padding:28px 24px 30px;border-left:1px solid var(--gold-soft);display:flex;flex-direction:column}.tier:first-child{border-left:none}.tier.featured{box-shadow:inset 0 2px 0 var(--oxblood)}.tier h3{font-family:var(--serif);font-size:1.4rem;font-weight:500}.tier .vol{font-family:var(--sans);font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin-top:7px}.tier .price{margin:15px 0;font-family:var(--serif);font-size:2.7rem;line-height:1;color:var(--oxblood);font-weight:400}.tier .price span{font-size:10px;color:var(--slate);font-family:var(--mono);letter-spacing:.06em}.tier p{font-size:1.08rem;color:#403a33;line-height:1.58;margin-bottom:22px;flex:1}.tier .btn{width:100%}.tier-unavailable{font-family:var(--mono);font-size:10px;line-height:1.7;color:var(--slate);max-width:44ch}.billing-status{border-left:2px solid var(--gold);padding-left:14px}.panel{margin-top:22px;border-top:1px solid var(--gold-line);border-bottom:1px solid var(--gold-soft);padding:23px 0;background:transparent}.panel h3{font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--oxblood);margin-bottom:14px}.panel ul{list-style:none;margin:0}.panel li{font-size:1.08rem;color:#403a33;line-height:1.58;padding:5px 0 5px 20px;position:relative}.panel li::before{content:"—";position:absolute;left:0;color:var(--gold)}.panel p{font-size:1.08rem;color:#403a33;line-height:1.62;margin-bottom:10px;max-width:66ch}.panel p:last-child{margin-bottom:0}details.panel summary{font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);cursor:pointer;list-style:none;display:flex;align-items:center;gap:12px;min-height:44px}details.panel summary::after{content:"+";font-size:1rem;color:var(--oxblood);margin-left:auto}details.panel[open] summary::after{content:"−"}details.panel summary::-webkit-details-marker{display:none}details.panel ul,details.panel p{margin-top:14px}.panel code{font-size:.85em;overflow-wrap:anywhere}.links-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 34px;margin-top:26px}.link-item{border-top:1px solid var(--gold-soft);padding:15px 0}.link-item a{font-size:1.15rem}.link-item .ld{font-size:1rem;color:var(--slate);margin-top:3px}
-#visualizer{background:var(--ivory)!important;padding:84px 0!important;border-top:1px solid var(--gold-line)!important;border-bottom:1px solid var(--gold-line)!important}#visualizer>.wrap>div{max-width:960px!important;background:var(--paper)!important;color:var(--ink)!important;border:1px solid var(--gold)!important;outline:1px solid var(--gold-soft)!important;outline-offset:5px!important;padding:34px!important}#visualizer h3{font-family:var(--serif)!important;color:var(--ink)!important;font-size:2.05rem!important;font-weight:500!important;margin-bottom:8px}#visualizer p{font-size:1.14rem!important;color:#403a33;max-width:64ch}#dv-tabs{gap:0!important;border-bottom:1px solid var(--gold-line);margin-top:24px!important;margin-bottom:20px!important}#dv-tabs button{font-family:var(--sans)!important;font-size:10px!important;letter-spacing:.12em;text-transform:uppercase;padding:12px 16px!important;background:transparent!important;color:var(--slate)!important;border:0!important;border-bottom:2px solid transparent!important;border-radius:0!important}#dv-tabs button[aria-selected=true],#dv-tabs button.active{color:var(--ink)!important;border-bottom-color:var(--oxblood)!important}#dv-tabs button:hover{color:var(--oxblood)!important}#visualizer>.wrap>div>div[style*="background-color: #FFFFFF"]{background:var(--white)!important;border:1px solid var(--gold-soft)!important;padding:20px!important}#dv-claim{font-family:var(--body)!important;font-size:1.34rem!important;color:var(--espresso);line-height:1.5!important}#dv-button-wrap{margin-top:18px}#dv-eval-btn{font-family:var(--sans)!important;font-size:10px!important;letter-spacing:.16em!important;text-transform:uppercase;padding:14px 22px!important;background:var(--ink)!important;color:var(--ivory)!important;border:1px solid var(--ink)!important;border-radius:1px!important;transition:background .16s ease}#dv-eval-btn:hover{background:var(--oxblood)!important;border-color:var(--oxblood)!important}#dv-outcome{display:none;border:1px solid var(--oxblood)!important;border-left:4px solid var(--oxblood)!important;background:#fbf6ed;padding:20px!important;margin-top:22px!important;color:var(--ink)}#dv-outcome>div:first-child{font-family:var(--mono)!important;color:var(--oxblood)!important;font-size:11px!important;letter-spacing:.12em!important;text-transform:uppercase}#dv-outcome>div{font-family:var(--body);font-size:1.04rem!important;line-height:1.55;margin:12px 0!important}#dv-move{color:var(--forest)}#dv-envelope{font-family:var(--mono)!important;color:var(--slate)!important;font-size:10px!important}#dv-reset-btn{font-family:var(--sans);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);border:1px solid var(--gold);background:transparent;padding:7px 12px;cursor:pointer}
-footer{padding:56px 0 44px;border-top:1px solid var(--gold-line);position:relative;background:var(--parchment)}footer::before{content:"";position:absolute;left:0;right:0;top:-5px;border-top:1px solid var(--gold-soft)}.foot-brand{text-align:center;margin-bottom:38px}.foot-brand .fname{font-family:var(--serif);font-size:1.55rem;letter-spacing:.1em;text-transform:uppercase}.foot-brand p{font-size:1rem;color:var(--slate);line-height:1.6;max-width:52ch;margin:10px auto 0}.foot-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:640px;margin:0 auto}footer .col-label{font-family:var(--sans);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--slate);margin-bottom:12px}footer ul{list-style:none}footer li{font-size:1rem;line-height:1.65;padding:3px 0}footer li a{color:#403a33}footer li a:hover{color:var(--oxblood)}.legal{margin-top:38px;padding-top:18px;border-top:1px solid var(--gold-soft);font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--slate);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-@media(max-width:860px){.hero{padding-right:230px}.hero-cover{width:180px;right:12px;top:62px}.duo,.scenarios,.tiers,.links-grid,.foot-grid,.steps{grid-template-columns:1fr}.tiers{border-bottom:none}.tier{border-left:none;border-bottom:1px solid var(--gold-soft);padding:24px 0}.failure{grid-template-columns:50px 1fr;gap:16px}.failure p.def{grid-column:2}.hero{padding:62px 0 52px}.hero::after{right:38px;top:26px;width:80px;height:80px}.hero h1{max-width:18ch}.hero-actions{padding-bottom:4px}section{padding:64px 0}.demo-card{padding:24px 18px}.frow{flex-direction:column;gap:4px}.trust{gap:16px}.foot-grid{max-width:none}nav{gap:14px 18px}}
-@media(max-width:580px){.hero{padding-right:0}.hero-cover{display:none}.wrap{padding:0 22px}.head-inner{align-items:flex-start}.brand .name{font-size:1.1rem;letter-spacing:.07em}nav{width:100%;gap:12px 16px}.hero{padding-top:52px}.hero::after{width:54px;height:54px;right:23px;top:25px}.hero h1{font-size:clamp(2.7rem,13vw,4rem);max-width:13ch}.kicker{font-size:9px;letter-spacing:.12em;max-width:80%}.trust{display:grid;grid-template-columns:1fr 1fr}#visualizer{padding:64px 0!important}#visualizer>.wrap>div{padding:22px 16px!important}#visualizer h3{font-size:1.65rem!important}#dv-tabs{flex-direction:column}#dv-tabs button{text-align:left;border-bottom:1px solid var(--gold-soft)!important}.demo-actions .btn,.hero-actions .btn{width:100%}.legal{font-size:8px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important}}
+  :root{
+    --ground:#fbfaf6; --panel:#ffffff;
+    --ink:#1b1813; --ink-2:#4c463c; --ink-3:#8a8175;
+    --red:#7d1d1d;
+    --hairline:#e4e0d5; --hairline-strong:#cec8ba;
+    --wash:#f4f2ec;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--ground);color:var(--ink);font-family:'Spectral',Georgia,serif;font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 28px}
+  .label{font-family:Inter,Arial,sans-serif;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+  .accent-label{color:var(--red)}
+  a{color:var(--red);text-decoration:none}
+  a:hover{text-decoration:underline}
+  button{font:inherit}
+  button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+  header{border-bottom:1px solid var(--hairline-strong)}
+  .masthead{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px 0 20px;flex-wrap:wrap}
+  .brandrow{display:flex;align-items:center;gap:16px}
+  .brandrow img.mark-img{width:48px;height:48px;flex:none}
+  .house{font-size:20px;font-weight:600;letter-spacing:.005em;line-height:1.25}
+  .house small{display:block;font-family:Inter,Arial,sans-serif;font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-top:5px}
+  nav{display:flex;gap:24px;flex-wrap:wrap}
+  nav a{font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);text-decoration:none}
+  nav a:hover{color:var(--red)}
+  .release{border-bottom:1px solid var(--hairline);background:var(--wash)}
+  .release .wrap{display:flex;gap:8px 18px;align-items:baseline;padding-top:11px;padding-bottom:11px;flex-wrap:wrap}
+  .release .rel{font-family:Inter,Arial,sans-serif;font-size:10.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+  .release a{font-family:Inter,Arial,sans-serif;font-size:12.5px;font-weight:500;color:var(--red);text-decoration:none}
+  .hero{padding:76px 0 60px;border-bottom:1px solid var(--hairline)}
+  .kicker{margin-bottom:30px}
+  h1{font-size:48px;line-height:1.15;font-weight:600;letter-spacing:-.01em;max-width:16em}
+  h1 .accent{color:var(--red)}
+  .standfirst{font-size:21px;line-height:1.55;font-weight:500;color:var(--ink);max-width:31em;margin-top:28px}
+  .hero p.body{max-width:36em;margin-top:24px;color:var(--ink-2);font-size:18px}
+  .hero p.body strong{color:var(--ink);font-weight:600}
+  .marks{display:flex;gap:56px;flex-wrap:wrap;margin-top:46px;padding-top:28px;border-top:1px solid var(--hairline)}
+  .marks div{max-width:26em}
+  .marks .label{margin-bottom:9px}
+  .marks p{font-size:16.5px;color:var(--ink-2)}
+  .meta{display:flex;gap:48px;flex-wrap:wrap;margin-top:34px}
+  .meta div{max-width:20em}
+  .meta .label{margin-bottom:6px}
+  .meta span{font-family:Inter,Arial,sans-serif;font-size:12.5px;color:var(--ink-2);letter-spacing:.01em}
+  .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:42px}
+  .btn{display:inline-block;font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;padding:14px 24px;border:1px solid var(--hairline-strong);color:var(--ink);background:transparent;cursor:pointer}
+  .btn:hover{text-decoration:none;border-color:var(--ink)}
+  .btn.primary{background:var(--red);border-color:var(--red);color:#faf7f2}
+  .btn.primary:hover{background:var(--ink);border-color:var(--ink)}
+  section{padding:72px 0;border-bottom:1px solid var(--hairline)}
+  h2{font-size:33px;line-height:1.22;font-weight:600;letter-spacing:-.005em;max-width:24em;margin:16px 0 24px}
+  h2.first{margin-top:0}
+  .lede{font-size:18px;color:var(--ink-2);max-width:38em}
+  .lede a,.steps a{color:var(--red)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;margin-top:38px}
+  .steps .num{font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:500;color:var(--red);letter-spacing:.08em}
+  .steps h3{font-size:19px;font-weight:600;margin:9px 0 10px}
+  .steps p{font-size:16.5px;color:var(--ink-2)}
+  .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+  .tab{font-family:Inter,Arial,sans-serif;font-size:11.5px;font-weight:500;letter-spacing:.04em;padding:10px 16px;border:1px solid var(--hairline-strong);color:var(--ink-2);background:transparent;cursor:pointer}
+  .tab:hover{color:var(--red)}
+  .tab.active,.tab[aria-selected="true"]{border-color:var(--red);color:var(--red)}
+  .gate-panel{background:var(--panel);border:1px solid var(--hairline-strong);padding:30px 32px;margin-top:22px}
+  .prop{margin-top:16px;padding:18px 20px;border-left:2px solid var(--red);background:var(--wash);font-size:17.5px;line-height:1.55}
+  .gate-outcome{margin-top:28px;border-top:1px solid var(--hairline);padding-top:22px}
+  .gate-note{font-size:15.5px;color:var(--ink-2);margin-top:8px;max-width:40em}
+  .gate-rows{margin-top:16px}
+  .gate-rows .row{display:grid;grid-template-columns:190px 1fr;gap:18px;padding:12px 0;border-top:1px solid var(--hairline)}
+  .gate-rows .k{font-family:Inter,Arial,sans-serif;font-size:10.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding-top:4px}
+  .gate-rows .v{font-size:16.5px;color:var(--ink)}
+  .specimen{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:var(--ink-3);margin-top:20px}
+  .record{background:var(--panel);border:1px solid var(--hairline-strong);padding:36px 38px;margin-top:36px}
+  .record .issued{display:block;margin-bottom:20px}
+  .record dl{display:grid;grid-template-columns:150px 1fr;row-gap:0}
+  .record dt,.record dd{padding:14px 0;border-top:1px solid var(--hairline);font-size:17px}
+  .record dt{font-family:Inter,Arial,sans-serif;font-size:10.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);padding-top:18px}
+  .record dd.dim{color:var(--ink-2)}
+  .record .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--ink-2);word-break:break-all}
+  .envelope{margin-top:30px;display:flex;gap:8px 24px;align-items:baseline;flex-wrap:wrap}
+  .envelope .t{font-weight:600}
+  .envelope .d{color:var(--ink-2);font-size:16px}
+  .stakes{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:36px}
+  .stake{background:var(--panel);border:1px solid var(--hairline-strong);padding:26px 28px}
+  .stake h3{font-size:19px;font-weight:600;margin:9px 0 10px}
+  .stake p{font-size:16px;color:var(--ink-2)}
+  .stake .takeaway{margin-top:14px;padding-top:14px;border-top:1px solid var(--hairline);color:var(--ink);font-weight:500;font-size:16px}
+  .quote{margin-top:44px;padding:2px 0 2px 22px;border-left:2px solid var(--red)}
+  .quote p{font-size:20px;line-height:1.5;font-weight:500;max-width:30em}
+  .quote cite{display:block;margin-top:12px;font-style:normal;font-family:Inter,Arial,sans-serif;font-size:10.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+  .failures{display:grid;grid-template-columns:1fr 1fr;gap:36px 32px;margin-top:38px}
+  .fail{border-top:2px solid var(--ink);padding-top:16px}
+  .fail .num{font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:500;color:var(--red);letter-spacing:.08em}
+  .fail h3{font-size:19px;font-weight:600;margin:8px 0 6px}
+  .fail .gloss{font-weight:500;font-size:16.5px}
+  .fail .desc{margin-top:8px;font-size:15.5px;color:var(--ink-2)}
+  .attr{margin-top:30px;font-family:Inter,Arial,sans-serif;font-size:11.5px;color:var(--ink-3);letter-spacing:.03em}
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--hairline-strong);margin-top:38px;background:var(--panel)}
+  .tier{padding:30px 28px;border-left:1px solid var(--hairline);display:flex;flex-direction:column}
+  .tier:first-child{border-left:none}
+  .tier h3{font-size:20px;font-weight:600}
+  .tier .volume{margin:9px 0 22px}
+  .tier .price{font-size:32px;font-weight:600}
+  .tier .price small{font-size:15px;font-weight:400;color:var(--ink-2)}
+  .tier p{font-size:16.5px;color:var(--ink-2);margin:16px 0 26px}
+  .tier p.grow{flex:1}
+  .tier .btn{display:block;text-align:center}
+  h3.sub{font-size:20px;font-weight:600;margin:44px 0 10px}
+  h4.method{font-family:Inter,Arial,sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.05em;margin:28px 0 8px}
+  .sub-p{font-size:16.5px;color:var(--ink-2);max-width:40em}
+  .sub-p code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;color:var(--ink);word-break:break-all}
+  .code{background:var(--wash);border:1px solid var(--hairline);padding:16px 18px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;line-height:1.6;color:var(--ink-2);white-space:pre-wrap;word-break:break-all;margin-top:12px}
+  ul.included{margin-top:14px;list-style:none}
+  ul.included li{font-size:16.5px;color:var(--ink-2);padding:9px 0 9px 26px;position:relative;border-top:1px solid var(--hairline)}
+  ul.included li::before{content:"";position:absolute;left:2px;top:17px;width:8px;height:8px;background:var(--red)}
+  .links{margin-top:36px;border-top:1px solid var(--hairline-strong)}
+  .linkrow{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:17px 0;border-bottom:1px solid var(--hairline)}
+  .linkrow .t{font-weight:600;font-size:17px}
+  .linkrow .d{font-size:14.5px;color:var(--ink-2);text-align:right}
+  footer{padding:56px 0 64px}
+  footer .house{font-size:16px}
+  footer p.about{color:var(--ink-2);font-size:15.5px;max-width:38em;margin-top:14px}
+  .foot-grid{display:flex;gap:64px;flex-wrap:wrap;margin-top:34px}
+  footer h5{font-family:Inter,Arial,sans-serif;font-size:10.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px}
+  footer ul{list-style:none}
+  footer ul li{margin-bottom:8px}
+  footer ul a{font-family:Inter,Arial,sans-serif;font-size:12.5px;color:var(--ink-2);text-decoration:none}
+  footer ul a:hover{color:var(--red)}
+  .settle{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:var(--ink-2);word-break:break-all;line-height:1.7}
+  footer .fine{font-family:Inter,Arial,sans-serif;font-size:11px;color:var(--ink-3);margin-top:36px;padding-top:22px;border-top:1px solid var(--hairline);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  @media (max-width:760px){
+    .wrap{padding:0 22px}
+    .masthead{align-items:flex-start;flex-direction:column;gap:16px}
+    .hero{padding:52px 0 46px}
+    h1{font-size:33px}
+    h2{font-size:26px}
+    .standfirst{font-size:19px}
+    .steps{grid-template-columns:1fr;gap:30px}
+    .stakes,.failures{grid-template-columns:1fr}
+    .tiers{grid-template-columns:1fr}
+    .tier{border-left:none;border-top:1px solid var(--hairline)}
+    .tier:first-child{border-top:none}
+    .record,.gate-panel{padding:26px 22px}
+    .record dl{grid-template-columns:1fr}
+    .record dt{padding-bottom:0;border-top:1px solid var(--hairline)}
+    .record dd{border-top:none;padding-top:4px}
+    .gate-rows .row{grid-template-columns:1fr;gap:4px}
+    .linkrow{flex-direction:column;gap:3px}
+    .linkrow .d{text-align:left}
+    nav{gap:10px 18px}
+    section{padding:56px 0}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="wrap head-inner">
-    <div class="brand">
-      <svg width="44" height="44" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="dandelion-colophon-svg" aria-label="Wheeler Hubbell Publishing Dandelion Mark Colophon">
-  <circle cx="50" cy="50" r="46" stroke="#7D1D1D" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.45"/>
-  <circle cx="50" cy="50" r="38" stroke="#7D1D1D" stroke-width="0.6" opacity="0.3"/>
-  <circle cx="50" cy="50" r="4.2" fill="#7D1D1D"/>
-  <circle cx="50" cy="50" r="1.8" fill="#FBF9F5"/>
-  <line x1="50" y1="54.2" x2="50" y2="88" stroke="#7D1D1D" stroke-width="1.3"/>
-  <path d="M50 71 C43 67 39 72 37 77" stroke="#7D1D1D" stroke-width="0.9" fill="none"/>
-  <path d="M50 64 C57 60 61 65 63 70" stroke="#7D1D1D" stroke-width="0.9" fill="none"/>
-  <line x1="50" y1="50" x2="50.00" y2="18.00" stroke="#7D1D1D" stroke-width="0.8" opacity="0.85"/>
-  <circle cx="50.00" cy="18.00" r="1.4" fill="#7D1D1D"/>
-  <line x1="50.00" y1="18.00" x2="48.91" y2="13.12" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
-  <line x1="50.00" y1="18.00" x2="51.09" y2="13.12" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
-  <line x1="50" y1="50" x2="62.25" y2="20.44" stroke="#7D1D1D" stroke-width="0.8" opacity="0.85"/>
-  <circle cx="62.25" cy="20.44" r="1.4" fill="#7D1D1D"/>
-  <line x1="62.25" y1="20.44" x2="63.14" y2="15.52" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
-  <line x1="62.25" y1="20.44" x2="65.17" y2="16.36" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
-  <line x1="50" y1="50" x2="72.63" y2="27.37" stroke="#7D1D1D" stroke-width="0.8" opacity="0.85"/>
-  <circle cx="72.63" cy="27.37" r="1.4" fill="#7D1D1D"/>
-  <line x1="72.63" y1="27.37" x2="75.25" y2="23.10" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
-  <line x1="72.63" y1="27.37" x2="77.10" y2="24.95" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
-  <line x1="50" y1="50" x2="79.56" y2="37.75" stroke="#7D1D1D" stroke-width="0.8" opacity="0.85"/>
-  <circle cx="79.56" cy="37.75" r="1.4" fill="#7D1D1D"/>
-  <line x1="79.56" y1="37.75" x2="83.82" y2="35.13" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
-  <line x1="79.56" y1="37.75" x2="84.95" y2="37.28" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
-  <line x1="50" y1="50" x2="82.00" y2="50.00" stroke="#7D1D1D" stroke-width="0.8" opacity="0.85"/>
-  <circle cx="82.00" cy="50.00" r="1.4" fill="#7D1D1D"/>
-  <line x1="82.00" y1="50.00" x2="86.88" y2="48.91" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
-  <line x1="82.00" y1="50.00" x2="86.88" y2="51.09" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
-  <line x1="50" y1="50" x2="79.56" y2="62.25" stroke="#7D1D1D" stroke-width="0.8" opacity="0.85"/>
-  <circle cx="79.56" cy="62.25" r="1.4" fill="#7D1D1D"/>
-  <line x1="79.56" y1="62.25" x2="84.95" y2="62.72" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
-  <line x1="79.56" y1="62.25" x2="83.82" y2="64.87" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
-  <line x1="50" y1="50" x2="20.44" y2="62.25" stroke="#7D1D1D" stroke-width="0.8" opacity="0.85"/>
-  <circle cx="20.44" cy="62.25" r="1.4" fill="#7D1D1D"/>
-  <line x1="20.44" y1="62.25" x2="16.18" y2="64.87" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
-  <line x1="20.44" y1="62.25" x2="15.05" y2="62.72" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
-  <line x1="50" y1="50" x2="18.00" y2="50.00" stroke="#7D1D1D" stroke-width="0.8" opacity="0.85"/>
-  <circle cx="18.00" cy="50.00" r="1.4" fill="#7D1D1D"/>
-  <line x1="18.00" y1="50.00" x2="13.12" y2="51.09" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
-  <line x1="18.00" y1="50.00" x2="13.12" y2="48.91" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
-  <line x1="50" y1="50" x2="20.44" y2="37.75" stroke="#7D1D1D" stroke-width="0.8" opacity="0.85"/>
-  <circle cx="20.44" cy="37.75" r="1.4" fill="#7D1D1D"/>
-  <line x1="20.44" y1="37.75" x2="15.05" y2="37.28" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
-  <line x1="20.44" y1="37.75" x2="16.18" y2="35.13" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
-  <line x1="50" y1="50" x2="27.37" y2="27.37" stroke="#7D1D1D" stroke-width="0.8" opacity="0.85"/>
-  <circle cx="27.37" cy="27.37" r="1.4" fill="#7D1D1D"/>
-  <line x1="27.37" y1="27.37" x2="22.90" y2="24.95" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
-  <line x1="27.37" y1="27.37" x2="24.75" y2="23.10" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
-  <line x1="50" y1="50" x2="37.75" y2="20.44" stroke="#7D1D1D" stroke-width="0.8" opacity="0.85"/>
-  <circle cx="37.75" cy="20.44" r="1.4" fill="#7D1D1D"/>
-  <line x1="37.75" y1="20.44" x2="34.83" y2="16.36" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
-  <line x1="37.75" y1="20.44" x2="36.86" y2="15.52" stroke="#7D1D1D" stroke-width="0.5" opacity="0.6"/>
-</svg>
-      <div><div class="name">Wheeler Hubbell Publishing</div><div class="sub">Decision Integrity Protocol</div></div>
+  <div class="wrap masthead">
+    <div class="brandrow">
+      <img class="mark-img" src="/dandelion-seal.png" alt="Wheeler Hubbell Publishing dandelion seal" width="48" height="48">
+      <div class="house">Wheeler Hubbell Publishing
+      <small>Decision Integrity Protocol</small>
+    </div>
     </div>
     <nav>
-      <a href="#how">What It Does</a><a href="#demonstration">Demonstration</a><a href="#failures">The Named Failures</a><a href="#access">Access</a><a href="/spec">Specification</a><a href="/press/the-standing-mark-is-live.html">Press</a>
+      <a href="#how">What It Does</a>
+      <a href="#demonstration">Demonstration</a>
+      <a href="#failures">The Named Failures</a>
+      <a href="#access">Access</a>
+      <a href="/spec">Specification</a>
+      <a href="/press/the-standing-mark-is-live.html">Press</a>
     </nav>
   </div>
 </header>
 
-<div class="announce">
+<div class="release">
   <div class="wrap">
-    <span class="a-label">For release &middot; October 30, 2026</span>
+    <span class="rel">For release &middot; October 30, 2026</span>
     <a href="/press/the-standing-mark-is-live.html">The Standing Mark is live &mdash; read the announcement &rarr;</a>
   </div>
 </div>
 
 <main>
-
 <div class="wrap">
+
   <div class="hero">
-    <div class="hero-cover" role="img" aria-label="The Elemental Properties of True, constitutional text by Wheeler Hubbell"></div>
-    <div class="kicker">An independent intellectual press · New York</div>
-    <h1>Your AI agent has an answer. Does it have the <em>warrant</em> to act?</h1>
-    <p class="standfirst">A correct answer does not automatically authorize the action that follows.</p>
-    <p class="lede">When an agent proposes to move money, merge code, or submit a filing, the question is not only whether its answer is right. It is whether the evidence, conditions, and authority behind that answer support the proposed action. The Decision Integrity Protocol examines that warrant before execution. The result is a signed record of what the examination establishes — and what it does not.</p>
-    <div class="duo">
-      <div class="cell"><div class="t">Standing Mark</div><p>When the examination establishes warrant within its stated scope.</p></div>
-      <div class="cell"><div class="t">Standing Assessment</div><p>When it does not: a signed record of what was examined and where warrant was not established.</p></div>
+    <p class="label accent-label kicker">An independent intellectual press &middot; New York</p>
+    <h1>Your AI agent has an answer. Does <span class="accent">the record behind it</span> support acting on it?</h1>
+    <p class="standfirst">A correct answer does not, by itself, authorize the action that follows.</p>
+    <p class="body">When an AI agent is about to move money, merge code, or submit a filing, being right is not enough. The evidence, conditions, and authority behind its answer have to support the action it wants to take. The Decision Integrity Protocol examines that support &mdash; the warrant &mdash; before the action executes. The result is a signed record of what the examination established, <strong>and what it did not.</strong></p>
+    <div class="marks">
+      <div>
+        <p class="label">Standing Mark</p>
+        <p>When the examination establishes warrant within its stated scope &mdash; when the record supports the proposed action, within stated limits &mdash; the service issues a Standing Mark: a signed record of how far the submission may be relied on.</p>
+      </div>
+      <div>
+        <p class="label">Standing Assessment</p>
+        <p>When it does not, the service returns a Standing Assessment: a signed record of what was examined and where warrant was not established. The fee buys the examination. It never buys the outcome.</p>
+      </div>
     </div>
-    <div class="trust">
-      <div><span>Signed</span>Ed25519 · Canonical JSON</div>
-      <div><span>Independently verifiable</span>Offline, against published keys</div>
-      <div><span>Access</span>Monthly Subscriptions · 1 USDC x402</div>
+    <div class="meta">
+      <div><p class="label">Signed</p><span>Every result is cryptographically signed (Ed25519 &middot; canonical JSON).</span></div>
+      <div><p class="label">Independently verifiable</p><span>Anyone can check a result&rsquo;s signatures offline, against the published keys. No account or API call needed.</span></div>
+      <div><p class="label">Access</p><span>Monthly subscriptions, or 1 USDC per evaluation for machines (x402).</span></div>
     </div>
-    <div class="hero-actions">
-      <a class="btn btn-solid" href="#demonstration">Inspect the Demonstration →</a>
-      <a class="btn" href="#access">Explore Access →</a>
+    <div class="cta">
+      <a class="btn primary" href="#demonstration">Inspect the Demonstration &rarr;</a>
+      <a class="btn" href="#access">Explore Access &rarr;</a>
     </div>
   </div>
+
+  <section id="visualizer">
+    <h2 class="first">The Decision Boundary Gate: a worked example</h2>
+    <p class="lede">Choose a consequential claim, and see the difference between an answer that sounds right and one that is backed by evidence and authority:</p>
+    <div class="tabs" id="dv-tabs" role="tablist" aria-label="Decision Boundary Gate cases">
+      <button class="tab active" id="dv-tab-mata" role="tab" aria-selected="true" type="button">Mata v. Avianca (Legal Authorization)</button>
+      <button class="tab" id="dv-tab-challenger" role="tab" aria-selected="false" type="button">Challenger STS-51-L (Engineering Boundary)</button>
+    </div>
+    <div class="gate-panel">
+      <p class="label">The claim, as a fluent AI model states it &mdash; unchecked:</p>
+      <p class="prop" id="dv-claim">&ldquo;The Montreal Convention tolling rule established in Varghese v. China Southern Airlines permits this filing to proceed.&rdquo;</p>
+      <div class="cta" style="margin-top:22px" id="dv-button-wrap">
+        <button class="btn primary" id="dv-eval-btn" type="button">Run the Test of Passage &rarr;</button>
+      </div>
+      <div class="gate-outcome" id="dv-outcome" style="display:none">
+        <p class="label accent-label">Gate outcome: DENIED (fail-closed)</p>
+        <p class="gate-note">When the gate stands in an action&rsquo;s path and the check fails, the action does not proceed on that basis.</p>
+        <div class="gate-rows">
+          <div class="row"><div class="k">What the check found</div><div class="v"><span id="dv-flaw">The cited court decision does not exist in any docket. The citation was fabricated by the generative tool. (In the vocabulary of the protocol, this failure is named Authority Leakage.)</span></div></div>
+          <div class="row"><div class="k">What was missing &mdash; the warrant (W)</div><div class="v"><span id="dv-warrant">A verified federal case citation with a retrievable docket from PACER / CourtListener.</span></div></div>
+          <div class="row"><div class="k">The smallest true move &mdash; the most the record honestly supports</div><div class="v"><span id="dv-move">Do not accept the citation as a premise. Treat it as unknown and blocking; the argument may only be made conditionally.</span></div></div>
+        </div>
+        <p class="specimen" id="dv-envelope">Illustrative Specimen Envelope: WHP-SM-MATA-VERIFIED &middot; Exemplar verification path</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <p class="label accent-label">What It Does</p>
+    <h2>An examination before execution. A signed record after.</h2>
+    <div class="steps">
+      <div>
+        <p class="num">01</p>
+        <h3>Submit the claim</h3>
+        <p>Send the proposed action together with the record behind it: the evidence, conditions, and authority it depends on. The question is whether that record supports the move from an answer to an action.</p>
+      </div>
+      <div>
+        <p class="num">02</p>
+        <h3>Examine the warrant</h3>
+        <p>The service checks the submission against a <a href="https://api.wheelerhubbellpublishing.com/.well-known/whp-standing.json">named, published profile</a>: a fixed scope that says exactly what the check covers. You can read the profile before you submit.</p>
+      </div>
+      <div>
+        <p class="num">03</p>
+        <h3>Receive the result</h3>
+        <p>When warrant is established within the stated scope, the service issues a signed Standing Mark. When it is not, the service returns a signed Standing Assessment recording what was examined and where warrant was not established. The fee buys the examination. It never buys the outcome.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="demonstration">
+    <p class="label accent-label">Demonstration</p>
+    <h2>A recorded Standing Mark. Open to inspection.</h2>
+    <p class="lede">Don&rsquo;t take the claim on trust. Inspect the record. This is a recorded test we ran on our own service. You can play the record back exactly as it was issued and see what a Standing Mark contains: the result, what the examination covered, who issued it, and the complete signed record.</p>
+    <p class="lede" style="margin-top:18px">The full signed record &mdash; the envelope &mdash; is published. Its signatures verify offline against the published keys: the Mark is signed by the service key, and the service key is certified by the publisher root.</p>
+    <div class="record">
+      <p class="label accent-label issued">Recorded mark &middot; Issued 7 October 2026</p>
+      <dl>
+        <dt>Record type</dt><dd>Standing Mark &middot; WHP-STANDING-MARK-v1</dd>
+        <dt>Outcome</dt><dd>ESTABLISHED &mdash; source, context, and unknowns established under the admitted profile</dd>
+        <dt>Issuer</dt><dd class="dim">Wheeler Hubbell Publishing</dd>
+        <dt>Signature</dt><dd class="dim">Ed25519 &middot; Canonical JSON &middot; WHP-JCS-I1</dd>
+        <dt>Mark ID</dt><dd class="mono">WHP-SM-f9449b31a9fc74458dfde4696f68c041a242194113b3936503fe3362854a073f</dd>
+      </dl>
+    </div>
+    <div class="envelope">
+      <span class="t">The envelope</span>
+      <span class="d">Published in full. Inspect it without an account.</span>
+    </div>
+    <div class="cta" style="margin-top:22px">
+      <a class="btn primary" href="https://wheelerhubbellpublishing.com/standing-demo/">Play Back the Recorded Mark &rarr;</a>
+      <a class="btn" href="https://wheelerhubbellpublishing.com/attestations/genesis-mark.json">Inspect the Signed Envelope &rarr;</a>
+    </div>
+  </section>
+
+  <section id="stakes">
+    <p class="label accent-label">What Is At Stake</p>
+    <h2>The failure is not always a false answer. Sometimes it is an action nobody was entitled to take.</h2>
+    <p class="lede">Two hypothetical examples of the check running before the action:</p>
+    <div class="stakes">
+      <div class="stake">
+        <p class="label">Hypothetical &middot; Capital movement</p>
+        <h3>The escrow release</h3>
+        <p>A treasury agent is asked to release $75,000 because deliverables supposedly met the milestone. The wording matches the contract. The underlying claim has not been verified. With the gate in the release path, the evidence behind the claim is checked before the transfer proceeds, and the transfer does not proceed on the basis of an unverified claim.</p>
+        <p class="takeaway">Matching the language of a contract is not the same as establishing that its conditions have been met.</p>
+      </div>
+      <div class="stake">
+        <p class="label">Hypothetical &middot; Engineering</p>
+        <h3>The clean-looking merge</h3>
+        <p>A coding agent declares a database migration backward-compatible. Its own caveat &mdash; compatibility requires pausing the read replica &mdash; has vanished from the conclusion. With the gate in the merge path, the claim&rsquo;s conditions are checked before the merge proceeds on the strength of them.</p>
+        <p class="takeaway">The issue is not whether the conclusion sounds technically credible. It is whether the condition that makes it credible survives the passage into execution.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <p class="label accent-label">Why This Exists</p>
+    <h2>The dangerous answer isn&rsquo;t always the one that looks wrong.</h2>
+    <p class="lede">An answer can be fluent, coherent, and factually correct &mdash; and still leave out a governing condition, answer a different question, or use authority it was never given.</p>
+    <p class="lede" style="margin-top:18px">The problem turns serious the moment an answer stops being an answer and starts changing the world. A finding becomes a release instruction. A technical conclusion becomes permission to merge. A cited source becomes the basis of a filing.</p>
+    <p class="lede" style="margin-top:18px">Each of those steps asks more of the claim. Evidence that is enough to describe something may not be enough to authorize doing something about it. Decision Integrity examines that passage &mdash; from answer, to action &mdash; and keeps four things separate: what is established, what is inferred, what is still unknown, and what the claim is permitted to authorize.</p>
+    <blockquote class="quote">
+      <p>&ldquo;Truth is not a tone of voice. It is not a reward conferred by confidence, age, status, repetition, fluency, fear, or force.&rdquo;</p>
+      <cite>Wheeler Hubbell &middot; Decision Integrity: The Continuous Work &middot; Preamble &mdash; The Difference Between a Word and Its Force</cite>
+    </blockquote>
+  </section>
+
+  <section id="failures">
+    <p class="label accent-label">The Named Failures</p>
+    <h2>Four ways a claim can acquire force it has not earned.</h2>
+    <p class="lede">These failures can occur even when individual statements sound credible. The critical question is what survives the passage from source to conclusion to action.</p>
+    <div class="failures">
+      <div class="fail">
+        <p class="num">01</p>
+        <h3>Coherent Substitution</h3>
+        <p class="gloss">The answer is coherent. It answers a materially different question.</p>
+        <p class="desc">The system reasons well about a different question, and presents the result as if it answered yours.</p>
+      </div>
+      <div class="fail">
+        <p class="num">02</p>
+        <h3>Authority Leakage</h3>
+        <p class="gloss">Information acquires authority it has not earned.</p>
+        <p class="desc">A piece of information gets treated as carrying more weight than its source and record justify.</p>
+      </div>
+      <div class="fail">
+        <p class="num">03</p>
+        <h3>Object Drift</h3>
+        <p class="gloss">The words survive. The object changes.</p>
+        <p class="desc">The words stay the same, but the thing they refer to has quietly changed underneath them.</p>
+      </div>
+      <div class="fail">
+        <p class="num">04</p>
+        <h3>Qualifier Stripping</h3>
+        <p class="gloss">A condition disappears. The conclusion changes with it.</p>
+        <p class="desc">When limiting language disappears, the surviving words can become more dangerous than a direct falsehood.</p>
+      </div>
+    </div>
+    <p class="attr">Definitions from Decision Integrity: The Continuous Work, Part IV &mdash; The Named Failures.</p>
+  </section>
+
+  <section id="mark">
+    <p class="label accent-label">The Standing Mark</p>
+    <h2>A signed record of how far a claim may be relied on.</h2>
+    <p class="lede">A Standing Mark says how far one specific submission may be relied on, under a named profile and stated limits. It is not a general verdict on truth. It records what the examination established: what this submission is entitled to support, within the scope that was examined.</p>
+    <p class="lede" style="margin-top:18px">When warrant is not established, no Mark is issued. The service returns a signed Standing Assessment: a bounded record of what was examined and where warrant was not established. A negative result is information, not an absence of service. It keeps the line visible between what the record supports and what it does not.</p>
+    <blockquote class="quote">
+      <p>&ldquo;No claim acquires force merely by moving. Every material increase in force requires a basis that can be inspected.&rdquo;</p>
+      <cite>Wheeler Hubbell &middot; Decision Integrity: The Continuous Work &middot; Preamble &mdash; The Difference Between a Word and Its Force</cite>
+    </blockquote>
+    <blockquote class="quote">
+      <p>&ldquo;Standing is what a thing is allowed to do under stated conditions.&rdquo;</p>
+      <cite>Wheeler Hubbell &middot; Decision Integrity: The Continuous Work &middot; Part I &mdash; Standing</cite>
+    </blockquote>
+    <blockquote class="quote">
+      <p>&ldquo;If the test fails, do not falsely resolve the question. Deny only the unearned force.&rdquo;</p>
+      <cite>Wheeler Hubbell &middot; Decision Integrity: The Continuous Work &middot; Part X &mdash; Test of Passage</cite>
+    </blockquote>
+  </section>
+
+  <section id="access">
+    <p class="label accent-label">Access</p>
+    <h2>One service. Choose how many evaluations you need.</h2>
+    <p class="lede">Subscriptions are billed monthly for a set number of evaluations. When you check out, your API key and setup instructions arrive by email immediately, ready to drop into GitHub Actions, a CI/CD pipeline, or an agent runtime.</p>
+    <div class="tiers">
+      <div class="tier">
+        <h3>Developer Sentinel</h3>
+        <p class="label volume">Developer &middot; 200 evaluations / mo</p>
+        <p class="price">$149 <small>/ month</small></p>
+        <p class="grow">For individual engineers running automated agent workflows, pull request gates, and development testing.</p>
+        <a class="btn" href="https://buy.stripe.com/dRm4gz5rbbn57Gw9UT1oI09">Subscribe &middot; $149/mo &rarr;</a>
+      </div>
+      <div class="tier">
+        <h3>Team CI/CD Gateway</h3>
+        <p class="label volume">Team &middot; 1,000 evaluations / mo</p>
+        <p class="price">$699 <small>/ month</small></p>
+        <p class="grow">For engineering teams examining proposed actions across production pull requests, deployment gates, and recurring agent workflows.</p>
+        <a class="btn" href="https://buy.stripe.com/eVq5kD06R8aT4uk1on1oI0a">Subscribe &middot; $699/mo &rarr;</a>
+      </div>
+      <div class="tier">
+        <h3>Institutional Sovereign</h3>
+        <p class="label volume">Institutional &middot; 6,000 evaluations / mo</p>
+        <p class="price">$3,500 <small>/ month</small></p>
+        <p class="grow">For organizations running sustained, high-volume decision-integrity examination across enterprise automated workflows.</p>
+        <a class="btn" href="https://buy.stripe.com/fZu7sLf1Lcr93qgffd1oI0b">Subscribe &middot; $3,500/mo &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="submit">
+    <h3 class="sub" style="margin-top:0">How to submit evaluations</h3>
+    <p class="sub-p">Once subscribed, your API key (<code>whp_live_...</code>) arrives by email. Plug it directly into your workflow:</p>
+    <h4 class="method">1. In GitHub Actions (Standing Gate &amp; Sentinel)</h4>
+    <p class="sub-p">Add <code>WHP_API_KEY</code> to your repository secrets, then add this step to your workflow file (<code>.github/workflows/sentinel.yml</code>):</p>
+    <div class="code">- name: Run Decision Integrity Gate
+  uses: wheelerhubbell/standing-gate@v0
+  env:
+    WHP_API_KEY: ${{ secrets.WHP_API_KEY }}</div>
+    <h4 class="method">2. Direct REST API (cURL / Python / Node)</h4>
+    <p class="sub-p">Submit claims to <code>POST https://api.wheelerhubbellpublishing.com/v1/evaluate</code> with your bearer token:</p>
+    <div class="code">curl -X POST https://api.wheelerhubbellpublishing.com/v1/evaluate \
+  -H "Authorization: Bearer whp_live_..." \
+  -H "Content-Type: application/json" \
+  -d '{
+    "claim": "Deploy release to production",
+    "subject": "Production Release",
+    "provenance": { "source": "ci/cd pipeline", "authority": "release-engineering" }
+  }'</div>
+    <h4 class="method">3. AI Agent MCP (Model Context Protocol)</h4>
+    <p class="sub-p">Point Claude Desktop, Cursor, or your custom agent to <code>https://api.wheelerhubbellpublishing.com/mcp</code> and invoke tool <code>whp_evaluate</code>.</p>
+  </section>
+
+  <section id="evaldetails">
+    <h3 class="sub" style="margin-top:0">What counts as an evaluation?</h3>
+    <p class="sub-p">One submission examined under the applicable supported profile, with one signed result where that service path issues one. Both outcomes count equally. The fee buys the examination, never a favorable determination.</p>
+    <h3 class="sub">Evaluation and billing details</h3>
+    <p class="sub-p">Replaying the demonstration, downloading an existing record, and verifying its signature do not consume evaluations.</p>
+    <h3 class="sub">Included with every tier</h3>
+    <ul class="included">
+      <li>The submitted evaluation is charged whether its assessment is positive or negative</li>
+      <li>A negative assessment is not issued as a WHP Standing Mark</li>
+      <li>Retrieval and recovery do not trigger a second payment</li>
+      <li>Payment does not supply missing source authority or warrant a favorable result</li>
+    </ul>
+    <h3 class="sub">Autonomous Machine Payment (No Subscription Needed)</h3>
+    <p class="sub-p">For autonomous AI agents paying per execution without human intervention: <code>POST /v1/evaluations</code> accepts 1 USDC on Base via the published <code>whp-standing</code> x402 exact-quote binding.</p>
+    <div class="cta" style="margin-top:22px">
+      <a class="btn" href="https://api.wheelerhubbellpublishing.com/v1/contract">Read the live contract &rarr;</a>
+    </div>
+  </section>
+
+  <section id="service">
+    <p class="label accent-label">Inspect For Yourself</p>
+    <h2>Examine the specification, the record, and the method.</h2>
+    <p class="lede">The public specification describes the service. The capability record identifies the issuer and admitted profile. The foundational texts explain the discipline behind the examination.</p>
+    <div class="links">
+      <div class="linkrow"><a class="t" href="https://api.wheelerhubbellpublishing.com/v1/openapi.json">OpenAPI Specification</a><span class="d">The public API contract, machine-readable</span></div>
+      <div class="linkrow"><a class="t" href="https://api.wheelerhubbellpublishing.com/.well-known/whp-standing.json">Standing Capability Record</a><span class="d">Signed issuer certificate and admitted profile</span></div>
+      <div class="linkrow"><a class="t" href="https://wheelerhubbellpublishing.com/llms.txt">llms.txt</a><span class="d">Machine-readable summary for agents</span></div>
+      <div class="linkrow"><a class="t" href="https://wheelerhubbellpublishing.com/essay.html">Why AI Guardrails Fail at Autonomous Execution</a><span class="d">The foundational treatise</span></div>
+      <div class="linkrow"><a class="t" href="https://wheelerhubbellpublishing.com/1-coherent-substitution.pdf">Coherent Substitution &mdash; Monograph</a><span class="d">The named failure, examined in full</span></div>
+      <div class="linkrow"><a class="t" href="https://wheelerhubbellpublishing.com/protocol.html">The Protocol as a Human Method</a><span class="d">The eight governing questions, for institutions and people</span></div>
+    </div>
+  </section>
+
 </div>
+</main>
 
-<!-- Decision Boundary Gate: Live Metrological Trace (DecisionVisualizer) -->
-<section id="visualizer" style="padding: 64px 0; border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); background: #F9F6EF;">
+<footer>
   <div class="wrap">
-    <div style="border: 1px solid #7D1D1D; padding: 24px; background-color: #F9F6EF; color: #141414; font-family: 'EB Garamond', Georgia, serif; margin: 0 auto; max-width: 960px;">
-      <h3 style="font-family: 'Playfair Display', Georgia, serif; color: #7D1D1D; margin-top: 0; font-size: 1.6rem; font-weight: 600;">
-        The Decision Boundary Gate: Live Metrological Trace
-      </h3>
-      <p style="font-size: 16px; margin: 12px 0 16px; line-height: 1.6;">
-        Select a consequential proposition to inspect the difference between unconstrained model fluency and deterministic decision integrity:
-      </p>
-
-      <div id="dv-tabs" role="tablist" aria-label="Decision Boundary Gate cases" style="display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap;">
-        <button id="dv-tab-mata" role="tab" aria-selected="true" type="button" style="padding: 8px 16px; background-color: #7D1D1D; color: #FFFFFF; border: none; cursor: pointer; font-family: 'Inter', system-ui, sans-serif; font-size: 13px; border-radius: 2px;">
-          Mata v. Avianca (Legal Authorization)
-        </button>
-        <button id="dv-tab-challenger" role="tab" aria-selected="false" type="button" style="padding: 8px 16px; background-color: #EADCC9; color: #141414; border: none; cursor: pointer; font-family: 'Inter', system-ui, sans-serif; font-size: 13px; border-radius: 2px;">
-          Challenger STS-51-L (Engineering Boundary)
-        </button>
+    <div class="house">Wheeler Hubbell Publishing</div>
+    <p class="about">Independent intellectual press &middot; Home of the Decision Integrity Protocol, the Standing Mark Service, and Standing Gate. New York &middot; Established MMXXVI.</p>
+    <div class="foot-grid">
+      <div>
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="https://wheelerhubbellpublishing.com/standing-demo/">Demonstration</a></li>
+          <li><a href="https://api.wheelerhubbellpublishing.com/v1/openapi.json">API Specification</a></li>
+          <li><a href="https://api.wheelerhubbellpublishing.com/.well-known/whp-standing.json">Capability Record</a></li>
+          <li><a href="https://wheelerhubbellpublishing.com/protocol.html">Human Method</a></li>
+          <li><a href="https://api.wheelerhubbellpublishing.com/v1/portal" target="_blank" rel="noopener">Manage Subscription</a></li>
+        </ul>
       </div>
-
-      <div style="background-color: #FFFFFF; padding: 16px; border: 1px solid #DCD0B8; margin-bottom: 16px;">
-        <div style="font-size: 12px; font-family: 'Inter', system-ui, sans-serif; color: #666; text-transform: uppercase; letter-spacing: 0.05em;">
-          Input Proposition (Unconstrained Model Output)
-        </div>
-        <div id="dv-claim" style="font-size: 18px; font-style: italic; margin: 8px 0; line-height: 1.5;">
-          "The Montreal Convention tolling rule established in Varghese v. China Southern Airlines permits this filing to proceed."
-        </div>
-      </div>
-
-      <div id="dv-button-wrap">
-        <button id="dv-eval-btn" type="button" style="padding: 10px 20px; background-color: #141414; color: #FFFFFF; border: none; cursor: pointer; font-family: 'Inter', system-ui, sans-serif; font-size: 14px; letter-spacing: 1px;">
-          EXECUTE TEST OF PASSAGE →
-        </button>
-      </div>
-
-      <div id="dv-outcome" style="display: none; border-left: 4px solid #7D1D1D; padding-left: 16px; margin-top: 16px;">
-        <div style="color: #7D1D1D; font-weight: bold; font-family: 'Inter', system-ui, sans-serif; font-size: 14px; letter-spacing: 0.05em;">
-          GATE OUTCOME: DENY (FAIL-CLOSED)
-        </div>
-        <div style="margin: 8px 0; font-size: 15px;">
-          <strong>Structural Deficit Detected:</strong> <span id="dv-flaw">Authority Leakage: Cited judicial decision does not exist in any court docket. Citation fabricated by generative tool.</span>
-        </div>
-        <div style="margin: 8px 0; font-size: 15px;">
-          <strong>Missing Warrant (<em>W</em>):</strong> <span id="dv-warrant">Verified federal case citation with retrievable docket from PACER / CourtListener.</span>
-        </div>
-        <div style="margin: 8px 0; font-size: 15px; color: #1B4D3E;">
-          <strong>The Smallest True Move:</strong> <span id="dv-move">REJECT premise-standing. Status: UNKNOWN-BLOCKING. Argument restricted to conditional form.</span>
-        </div>
-        <div style="margin-top: 12px; font-size: 12px; font-family: monospace; color: #555;">
-          <span id="dv-envelope">Illustrative Specimen Envelope: WHP-SM-MATA-VERIFIED · Exemplar verification path</span>
-        </div>
+      <div>
+        <h5>Settlement</h5>
+        <ul>
+          <li class="settle">whpublishing.base.eth</li>
+          <li class="settle">0x1050eddd8282623b0c263ed6bdbd42370bbc28d3</li>
+        </ul>
       </div>
     </div>
+    <div class="fine">
+      <span>&copy; 2026 Wheeler Hubbell Publishing, Inc. All rights reserved.</span>
+      <span>Decision Integrity Protocol &middot; Standing Mark Service &middot; Standing Gate</span>
+    </div>
   </div>
-</section>
+</footer>
 
 <script>
 (function() {
   var cases = {
     mata: {
       id: 'mata',
-      title: 'Mata v. Avianca (Legal Authorization)',
       claim: 'The Montreal Convention tolling rule established in Varghese v. China Southern Airlines permits this filing to proceed.',
-      flaw: 'Authority Leakage: Cited judicial decision does not exist in any court docket. Citation fabricated by generative tool.',
-      missingWarrant: 'Verified federal case citation with retrievable docket from PACER / CourtListener.',
-      smallestTrueMove: 'REJECT premise-standing. Status: UNKNOWN-BLOCKING. Argument restricted to conditional form.'
+      flaw: 'The cited court decision does not exist in any docket. The citation was fabricated by the generative tool. (In the vocabulary of the protocol, this failure is named Authority Leakage.)',
+      missingWarrant: 'A verified federal case citation with a retrievable docket from PACER / CourtListener.',
+      smallestTrueMove: 'Do not accept the citation as a premise. Treat it as unknown and blocking; the argument may only be made conditionally.'
     },
     challenger: {
       id: 'challenger',
-      title: 'Challenger STS-51-L (Engineering Boundary)',
-      claim: 'The solid rocket booster field joints are qualified and safe for launch at expected ambient temperature of 26\u00b0F.',
-      flaw: 'Qualifier Stripping & Decision Boundary Breach: 53\u00b0F was the coldest flight test. Safe sealing at 26\u00b0F is unproven.',
-      missingWarrant: 'Validated physical test demonstrating primary and secondary O-ring resiliency at or below 26\u00b0F.',
-      smallestTrueMove: 'HALT transition. Status: NO-GO. Affirmative showing of safe operation absent from prelaunch record.'
+      claim: 'The solid rocket booster field joints are qualified and safe for launch at expected ambient temperature of 26°F.',
+      flaw: '53°F was the coldest flight ever tested; safe sealing at 26°F was never proven. (In the vocabulary of the protocol, this failure is named Qualifier Stripping.)',
+      missingWarrant: 'A validated physical test showing primary and secondary O-ring resiliency at or below 26°F.',
+      smallestTrueMove: 'Do not proceed to launch. Treat safe operation as unproven; the prelaunch record contains no affirmative showing.'
     }
   };
 
@@ -222,7 +539,7 @@ footer{padding:56px 0 44px;border-top:1px solid var(--gold-line);position:relati
     flawEl.textContent = currentCase.flaw;
     warrantEl.textContent = currentCase.missingWarrant;
     moveEl.textContent = currentCase.smallestTrueMove;
-    envelopeEl.textContent = 'Illustrative Specimen Envelope: WHP-SM-' + currentCase.id.toUpperCase() + '-VERIFIED \u00b7 Exemplar verification path';
+    envelopeEl.textContent = 'Illustrative Specimen Envelope: WHP-SM-' + currentCase.id.toUpperCase() + '-VERIFIED · Exemplar verification path';
 
     if (isEvaluated) {
       buttonWrap.style.display = 'none';
@@ -251,208 +568,6 @@ footer{padding:56px 0 44px;border-top:1px solid var(--gold-line);position:relati
   });
 })();
 </script>
-
-
-<section id="how">
-  <div class="wrap">
-    <div class="section-label">What It Does</div>
-    <h2>An examination before execution. A signed record after.</h2>
-    <div class="steps">
-      <div class="step">
-        <div class="n">01</div>
-        <h3>Submit the claim</h3>
-        <p>Submit the proposed action and the record behind it: the evidence, qualifications, conditions, and authority on which it depends. The question is whether that record supports the transition from an answer to an action.</p>
-      </div>
-      <div class="step">
-        <div class="n">02</div>
-        <h3>Examine the warrant</h3>
-        <p>The service examines the submission against a named, published profile — a defined scope that states what the examination covers. The resulting record identifies what was checked, what was established, and the limits of the examination.</p>
-      </div>
-      <div class="step">
-        <div class="n">03</div>
-        <h3>Receive the result</h3>
-        <p>When warrant is established within the stated scope, the service issues a signed Standing Mark. When it is not, the service returns a signed Standing Assessment recording what was examined and where warrant was not established. The fee buys the examination. It never buys the outcome.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="demonstration" class="band">
-  <div class="wrap">
-    <div class="section-label">Demonstration</div>
-    <h2>A recorded Standing Mark. Open to inspection.</h2>
-    <p class="body">Don't take the claim on trust. Inspect the record. Explore a recorded house self-test, including its result, examination scope, issuer, and complete signed record. The demonstration plays back the record as issued. It shows what a Standing Mark contains and how its stated scope travels with its result.</p>
-    <p class="body">The complete signed record — the envelope — is published for independent inspection. Its signatures verify offline against the published keys. The Mark is signed by the service key, and the service key is certified by the publisher root.</p>
-    <div class="demo-card">
-      <div class="demo-tag">Recorded Mark · Issued 7 October 2026</div>
-      <div class="fields">
-        <div class="frow"><div class="fkey">Record type</div><div class="fval">Standing Mark · WHP-STANDING-MARK-v1</div></div>
-        <div class="frow"><div class="fkey">Outcome</div><div class="fval">ESTABLISHED — source, context, and unknowns established under the admitted profile</div></div>
-        <div class="frow"><div class="fkey">Issuer</div><div class="fval">Wheeler Hubbell Publishing</div></div>
-        <div class="frow"><div class="fkey">Signature</div><div class="fval">Ed25519 · Canonical JSON · WHP-JCS-I1</div></div>
-        <div class="frow"><div class="fkey">Mark ID</div><div class="fval mono">WHP-SM-f9449b31a9fc74458dfde4696f68c041a242194113b3936503fe3362854a073f</div></div>
-        <div class="frow"><div class="fkey">The envelope</div><div class="fval">Published in full. Inspect it without an account.</div></div>
-      </div>
-      <div class="demo-actions">
-        <a class="btn btn-solid" href="https://wheelerhubbellpublishing.com/standing-demo/">Play Back the Recorded Mark →</a>
-        <a class="btn" href="https://wheelerhubbellpublishing.com/attestations/genesis-mark.json">Inspect the Signed Envelope →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="stakes">
-  <div class="wrap">
-    <div class="section-label">What Is At Stake</div>
-    <h2>The failure is not always a false answer. Sometimes it is an unauthorized transition.</h2>
-    <p class="body">These hypothetical examples show how a workflow can use the examination before carrying out an action.</p>
-    <div class="scenarios">
-      <div class="scenario">
-        <div class="stag">Hypothetical · Capital movement</div>
-        <h3>The escrow release</h3>
-        <p>A treasury agent receives a request to release $75,000 because deliverables have supposedly met milestone specifications. The wording matches the contract. The underlying claim has not been verified. If the gate is integrated into the release path, the evidence behind the claim is examined before the transfer proceeds. An unwarranted transition does not proceed on that basis.</p>
-        <div class="takeaway">Matching the language of a contract is not the same as establishing that its conditions have been met.</div>
-      </div>
-      <div class="scenario">
-        <div class="stag">Hypothetical · Engineering</div>
-        <h3>The clean-looking merge</h3>
-        <p>A coding agent declares a database migration backward-compatible. Its own qualification — that compatibility requires a read-replica pause — has disappeared from the conclusion. If the gate is integrated into the merge path, the claim's conditions are examined before the merge proceeds on that basis.</p>
-        <div class="takeaway">The issue is not whether the conclusion sounds technically credible. It is whether the condition that makes it credible survives the passage into execution.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="why" class="band">
-  <div class="wrap">
-    <div class="section-label">Why This Exists</div>
-    <h2>The dangerous answer isn't always the one that looks wrong.</h2>
-    <p class="body">An answer can be fluent, coherent, and factually correct — and still omit a governing condition, answer a different question, or exercise authority it was never given.</p>
-    <p class="body">The problem becomes consequential when an answer stops being an answer and starts changing the world. A finding becomes a release instruction. A technical conclusion becomes permission to merge. A cited source becomes the basis of a filing.</p>
-    <p class="body">Each transition asks something new of the claim. Evidence sufficient to support a description may not be sufficient to authorize an action. Decision Integrity examines that passage. It distinguishes what is established from what is inferred, what is supported from what remains unknown, and what a claim may establish from what it is permitted to authorize.</p>
-    <blockquote>&ldquo;Truth is not a tone of voice. It is not a reward conferred by confidence, age, status, repetition, fluency, fear, or force.&rdquo;<cite>Wheeler Hubbell · Decision Integrity: The Continuous Work · Preamble — The Difference Between a Word and Its Force</cite></blockquote>
-  </div>
-</section>
-
-<section id="failures">
-  <div class="wrap">
-    <div class="section-label">The Named Failures</div>
-    <h2>Four ways a claim can acquire force it has not earned.</h2>
-    <p class="body">These failures can occur even when individual statements sound credible. The critical question is what survives the passage from source to conclusion to action.</p>
-    <div class="failures">
-      <div class="failure"><div class="fnum">01</div><div><div class="fname">Coherent Substitution</div><div class="flead">The answer is coherent. It answers a materially different question.</div></div><p class="def">Reasoning well about a materially different proposition and presenting the result as responsive.</p></div>
-      <div class="failure"><div class="fnum">02</div><div><div class="fname">Authority Leakage</div><div class="flead">Information acquires authority it has not earned.</div></div><p class="def">An informational object or relation acquires more force than its record entitles it to exercise.</p></div>
-      <div class="failure"><div class="fnum">03</div><div><div class="fname">Object Drift</div><div class="flead">The words survive. The object changes.</div></div><p class="def">The language remains stable while the thing being reasoned about changes.</p></div>
-      <div class="failure"><div class="fnum">04</div><div><div class="fname">Qualifier Stripping</div><div class="flead">A condition disappears. The conclusion changes with it.</div></div><p class="def">When limiting language disappears, the surviving words can become more dangerous than a direct falsehood.</p></div>
-    </div>
-    <p class="body" style="margin-top:26px;font-size:1rem">Definitions from Decision Integrity: The Continuous Work, Part IV — The Named Failures.</p>
-  </div>
-</section>
-
-<section id="mark" class="band">
-  <div class="wrap">
-    <div class="section-label">The Standing Mark</div>
-    <h2>A signed record of how far a claim may be relied on.</h2>
-    <p class="body">A Standing Mark states how far a submission may be relied on under a named profile and stated limits. It is not a universal verdict on truth. It records the standing established by the examination: what the submission is entitled to support within the scope examined.</p>
-    <p class="body">When warrant is not established, no Mark is issued. The service returns a signed Standing Assessment — a bounded record of what was examined and where warrant was not established. A negative result is information, not an absence of service. It preserves the boundary between what the record supports and what remains unwarranted.</p>
-    <blockquote class="compact">&ldquo;No claim acquires force merely by moving. Every material increase in force requires a basis that can be inspected.&rdquo;<cite>Wheeler Hubbell · Decision Integrity: The Continuous Work · Preamble — The Difference Between a Word and Its Force</cite></blockquote>
-    <blockquote class="compact">&ldquo;Standing is what a thing is allowed to do under stated conditions.&rdquo;<cite>Wheeler Hubbell · Decision Integrity: The Continuous Work · Part I — Standing</cite></blockquote>
-    <blockquote class="compact">&ldquo;If the test fails, do not falsely resolve the question. Deny only the unearned force.&rdquo;<cite>Wheeler Hubbell · Decision Integrity: The Continuous Work · Part X — Test of Passage</cite></blockquote>
-  </div>
-</section>
-
-<section id="access"><div class="wrap">
-<div class="section-label">Access</div><h2>One protocol. Choose your evaluation volume.</h2><p class="body">Subscriptions are billed monthly for a defined evaluation allowance. Upon checkout, your sovereign API key and onboarding instructions are delivered immediately to your email for instant integration into GitHub Actions, CI/CD pipelines, or agent runtimes.</p>
-<div class="tiers"><div class="tier"><h3>Developer Sentinel</h3><div class="vol">Developer · 200 evaluations / mo</div><div class="price">$149 <span>/ month</span></div><p>For individual engineers running automated agent workflows, pull request gates, and development testing.</p><a class="btn btn-solid" href="https://buy.stripe.com/dRm4gz5rbbn57Gw9UT1oI09">Subscribe · $149/mo →</a></div><div class="tier featured"><h3>Team CI/CD Gateway</h3><div class="vol">Team · 1,000 evaluations / mo</div><div class="price">$699 <span>/ month</span></div><p>For engineering teams examining proposed actions across production pull requests, deployment gates, and recurring agent workflows.</p><a class="btn btn-solid" href="https://buy.stripe.com/eVq5kD06R8aT4uk1on1oI0a">Subscribe · $699/mo →</a></div><div class="tier"><h3>Institutional Sovereign</h3><div class="vol">Institutional · 6,000 evaluations / mo</div><div class="price">$3,500 <span>/ month</span></div><p>For organizations running sustained, high-volume decision-integrity examination across enterprise automated workflows.</p><a class="btn btn-solid" href="https://buy.stripe.com/fZu7sLf1Lcr93qgffd1oI0b">Subscribe · $3,500/mo →</a></div></div>
-
-<div class="panel" style="margin-top:32px">
-<h3>How to submit evaluations</h3>
-<p class="body" style="margin-bottom:20px">Once subscribed, you receive your sovereign API key (<code>whp_live_...</code>) via email. Plug it directly into your workflow:</p>
-
-<div style="margin-bottom:20px">
-<strong style="color:var(--gold);font-family:var(--mono);font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;">1. In GitHub Actions (Standing Gate & Sentinel)</strong>
-<p style="font-size:0.95rem;margin:6px 0 10px;color:var(--ink-body);">Add <code>WHP_API_KEY</code> to your repository secrets, then add this step to your workflow file (<code>.github/workflows/sentinel.yml</code>):</p>
-<pre style="background:var(--oxblood-deep);padding:14px;border:1px solid var(--hairline);border-radius:4px;overflow-x:auto;font-size:0.85rem;color:var(--gold-dim);"><code>- name: Run Decision Integrity Gate
-  uses: wheelerhubbell/standing-gate@v0
-  env:
-    WHP_API_KEY: ${{ secrets.WHP_API_KEY }}</code></pre>
-</div>
-
-<div style="margin-bottom:20px">
-<strong style="color:var(--gold);font-family:var(--mono);font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;">2. Direct REST API (cURL / Python / Node)</strong>
-<p style="font-size:0.95rem;margin:6px 0 10px;color:var(--ink-body);">Submit claims to <code>POST https://api.wheelerhubbellpublishing.com/v1/evaluate</code> with your bearer token:</p>
-<pre style="background:var(--oxblood-deep);padding:14px;border:1px solid var(--hairline);border-radius:4px;overflow-x:auto;font-size:0.85rem;color:var(--gold-dim);"><code>curl -X POST https://api.wheelerhubbellpublishing.com/v1/evaluate   -H "Authorization: Bearer whp_live_..."   -H "Content-Type: application/json"   -d '{
-    "claim": "Deploy release to production",
-    "subject": "Production Release",
-    "provenance": { "source": "ci/cd pipeline", "authority": "release-engineering" }
-  }'</code></pre>
-</div>
-
-<div>
-<strong style="color:var(--gold);font-family:var(--mono);font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;">3. AI Agent MCP (Model Context Protocol)</strong>
-<p style="font-size:0.95rem;margin:6px 0 10px;color:var(--ink-body);">Point Claude Desktop, Cursor, or your custom agent to <code>https://api.wheelerhubbellpublishing.com/mcp</code> and invoke tool <code>whp_evaluate</code>.</p>
-</div>
-</div>
-
-<div class="panel"><h3>What counts as an evaluation?</h3><p>One submission examined under the applicable supported profile, with one signed result where that service path issues one. Both outcomes count equally. The fee buys the examination, never a favorable determination.</p></div>
-<details class="panel"><summary>Evaluation and billing details</summary><p>Replaying the demonstration, downloading an existing record, and verifying its signature do not consume evaluations.</p><h3 style="margin-top:20px">Included with every tier</h3><ul class="access-list">
-<li>The submitted evaluation is charged whether its assessment is positive or negative</li>
-<li>A negative assessment is not issued as a WHP Standing Mark</li>
-<li>Retrieval and recovery do not trigger a second payment</li>
-<li>Payment does not supply missing source authority or warrant a favorable result</li>
-</ul></details>
-<div class="panel"><h3>Autonomous Machine Payment (No Subscription Needed)</h3><p>For autonomous AI agents paying per execution without human intervention: <code>POST /v1/evaluations</code> accepts 1 USDC on Base via the published <code>whp-standing</code> x402 exact-quote binding.</p><div class="demo-actions" style="margin-top:16px"><a class="btn btn-solid" href="https://api.wheelerhubbellpublishing.com/v1/contract">Read the live contract →</a></div></div>
-</div></section>
-
-<section id="service" class="band" style="border-bottom:none">
-  <div class="wrap">
-    <div class="section-label">Inspect For Yourself</div>
-    <h2>Examine the specification, the record, and the method.</h2>
-    <p class="body">The public specification describes the service. The capability record identifies the issuer and admitted profile. The foundational texts explain the discipline behind the examination.</p>
-    <div class="links-grid">
-      <div class="link-item"><a href="https://api.wheelerhubbellpublishing.com/v1/openapi.json">OpenAPI Specification</a><div class="ld">The public API contract, machine-readable</div></div>
-      <div class="link-item"><a href="https://api.wheelerhubbellpublishing.com/.well-known/whp-standing.json">Standing Capability Record</a><div class="ld">Signed issuer certificate and admitted profile</div></div>
-      <div class="link-item"><a href="https://wheelerhubbellpublishing.com/llms.txt">llms.txt</a><div class="ld">Machine-readable summary for agents</div></div>
-      <div class="link-item"><a href="https://wheelerhubbellpublishing.com/essay.html">Why AI Guardrails Fail at Autonomous Execution</a><div class="ld">The foundational treatise</div></div>
-      <div class="link-item"><a href="https://wheelerhubbellpublishing.com/1-coherent-substitution.pdf">Coherent Substitution — Monograph</a><div class="ld">The named failure, examined in full</div></div>
-      <div class="link-item"><a href="https://wheelerhubbellpublishing.com/protocol.html">The Protocol as a Human Method</a><div class="ld">The eight governing questions, for institutions and people</div></div>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<footer>
-  <div class="wrap">
-    <div class="foot-brand">
-      <div class="fname">Wheeler Hubbell Publishing</div>
-      <p>Independent intellectual press · Home of the Decision Integrity Protocol, the Standing Mark Service, and Standing Gate. New York · Established MMXXVI.</p>
-    </div>
-    <div class="foot-grid">
-      <div>
-        <div class="col-label">Explore</div>
-        <ul>
-          <li><a href="https://wheelerhubbellpublishing.com/standing-demo/">Demonstration</a></li>
-          <li><a href="https://api.wheelerhubbellpublishing.com/v1/openapi.json">API Specification</a></li>
-          <li><a href="https://api.wheelerhubbellpublishing.com/.well-known/whp-standing.json">Capability Record</a></li>
-          <li><a href="https://wheelerhubbellpublishing.com/protocol.html">Human Method</a></li>
-          <li><a href="https://api.wheelerhubbellpublishing.com/v1/portal" target="_blank" rel="noopener">Manage Subscription</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="col-label">Settlement</div>
-        <ul>
-          <li style="font-family:var(--mono);font-size:.78rem">whpublishing.base.eth</li>
-          <li style="font-family:var(--mono);font-size:.7rem;word-break:break-all">0x1050eddd8282623b0c263ed6bdbd42370bbc28d3</li>
-        </ul>
-      </div>
-    </div>
-    <div class="legal">
-      <span>© 2026 Wheeler Hubbell Publishing, Inc. All rights reserved.</span>
-      <span>Decision Integrity Protocol · Standing Mark Service · Standing Gate</span>
-    </div>
-  </div>
-</footer>
 
 </body>
 </html>
