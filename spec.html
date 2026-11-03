@@ -88,100 +88,22 @@
       <div><strong>Publisher:</strong> Wheeler Hubbell Publishing, Inc.</div>
       <div><strong>Architect:</strong> Justin Bowen</div>
       <div><strong>Permanent URI:</strong> <a href="https://wheelerhubbellpublishing.com/spec" style="color:var(--red);">https://wheelerhubbellpublishing.com/spec</a></div>
-      <div><strong>License:</strong> Open Web Foundation (OWFa 1.0)</div>
+      <div>Copyright Wheeler Hubbell Publishing, Inc.</div>
     </div>
   </header>
 
   <main>
     <h2>1. Scope &amp; Objective</h2>
-    <p>This specification defines the formal metrology, data structures, and evaluation predicates governing the passage of informational claims across boundaries in autonomous artificial intelligence systems, multi-agent networks, and automated decision workflows. The primary objective is to prevent <strong>Authority Leakage</strong>, <strong>Qualifier Stripping</strong>, and <strong>Coherent Substitution</strong> by ensuring that no informational object acquires operational force without an inspectable, typed warrant.</p>
+    <p>This page describes the signed record that Wheeler Hubbell Publishing issues for a Standing Mark and how anyone can verify it. It does not set out how the examination itself is performed. The primary objective is to prevent <strong>Authority Leakage</strong>, <strong>Qualifier Stripping</strong>, and <strong>Coherent Substitution</strong> by ensuring that no informational object acquires operational force without an inspectable, typed warrant.</p>
 
     <hr/>
 
-    <h2>2. Normative Definitions</h2>
-    <ul>
-      <li><strong>Element:</strong> The smallest decision-relevant informational unit that remains answerable to its identity.</li>
-      <li><strong>Standing:</strong> The operation-specific force an informational object is entitled to exercise under stated conditions.</li>
-      <li><strong>Warrant (W):</strong> An inspectable, verifiable basis entitling a material transition of state.</li>
-      <li><strong>Material Invariant Set (&Phi;(p)):</strong> The set of properties whose removal, promotion, or alteration would change evidence, answer space, burden, authority, conclusion, attribution, or downstream action.</li>
-      <li><strong>Decision Boundary:</strong> The point at which an interpretation authorizes an operational action or state mutation outside the reasoning engine.</li>
-      <li><strong>Smallest True Move:</strong> The strongest conclusion or action fully entitled by the present record, accompanied by the named requirement for the next move.</li>
-    </ul>
+    <h2>2. What an examination covers</h2>
+    <p>A submission is a proposed action together with the evidence, conditions and authority behind it. Wheeler Hubbell Publishing examines whether that record supports the action within a stated scope. When warrant is established, the service issues a signed Standing Mark. When it is not, the service returns a signed Standing Assessment recording what was examined and where warrant was not established. The rules the examination applies are not part of this public specification.</p>
 
     <hr/>
 
-    <h2>3. The 8-Axis Information-Standing Vector (S)</h2>
-    <p>Every decision-bearing informational object <em>p &isin; &Oslash;</em> shall be represented by an immutable 8-axis Standing Vector:</p>
-
-    <div class="formula">
-      S = (P, E, A, O, Q, T, V, J)
-    </div>
-
-    <ol>
-      <li><strong>Provenance (P):</strong> Origin, source class, and immutable cryptographic digest (<code>source_identity_sha256</code>).</li>
-      <li><strong>Epistemic Status (E):</strong> Strongly typed evidentiary state:
-        <br/><code>E &isin; { established-fact, record-supported-inference, new-inference, user-premise, derivation, unknown }</code>
-      </li>
-      <li><strong>Institutional Standing (A):</strong> Authority granted within a defined operating domain.</li>
-      <li><strong>Operation-Specific Role (O):</strong> The exact operational boundary permitted for the claim:
-        <br/><code>O &isin; { context-only, premise-eligible, action-bearing, audit-trail }</code>
-      </li>
-      <li><strong>Qualifier &amp; Condition Set (Q):</strong> Explicit bounds, dependencies, domain constraints, and assumptions that cannot be stripped without invalidating standing.</li>
-      <li><strong>Temporal Validity (T):</strong> Window of validity [&tau;<sub>start</sub>, &tau;<sub>expiry</sub>] and point-in-time timestamp.</li>
-      <li><strong>Verification Basis (V):</strong> Independent, reproducible verification mechanism (e.g., cryptographic signature, deterministic hash, third-party ledger receipt).</li>
-      <li><strong>Jurisdiction &amp; Schema (J):</strong> The governing profile, schema definition, and regulatory/contractual boundaries under which the object is admitted.</li>
-    </ol>
-
-    <hr/>
-
-    <h2>4. The Test of Passage: Transition Predicate K</h2>
-    <p>Any proposed state transition from prior state <em>Y<sub>A</sub></em> to target state <em>Y<sub>B</sub></em> requesting operational force <em>&Pi;</em> under governing rules <em>R</em> and authority grant <em>G</em> shall be evaluated by the deterministic predicate:</p>
-
-    <div class="formula">
-      K(Y<sub>A</sub>, Y<sub>B</sub>, W, &Pi;, R, G) &rarr; ALLOW | DENY | INDETERMINATE
-    </div>
-
-    <h3>Evaluation Rules:</h3>
-    <ol>
-      <li><strong>ALLOW:</strong> Evaluates to true if and only if:
-        <ul>
-          <li>Every material delta between <em>Y<sub>A</sub></em> and <em>Y<sub>B</sub></em> is prospectively permitted by rule <em>R</em> or supported by a valid, inspectable warrant <em>W</em> issued under authority grant <em>G</em>.</li>
-          <li>&Phi;(Y<sub>A</sub>) &sube; &Phi;(Y<sub>B</sub>) (All source invariants are preserved).</li>
-          <li>The requested force <em>&Pi;</em> does not exceed the operation-specific role <em>O</em> established in <em>Y<sub>B</sub></em>.</li>
-        </ul>
-      </li>
-      <li><strong>DENY:</strong> Evaluates to true if:
-        <ul>
-          <li>A material qualifier in <em>Q</em> was stripped without an authorized amendment.</li>
-          <li>An element with status <code>unknown</code> was granted premise-standing without evidence.</li>
-          <li>The transition attempts to exercise action-bearing force without an independent warrant.</li>
-        </ul>
-      </li>
-      <li><strong>INDETERMINATE:</strong> Evaluates to true if:
-        <ul>
-          <li>A required leaf dependency remains unsupported (<code>status = unknown-blocking</code>).</li>
-          <li>In this state, live execution is suspended, and the system is required to emit the <strong>Smallest True Move</strong>.</li>
-        </ul>
-      </li>
-    </ol>
-
-    <hr/>
-
-    <h2>5. The Four-Stage Handoff Protocol</h2>
-    <p>In multi-agent and pipeline workflows, context transfer shall be governed by isolated, four-stage handoffs:</p>
-
-    <div class="formula">
-      A1 (Requirements Intake) &rarr; A2 (Evidence Mapping) &rarr; A3 (Decision Gate) &rarr; A4 (Executive Compression)
-    </div>
-
-    <ul>
-      <li><strong>The Invariant Rule:</strong> A downstream agent may not recover an invariant stripped by an upstream agent.</li>
-      <li><strong>Mimicry Trap:</strong> A workflow passes ordinary task completion while materially failing semantic integrity if an intermediate summary removes a threshold, scope limit, or contractual ban.</li>
-    </ul>
-
-    <hr/>
-
-    <h2>6. Cryptographic Standing Mark Envelope (WHP-STANDING-MARK-v1)</h2>
+    <h2>3. Cryptographic Standing Mark Envelope (WHP-STANDING-MARK-v1)</h2>
     <p>Conforming systems shall serialize and verify evaluations using RFC 8785 JSON Canonicalization Scheme (JCS) and Ed25519 signatures according to the following canonical format:</p>
 
     <pre><code>{
@@ -204,19 +126,7 @@
 
     <hr/>
 
-    <h2>7. Named Epistemic Failures</h2>
-    <p>A conforming evaluator must diagnose and halt when encountering any of the following canonical failure types:</p>
-    <ol>
-      <li><strong>Authority Leakage:</strong> Asserting operational or legal force based on fabricated, unverified, or disconnected citations.</li>
-      <li><strong>Qualifier Stripping:</strong> Removing essential epistemic conditions, boundaries, or operating temperatures from an assertion during transmission or summarization.</li>
-      <li><strong>Coherent Substitution:</strong> Replacing an unresolved or unproven proposition with a linguistically fluent, plausible, but unsupported proxy.</li>
-      <li><strong>Object Drift:</strong> Altering the underlying identity or referent of an informational object across intermediate agents or pipeline steps.</li>
-      <li><strong>Answer to the Wrong Question:</strong> Providing a mathematically or logically sound proof for a proposition other than the specific question submitted for authorization.</li>
-    </ol>
-
-    <hr/>
-
-    <h2>8. Verification &amp; Offline Auditability</h2>
+    <h2>4. Verification &amp; Offline Auditability</h2>
     <p>All Standing Marks issued under DITS-1.0 are verifiable offline without network connectivity or API key authentication:</p>
     <ol>
       <li>Canonicalize the envelope payload (excluding the signature) using RFC 8785 (JCS).</li>
