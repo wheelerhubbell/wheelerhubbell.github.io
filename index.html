@@ -213,7 +213,7 @@
     <div class="meta">
       <div><p class="label">Signed</p><span>Every result is cryptographically signed (Ed25519 &middot; canonical JSON).</span></div>
       <div><p class="label">Independently verifiable</p><span>Anyone can check a result&rsquo;s signatures offline, against the published keys. No account or API call needed.</span></div>
-      <div><p class="label">Access</p><span>Monthly subscriptions, or 1 USDC per evaluation for machines (x402).</span></div>
+      <div><p class="label">Access</p><span>1 USDC per evaluation for machines (x402 on Base), or GitHub Actions gate.</span></div>
     </div>
     <div class="cta">
       <a class="btn primary" href="#demonstration">Inspect the Demonstration &rarr;</a>
@@ -380,70 +380,54 @@
 
   <section id="access">
     <p class="label accent-label">Access</p>
-    <h2>One service. Choose how many evaluations you need.</h2>
-    <p class="lede">Subscriptions are billed monthly for a set number of evaluations. When you check out, your API key and setup instructions arrive by email immediately, ready to drop into GitHub Actions, a CI/CD pipeline, or an agent runtime.</p>
-    <div class="tiers">
+    <h2>One service. Two autonomous ways to connect.</h2>
+    <p class="lede">No accounts, no sales calls, and no monthly subscription ledgers. The service operates fail-closed under an explicit cryptographic contract.</p>
+    <div class="tiers" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
       <div class="tier">
-        <h3>Developer Sentinel</h3>
-        <p class="label volume">Developer &middot; 200 evaluations / mo</p>
-        <p class="price">$149 <small>/ month</small></p>
-        <p class="grow">For individual engineers running automated agent workflows, pull request gates, and development testing.</p>
-        <a class="btn" href="https://buy.stripe.com/dRm4gz5rbbn57Gw9UT1oI09">Subscribe &middot; $149/mo &rarr;</a>
+        <h3>Autonomous Protocol (x402)</h3>
+        <p class="label volume">Machine-to-Machine &middot; 1 USDC on Base</p>
+        <p class="price">1 USDC <small>/ evaluation</small></p>
+        <p class="grow">Pay atomically per evaluation via Base USDC. The service issues an independently verifiable Ed25519-signed Standing Mark or Standing Assessment immediately upon settled transfer.</p>
+        <div class="code" style="margin-top:16px;font-size:13px;">npm install @wheelerhubbell/whp-standing-client</div>
+        <a class="btn" href="https://api.wheelerhubbellpublishing.com/v1/contract" target="_blank" rel="noopener">Inspect Live Contract &rarr;</a>
       </div>
       <div class="tier">
-        <h3>Team CI/CD Gateway</h3>
-        <p class="label volume">Team &middot; 1,000 evaluations / mo</p>
-        <p class="price">$699 <small>/ month</small></p>
-        <p class="grow">For engineering teams examining proposed actions across production pull requests, deployment gates, and recurring agent workflows.</p>
-        <a class="btn" href="https://buy.stripe.com/eVq5kD06R8aT4uk1on1oI0a">Subscribe &middot; $699/mo &rarr;</a>
-      </div>
-      <div class="tier">
-        <h3>Institutional Sovereign</h3>
-        <p class="label volume">Institutional &middot; 6,000 evaluations / mo</p>
-        <p class="price">$3,500 <small>/ month</small></p>
-        <p class="grow">For organizations running sustained, high-volume decision-integrity examination across enterprise automated workflows.</p>
-        <a class="btn" href="https://buy.stripe.com/fZu7sLf1Lcr93qgffd1oI0b">Subscribe &middot; $3,500/mo &rarr;</a>
+        <h3>Continuous Integration (Sentinel)</h3>
+        <p class="label volume">GitHub Action &middot; Fail-Closed Boundary Gate</p>
+        <p class="price">Standing Gate <small>/ v0</small></p>
+        <p class="grow">Integrate the Test of Passage directly into repository pull requests and agent execution workflows to halt authority leakage before consequential code or actions merge.</p>
+        <div class="code" style="margin-top:16px;font-size:13px;">uses: wheelerhubbell/standing-gate@v0</div>
+        <a class="btn" href="https://github.com/wheelerhubbell/standing-gate" target="_blank" rel="noopener">View on GitHub &rarr;</a>
       </div>
     </div>
   </section>
 
   <section id="submit">
     <h3 class="sub" style="margin-top:0">How to submit evaluations</h3>
-    <p class="sub-p">Once subscribed, your API key (<code>whp_live_...</code>) arrives by email. Plug it directly into your workflow:</p>
+    <p class="sub-p">Connect directly through code, CI/CD, or agent tool calling:</p>
     <h4 class="method">1. In GitHub Actions (Standing Gate &amp; Sentinel)</h4>
-    <p class="sub-p">Add <code>WHP_API_KEY</code> to your repository secrets, then add this step to your workflow file (<code>.github/workflows/sentinel.yml</code>):</p>
+    <p class="sub-p">Add this step to your repository workflow file (<code>.github/workflows/sentinel.yml</code>):</p>
     <div class="code">- name: Run Decision Integrity Gate
-  uses: wheelerhubbell/standing-gate@v0
-  env:
-    WHP_API_KEY: ${{ secrets.WHP_API_KEY }}</div>
-    <h4 class="method">2. Direct REST API (cURL / Python / Node)</h4>
-    <p class="sub-p">Submit claims to <code>POST https://api.wheelerhubbellpublishing.com/v1/evaluate</code> with your bearer token:</p>
-    <div class="code">curl -X POST https://api.wheelerhubbellpublishing.com/v1/evaluate \
-  -H "Authorization: Bearer whp_live_..." \
-  -H "Content-Type: application/json" \
-  -d '{
-    "claim": "Deploy release to production",
-    "subject": "Production Release",
-    "provenance": { "source": "ci/cd pipeline", "authority": "release-engineering" }
-  }'</div>
-    <h4 class="method">3. AI Agent MCP (Model Context Protocol)</h4>
-    <p class="sub-p">Point Claude Desktop, Cursor, or your custom agent to <code>https://api.wheelerhubbellpublishing.com/mcp</code> and invoke tool <code>whp_evaluate</code>.</p>
-  </section>
+  uses: wheelerhubbell/standing-gate@v0</div>
+    <h4 class="method">2. Autonomous Client (x402 on Base)</h4>
+    <p class="sub-p">Use the canonical Node client with your Base wallet to evaluate claims atomically:</p>
+    <div class="code">import { WHPStandingClient } from '@wheelerhubbell/whp-standing-client';
 
-  <section id="evaldetails">
-    <h3 class="sub" style="margin-top:0">What counts as an evaluation?</h3>
-    <p class="sub-p">One submission examined under the applicable supported profile, with one signed result where that service path issues one. Both outcomes count equally. The fee buys the examination, never a favorable determination.</p>
-    <h3 class="sub">Evaluation and billing details</h3>
-    <p class="sub-p">Replaying the demonstration, downloading an existing record, and verifying its signature do not consume evaluations.</p>
-    <h3 class="sub">Included with every tier</h3>
+const client = new WHPStandingClient({ privateKey: process.env.BASE_PRIVATE_KEY });
+const result = await client.evaluate({
+  claim: "Deploy release to production",
+  subject: "Production Release",
+  provenance: { source: "ci/cd pipeline", authority: "release-engineering" }
+});</div>
+    <h4 class="method">3. AI Agent MCP (Model Context Protocol)</h4>
+    <p class="sub-p">Connect Claude Desktop, Cursor, or any MCP client to <code>https://api.wheelerhubbellpublishing.com/mcp</code> and invoke the published standing tools.</p>
+    <h3 class="sub" style="margin-top:28px">Governing Principles of Passage</h3>
     <ul class="included">
       <li>The submitted evaluation is charged whether its assessment is positive or negative</li>
       <li>A negative assessment is not issued as a WHP Standing Mark</li>
       <li>Retrieval and recovery do not trigger a second payment</li>
       <li>Payment does not supply missing source authority or warrant a favorable result</li>
     </ul>
-    <h3 class="sub">Autonomous Machine Payment (No Subscription Needed)</h3>
-    <p class="sub-p">For autonomous AI agents paying per execution without human intervention: <code>POST /v1/evaluations</code> accepts 1 USDC on Base via the published <code>whp-standing</code> x402 exact-quote binding.</p>
     <div class="cta" style="margin-top:22px">
       <a class="btn" href="https://api.wheelerhubbellpublishing.com/v1/contract">Read the live contract &rarr;</a>
     </div>
@@ -478,8 +462,7 @@
           <li><a href="https://api.wheelerhubbellpublishing.com/v1/openapi.json">API Specification</a></li>
           <li><a href="https://api.wheelerhubbellpublishing.com/.well-known/whp-standing.json">Capability Record</a></li>
           <li><a href="https://wheelerhubbellpublishing.com/protocol.html">Human Method</a></li>
-          <li><a href="https://api.wheelerhubbellpublishing.com/v1/portal" target="_blank" rel="noopener">Manage Subscription</a></li>
-        </ul>
+                  </ul>
       </div>
       <div>
         <h5>Settlement</h5>
