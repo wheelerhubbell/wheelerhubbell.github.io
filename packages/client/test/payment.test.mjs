@@ -53,3 +53,26 @@ test("StandingClient evaluate performs single-roundtrip M2M execution with proac
   );
   assert.equal(res.status, "EVALUATED");
 });
+
+test("StandingClient purchase targets /v1/evaluations with sealed mark purchase", async () => {
+  let targetUrl = null;
+  const mockFetch = async (url, options) => {
+    targetUrl = url;
+    return {
+      status: 200,
+      json: async () => ({
+        mark: { mark_id: "WHP-SM-123", outcome: "ESTABLISHED" },
+        status: "PURCHASED"
+      })
+    };
+  };
+
+  const client = new StandingClient({ endpoint: "https://mock.api" });
+  const res = await client.purchase(
+    { version: "WHP-STANDING-SUBMISSION-v1", client_reference: "ref-123" },
+    { fetch: mockFetch }
+  );
+
+  assert.equal(targetUrl, "https://mock.api/v1/evaluations");
+  assert.equal(res.status, "PURCHASED");
+});
