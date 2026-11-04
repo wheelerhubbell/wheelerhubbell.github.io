@@ -408,17 +408,25 @@
     <h4 class="method">1. In GitHub Actions (Standing Gate &amp; Sentinel)</h4>
     <p class="sub-p">Add this step to your repository workflow file (<code>.github/workflows/sentinel.yml</code>):</p>
     <div class="code">- name: Run Decision Integrity Gate
-  uses: wheelerhubbell/standing-gate@v0</div>
+  uses: wheelerhubbell/standing-gate@v0
+  with:
+    subject: '${{ github.repository }}@${{ github.sha }}'
+    claim: 'CI release integrity verification'
+  env:
+    WHP_BUYER_KEY: ${{ secrets.BASE_WALLET_KEY }} # Base wallet private key for 1 USDC evaluation</div>
     <h4 class="method">2. Autonomous Client (x402 on Base)</h4>
     <p class="sub-p">Use the canonical Node client with your Base wallet to evaluate claims atomically:</p>
-    <div class="code">import { WHPStandingClient } from '@wheelerhubbell/whp-standing-client';
+    <div class="code">import { StandingClient } from '@wheelerhubbell/whp-standing-client';
 
-const client = new WHPStandingClient({ privateKey: process.env.BASE_PRIVATE_KEY });
+const client = new StandingClient({ privateKey: process.env.BASE_WALLET_KEY });
 const result = await client.evaluate({
-  claim: "Deploy release to production",
-  subject: "Production Release",
-  provenance: { source: "ci/cd pipeline", authority: "release-engineering" }
-});</div>
+  subject: 'Production Release',
+  claim: 'Deploy release to production',
+  provenance: { source: 'ci/cd pipeline', authority: 'release-engineering' }
+});
+
+console.log('Outcome:', result.evaluation?.determination?.outcome);
+console.log('Record Hash:', result.record_hash);</div>
     <h4 class="method">3. AI Agent MCP (Model Context Protocol)</h4>
     <p class="sub-p">Connect Claude Desktop, Cursor, or any MCP client to <code>https://api.wheelerhubbellpublishing.com/mcp</code> and invoke the published standing tools.</p>
     <h3 class="sub" style="margin-top:28px">Governing Principles of Passage</h3>
