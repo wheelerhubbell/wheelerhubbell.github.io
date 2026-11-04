@@ -110,7 +110,27 @@ const res = await fetchWithPayment('https://api.wheelerhubbellpublishing.com/v1/
 console.log(await res.json());
 ```
 
-Check the payment terms first with `GET /v1/contract`. The `StandingClient` class in this package does not sign or pay yet.
+### Direct Autonomous Client (`StandingClient`)
+
+The client provides built-in autonomous wallet signing and settlement over Base USDC (x402-v2):
+
+```javascript
+import { StandingClient } from '@wheelerhubbell/whp-standing-client';
+
+const client = new StandingClient({ privateKey: process.env.BASE_WALLET_KEY });
+
+// Front-door structural evaluation (POST /v1/evaluate)
+const record = await client.evaluate({
+  subject: 'Production Deployment',
+  claim: 'Deploy release to production',
+  provenance: { source: 'ci/cd pipeline', authority: 'release-engineering' }
+});
+console.log('Outcome:', record.evaluation?.determination?.outcome);
+console.log('Record Hash:', record.record_hash);
+
+// Or purchase an authoritative sealed Standing Mark (POST /v1/evaluations):
+// const mark = await client.purchase(signedSubmission);
+```
 
 - **Live Service:** [https://api.wheelerhubbellpublishing.com](https://api.wheelerhubbellpublishing.com)
 - **Discovery:** [/.well-known/x402](https://api.wheelerhubbellpublishing.com/.well-known/x402)
