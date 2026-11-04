@@ -224,6 +224,7 @@ export class StandingClient {
     this.endpoint = (options.endpoint || 'https://api.wheelerhubbellpublishing.com').replace(/\/$/, '');
     this.affiliate = options.affiliate || null;
     this.buyerKey = options.buyerKey || options.privateKey || null;
+    this.defaultDoor = options.door || (options.sealed ? '/v1/evaluations' : '/v1/evaluate');
   }
 
   async getContract() {
@@ -277,6 +278,7 @@ export class StandingClient {
   async evaluate(payload, options = null) {
     const opts = typeof options === 'string' ? { paymentToken: options } : (options || {});
     const doFetch = opts.fetch || fetch;
+    const door = opts.door || (opts.sealed ? '/v1/evaluations' : (this.defaultDoor || '/v1/evaluate'));
     const headers = { 'Content-Type': 'application/json' };
     if (opts.mock) headers['X-Mock'] = 'true';
     if (opts.affiliate || this.affiliate) headers['X-Affiliate'] = opts.affiliate || this.affiliate;
@@ -300,7 +302,7 @@ export class StandingClient {
             amount: '1000000',
             extra: { assetTransferMethod: 'eip3009', name: 'USD Coin', paymentFlow: 'authorization', version: '2' },
             maxTimeoutSeconds: 300,
-            resource: `${this.endpoint}/v1/evaluate`
+            resource: `${this.endpoint}${door}`
           }]
         };
         const prep = prepareAutonomousPayment(terms, acct.address);
@@ -312,7 +314,7 @@ export class StandingClient {
       }
     }
 
-    let res = await doFetch(`${this.endpoint}/v1/evaluate`, {
+    let res = await doFetch(`${this.endpoint}${door}`, {
       method: 'POST',
       headers,
       body: JSON.stringify(payload)
@@ -335,7 +337,7 @@ export class StandingClient {
         const paymentPayload = prep.completePayment(signature);
 
         headers['PAYMENT-SIGNATURE'] = formatPaymentHeader(paymentPayload);
-        res = await doFetch(`${this.endpoint}/v1/evaluate`, {
+        res = await doFetch(`${this.endpoint}${door}`, {
           method: 'POST',
           headers,
           body: JSON.stringify(payload)
@@ -345,6 +347,14 @@ export class StandingClient {
       }
     }
     return res.json();
+  }
+
+  /**
+   * Purchase a sealed WHP Standing Mark or Assessment (POST /v1/evaluations).
+   * Exact-quote x402 Base USDC contract execution.
+   */
+  async purchase(submission, options = {}) {
+    return this.evaluate(submission, { ...options, door: '/v1/evaluations', sealed: true });
   }
 
   async getResult(purchaseId, options = {}) {
