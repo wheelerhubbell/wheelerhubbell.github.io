@@ -50,13 +50,43 @@ export declare function guardAction(toolCall: ToolCall, context?: GuardOptions):
 export declare class StandingClient {
   endpoint: string;
   affiliate?: string | null;
-  constructor(options?: { endpoint?: string; affiliate?: string | null });
+  buyerKey?: string | null;
+  defaultDoor?: string;
+  constructor(options?: {
+    endpoint?: string;
+    affiliate?: string | null;
+    buyerKey?: string;
+    privateKey?: string;
+    door?: string;
+    sealed?: boolean;
+  });
   getContract(): Promise<any>;
   mock(payload: any, door?: string): Promise<any>;
-  ping(payload: any, options?: { mock?: boolean; affiliate?: string; paymentToken?: string; fetch?: typeof fetch }): Promise<any>;
-  evaluate(payload: any, options?: string | { mock?: boolean; affiliate?: string; fetch?: typeof fetch; paymentToken?: string } | null): Promise<any>;
+  ping(options?: { buyerKey?: string; fetch?: typeof fetch }): Promise<any>;
+  evaluate(
+    payload: any,
+    options?:
+      | string
+      | {
+          mock?: boolean;
+          affiliate?: string;
+          fetch?: typeof fetch;
+          paymentToken?: string;
+          paymentSignature?: any;
+          buyerKey?: string;
+          privateKey?: string;
+          door?: string;
+          sealed?: boolean;
+          proactive?: boolean;
+          terms?: any;
+        }
+      | null
+  ): Promise<any>;
+  purchase(submission: any, options?: Record<string, any>): Promise<any>;
   getResult(purchaseId: string, options?: { fetch?: typeof fetch; headers?: Record<string, string> }): Promise<any>;
 }
+
+export { StandingClient as WHPStandingClient };
 
 export function withStandingWitness<T extends (...args: any[]) => any>(
   fn: T,
