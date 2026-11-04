@@ -21,7 +21,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "test": "node --test test/guard.test.mjs",
+    "test": "node --test test/*.test.mjs",
     "start": "node ./bin/cli.mjs"
   },
   "keywords": [
