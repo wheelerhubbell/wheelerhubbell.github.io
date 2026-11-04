@@ -223,6 +223,7 @@ export class StandingClient {
   constructor(options = {}) {
     this.endpoint = (options.endpoint || 'https://api.wheelerhubbellpublishing.com').replace(/\/$/, '');
     this.affiliate = options.affiliate || null;
+    this.buyerKey = options.buyerKey || options.privateKey || null;
   }
 
   async getContract() {
@@ -282,7 +283,7 @@ export class StandingClient {
     if (opts.paymentToken) headers['X-Payment'] = opts.paymentToken;
     if (opts.paymentSignature) headers['PAYMENT-SIGNATURE'] = formatPaymentHeader(opts.paymentSignature);
 
-    const buyerKey = opts.buyerKey || (typeof process !== 'undefined' ? process.env?.WHP_BUYER_KEY : null);
+    const buyerKey = opts.buyerKey || opts.privateKey || this.buyerKey || (typeof process !== 'undefined' ? process.env?.WHP_BUYER_KEY || process.env?.BASE_PRIVATE_KEY || process.env?.BASE_WALLET_KEY : null);
 
     // M2M Zero-Handshake Bump: Proactive single-roundtrip payment if buyerKey is provided
     if (buyerKey && !headers['PAYMENT-SIGNATURE'] && opts.proactive !== false) {
@@ -371,3 +372,7 @@ export {
   interceptToolCalls
 } from './circuit_breaker.mjs';
 export * from './beacon.mjs';
+
+export {
+  StandingClient as WHPStandingClient
+};
