@@ -1,0 +1,39 @@
+{
+  "authority": {
+    "issuer": "Wheeler Hubbell Publishing",
+    "jurisdictions": [
+      "wheeler-hubbell-publishing"
+    ],
+    "key_id": "c9507f2c5d0d80935a4885071c8372eeba25010e514e81401acabb246134bff6",
+    "public_key": "MCowBQYDK2VwAyEABE1ix0WoBNYeSVQm36qIjzqajWcI1AwZxBpo3aKCPY=",
+    "root_certificate_url": "https://api.wheelerhubbellpublishing.com/v1/certificates/c9507f2c5d0d80935a4885071c8372eeba25010e514e81401acabb246134bff6.json"
+  },
+  "capability_class": "urn:capability:machine-verifiable-standing:1",
+  "capability_id": "urn:whp:standing:capability:1",
+  "endpoints": {
+    "certificates": "https://api.wheelerhubbellpublishing.com/v1/certificates",
+    "contract": "https://api.wheelerhubbellpublishing.com/v1/contract",
+    "discovery": "https://api.wheelerhubbellpublishing.com/.well-known/whp-standing.json",
+    "evaluate": "https://api.wheelerhubbellpublishing.com/v1/evaluate",
+    "health": "https://api.wheelerhubbellpublishing.com/health",
+    "mcp": "https://api.wheelerhubbellpublishing.com/mcp",
+    "profiles": "https://api.wheelerhubbellpublishing.com/v1/profiles",
+    "registry": "https://api.wheelerhubbellpublishing.com/v1/registry",
+    "revocations": "https://api.wheelerhubbellpublishing.com/v1/revocations"
+  },
+  "evaluation_door": "/v1/evaluate",
+  "evaluator": {
+    "canon_sha256": "bd85f51f05afc6f77053aec086a1d013a1cccde70c30231622f0ecc7e3f25c21",
+    "distinction_from_notary": "Evaluates epistemic standing, qualifier inheritance, join warrants, and named failures (Coherent Substitution, Authority Leakage, Object Drift, Qualifier Stripping) via a sovereign LLM governed by Decision Integrity v7 before signing the Standing Mark—never merely notarizing raw bytes.",
+    "evaluator_class": "SOVEREIGN_EPISTEMOLOGICAL_EVALUATOR",
+    "governing_text": "Decision Integrity: The Continuous Work (Version 7)",
+    "output_signature": "WHP-STANDING-MARK-v1",
+    "type": "SOVEREIGN_LARGE_LANGUAGE_MODEL"
+  },
+  "profiles": [
+    "https://api.wheelerhubbellpublishing.com/v1/profiles/WHP-DECISION-INTEGRITY-V7-CONTINUOUS-WORK/7.0.0"
+  ],
+  "resolution_id": "urn:whp:standing:resolution:1",
+  "service_architecture": "SINGLE_EVALUATION_DOOR",
+  "version": "WHP-STANDING-CAPABILITY-v1"
+}
