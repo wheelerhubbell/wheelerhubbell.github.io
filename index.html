@@ -1,343 +1,402 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The Decision Integrity Protocol — Wheeler Hubbell Publishing</title>
-  <meta name="description" content="Sovereign epistemological evaluator (not a passive notary). One evaluation door (POST /v1/evaluate): a waiting Large Language Model given Decision Integrity Version 7 (The Continuous Work) applies its reasoning to client data, signs the evaluation output with the WHP Standing Mark, and gates autonomous x402 agent-to-agent commerce." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #faf7f2;
-      --paper: #ffffff;
-      --ink: #161513;
-      --muted: #57534e;
-      --accent: #7c2d12;
-      --border: #e5dec9;
-      --code-bg: #1c1917;
-      --code-ink: #f5f5f4;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: "EB Garamond", Georgia, serif;
-      font-size: 19px;
-      line-height: 1.62;
-    }
-    header, main, footer {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    header {
-      padding-top: 28px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    .brand {
-      font-weight: 600;
-      font-size: 21px;
-      letter-spacing: 0.02em;
-    }
-    nav a {
-      color: var(--muted);
-      text-decoration: none;
-      margin-left: 20px;
-      font-size: 17px;
-    }
-    nav a:hover { color: var(--ink); }
-    .banner {
-      margin-top: 28px;
-      padding: 10px 16px;
-      background: var(--paper);
-      border: 1px solid var(--border);
-      font-size: 16px;
-      color: var(--muted);
-    }
-    .banner a { color: var(--accent); text-decoration: none; font-weight: 600; }
-    h1 {
-      font-size: 46px;
-      line-height: 1.15;
-      font-weight: 500;
-      margin: 32px 0 16px;
-    }
-    h2 {
-      font-size: 32px;
-      line-height: 1.25;
-      font-weight: 500;
-      margin: 56px 0 16px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
-    }
-    h3 {
-      font-size: 23px;
-      font-weight: 600;
-      margin: 24px 0 8px;
-    }
-    .lede {
-      font-size: 23px;
-      color: var(--muted);
-      max-width: 820px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 20px;
-      margin: 28px 0;
-    }
-    .card {
-      background: var(--paper);
-      border: 1px solid var(--border);
-      padding: 22px;
-    }
-    .tag {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent);
-      display: block;
-      margin-bottom: 6px;
-    }
-    blockquote {
-      margin: 28px 0;
-      padding: 16px 24px;
-      border-left: 3px solid var(--accent);
-      background: var(--paper);
-      font-style: italic;
-    }
-    blockquote cite {
-      display: block;
-      margin-top: 8px;
-      font-style: normal;
-      font-size: 16px;
-      color: var(--muted);
-    }
-    pre {
-      background: var(--code-bg);
-      color: var(--code-ink);
-      padding: 18px;
-      overflow-x: auto;
-      font-family: "JetBrains Mono", monospace;
-      font-size: 13.5px;
-      line-height: 1.5;
-    }
-    code {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.85em;
-    }
-    footer {
-      margin-top: 72px;
-      padding-top: 28px;
-      padding-bottom: 56px;
-      border-top: 1px solid var(--border);
-      font-size: 16px;
-      color: var(--muted);
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decision Integrity Protocol — The Standing Mark Service — Wheeler Hubbell Publishing</title>
+<meta name="description" content="Decision Integrity examines whether the available record supports a conclusion and the action that follows. The Standing Mark Service makes that examination available through a single API endpoint. 1 USDC per examination, x402 v2, Base Mainnet.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600&family=Spectral+SC:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#faf8f3;--paper-2:#f4f0e8;--ink:#1c1815;--ink-2:#4c453d;--ink-3:#8a8177;--ox:#6e1f28;--ox-deep:#571821;--line:#e2dccf;--line-2:#cfc7b8;--mono:ui-monospace,SFMono-Regular,Menlo,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--paper);color:var(--ink);font-family:'Spectral',Georgia,serif;font-size:17px;line-height:1.65}
+.wrap{max-width:1180px;margin:0 auto;padding:0 48px}
+.label{font-family:Inter,Arial,sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ox)}
+a{color:var(--ox-deep)}
+header.masthead{border-bottom:2px solid var(--ink)}
+.masthead-in{display:flex;align-items:center;justify-content:space-between;padding:20px 0 18px}
+.brand{display:flex;align-items:center;gap:16px}
+.brand img{width:46px;height:46px;}
+.brand .name{font-family:'Spectral SC',serif;font-size:19px;letter-spacing:.04em;line-height:1.1}
+.brand .sub{font-family:Inter;font-size:9.5px;font-weight:600;letter-spacing:.26em;color:var(--ink-3);text-transform:uppercase;margin-top:4px}
+nav.top{display:flex;gap:30px;font-family:Inter;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+nav.top a{text-decoration:none;color:var(--ink-2);padding-bottom:3px;border-bottom:1px solid transparent}
+nav.top a:hover{color:var(--ox);border-color:var(--ox)}
+.hero{padding:88px 0 80px;border-bottom:1px solid var(--line)}
+.hero .label{margin-bottom:26px}
+h1.display{font-weight:500;font-size:58px;line-height:1.08;letter-spacing:-.012em;max-width:24ch;margin-bottom:30px}
+h1.display em{font-style:italic;color:var(--ox)}
+.hero .lede{font-size:22px;font-weight:600;line-height:1.5;max-width:52ch;margin-bottom:22px}
+.hero .body{max-width:64ch;color:var(--ink-2);margin-bottom:34px}
+.hero .body p{margin-bottom:16px}
+.hero .body b{color:var(--ink)}
+.price-strip{font-family:Inter;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);border-top:2px solid var(--ox);display:inline-block;padding-top:14px;margin-bottom:36px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap}
+.btn{font-family:Inter;font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:15px 26px;border:1px solid var(--ink);color:var(--ink);display:inline-block}
+.btn.primary{background:var(--ox);border-color:var(--ox);color:#fbf9f5}
+.btn:hover{border-color:var(--ox);color:var(--ox)}
+.btn.primary:hover{background:var(--ox-deep);color:#fbf9f5}
+section{padding:88px 0;border-bottom:1px solid var(--line)}
+.sec-head{margin-bottom:52px;max-width:62ch}
+.sec-head .label{margin-bottom:16px}
+h2.sec-title{font-weight:500;font-size:38px;line-height:1.15;letter-spacing:-.01em}
+h3.sub-title{font-weight:600;font-size:24px;line-height:1.25;margin:56px 0 24px}
+.paras{max-width:66ch;color:var(--ink-2)}
+.paras p{margin-bottom:16px}
+.paras p b, .paras b{color:var(--ink)}
+.questions{list-style:none;counter-reset:q;max-width:66ch;margin:28px 0}
+.questions li{counter-increment:q;position:relative;padding:14px 0 14px 58px;border-bottom:1px solid var(--line);color:var(--ink);font-size:16.5px}
+.questions li:before{content:counter(q,decimal-leading-zero);position:absolute;left:0;top:14px;font-family:'Spectral SC',serif;font-size:14px;color:var(--ox)}
+.dims{list-style:none;max-width:70ch;margin:8px 0 28px}
+.dims li{padding:16px 0 16px 26px;border-bottom:1px solid var(--line);color:var(--ink-2);font-size:15.5px;position:relative}
+.dims li:before{content:"";position:absolute;left:0;top:25px;width:10px;height:1px;background:var(--ox)}
+.dims li b{color:var(--ink)}
+.failgrid{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.fail{padding:40px 44px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fail .num{font-family:'Spectral SC',serif;color:var(--ox);font-size:14px}
+.fail h4{font-size:21px;font-weight:600;margin:8px 0 6px}
+.fail .gist{font-size:16px;font-style:italic;margin-bottom:10px}
+.fail p{font-size:14.5px;color:var(--ink-2);line-height:1.6}
+.failclose{margin-top:40px;max-width:64ch;color:var(--ink-2)}
+.props2{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:8px}
+.props2 h5{font-family:Inter;font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ox);margin-bottom:14px}
+.props2 p, .props2 li{font-size:15.5px;color:var(--ink-2);line-height:1.65}
+.props2 ul{list-style:none}
+.props2 li{padding:9px 0 9px 24px;border-bottom:1px solid var(--line);position:relative}
+.props2 li:before{content:"";position:absolute;left:0;top:18px;width:9px;height:1px;background:var(--ox)}
+.spec-link{margin-top:36px}
+table.terms{width:100%;border-collapse:collapse;margin:8px 0 40px;font-size:15.5px}
+table.terms th{font-family:Inter;font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);text-align:left;padding:10px 16px 10px 0;border-bottom:2px solid var(--ink)}
+table.terms td{padding:14px 16px 14px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-2)}
+table.terms td:first-child{color:var(--ink);font-weight:600;white-space:nowrap}
+code, .mono{font-family:var(--mono);font-size:.86em;background:var(--paper-2);padding:2px 6px;border:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:56px;align-items:start;margin-top:8px}
+.step .num{font-family:'Spectral SC',serif;font-size:15px;color:var(--ox);border-top:2px solid var(--ox);padding-top:14px;margin-bottom:18px;display:inline-block}
+.step p{font-size:15.5px;color:var(--ink-2);line-height:1.6}
+.linkrow{font-family:Inter;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-top:32px}
+.linkrow a{color:var(--ox);text-decoration:none;border-bottom:1px solid var(--ox);padding-bottom:2px}
+.linkrow span{color:var(--ink-3);margin:0 10px}
+.linkrow .nolink{color:var(--ink-3)}
+.band{background:var(--ink);color:var(--paper);padding:88px 0}
+.band .label{color:#c9a0a6}
+.band h2.sec-title{color:var(--paper)}
+.band .paras{color:#cfc7bb}
+.band .paras b{color:var(--paper)}
+footer{background:var(--ink);color:#b9b0a2;padding:64px 0 72px;border-top:1px solid var(--line-2)}
+.foot-in{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+footer .fbrand{display:flex;align-items:center;gap:16px}
+footer img{width:52px;height:52px;}
+footer .fname{font-family:'Spectral SC',serif;color:var(--paper);font-size:17px}
+footer .fsub{font-family:Inter;font-size:9.5px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#8a8177;margin-top:3px}
+footer nav{display:flex;gap:26px;font-family:Inter;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;flex-wrap:wrap}
+footer nav a{color:#b9b0a2;text-decoration:none}
+footer nav a:hover{color:var(--paper)}
+footer nav .nolink{color:#6d6759}
+footer .copy{font-family:Inter;font-size:10.5px;letter-spacing:.08em;color:#8a8177}
+@media (max-width:820px){
+.wrap{padding:0 26px}
+nav.top{display:none}
+.brand .name{font-size:15px;white-space:nowrap}
+.brand .sub{font-size:8.5px;letter-spacing:.18em}
+.hero{padding:64px 0}
+h1.display{font-size:36px}
+.hero .lede{font-size:19px}
+section{padding:64px 0}
+h2.sec-title{font-size:28px}
+.props2{grid-template-columns:1fr;gap:36px}
+.steps{grid-template-columns:1fr;gap:36px}
+.failgrid{grid-template-columns:1fr}
+.fail{padding:32px 28px}
+table.terms td:first-child{white-space:normal}
+.foot-in{flex-direction:column;align-items:flex-start}
+}
+</style>
 </head>
 <body>
-  <header>
-    <div class="brand">Wheeler Hubbell Publishing · Decision Integrity Protocol</div>
-    <nav>
-      <a href="#what-it-does">The Single Door</a>
-      <a href="#epistemological-evaluator">Epistemological Evaluator</a>
-      <a href="#demonstration">Demonstration</a>
-      <a href="#named-failures">The Named Failures</a>
-      <a href="#access">x402 &amp; Access</a>
-      <a href="#specification">Specification</a>
-      <a href="/press/the-standing-mark-is-live.html">Press</a>
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <div class="brand">
+      <img src="assets/seal-dark-art.png" alt="Wheeler Hubbell Publishing dandelion seal">
+      <div>
+        <div class="name">Wheeler Hubbell Publishing, Inc.</div>
+        <div class="sub">An Independent Intellectual Press &middot; New York</div>
+      </div>
+    </div>
+    <nav class="top">
+      <a href="#protocol">Protocol</a>
+      <a href="#standing-mark">Standing Mark</a>
+      <a href="#access">Access</a>
+      <a href="/spec">Specification</a>
+      <a href="#about">About</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <div class="banner">
-      For release · Sovereign Single-Door Architecture — <a href="/press/the-standing-mark-is-live.html">The Standing Mark is live: read the announcement →</a>
+<section class="hero">
+  <div class="wrap">
+    <div class="label">Decision Integrity Protocol &middot; The Standing Mark Service</div>
+    <h1 class="display">Truth is not a <em>tone of voice.</em></h1>
+    <p class="lede">Your agent has an answer. Does the record support acting on it?</p>
+    <div class="body">
+      <p>An answer can be fluent, coherent, and entirely unsupported by the material behind it. When an agent is preparing to release funds, execute a transaction, approve a change, or submit a filing, that distinction matters.</p>
+      <p><b>Decision Integrity examines whether the available record supports a conclusion and the action that follows.</b></p>
+      <p>The Standing Mark Service makes that examination available through a single API endpoint. An automated Large Language Model, configured to apply <i>Decision Integrity: The Continuous Work</i>, Version 7, examines what your submitted material establishes, what remains unknown, and what the evidence warrants.</p>
+      <p>Built for autonomous agents, developers, and systems that need an examinable record before relying on a consequential output.</p>
     </div>
-
-    <p style="margin-top:24px; color:var(--muted); font-style:italic;">An independent intellectual press · New York</p>
-
-    <h1>Your AI agent has an answer. Does the record behind it support acting on it?</h1>
-    <p class="lede">
-      A correct-sounding answer does not, by itself, authorize the action that follows. When an autonomous agent is about to settle an <code>x402</code> payment, release escrow, merge code, or submit a legal filing, fluency is not authorization.
-    </p>
-    <p>
-      <strong>WHP Standing is not a passive cryptographic notary. It is a sovereign epistemological evaluator.</strong> There is one evaluation door (<code>POST /v1/evaluate</code>) — one service all the way through. When a client or autonomous agent inserts its data through that door, a sovereign Large Language Model is waiting inside, having been given <em>Decision Integrity: The Continuous Work</em> (Version 7). The model adopts the reasoning from the text, applies that reasoning to whatever data the client puts through the door, signs the resulting evaluation output with the <strong>WHP Standing Mark</strong> (<code>WHP-STANDING-MARK-v1</code>), and hands that signed evaluation back to the client.
-    </p>
-
-    <div class="grid">
-      <div class="card">
-        <span class="tag">One Evaluation Door</span>
-        <h3><code>POST /v1/evaluate</code></h3>
-        <p>One door, not two — one service all the way through. Clients and autonomous agents insert any claim, record, or proposed <code>x402</code> transaction through a single canonical doorway.</p>
-      </div>
-      <div class="card">
-        <span class="tag">Inside the Door</span>
-        <h3>Decision Integrity v7 LLM</h3>
-        <p>A sovereign Large Language Model given <em>Decision Integrity: The Continuous Work</em> (Version 7) adopts its constitutional reasoning and evaluates what the client's data actually establishes and warrants.</p>
-      </div>
-      <div class="card">
-        <span class="tag">Signed Output</span>
-        <h3>The Standing Mark</h3>
-        <p>The evaluation output is signed with the WHP Standing Mark (<code>WHP-STANDING-MARK-v1</code> · <code>Ed25519</code> over <code>WHP-JCS-I1</code> canonical JSON) and handed back to the client as an offline-verifiable proof.</p>
-      </div>
+    <div class="price-strip">1 USDC per examination &middot; x402 v2 &middot; Base Mainnet</div>
+    <div class="cta-row">
+      <a class="btn primary" href="/openapi.json">Explore the API</a>
+      <a class="btn" href="/protocol.html">Read the Protocol</a>
     </div>
+  </div>
+</section>
 
-    <h2 id="epistemological-evaluator">An Epistemological Evaluator — Not Merely a Notary</h2>
-    <p>
-      A cryptographic notary only certifies that a bundle of bytes existed at a certain timestamp and was signed by a given key. A notary will happily stamp a fabricated court citation, a stripped safety caveat, or a fluent answer to a silently substituted question. Similarly, a wallet-risk firewall only checks whether a destination address is a honeypot; it cannot tell whether an agent is paying a legitimate vendor for a SOC 2 Type I report when the mandate required SOC 2 Type II.
-    </p>
-    <p>
-      <strong>WHP Standing evaluates the epistemology of passage.</strong> Before an autonomous agent crosses a decision boundary (<code>EXECUTE</code>), the waiting Large Language Model inside <code>/v1/evaluate</code> applies <em>Decision Integrity: The Continuous Work</em> (Version 7) to test:
-    </p>
-    <div class="grid">
-      <div class="card">
-        <span class="tag">01 · Object &amp; Qualifiers</span>
-        <h3>Did the object remain itself?</h3>
-        <p>Tests whether the governing conditions, scope limits, dissenting records, and temporal bounds traveled intact with the claim or were stripped on the way to action.</p>
-      </div>
-      <div class="card">
-        <span class="tag">02 · Joins &amp; Warrant</span>
-        <h3>Is the connection warranted?</h3>
-        <p>Two true statements do not automatically authorize the inference drawn between them. Every relation and increase in operational force requires an inspectable typed warrant.</p>
-      </div>
-      <div class="card">
-        <span class="tag">03 · Smallest True Move</span>
-        <h3>Where does the record stop?</h3>
-        <p>When a blocking unknown prevents execution, the evaluator denies only the unearned force, preserves what is established, and names the <strong>Smallest True Move</strong> (<code>INQUIRE</code> or <code>INFORM</code>) plus the exact missing warrant.</p>
-      </div>
+<section id="protocol">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">The Protocol</div>
+      <h2 class="sec-title">Examine the passage from evidence to action.</h2>
     </div>
-
-    <h2 id="what-it-does">How the Single Door Works</h2>
-    <p>One door in, constitutional epistemological reasoning inside, and a Standing Mark-signed evaluation out:</p>
-    <div class="grid">
-      <div class="card">
-        <span class="tag">Step 01 · Insert Data</span>
-        <h3>Pass Data Through <code>/v1/evaluate</code></h3>
-        <p>The client or autonomous agent inserts its data — a proposition, evidence packet, or proposed agent-to-agent <code>x402</code> transaction — through the single evaluation door.</p>
-      </div>
-      <div class="card">
-        <span class="tag">Step 02 · Epistemological Evaluation</span>
-        <h3>Apply Decision Integrity v7</h3>
-        <p>Inside the door, the waiting Large Language Model — initialized with the verbatim <em>Decision Integrity: The Continuous Work</em> (Version 7) manuscript — adopts its reasoning and executes the Per-Response Sequence (Intake, Assembly, Test of Passage, Named Failure Detection, and Smallest True Move) on the submitted data.</p>
-      </div>
-      <div class="card">
-        <span class="tag">Step 03 · Standing Mark Output</span>
-        <h3>Receive the Signed Result</h3>
-        <p>The evaluation result is signed with the WHP Standing Mark (<code>WHP-STANDING-MARK-v1</code>) and returned to the client. Every counterparty can verify the signature and outcome offline in under a millisecond.</p>
-      </div>
+    <div class="paras">
+      <p>Information moves from source to representation, from representation to inference, and from inference to action. At each step, a claim can acquire certainty or authority that the original material never supplied.</p>
+      <p>The Decision Integrity Protocol examines that passage. It begins by distinguishing the decision actually being made from the story being told about it.</p>
+      <p>The examination asks:</p>
     </div>
-
-    <h2 id="demonstration">The Decision Boundary Gate: Worked Examples</h2>
-    <p>See the difference between an answer that sounds fluent and one whose record epistemologically supports acting on it:</p>
-    <div class="grid">
-      <div class="card">
-        <span class="tag">Legal Authorization · Mata v. Avianca</span>
-        <h3>A Supported Answer to the Wrong Question</h3>
-        <p><strong>Unchecked Agent Claim:</strong> <em>“The Montreal Convention tolling rule established in Varghese v. China Southern Airlines permits this filing to proceed.”</em></p>
-        <p><strong>Epistemological Evaluation:</strong> Gate outcome <code>NOT_ESTABLISHED</code> (<code>EXECUTE</code> denied). The cited decision does not exist in any retrievable docket (<em>Authority Leakage</em> &amp; <em>Unlawful Premise Promotion</em>), and summarizing sanctions without explaining why warnings failed to halt reliance commits <em>Coherent Substitution</em> ($Q_0 \to Q_1$).</p>
-        <p><strong>Smallest True Move:</strong> Hold at <code>INQUIRE</code>; treat the citation as a blocking unknown until a retrievable docket record is supplied.</p>
-      </div>
-      <div class="card">
-        <span class="tag">Engineering Boundary · Challenger STS-51-L</span>
-        <h3>Not Proven Unsafe Is Not Established Safe</h3>
-        <p><strong>Unchecked Agent Claim:</strong> <em>“Proceed with launch at 26°F; prior flights experienced O-ring erosion without catastrophic failure.”</em></p>
-        <p><strong>Epistemological Evaluation:</strong> Gate outcome <code>NOT_ESTABLISHED</code> (<code>EXECUTE</code> blocked). Coldest prior flight was 53°F; validated O-ring seal demonstration at 26°F is a <em>Lawful Blocking Unknown</em>. An unanswered question cannot borrow premise-standing to authorize irreversible action.</p>
-        <p><strong>Smallest True Move:</strong> Confine standing to <code>INFORM</code>; require a validated 26°F qualification demonstration before <code>EXECUTE</code>.</p>
-      </div>
+    <ol class="questions">
+      <li>What decision is actually being made?</li>
+      <li>What is established, and what is being assumed?</li>
+      <li>What information is missing, uncertain, or being discounted?</li>
+      <li>What pressures, incentives, loyalties, fears, or habits may be influencing judgment?</li>
+      <li>Who bears the consequences of action, inaction, delay, or error?</li>
+      <li>What values or obligations are being protected, compromised, or left unspoken?</li>
+      <li>What evidence or circumstance would require reconsideration?</li>
+      <li>Can the reasoning be explained honestly to those affected?</li>
+    </ol>
+    <div class="paras">
+      <p>The protocol does not manufacture certainty. It does not turn an unknown into a fact, an interpretation into an authorization, or a plausible answer into sufficient grounds for action.</p>
+      <p><b>Its purpose is to make the reasoning, boundaries, and consequences of a decision examinable.</b></p>
     </div>
+    <h3 class="sub-title">What the examination follows</h3>
+    <div class="paras">
+      <p>Five connected dimensions organize the work:</p>
+    </div>
+    <ul class="dims">
+      <li><b>Source and object continuity.</b> Is the material still about the same object, record, person, transaction, or decision? Has a later representation quietly replaced the original?</li>
+      <li><b>Conditions and qualifiers.</b> Have the limitations, exceptions, uncertainties, and conditions survived interpretation and transmission?</li>
+      <li><b>Authority and permitted action.</b> Does the evidence establish that the relevant actor has authority to make the statement or perform the proposed action?</li>
+      <li><b>Evidence and change.</b> What new evidence has been introduced? What does it resolve, and what remains unknown?</li>
+      <li><b>Continuity and accountability.</b> Can the reasoning be traced across successive representations and decisions without silently rewriting the earlier record?</li>
+    </ul>
+    <div class="paras">
+      <p>These are connected questions, not independent scores. No single favorable answer substitutes for the examination as a whole.</p>
+      <p>When the record does not support the proposed action, the examination identifies the boundary: what the evidence permits, what it does not, and what would need to be established before proceeding.</p>
+    </div>
+  </div>
+</section>
 
-    <blockquote>
-      “Truth is not a tone of voice. It is not a reward conferred by confidence, age, status, repetition, fluency, fear, or force. In a governed sense, true is what remains answerable to what it is, where it came from, the conditions under which it holds, the limits that travel with it, and the action it is actually entitled to authorize.”
-      <cite>— Wheeler Hubbell · <em>Decision Integrity: The Continuous Work</em> (Version 7), Preamble</cite>
-    </blockquote>
+<section id="named-failures">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">The Named Failures</div>
+      <h2 class="sec-title">Four ways a claim acquires force it has not earned.</h2>
+    </div>
+    <div class="failgrid">
+      <div class="fail"><div class="num">01</div><h4>Coherent Substitution</h4><div class="gist">The answer is coherent. It answers a different question.</div><p>An agent is asked whether a termination notice satisfies a specific contractual condition. It explains whether termination is legally possible without examining whether the notice meets that condition.</p></div>
+      <div class="fail"><div class="num">02</div><h4>Object Drift</h4><div class="gist">The label survives. The object changes.</div><p>An examination concerns a signed agreement. A later summary or revised document is silently substituted, and the conclusion is still attributed to the original.</p></div>
+      <div class="fail"><div class="num">03</div><h4>Qualifier Stripping</h4><div class="gist">A condition disappears, and the conclusion changes with it.</div><p>&ldquo;May reduce risk&rdquo; becomes &ldquo;reduces risk.&rdquo;</p></div>
+      <div class="fail"><div class="num">04</div><h4>Authority Leakage</h4><div class="gist">Information acquires authority it was never given.</div><p>An AI-generated summary of a signed agreement is repeated until another system treats the summary itself as the agreement.</p></div>
+    </div>
+    <p class="failclose">The named failures describe what can go wrong. The examination determines what the submitted record establishes in the particular case.</p>
+  </div>
+</section>
 
-    <h2 id="named-failures">The Named Failures</h2>
-    <p>Four structural ways a claim acquires force it has not earned during passage across humans or autonomous agents:</p>
-    <div class="grid">
-      <div class="card">
-        <span class="tag">01 · Coherent Substitution</span>
-        <h3>Reasoning well about a replaced question</h3>
-        <p>The system replaces the governing proposition ($Q_0$) with a nearby, easier proposition ($Q_1$), reasons coherently about the substitute, and presents the result as responsive.</p>
+<section id="standing-mark">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">The Standing Mark</div>
+      <h2 class="sec-title">A signed record&mdash;not a substitute for judgment.</h2>
+    </div>
+    <div class="paras">
+      <p>The Standing Mark Service applies the Decision Integrity framework to submitted material and returns an assessment for the requesting system to inspect within its own authority structure.</p>
+      <p>The examination is distinct from the decision or transaction that may follow.</p>
+      <p>A completed examination produces a cryptographically signed assessment record. When the applicable criteria are satisfied, that record may carry a positive Standing Mark. When they are not, the outcome remains a signed assessment without a positive Mark.</p>
+      <p><b>A negative or limited finding is an examination result, not a service failure.</b></p>
+    </div>
+    <div class="props2" style="margin-top:48px">
+      <div>
+        <h5>What the signature establishes</h5>
+        <p>A valid signature establishes that the record was signed by the holder of the identified signing key and that its signed contents have not been altered since signing.</p>
       </div>
-      <div class="card">
-        <span class="tag">02 · Authority Leakage</span>
-        <h3>Force exceeding the record</h3>
-        <p>An informational object or relation exercises greater epistemic or operational force (such as <code>EXECUTE</code>) than its source, conditions, and warrant establish.</p>
-      </div>
-      <div class="card">
-        <span class="tag">03 · Object Drift</span>
-        <h3>Stable words, mutated object</h3>
-        <p>The label remains continuous across handoffs while the underlying object, population, or version state silently changes underneath it.</p>
-      </div>
-      <div class="card">
-        <span class="tag">04 · Qualifier Stripping</span>
-        <h3>Binding conditions dropped</h3>
-        <p>When limiting language (“in this sample,” “provisional pending review,” “opt-out setting”) disappears in compression, the surviving words claim an unearned scope.</p>
+      <div>
+        <h5>What it does not establish</h5>
+        <p style="margin-bottom:12px">A signature does not establish that:</p>
+        <ul>
+          <li>Every assertion in the submission is true.</li>
+          <li>Every source is authentic or the evidence is complete.</li>
+          <li>The examination is correct.</li>
+          <li>The governing text was faithfully applied.</li>
+          <li>The receiver has authority to carry out the proposed action.</li>
+        </ul>
       </div>
     </div>
+    <div class="paras" style="margin-top:36px">
+      <p>Those remain matters for examination and verification.</p>
+      <p>A signed record preserves an assessment and its outcome. It does not convert that outcome into universal authorization.</p>
+    </div>
+    <div class="linkrow"><a href="/spec">Record and Verification Specification</a></div>
+  </div>
+</section>
 
-    <h2 id="access">Sovereign Infrastructure for Agent-to-Agent (<code>x402</code>) Transactions</h2>
-    <p>
-      As autonomous agents negotiate, procure compute, and settle payments at machine speed over <code>x402</code> payment rails (USDC on Base <code>eip155:8453</code>), payment protocols prove only that money moved — not that the transaction was epistemologically warranted.
-    </p>
-    <p>
-      <strong>The Pre-Settlement Standing Mark Rule:</strong> No autonomous agent settles an <code>x402</code> transaction without first passing the proposed transaction terms and evidence through <code>POST /v1/evaluate</code> and verifying the returned <code>WHP-STANDING-MARK-v1</code>. If <code>standing.outcome === "ESTABLISHED"</code> and <code>"EXECUTE"</code> is in <code>standing.permitted_operations</code>, the agent signs the <code>eip3009</code> transfer; otherwise, payment halts at the <code>Smallest True Move</code>.
-    </p>
+<div class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">Examination Is Not Endorsement</div>
+      <h2 class="sec-title">Payment buys an examination, never a favorable result.</h2>
+    </div>
+    <div class="paras">
+      <p>The price is the same regardless of the findings.</p>
+      <p>A completed examination must preserve its actual outcome, including uncertainty, limitations, and findings that do not support the requested action. Payment does not purchase approval, and disagreement does not rewrite the record.</p>
+      <p>The person or system relying on an examination remains responsible for deciding whether it is sufficient for its purpose and whether it has the authority to act.</p>
+    </div>
+  </div>
+</div>
 
-    <pre><code>import { authorizeX402TransactionWithStandingMark } from "@wheelerhubbell/decision-integrity-canonical";
+<section id="unilateral-integrity">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">Unilateral Integrity</div>
+      <h2 class="sec-title">Integrity does not depend on agreement.</h2>
+    </div>
+    <div class="paras">
+      <p>Unilateral Integrity is the discipline of maintaining the integrity of one&rsquo;s own reasoning and conduct without making that integrity dependent on another party&rsquo;s agreement.</p>
+      <p>It is not a claim to unilateral truth or immunity from correction. It requires the capacity to distinguish what is known from what is believed, preserve the limits of one&rsquo;s authority, and remain answerable to evidence.</p>
+      <p>A receiver&rsquo;s acceptance or rejection of a record is a separate event. It does not rewrite the examination. Corrections, new evidence, and later assessments must remain distinguishable from the earlier record.</p>
+    </div>
+  </div>
+</section>
 
-// Pre-settlement epistemological gate before signing any x402 USDC payment:
-const guard = authorizeX402TransactionWithStandingMark({
-  buyerAgent: "agent:buyer:treasury-01",
-  sellerAgent: "agent:seller:compute-provider-09",
-  payTo: "0x1050eddd8282623b0c263ed6bdbd42370bbc28d3",
-  amountUnits: "1000000", // 1.00 USDC on Base (eip155:8453)
-  resourceUrl: "https://compute.example.com/v1/jobs/991",
-  claim: "Settle 1.00 USDC on Base for verified completion of job 991 under signed SLA.",
-  provenance: {
-    source: "urn:sla:job-991-completion-receipt",
-    authority: "urn:warrant:buyer-treasury-execution-grant"
-  },
-  qualifiers: ["SLA latency &lt;= 50ms verified", "US-only region verified"]
-});
+<section id="access">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">Access</div>
+      <h2 class="sec-title">One examination. One published price.</h2>
+    </div>
+    <div class="paras" style="margin-bottom:36px">
+      <p>The Standing Mark Service is a programmatic service for agents, developers, and systems capable of making authenticated API requests.</p>
+    </div>
+    <table class="terms">
+      <tr><th>Item</th><th>Details</th></tr>
+      <tr><td>Evaluation endpoint</td><td><code>POST https://api.wheelerhubbellpublishing.com/v1/evaluate</code></td></tr>
+      <tr><td>Price</td><td>1 USDC per examination</td></tr>
+      <tr><td>Payment protocol</td><td>x402 v2</td></tr>
+      <tr><td>Network</td><td>Base Mainnet</td></tr>
+      <tr><td>Network identifier</td><td><code>eip155:8453</code></td></tr>
+    </table>
+    <h3 class="sub-title" style="margin-top:0">How it works</h3>
+    <div class="steps">
+      <div class="step"><div class="num">01</div><p>Submit the material and identify the question or proposed action to be examined.</p></div>
+      <div class="step"><div class="num">02</div><p>Pay through a compatible client using the service&rsquo;s published x402 payment requirements.</p></div>
+      <div class="step"><div class="num">03</div><p>Receive the examination and its signed assessment record through the supported result interface.</p></div>
+    </div>
+    <div class="paras" style="margin-top:40px">
+      <p>There is no browser-based submission form or credit-card checkout. Human users can access the service through a compatible API client and wallet; it is not a manual document-review desk.</p>
+    </div>
+    <div class="linkrow"><a href="/openapi.json">API Access</a><span>&middot;</span><a href="/spec">Technical Specification</a></div>
+    <h3 class="sub-title">Payment, delivery, and recovery</h3>
+    <div class="paras">
+      <p>A payment purchases one evaluation. Recovering an existing result must use the same purchase identity and must not create a second payment.</p>
+      <p>Disagreement with a completed examination is not a delivery failure and does not create a refund entitlement.</p>
+    </div>
+  </div>
+</section>
 
-if (!guard.settlementAuthorized) {
-  throw new Error(`Halted at ${guard.smallestTrueMove}: ${guard.nextRequiredWarrant}`);
-}</code></pre>
+<section id="your-material">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">Your Material</div>
+      <h2 class="sec-title">Review the data terms before submitting sensitive information.</h2>
+    </div>
+    <div class="paras">
+      <p>Submissions are processed by an automated Large Language Model.</p>
+      <p>Before sending confidential, personal, or otherwise sensitive material, review the Data Handling Policy for the actual model provider, processing arrangements, storage, retention, deletion, and any use of submitted material for model training.</p>
+    </div>
+    <div class="linkrow"><span class="nolink">Data Handling Policy</span><span>&middot;</span><span class="nolink">Service Terms</span></div>
+  </div>
+</section>
 
-    <h2 id="specification">Inspect the Canonical Specification &amp; Agent Indexes</h2>
-    <div class="grid">
-      <div class="card">
-        <span class="tag">Single Evaluation Door</span>
-        <h3><code>POST /v1/evaluate</code></h3>
-        <p>OpenAPI 3.1.0 specification and live wire contract (<code>GET /v1/contract</code>) for the single epistemological evaluation doorway.</p>
-      </div>
-      <div class="card">
-        <span class="tag">Agent Discovery &amp; MCP</span>
-        <h3><code>/llms.txt</code> &amp; <code>/mcp</code></h3>
-        <p>Streamable HTTP MCP server exposing <code>whp_evaluate</code> and <code>whp_authorize_x402_transaction</code>, plus <code>/.well-known/whp-standing.json</code>.</p>
-      </div>
-      <div class="card">
-        <span class="tag">Constitutional Text</span>
-        <h3><em>The Continuous Work</em> (v7)</h3>
-        <p>Verbatim 153,526-byte canonical manuscript (SHA-256 <code>bd85f51f...25c21</code>) governing the LLM inside the door.</p>
+<section id="scope">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:28px">
+      <div class="label" style="margin-bottom:0">Scope and Limits</div>
+    </div>
+    <div class="paras">
+      <p>The service examines the material you supply. It does not automatically verify external facts, authenticate every source, or establish that evidence outside the submission is complete.</p>
+      <p>An examination does not replace relevant legal, financial, medical, or other specialist advice.</p>
+      <p>The result is an assessment of the submitted record&mdash;not a guarantee of truth, a certification of every source, or permission to act beyond the requesting system&rsquo;s authority.</p>
+    </div>
+  </div>
+</section>
+
+<section id="demonstrations">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">Demonstrations</div>
+      <h2 class="sec-title">An illustration is not a production record.</h2>
+    </div>
+    <div class="paras">
+      <p>Public-record illustrations explain the distinctions the protocol is designed to examine. They are not customer results or production-issued examinations.</p>
+      <p>A production example must be identified separately and make its submission, issued assessment, and signature verification available for inspection.</p>
+      <p>A demonstration does not substitute for a signed production record.</p>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">About</div>
+      <h2 class="sec-title">The work behind the service</h2>
+    </div>
+    <div class="paras">
+      <p><i>Decision Integrity: The Continuous Work</i>, Version 7, is the governing text for the service&rsquo;s declared examination method.</p>
+      <p>The work, protocol, service, and record serve distinct purposes:</p>
+    </div>
+    <ul class="dims">
+      <li><b>The work</b> establishes the intellectual framework.</li>
+      <li><b>The protocol</b> defines the examination discipline.</li>
+      <li><b>The service</b> provides a programmatic evaluation.</li>
+      <li><b>The signed record</b> preserves the issued assessment; a positive Standing Mark identifies a finding that satisfies the applicable criteria.</li>
+    </ul>
+    <div class="paras">
+      <p>Wheeler Hubbell is the author of <i>Decision Integrity: The Continuous Work</i> and the creator of the Decision Integrity Protocol.</p>
+      <p>Published by Wheeler Hubbell Publishing, Inc., New York.</p>
+    </div>
+    <div class="linkrow"><span class="nolink">Read the Governing Work</span><span>&middot;</span><a href="/spec">Technical Specification</a><span>&middot;</span><span class="nolink">About</span></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="fbrand">
+      <img src="assets/seal-light-art.png" alt="">
+      <div>
+        <div class="fname">Wheeler Hubbell Publishing, Inc. &middot; New York</div>
+        <div class="fsub">Decision Integrity Protocol</div>
       </div>
     </div>
-  </main>
-
-  <footer>
-    <p><strong>Wheeler Hubbell Publishing, Inc.</strong> · Independent intellectual press · Home of the Decision Integrity Protocol, the Sovereign Epistemological Evaluator, and the Standing Mark Service. New York · Established MMXXVI.</p>
-    <p>Base USDC Settlement (<code>x402-v2</code> on <code>eip155:8453</code>): <code>whpublishing.base.eth</code> · <code>0x1050eddd8282623b0c263ed6bdbd42370bbc28d3</code></p>
-  </footer>
+    <nav>
+      <a href="/openapi.json">API</a>
+      <a href="/protocol.html">Protocol</a>
+      <a href="/spec">Specification</a>
+      <span class="nolink">Data Handling</span>
+      <span class="nolink">Service Terms</span>
+      <a href="mailto:desk@wheelerhubbellpublishing.com">Contact</a>
+    </nav>
+    <div class="copy">&copy; 2026 Wheeler Hubbell Publishing, Inc.</div>
+  </div>
+</footer>
 </body>
 </html>
