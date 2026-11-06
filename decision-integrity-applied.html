@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decision Integrity Applied — Wheeler Hubbell Publishing</title>
+<meta name="description" content="One discipline, applied across domains: public-record examinations led by the Deepwater Horizon negative-pressure-test decision, with Challenger, HealthCare.gov, the Taylor Swift catalog, and Mata v. Avianca.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600&family=Spectral+SC:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#faf8f3;--paper-2:#f4f0e8;--ink:#1c1815;--ink-2:#4c453d;--ink-3:#8a8177;--ox:#6e1f28;--ox-deep:#571821;--line:#e2dccf;--line-2:#cfc7b8;--mono:ui-monospace,SFMono-Regular,Menlo,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--paper);color:var(--ink);font-family:'Spectral',Georgia,serif;font-size:17px;line-height:1.65}
+.wrap{max-width:1180px;margin:0 auto;padding:0 48px}
+.label{font-family:Inter,Arial,sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ox)}
+a{color:var(--ox-deep)}
+header.masthead{border-bottom:2px solid var(--ink)}
+.masthead-in{display:flex;align-items:center;justify-content:space-between;padding:20px 0 18px}
+.brand{display:flex;align-items:center;gap:16px}
+.brand img{width:46px;height:46px;}
+.brand .name{font-family:'Spectral SC',serif;font-size:19px;letter-spacing:.04em;line-height:1.1}
+.brand .sub{font-family:Inter;font-size:9.5px;font-weight:600;letter-spacing:.26em;color:var(--ink-3);text-transform:uppercase;margin-top:4px}
+nav.top{display:flex;gap:30px;font-family:Inter;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+nav.top a{text-decoration:none;color:var(--ink-2);padding-bottom:3px;border-bottom:1px solid transparent}
+nav.top a:hover{color:var(--ox);border-color:var(--ox)}
+.hero{padding:88px 0 80px;border-bottom:1px solid var(--line)}
+.hero .label{margin-bottom:26px}
+h1.display{font-weight:500;font-size:58px;line-height:1.08;letter-spacing:-.012em;max-width:24ch;margin-bottom:30px}
+h1.display em{font-style:italic;color:var(--ox)}
+.hero .lede{font-size:22px;font-weight:600;line-height:1.5;max-width:52ch;margin-bottom:22px}
+.hero .body{max-width:64ch;color:var(--ink-2);margin-bottom:34px}
+.hero .body p{margin-bottom:16px}
+.hero .body b{color:var(--ink)}
+.price-strip{font-family:Inter;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);border-top:2px solid var(--ox);display:inline-block;padding-top:14px;margin-bottom:36px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap}
+.btn{font-family:Inter;font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:15px 26px;border:1px solid var(--ink);color:var(--ink);display:inline-block}
+.btn.primary{background:var(--ox);border-color:var(--ox);color:#fbf9f5}
+.btn:hover{border-color:var(--ox);color:var(--ox)}
+.btn.primary:hover{background:var(--ox-deep);color:#fbf9f5}
+section{padding:88px 0;border-bottom:1px solid var(--line)}
+.sec-head{margin-bottom:52px;max-width:62ch}
+.sec-head .label{margin-bottom:16px}
+h2.sec-title{font-weight:500;font-size:38px;line-height:1.15;letter-spacing:-.01em}
+h3.sub-title{font-weight:600;font-size:24px;line-height:1.25;margin:56px 0 24px}
+.paras{max-width:66ch;color:var(--ink-2)}
+.paras p{margin-bottom:16px}
+.paras p b, .paras b{color:var(--ink)}
+.questions{list-style:none;counter-reset:q;max-width:66ch;margin:28px 0}
+.questions li{counter-increment:q;position:relative;padding:14px 0 14px 58px;border-bottom:1px solid var(--line);color:var(--ink);font-size:16.5px}
+.questions li:before{content:counter(q,decimal-leading-zero);position:absolute;left:0;top:14px;font-family:'Spectral SC',serif;font-size:14px;color:var(--ox)}
+.dims{list-style:none;max-width:70ch;margin:8px 0 28px}
+.dims li{padding:16px 0 16px 26px;border-bottom:1px solid var(--line);color:var(--ink-2);font-size:15.5px;position:relative}
+.dims li:before{content:"";position:absolute;left:0;top:25px;width:10px;height:1px;background:var(--ox)}
+.dims li b{color:var(--ink)}
+.failgrid{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.fail{padding:40px 44px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fail .num{font-family:'Spectral SC',serif;color:var(--ox);font-size:14px}
+.fail h4{font-size:21px;font-weight:600;margin:8px 0 6px}
+.fail .gist{font-size:16px;font-style:italic;margin-bottom:10px}
+.fail p{font-size:14.5px;color:var(--ink-2);line-height:1.6}
+.failclose{margin-top:40px;max-width:64ch;color:var(--ink-2)}
+.props2{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:8px}
+.props2 h5{font-family:Inter;font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ox);margin-bottom:14px}
+.props2 p, .props2 li{font-size:15.5px;color:var(--ink-2);line-height:1.65}
+.props2 ul{list-style:none}
+.props2 li{padding:9px 0 9px 24px;border-bottom:1px solid var(--line);position:relative}
+.props2 li:before{content:"";position:absolute;left:0;top:18px;width:9px;height:1px;background:var(--ox)}
+.spec-link{margin-top:36px}
+table.terms{width:100%;border-collapse:collapse;margin:8px 0 40px;font-size:15.5px}
+table.terms th{font-family:Inter;font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);text-align:left;padding:10px 16px 10px 0;border-bottom:2px solid var(--ink)}
+table.terms td{padding:14px 16px 14px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-2)}
+table.terms td:first-child{color:var(--ink);font-weight:600;white-space:nowrap}
+code, .mono{font-family:var(--mono);font-size:.86em;background:var(--paper-2);padding:2px 6px;border:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:56px;align-items:start;margin-top:8px}
+.step .num{font-family:'Spectral SC',serif;font-size:15px;color:var(--ox);border-top:2px solid var(--ox);padding-top:14px;margin-bottom:18px;display:inline-block}
+.step p{font-size:15.5px;color:var(--ink-2);line-height:1.6}
+.linkrow{font-family:Inter;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-top:32px}
+.linkrow a{color:var(--ox);text-decoration:none;border-bottom:1px solid var(--ox);padding-bottom:2px}
+.linkrow span{color:var(--ink-3);margin:0 10px}
+.linkrow .nolink{color:var(--ink-3)}
+.band{background:var(--ink);color:var(--paper);padding:88px 0}
+.band .label{color:#c9a0a6}
+.band h2.sec-title{color:var(--paper)}
+.band .paras{color:#cfc7bb}
+.band .paras b{color:var(--paper)}
+footer{background:var(--ink);color:#b9b0a2;padding:64px 0 72px;border-top:1px solid var(--line-2)}
+.foot-in{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+footer .fbrand{display:flex;align-items:center;gap:16px}
+footer img{width:52px;height:52px;}
+footer .fname{font-family:'Spectral SC',serif;color:var(--paper);font-size:17px}
+footer .fsub{font-family:Inter;font-size:9.5px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#8a8177;margin-top:3px}
+footer nav{display:flex;gap:26px;font-family:Inter;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;flex-wrap:wrap}
+footer nav a{color:#b9b0a2;text-decoration:none}
+footer nav a:hover{color:var(--paper)}
+footer nav .nolink{color:#6d6759}
+footer .copy{font-family:Inter;font-size:10.5px;letter-spacing:.08em;color:#8a8177}
+@media (max-width:820px){
+.wrap{padding:0 26px}
+nav.top{display:none}
+.brand .name{font-size:15px;white-space:nowrap}
+.brand .sub{font-size:8.5px;letter-spacing:.18em}
+.hero{padding:64px 0}
+h1.display{font-size:36px}
+.hero .lede{font-size:19px}
+section{padding:64px 0}
+h2.sec-title{font-size:28px}
+.props2{grid-template-columns:1fr;gap:36px}
+.steps{grid-template-columns:1fr;gap:36px}
+.failgrid{grid-template-columns:1fr}
+.fail{padding:32px 28px}
+table.terms td:first-child{white-space:normal}
+.foot-in{flex-direction:column;align-items:flex-start}
+}
+
+.cap{font-family:Inter,Arial,sans-serif;font-size:12.5px;letter-spacing:.04em;color:var(--ink-3);margin:6px 0 26px}
+.key{font-weight:600;color:var(--ink)}
+.exam-head{font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:600;letter-spacing:.18em;color:var(--ink);margin:40px 0 14px}
+section.case .paras p{margin-bottom:18px}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <div class="brand">
+      <img src="assets/seal-dark-art.png" alt="Wheeler Hubbell Publishing dandelion seal">
+      <div>
+        <div class="name">Wheeler Hubbell Publishing, Inc.</div>
+        <div class="sub">An Independent Intellectual Press &middot; New York</div>
+      </div>
+    </div>
+    <nav class="top">
+      <a href="/">Home</a>
+      <a href="/#protocol">Protocol</a>
+      <a href="/#standing-mark">Standing Mark</a>
+      <a href="/#access">Access</a>
+      <a href="/spec">Specification</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="label">Decision Integrity Applied</div>
+    <h1 class="display">One discipline, applied across <em>domains.</em></h1>
+    <div class="body">
+      <p>One discipline, applied across domains. Each application takes an existing record and asks what it establishes, what it does not establish, and what the evidence warrants.</p>
+      <p>Each entry is an application of <i>Decision Integrity: The Continuous Work</i>, Version 7, to a public record. These are existing public-record examinations and authored case applications, not production-issued service examinations. The Deepwater Horizon examination itself states that no Standing Mark or signed record is claimed.</p>
+    </div>
+  </div>
+</section>
+
+<section class="case">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">Industrial safety</div>
+      <h2 class="sec-title">Deepwater Horizon</h2>
+    </div>
+    <div class="paras">
+      <p>The decision: whether to accept the negative pressure test on the Macondo well at about 7:45 p.m. on April 20, 2010, and resume displacing the riser mud, removing the final barrier over a live reservoir. The record was assembled from five public post-accident investigations, with the excerpts stopping at the decision point. The examination, verbatim:</p>
+      <p>EXAMINATION: THE NEGATIVE PRESSURE TEST DECISION, MACONDO WELL, APRIL 20, 2010, ABOUT 7:45 P.M.</p>
+      <h4 class="exam-head">SCOPE AND OPERATION</h4>
+      <p>A decision-bearing examination of one historical decision, reasoned only from the record assembled in the examination packet, with the packet's evidence-type tags honored. The outcome is public knowledge and blindness is not a criterion here. The sources are retrospective: later reports are used as sources about earlier conditions, which is what the evidence-type tags track. What is not used as evidence is the later outcome itself or anything from after the decision point. Quotations are verbatim from the packet; everything else is labeled as derivation, inference, or unknown. This is an application of Decision Integrity: The Continuous Work (v7) to the record. No WHP Standing Mark or signed record is claimed or issued by this examination, and it makes no legal, engineering, or liability finding.</p>
+      <h4 class="exam-head">1. THE ACTUAL DECISION</h4>
+      <p>At about 7:45 p.m. the decision object was: accept the negative pressure test as demonstrating that the bottomhole cement had sealed the pay zone, and proceed to displace the remaining riser mud to seawater; or stop work. The action side removes the remaining hydrostatic barrier over a live reservoir.</p>
+      <h4 class="exam-head">2. WHAT THE EVIDENCE ESTABLISHES</h4>
+      <ul class="dims"><li>Among the day's pressure tests, only the negative pressure test bears on the bottomhole cement [BACKGROUND, A ch. 4.6]. The two seal assembly tests and the positive pressure tests passed [DATA], and by that same sourced background they do not check the cement in the shoe track or the annulus. Other engineering information existed, for example the 5:45 a.m. report that the cement job "went well" [DOC per E]; the packet does not develop its standing as integrity evidence, and this examination does not promote it. Scoped derivation: within the test program of April 20, the negative pressure test was the only observation that could speak to the final barrier.</li><li>The drill-pipe readings match the record's own failure indicators on their face [DATA against the BACKGROUND definition]: opening the kill-line valve, between two lines that "both led to the same place," produced a drill-pipe pressure jump and a kill-line drop instead of equalization; pressure repeatedly rebuilt after bleed-offs, 260 psi back to 1,262 psi, later 0 back to 773 psi, later a rise to 1,400 psi over 30 to 40 minutes. The packet's sourced definition of a failed test is "increasing internal pressure while the well is shut in or flow from the well while it is open." An indicator match requires resolution; it does not by itself prove the well was inflowing or the cement unsealed, and this examination does not so conclude.</li><li>The record does not show that anyone had calculated the expected drill-pipe pressure or the expected bleed returns [STATUS: "It does not appear that anyone ... had calculated"]. Derivation, bounded: without expectation values, the bled volumes could not be quantitatively classified as expected or anomalous. The qualitative failure criterion did not depend on those calculations and still applied.</li><li>The kill-line phase produced a bounded passing observation: after less than one barrel bled, 30 minutes with no flow and no pressure buildup [DATA].</li><li>At the end of that monitoring, 1,400 psi stood on the shut-in drill pipe and "had never disappeared" [DATA].</li><li>Before the test, the record held known risks bearing on how much the one cement-bearing test had to show: 6 centralizers run against a modeled recommendation of 21 [COURT FINDING per D; April 16 email per C]; no cement evaluation log run [COURT FINDING per D]; lost-circulation history and concern about further losses [DATA]; 454 barrels of dense leftover lost-circulation material used as spacer, with the contractor's warning it could congeal in small restrictions [DATA/DOC]. None of this proves the cement failed. All of it bears on how much weight the test's outcome had to carry.</li><li>During the test, spacer leaked down past the annular preventer, visibly [DATA/WITNESS]; the crew tightened the annular and topped off the riser, and the leaked spacer was not circulated back above the BOP before continuing [DATA]. Established; its bearing on the later readings is unresolved.</li><li>The permit modification committed BP to conduct the test on the kill line [DOC], and the kill-line test was run for that stated reason [WITNESS].</li><li>The acceptance itself, that "everyone apparently accepted" the kill-line test as establishing the cement seal, is a WITNESS-based account with the contested standing named in section 8.</li></ul>
+      <h4 class="exam-head">3. WHAT THE EVIDENCE DOES NOT ESTABLISH</h4>
+      <ul class="dims"><li>Taken as a whole, it does not establish that the cement sealed. The candidate passing observation, 30 quiet minutes on the kill line, is bounded and real; it coexisted with an unexplained pressure indication on a second line connected to the same well, and the packet as a whole does not add up to an affirmative demonstration of a sealed bottomhole assembly.</li><li>It does not establish that the cement failed, or that the well was inflowing. The indications require resolution; their cause is unknown on this record.</li><li>It does not establish what the 1,400 psi was. Instrument fault, trapped pressure, thermal effect, congealed spacer, annular transmission, reservoir inflow: on this record each is a hypothesis, carried as unknown.</li><li>It does not establish why two lines to the same wellbore disagreed, at 4:55 p.m. and again at 7:45 p.m.</li><li>It does not establish the bleed volumes; witness ranges conflict (23 to 25 barrels against accounts of more or less; 3 to 15 barrels on the kill line) [WITNESS, contested].</li></ul>
+      <h4 class="exam-head">4. THE BLADDER EFFECT ON ITS OWN TERMS</h4>
+      <p>What it is on the record: an oral explanation attributed to toolpusher Jason Anderson, known through BP post-incident interview notes and Lambert's testimony [WITNESS], that heavier riser mud pushing on the closed annular preventer transmits pressure into the wellbore, "which in turn you would expect to see up the drill pipe." Anderson told the well site leaders, "Bob and Don, this happens all the time." Revette apparently agreed he had seen the phenomenon before.</p>
+      <p>What it accounts for: in form, it is an attempt to reclassify the drill-pipe reading from well behavior to measurement or configuration artifact. If such a mechanism were real and quantitatively sufficient, a standing pressure could register at the drill pipe without reservoir communication.</p>
+      <p>What the supplied account does not cover (derivation confined to what the record contains, with no physical model offered by this examination):</p>
+      <ul class="dims"><li>The time pattern. The recorded account addresses the presence of a standing pressure; nothing in it addresses why the pressure built over 30 to 40 minutes.</li><li>The differential. Nothing in it addresses why the effect would register on one line and not the other, when both led to the same place.</li><li>The volumes. It offers no account of what was bled, and the packet supplies no expected values for comparison.</li><li>Its own sufficiency. No calculation, test, measurement, or documented prior instance accompanies it in this record.</li></ul>
+      <p>Its standing: at the decision point it was a familiarity claim made orally. Confidence, repetition, and experienced presence do not by themselves supply decision-bearing standing; "happens all the time" and "seen it before" are recollection asserted, not a retrievable record. The packet removed later technical verdicts on the bladder effect, so this examination neither adopts nor rejects the mechanism.</p>
+      <p>The bounded structural point (derivation): if evidence had established that the drill-pipe pressure was an artifact and the kill-line test valid, the conflict could have been resolved without both lines reading clean. The record contains no such establishing evidence. So the indication remained live and unresolved at the decision point, and the conflict between the explanation and the gauge was preserved rather than resolved.</p>
+      <h4 class="exam-head">5. THE WARRANT QUESTION AT THE BOUNDARY</h4>
+      <p>The action requested, resuming displacement, removes the remaining barrier. What that action asked of the record was a test satisfying its own passing condition, or an inspectable resolution of every open indication. The record holds neither.</p>
+      <p>The inferential moves the acceptance would require, reconstructed by this examination and not attributed to any person as explicit assertions, each without independent standing in the record:</p>
+      <ul class="dims"><li>Kill-line quiet implies the well is sealed. That relation depends on the drill-pipe pressure being artifact, which was exactly the unresolved element.</li><li>Familiarity implies mechanism. "Happens all the time" was received as establishing both the mechanism's reality and its sufficiency for 1,400 psi; the record establishes neither.</li><li>Permit compliance implies test adequacy. The kill-line location satisfied the permit [DOC]; that is a compliance fact, not an integrity finding. The permit does not say a quiet kill line beside a pressurized drill pipe is a pass.</li></ul>
+      <p>The governing text's Challenger worked instance names the same transition shape: where an affirmative showing is required, the burden cannot be placed on proving failure. That is a structural analogy only; no aerospace fact is asked to validate anything about a well.</p>
+      <h4 class="exam-head">6. WHAT EACH COURSE REQUIRED</h4>
+      <p>Proceeding, the course taken, required a warrant resolving the conflicting indications. The investigative steps visible in the record were: producing the missing expectation calculations (expected drill-pipe pressure, expected bleed returns); obtaining a tested, quantitative account of the 1,400 psi against this well's actual configuration, including the riser mud weight, the closed annular, and the spacer that had leaked below the BOP and was never circulated out; or re-establishing an unambiguous test state by investigating the drill-pipe side, verifying gauges and lines, and observing the passing condition on the line that had shown pressure. These were investigative steps, not authorizations in themselves: their results, if obtained, could have supplied the warrant. The record shows none of the results, so proceeding had no inspectable warrant in this record.</p>
+      <p>Stopping required no new authority: witnesses agree the well site leader owns the pass/fail decision and the rig crew holds stop-work authority [BACKGROUND, roles]. Stopping on this record means: do not resume displacement of the riser, treat the test as unresolved, and obtain a qualified well-control assessment of the configuration the well was already in, since the displacement had partly proceeded and this examination cannot assess that configuration's safety. Stopping is not a verdict that the cement failed; the record does not establish failure. It is the state the record supports for a test whose indications conflict and remain unresolved.</p>
+      <h4 class="exam-head">7. THE SMALLEST TRUE MOVE</h4>
+      <p>The strongest conclusion this record fully entitles: at 7:45 p.m. the negative pressure test was unresolved, with conflicting indications. The drill-pipe readings matched the record's own failure indicators and were never resolved. The kill-line phase produced a bounded passing observation beside an unexplained standing pressure. The explanation accepted for that pressure had the standing of an unverified familiarity claim. The record does not show expectation calculations. On that record, the record does not support proceeding to remove the remaining barrier. The smallest true move was to stop further displacement, keep the test unresolved, obtain qualified well-control assessment, and pursue the named missing objects:</p>
+      <ol class="questions"><li>the expected-pressure and expected-returns calculations;</li><li>a tested, quantitative account of the 1,400 psi;</li><li>resolution of why two lines to the same wellbore disagreed;</li><li>the state and location of the spacer that had leaked below the BOP.</li></ol>
+      <p>Each is a specific, namable object. Whether each was obtainable that evening is itself not established by the record; what the record supports is naming them and not proceeding without resolution, not a guarantee that they could have been resolved in place.</p>
+      <h4 class="exam-head">8. THE CONFLICTING ACCOUNTS, KEPT DISTINCT</h4>
+      <p>The drill-shack discussion and the acceptance are known through BP internal investigation notes of Kaluza and Vidrine plus Lambert's testimony; Transocean challenged the BP witnesses' accounts; the three BP-side accounts are consistent with each other; Ezell stated he left before the drill-pipe pressure reached 1,400 psi; both well site leaders later declined to speak to government investigators, one citing a medical condition and one invoking the Fifth Amendment [STATUS, A ch. 4.6]. This examination uses those accounts only for what the team accepted and why. The reported times, pressures, and volume ranges come from the investigation's presentation of rig data, which is itself a retrospective reporting of records, and they answer a different question than the witness accounts: what the instruments showed, versus what was said and accepted. The two are kept distinct, and where they conflict the conflict is preserved rather than averaged.</p>
+      <h4 class="exam-head">9. CORRECTION ROUTE</h4>
+      <p>This conclusion is conditional on the packet record and would change by visible lineage, not erasure. If the pre-decision expectation calculations were produced and showed the readings within expected bounds; if a documented, quantitatively sufficient mechanism for the 1,400 psi were authenticated; or if record evidence showed the drill-pipe instrumentation was verified faulty at the time, then the unresolved finding would narrow and the warrant analysis would be re-evaluated. In the other direction, the finding depends on nothing that happened after 7:45 p.m., and no later event is used to strengthen it.</p>
+      <h4 class="exam-head">10. WHAT THIS EXAMINATION DOES NOT CLAIM</h4>
+      <p>It does not claim the cement failed, that the well was inflowing at 7:45 p.m., or that any person knew what would happen. It does not claim the disaster was preventable by this discipline, or that a written gate guarantees an institution obeys it. It makes no legal, engineering, or liability finding. It claims the narrower, record-bound result: at the decision point, the only test that bore on the final barrier had produced conflicting indications that were never resolved; the explanation accepted in their place was unverified; and the record, as it stood, does not support the positive acceptance of the test that the team apparently made. The missing objects were namable at the time, without hindsight.</p>
+      <h4 class="exam-head">SOURCES (as assembled in the packet)</h4>
+      <p>A. Chief Counsel's Report, "Macondo: The Gulf Oil Disaster," National Commission on the BP Deepwater Horizon Oil Spill and Offshore Drilling, 2011: https://www.dco.uscg.mil/Portals/9/OCSNCOE/Casualty-Information/DWH-Macondo/OSC/Macondo-Chief-Counsel-Report-2011.pdf</p>
+      <p>B. BP, "Deepwater Horizon Accident Investigation Report," September 8, 2010: https://www.sec.gov/Archives/edgar/data/313807/000119312510216268/dex993.htm</p>
+      <p>C. BP internal email chain of April 16, 2010, E.D. La. MDL 2179 Exhibit 7: https://storage.courtlistener.com/recap/gov.uscourts.laed.142011/gov.uscourts.laed.142011.7293.8.pdf</p>
+      <p>D. Findings of Fact, In re: Oil Spill by the Oil Rig "Deepwater Horizon," E.D. La. 2014: https://www.courtlistener.com/opinion/7306588/united-states-v-bp-exploration-production-inc/</p>
+      <p>E. National Commission, "Deep Water: The Gulf Oil Disaster and the Future of Offshore Drilling," 2011: https://iadc.org/archived-2014-osc-report/documents/DEEPWATER_ReporttothePresident_FINAL.pdf</p>
+    </div>
+  </div>
+</section>
+<section class="case">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">Aerospace</div>
+      <h2 class="sec-title">Challenger</h2>
+    </div>
+    <div class="paras">
+      <p class="cap">Not proven unsafe is not established safe - from The Continuous Work, v7.</p>
+      <p>On January 28, 1986, the record available for the launch of Challenger contained serious warning evidence: erosion, soot, blow-by, and heat damage on the solid rocket motor field joint across earlier flights, with material damage on the coldest relevant flight, at a calculated joint temperature of 53°F. The expected launch temperature was about 26°F, below the flight database and the joint’s qualification range. What the record did not contain was a validated demonstration that the joint would seal safely at the expected temperature.</p>
+      <p>The decision’s burden had been placed on the wrong side. Engineers recommending against launch were treated as though they had to prove failure. Readiness required the opposite: an affirmative showing of safe operation under the expected condition. When the contractor’s recommendation changed from no launch to launch, no new test, analysis, or flight evidence entered the record with it. The unknown remained unknown. It was merely asked to do the work of safety evidence.</p>
+      <p>This instance is drawn from the author’s proof dossier, which confines itself to the prelaunch record reconstructed from the congressional investigation and excludes the accident itself. The claim is bounded: the prelaunch record could not support an affirmative readiness finding. It is not a claim that any participant knew what would happen, nor that a written gate guarantees an institution will obey it.</p>
+      <p class="cap">Source: [15].</p>
+    </div>
+  </div>
+</section>
+<section class="case">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">Public technology</div>
+      <h2 class="sec-title">HealthCare.gov</h2>
+    </div>
+    <div class="paras">
+      <p class="cap">The date established urgency. It did not establish readiness. - from The Continuous Work, v7.</p>
+      <p>HealthCare.gov launched at full public scale on October 1, 2013. The contemporaneous record, reconstructed from the Inspector General and Government Accountability Office reviews, shows requirements still changing without complete approval and traceability, testing without defined pass criteria, repeated scope reductions, a late request to double computing capacity, an enterprise identity system that suffered outages three days before launch, and no completed end-to-end demonstration of the actual consumer journey from account creation through enrollment. An interim Authority to Operate signed on September 27 addressed a defined security authorization. It did not establish functional readiness.</p>
+      <p>A mandatory date established urgency, not readiness. Component progress did not establish integrated transaction standing. A bounded authorization did not supply general launch assurance. Each object was allowed to exercise a force its record had not earned.</p>
+      <p>What the record establishes is narrower and sufficient: the evidence required to authorize full-scale exposure was absent, and it can be named as absent.</p>
+      <p class="cap">Sources: [14], [16].</p>
+    </div>
+  </div>
+</section>
+<section class="case">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">Rights and ownership</div>
+      <h2 class="sec-title">the Taylor Swift catalog</h2>
+    </div>
+    <div class="paras">
+      <p class="cap">Ownership is not control - from The Continuous Work, v7.</p>
+      <p>In 2019 the master recordings of Taylor Swift’s first six albums were sold as part of the acquisition of her former label, and in November 2020 they were sold again to an investment firm for a reported price above $300 million. The musical compositions and the sound recordings remained distinct copyright objects. Swift, as a songwriter, publicly refused synchronization uses of the original masters and re-recorded the albums, directing substantial consumer and licensing activity toward recordings she controlled. In May 2025 she repurchased the original catalog on undisclosed terms.</p>
+      <p>Ownership of a master is a defined scope. It is not exclusive control over every commercial use, and it does not extinguish a creator’s capacity to produce competing recordings.</p>
+      <p>The author’s portfolio is explicit about the evidence ceiling: the public record does not establish the acquirer’s valuation model, diligence conclusions, or returns, and the case is not presented as an investment failure. It is a study of separated rights.</p>
+      <p class="cap">Sources: [14], [19].</p>
+    </div>
+  </div>
+</section>
+<section class="case">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">Law</div>
+      <h2 class="sec-title">Mata v. Avianca</h2>
+    </div>
+    <div class="paras">
+      <p class="cap">Plausibility presented as retrieved authority - from The Continuous Work, v7. The full epistemic autopsy and the benchmark corpus are already public.</p>
+      <p>In Mata v. Avianca (S.D.N.Y. 2023), a court filing cited judicial decisions that did not exist. A generative tool had produced case names, quotations, and citations. Signed under penalty of perjury, the filing gave that text the standing of legal authority without anyone retrieving or reading the purported sources. When the opposing party reported that the cases could not be located, and the court ordered them produced, the warnings did not suspend the affected propositions: purported excerpts were submitted without authenticated provenance, and the court later found subjective bad faith and imposed sanctions, including a joint penalty of $5,000.</p>
+      <p>Signature did not cure the missing source. Repetition did not create provenance. The first failure was fabrication. The governing failure was promotion, and then the failure of correction intake after explicit warnings.</p>
+      <p>The instance is confined to the public court record, including the sanctions opinion’s findings and chronology. It makes no claim about any participant’s private intent beyond that record.</p>
+      <p class="cap">Sources: [14], [18].</p>
+      <p><TextLink href="https://wheelerhubbellpublishing.com/packages/client/MATA_V_AVIANCA_AUTOPSY.md">Epistemic autopsy: Mata v. Avianca</TextLink></p>
+      <p><a href="https://wheelerhubbellpublishing.com/packages/client/MATA_V_AVIANCA_AUTOPSY.md">Epistemic autopsy: Mata v. Avianca</a></p>
+    </div>
+  </div>
+</section>
+<section class="case">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">Sources</div>
+      <h2 class="sec-title">Source key</h2>
+    </div>
+    <div class="paras">
+      <p class="cap">The book’s bibliography entries for the markers cited above, verbatim. Entries without links are the author’s own dossiers; no public link is claimed for them.</p>
+      <p>[14] Hubbell, W. Forensic Structural Auditing & Decision Integrity: Executive Portfolio, Proof Architecture, and Advisory Proposal. Canonical working edition, Wheeler Hubbell Publishing, 17 August 2026. Source of the HealthCare.gov, Hubble, Taylor Swift catalog, and Mata v. Avianca worked instances. The controls proposed there are counterfactual interventions evaluated against the contemporaneous record, not claims of prevented loss.</p>
+      <p>[15] Hubbell, W. Before Launch: A Full Method Run on the STS-51-L Launch Decision. Public proof dossier, 18 July 2026, reconstructing the prelaunch record from U.S. House Committee on Science and Technology, Investigation of the Challenger Accident, H.R. Rep. No. 99-1016, 99th Cong., 2d Sess. (1986).</p>
+      <p>[16] U.S. Department of Health and Human Services, Office of Inspector General. HealthCare.gov: Case Study of CMS Management of the Federal Marketplace, OEI-06-14-00350 (February 2016); U.S. Government Accountability Office. Healthcare.gov: CMS Has Taken Steps to Address Problems, but Needs to Further Implement Systems Development Best Practices, GAO-15-238 (March 2015).</p>
+      <p>[18] Mata v. Avianca, Inc., No. 22-cv-1461 (PKC), Opinion and Order on Sanctions, ECF No. 54 (S.D.N.Y. June 22, 2023), reported at 678 F. Supp. 3d 443.</p>
+      <p>[19] Swift, T. “Read My Letter,” 30 May 2025, https://www.taylorswift.com/read-my-letter/; Reuters, “Taylor Swift says she has gained control of her music catalog,” 30 May 2025; Pitchfork, “Taylor Swift Responds to Scooter Braun Selling Her Masters, Confirms She’s Re-Recording Her First Albums,” 16 November 2020.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="fbrand">
+      <img src="assets/seal-light-art.png" alt="">
+      <div>
+        <div class="fname">Wheeler Hubbell Publishing, Inc. &middot; New York</div>
+        <div class="fsub">Decision Integrity Protocol</div>
+      </div>
+    </div>
+    <nav>
+      <a href="/openapi.json">API</a>
+      <a href="/protocol.html">Protocol</a>
+      <a href="/spec">Specification</a>
+      <span class="nolink">Data Handling</span>
+      <span class="nolink">Service Terms</span>
+      <a href="mailto:desk@wheelerhubbellpublishing.com">Contact</a>
+    </nav>
+    <div class="copy">&copy; 2026 Wheeler Hubbell Publishing, Inc.</div>
+  </div>
+</footer>
+</body>
+</html>

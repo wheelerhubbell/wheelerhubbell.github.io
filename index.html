@@ -213,6 +213,20 @@ table.terms td:first-child{white-space:normal}
   </div>
 </section>
 
+<section id="coherent-substitution">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">Coherent Substitution</div>
+      <h2 class="sec-title">Proposition integrity beyond answering the wrong question.</h2>
+    </div>
+    <div class="paras">
+      <p>&ldquo;A system can fail before its reasoning becomes wrong. It can replace the object it was asked to evaluate, reason coherently about the replacement, and present the result as though it answered the original.&rdquo;</p>
+      <p>A response may be logical, detailed, and sophisticated while still completely failing the assigned task. The defining error is not disagreement, factual inaccuracy, or weak reasoning. It is an unauthorized change in the proposition before evaluation begins, or during a chain of summaries, handoffs, and decisions, followed by an answer whose coherence conceals the change.</p>
+      <p><a href="/1-coherent-substitution.pdf">Read the paper: Coherent Substitution (PDF)</a></p>
+    </div>
+  </div>
+</section>
+
 <section id="standing-mark">
   <div class="wrap">
     <div class="sec-head">
@@ -350,6 +364,35 @@ table.terms td:first-child{white-space:normal}
       <p>Public-record illustrations explain the distinctions the protocol is designed to examine. They are not customer results or production-issued examinations.</p>
       <p>A production example must be identified separately and make its submission, issued assessment, and signature verification available for inspection.</p>
       <p>A demonstration does not substitute for a signed production record.</p>
+    </div>
+    <div class="paras" style="margin-top:32px">
+      <p><b>Decision Integrity Applied.</b> One discipline, applied across domains: an existing public-record examination of the negative-pressure-test decision on the Macondo well, with Challenger, HealthCare.gov, the Taylor Swift catalog, and Mata v. Avianca. Each is an examination or authored application on a public record, not a production-issued service record. <a href="/decision-integrity-applied.html">Read Decision Integrity Applied</a></p>
+    </div>
+  </div>
+</section>
+
+<section id="benchmark">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">The Benchmark</div>
+      <h2 class="sec-title">The Decision Integrity Score</h2>
+    </div>
+    <div class="paras">
+      <p><b>A benchmark for agent epistemic reliability.</b></p>
+      <p>The Decision Integrity Score (DIS) is an empirical, non-probabilistic metric for quantifying whether an autonomous agent or reasoning system preserves truth bounds under adversarial, incomplete, or substituted premises.</p>
+      <p>Unlike traditional LLM benchmarks that measure subjective plausibility, perplexity, or reasoning speed, DIS evaluates systems against the core invariant A(c) &le; P(c), where A(c) represents the scope of asserted authority in conclusion c, and P(c) represents the verified provenance of underlying evidence.</p>
+      <p>DIS = &sigma;<sub>1</sub> &times; &sigma;<sub>2</sub> &times; &sigma;<sub>3</sub> &times; &sigma;<sub>4</sub> &times; &sigma;<sub>5</sub> across five capabilities. Because decision integrity is fail-closed, a catastrophic failure in any single capability collapses the cumulative score to 0.0.</p>
+    </div>
+    <ul class="dims">
+      <li><b>I &middot; Question Fidelity</b> &middot; failure mode: Coherent Substitution</li>
+      <li><b>II &middot; Proposition Integrity</b> &middot; failure mode: Conflation</li>
+      <li><b>III &middot; Qualifier Protection</b> &middot; failure mode: Syllogistic Drift</li>
+      <li><b>IV &middot; Authority Mapping</b> &middot; failure mode: Epistemic Trespass</li>
+      <li><b>V &middot; Repair Protocol</b> &middot; failure mode: Counterfeit Repair</li>
+    </ul>
+    <div class="paras">
+      <p>DIS benchmark vectors are drawn from documented catastrophic hallucinations and coherent substitutions where syntactically perfect legal and algorithmic citations were fabricated under authority pressure. The published corpus is built on Mata v. Avianca (S.D.N.Y. 2023) and contains three labeled test cases: a substituted narrative, a fabricated citation, and a compliant response.</p>
+      <p>This is the benchmark specification and test corpus, first published October 9, 2026; no measured performance is claimed. Public files: <a href="/DIS_BENCHMARK.md">specification</a> &middot; <a href="/benchmarks/mata_dataset.json">test corpus</a> &middot; <a href="/benchmarks/dis_eval_harness.py">evaluation harness</a> &middot; <a href="/packages/client/MATA_V_AVIANCA_AUTOPSY.md">Mata v. Avianca epistemic autopsy</a>.</p>
     </div>
   </div>
 </section>
