@@ -171,7 +171,7 @@ table.terms td:first-child{white-space:normal}
 .ledger-row{display:grid;grid-template-columns:220px 1fr;padding:8px 0;border-bottom:1px solid #222;font-family:var(--mono);font-size:12px}
 .ledger-row .label-col{color:#888;text-transform:uppercase;letter-spacing:.08em}
 .ledger-row .val-col{color:#f6f4ef;word-break:break-all}
-.dossier-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+.dossier-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}.sig-valid-badge{display:none;background:#14331e;color:#5cd684;border:1px solid #287a41;font-family:Inter;font-size:11px;font-weight:700;letter-spacing:.14em;padding:8px 14px;text-transform:uppercase}
 @media print{header.masthead,.hero,#protocol,#named-failures,#coherent-substitution,#standing-mark,#unilateral-integrity,#access,#your-material,#scope,#demonstrations,#benchmark,#about,footer,.desk-row,.desk-actions,.dossier-actions{display:none!important}body,.desk-section,.dossier{background:#fff!important;color:#000!important;padding:0!important;border:none!important;box-shadow:none!important}.dossier{display:block!important;margin:0!important}.dossier-header,.dossier-ledger{background:#0a0a0a!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 </style>
 </head>
@@ -320,8 +320,10 @@ table.terms td:first-child{white-space:normal}
           </div>
           <div class="dossier-actions">
             <button type="button" id="copy-proof" class="btn-outline">Copy cryptographic proof (JSON)</button>
+            <button type="button" id="verify-proof" class="btn-outline">Verify signature</button>
             <button type="button" id="export-pdf" class="btn-outline">Export official PDF dossier</button>
           </div>
+          <div style="margin-top:14px"><span id="signature-status" class="sig-valid-badge">Signature verified</span></div>
         </div>
       </article>
     </div>
@@ -627,6 +629,39 @@ import { ExactEvmScheme } from "https://esm.sh/@x402/evm@2.30.0?bundle";
     if (!lastRecord) return;
     try { await navigator.clipboard.writeText(JSON.stringify(lastRecord, null, 2)); }
     catch { showError("Could not copy the proof. Please use your browser's copy function."); }
+  });
+
+  const verifyBtn = document.getElementById("verify-proof");
+  const signatureStatus = document.getElementById("signature-status");
+
+  verifyBtn.addEventListener("click", async () => {
+    if (!lastRecord) return;
+    verifyBtn.disabled = true;
+    verifyBtn.textContent = "Verifying...";
+    try {
+      const response = await fetch("https://api.wheelerhubbellpublishing.com/v1/verification", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          envelope: lastRecord,
+        }),
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || result.verified !== true) {
+        signatureStatus.style.display = "none";
+        throw new Error(result.message || result.error || "The service did not confirm this record's signature.");
+      }
+      signatureStatus.style.display = "inline-block";
+      signatureStatus.textContent = `Signature verified (${result.finding_disposition || "WHP-STANDING-MARK-v1"})`;
+      if (result.record_hash) {
+        document.getElementById("ledger-record-hash").textContent = result.record_hash;
+      }
+    } catch (error) {
+      showError(error.message || "Signature verification failed.");
+    } finally {
+      verifyBtn.disabled = false;
+      verifyBtn.textContent = "Verify signature";
+    }
   });
   document.getElementById("export-pdf").addEventListener("click", () => window.print());
 })();
