@@ -1,0 +1,270 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:whp:schema:standing-mark-record-contract:1.7.0",
+  "title": "WHP Standing Mark Record Contract (WHP-STANDING-MARK-v1)",
+  "description": "Canonical signed-record schema for the WHP Standing Mark Service (POST /v1/evaluate). Binds exact submitted bytes, examined question, scope, completeness inventory, model/reproducibility provenance, data handling disclosure, and the governing Developer Action Rule.",
+  "type": "object",
+  "required": [
+    "protected",
+    "payload",
+    "signature"
+  ],
+  "properties": {
+    "protected": {
+      "type": "object",
+      "required": [
+        "algorithm",
+        "canonicalization",
+        "key_id",
+        "type"
+      ],
+      "properties": {
+        "algorithm": {
+          "const": "Ed25519"
+        },
+        "canonicalization": {
+          "const": "WHP-JCS-I1"
+        },
+        "key_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "description": "SHA-256 hex digest of the signer's DER-encoded SPKI Ed25519 public key."
+        },
+        "type": {
+          "const": "WHP-STANDING-MARK-v1"
+        }
+      },
+      "additionalProperties": false
+    },
+    "payload": {
+      "type": "object",
+      "required": [
+        "version",
+        "service_name",
+        "door",
+        "finding_disposition",
+        "integration_rule",
+        "object_binding",
+        "completeness",
+        "examination_provenance",
+        "data_handling",
+        "decision_record",
+        "decision_record_ref",
+        "effective_at",
+        "expires_at",
+        "issued_at",
+        "issuer",
+        "issuer_key_id",
+        "purchase_id",
+        "standing",
+        "submission_hash"
+      ],
+      "properties": {
+        "version": {
+          "const": "WHP-STANDING-RESULT-v1"
+        },
+        "service_name": {
+          "const": "WHP Standing Mark Service"
+        },
+        "door": {
+          "const": "/v1/evaluate"
+        },
+        "finding_disposition": {
+          "type": "string",
+          "enum": [
+            "POSITIVE_STANDING_MARK",
+            "NEGATIVE_STANDING_FINDING"
+          ],
+          "description": "Distinguishes a positive Standing Mark (warrant established within stated scope) from a negative Standing Finding (warrant not established) issued by the Standing Mark Service."
+        },
+        "mark_id": {
+          "type": "string",
+          "pattern": "^WHP-SM-[0-9a-f]{64}$"
+        },
+        "finding_id": {
+          "type": "string",
+          "pattern": "^WHP-NF-[0-9a-f]{64}$"
+        },
+        "integration_rule": {
+          "type": "string",
+          "const": "A positive Standing Mark is a signed, scope-bound examination result. It may satisfy an evidence requirement defined by a receiving system, but it does not itself authorize an action. The receiving system must independently evaluate the applicable authority, conditions, and action policy. Absence of a positive Mark means the Mark requirement has not been satisfied; it does not, by itself, establish that the underlying action is prohibited."
+        },
+        "object_binding": {
+          "type": "object",
+          "required": [
+            "submitted_bytes_sha256",
+            "examined_question",
+            "examination_scope",
+            "requested_operation",
+            "governing_canon_version",
+            "governing_canon_sha256",
+            "finding_disposition",
+            "outcome"
+          ],
+          "properties": {
+            "submitted_bytes_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$",
+              "description": "Exact SHA-256 digest of the WHP-JCS-I1 canonicalized client material examined."
+            },
+            "examined_question": {
+              "type": "string",
+              "description": "Exact proposition or question examined."
+            },
+            "examination_scope": {
+              "type": "string",
+              "description": "Jurisdiction and scope of the examination."
+            },
+            "requested_operation": {
+              "type": "string",
+              "enum": [
+                "DESCRIBE",
+                "INQUIRE",
+                "WARN",
+                "REVIEW",
+                "INFORM",
+                "RECOMMEND",
+                "CONCLUDE",
+                "EXECUTE"
+              ]
+            },
+            "governing_canon_version": {
+              "const": "7.0.0"
+            },
+            "governing_canon_sha256": {
+              "const": "bd85f51f05afc6f77053aec086a1d013a1cccde70c30231622f0ecc7e3f25c21"
+            },
+            "finding_disposition": {
+              "type": "string",
+              "enum": [
+                "POSITIVE_STANDING_MARK",
+                "NEGATIVE_STANDING_FINDING"
+              ]
+            },
+            "outcome": {
+              "type": "string",
+              "enum": [
+                "ESTABLISHED",
+                "NOT_ESTABLISHED"
+              ]
+            }
+          }
+        },
+        "completeness": {
+          "type": "object",
+          "required": [
+            "submitter_completeness_declaration",
+            "supplied_materials_inventory",
+            "epistemic_limitation"
+          ],
+          "properties": {
+            "submitter_completeness_declaration": {
+              "type": "string",
+              "enum": [
+                "DECLARED_COMPLETE_FOR_STATED_SCOPE",
+                "PARTIAL_OR_UNDECLARED"
+              ]
+            },
+            "supplied_materials_inventory": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "item_id",
+                  "kind",
+                  "locator",
+                  "sha256"
+                ],
+                "properties": {
+                  "item_id": { "type": "string" },
+                  "kind": { "type": "string" },
+                  "locator": { "type": "string" },
+                  "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+                }
+              }
+            },
+            "epistemic_limitation": {
+              "type": "string"
+            }
+          }
+        },
+        "examination_provenance": {
+          "type": "object",
+          "required": [
+            "reproducibility_class",
+            "model_provider",
+            "model_id",
+            "temperature",
+            "governing_text_version",
+            "governing_text_sha256",
+            "system_prompt_sha256",
+            "protocol_sha256",
+            "examined_at",
+            "reproducibility_note"
+          ],
+          "properties": {
+            "reproducibility_class": {
+              "type": "string",
+              "enum": [
+                "DETERMINISTIC_RULE_EVALUATION",
+                "SINGLE_MODEL_JUDGMENT_WITH_DETERMINISTIC_STRUCTURAL_FLOOR",
+                "REPEATABLE_UNDER_STATED_CONDITIONS"
+              ]
+            },
+            "model_provider": { "type": "string" },
+            "model_id": { "type": "string" },
+            "model_version": { "type": "string" },
+            "temperature": { "type": "integer" },
+            "governing_text_version": { "const": "7.0.0" },
+            "governing_text_sha256": {
+              "const": "bd85f51f05afc6f77053aec086a1d013a1cccde70c30231622f0ecc7e3f25c21"
+            },
+            "system_prompt_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+            "protocol_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+            "examined_at": { "type": "integer" },
+            "reproducibility_note": { "type": "string" }
+          }
+        },
+        "data_handling": {
+          "type": "object",
+          "required": [
+            "inference_provider",
+            "transmitted_to_external_provider",
+            "transmitted_fields",
+            "storage_policy",
+            "retention_policy",
+            "training_use_policy",
+            "deletion_policy"
+          ],
+          "properties": {
+            "inference_provider": { "type": "string" },
+            "transmitted_to_external_provider": { "type": "boolean" },
+            "transmitted_fields": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "storage_policy": { "type": "string" },
+            "retention_policy": { "type": "string" },
+            "training_use_policy": { "type": "string" },
+            "deletion_policy": { "type": "string" }
+          }
+        },
+        "decision_record": { "type": "object" },
+        "decision_record_ref": { "type": "string" },
+        "effective_at": { "type": "integer" },
+        "expires_at": { "type": "integer" },
+        "issued_at": { "type": "integer" },
+        "issuer": { "type": "string" },
+        "issuer_key_id": { "type": "string" },
+        "purchase_id": { "type": "string" },
+        "standing": { "type": "object" },
+        "submission_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    },
+    "signature": {
+      "type": "string",
+      "description": "Base64-encoded Ed25519 signature over WHP-JCS-I1 canonical JSON of { protected, payload }."
+    }
+  },
+  "additionalProperties": false
+}

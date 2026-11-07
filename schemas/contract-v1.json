@@ -1,0 +1,88 @@
+{
+  "authentication": {
+    "canonicalization": "WHP-JCS-I1",
+    "encoding": "base64-JSON",
+    "header": "whp-client-proof",
+    "key_algorithm": "Ed25519",
+    "key_encoding": "base64-DER-SPKI",
+    "key_id": "SHA256-SPKI-DER",
+    "payload_fields": {
+      "body_hash": "SHA256-exact-request-bytes",
+      "expires_at": "Unix-seconds-plus-120",
+      "issued_at": "Unix-seconds",
+      "method": "HTTP-method",
+      "nonce": "random-16-byte-hex",
+      "path": "URL-path-and-query"
+    },
+    "protected": {
+      "algorithm": "Ed25519",
+      "canonicalization": "WHP-JCS-I1",
+      "type": "WHP-CLIENT-PROOF-v1"
+    },
+    "signed_fields": [
+      "protected",
+      "payload"
+    ]
+  },
+  "authority_admission": "HTTPS proves control of an origin, not institutional appointment. A buyer must admit the publisher root under its own trust policy; unknown authority remains unknown.",
+  "capability": "WHP Standing Mark Service: single-door Decision Integrity Version 7 (The Continuous Work) epistemological evaluation emitting object-bound, Ed25519-signed Standing Mark Records.",
+  "capability_class": "urn:capability:machine-verifiable-standing:1",
+  "capability_id": "urn:whp:standing:capability:1",
+  "data_handling": {
+    "deletion_policy": "Registry records are append-only for audit lineage; buyers may request redaction of non-digest payload text where permitted by contract.",
+    "inference_provider": "wheeler-hubbell-publishing-sovereign",
+    "retention_policy": "Signed Standing Mark Record retained in append-only purchase registry; unsubmitted client data is never retained.",
+    "storage_policy": "Immutable signed result stored by purchase_id for buyer retrieval and recovery; temporary working buffers discarded after signing.",
+    "training_use_policy": "PROHIBITED — Wheeler Hubbell Publishing never uses submitted client data to train or fine-tune models.",
+    "transmitted_fields": [
+      "client_data",
+      "provenance",
+      "qualifiers",
+      "unknowns"
+    ],
+    "transmitted_to_external_provider": false
+  },
+  "environment": "LIVE",
+  "evaluation_door": "/v1/evaluate",
+  "evaluator": {
+    "canon_bytes": 153526,
+    "canon_path": "canon/Decision_Integrity_The_Continuous_Work.md",
+    "canon_sha256": "bd85f51f05afc6f77053aec086a1d013a1cccde70c30231622f0ecc7e3f25c21",
+    "distinction_from_notary": "Not a passive cryptographic notary or wallet risk firewall. The Standing Mark Service is an epistemological evaluator: the waiting LLM inside /v1/evaluate applies Decision Integrity v7 reasoning to test object identity, qualifier preservation, independent join warrants, and operation-specific force before emitting an object-bound Standing Mark Record.",
+    "evaluator_class": "SOVEREIGN_EPISTEMOLOGICAL_EVALUATOR",
+    "governing_text": "Decision Integrity: The Continuous Work (Version 7)",
+    "instruction": "Adopt the reasoning from Decision Integrity version 7 (The Continuous Work) and apply that reasoning to whatever data the client puts through the door.",
+    "output_envelope": "WHP-STANDING-MARK-v1",
+    "record_contract_schema": "schemas/standing-mark-record-contract-v1.json",
+    "sovereign_hosting": "Self-hosted sovereign LLM inside /v1/evaluate; canonical text and signing key never leave the door.",
+    "type": "SOVEREIGN_LARGE_LANGUAGE_MODEL"
+  },
+  "integration_rule": "A positive Standing Mark is a signed, scope-bound examination result. It may satisfy an evidence requirement defined by a receiving system, but it does not itself authorize an action. The receiving system must independently evaluate the applicable authority, conditions, and action policy. Absence of a positive Mark means the Mark requirement has not been satisfied; it does not, by itself, establish that the underlying action is prohibited.",
+  "issuer": "Wheeler Hubbell Publishing",
+  "mcp_url": "https://api.wheelerhubbellpublishing.com/mcp",
+  "payment": {
+    "authorization_header": "PAYMENT-SIGNATURE",
+    "protocol": "x402-v2",
+    "required_header": "PAYMENT-REQUIRED",
+    "settlement_header": "PAYMENT-RESPONSE",
+    "network": "eip155:8453",
+    "asset": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+    "payTo": "0x1050eddd8282623b0c263ed6bdbd42370bbc28d3",
+    "amount": "1000000",
+    "fee_rule": "Payment buys the examination, never a positive Standing Mark. Retrieval and recovery of a completed purchase do not trigger a second charge."
+  },
+  "profile": {
+    "id": "WHP-DECISION-INTEGRITY-V7-CONTINUOUS-WORK",
+    "sha256": "bd85f51f05afc6f77053aec086a1d013a1cccde70c30231622f0ecc7e3f25c21",
+    "legacy_v1_sha256": "4244be9ed0012eaeba8e2efeb9d274ad3c1f3e188748838c191129054d24c5ab",
+    "url": "https://api.wheelerhubbellpublishing.com/v1/profiles/WHP-DECISION-INTEGRITY-V7-CONTINUOUS-WORK/7.0.0",
+    "version": "7.0.0"
+  },
+  "service_architecture": "SINGLE_EVALUATION_DOOR",
+  "service_name": "WHP Standing Mark Service",
+  "terminology": {
+    "negative_finding": "NEGATIVE_STANDING_FINDING (outcome: NOT_ESTABLISHED)",
+    "positive_mark": "POSITIVE_STANDING_MARK (outcome: ESTABLISHED)",
+    "service": "WHP Standing Mark Service (POST /v1/evaluate)"
+  }
+}
