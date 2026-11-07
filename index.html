@@ -26,6 +26,9 @@ nav.top{display:flex;gap:30px;font-family:Inter;font-size:11px;font-weight:600;l
 nav.top a{text-decoration:none;color:var(--ink-2);padding-bottom:3px;border-bottom:1px solid transparent}
 nav.top a:hover{color:var(--ox);border-color:var(--ox)}
 .hero{padding:88px 0 80px;border-bottom:1px solid var(--line)}
+.hero .wrap{position:relative}
+.hero-seal{position:absolute;right:48px;top:50%;transform:translateY(-50%);width:320px;height:320px;opacity:.92;pointer-events:none}
+@media (max-width:1080px){.hero-seal{display:none}}
 .hero .label{margin-bottom:26px}
 h1.display{font-weight:500;font-size:58px;line-height:1.08;letter-spacing:-.012em;max-width:24ch;margin-bottom:30px}
 h1.display em{font-style:italic;color:var(--ox)}
@@ -113,6 +116,12 @@ h2.sec-title{font-size:28px}
 table.terms td:first-child{white-space:normal}
 .foot-in{flex-direction:column;align-items:flex-start}
 }
+.demo-feature{margin-top:40px;background:var(--paper-2);border:1px solid var(--line-2);border-left:3px solid var(--ox);padding:44px 48px;max-width:860px}
+.demo-feature p{margin-bottom:0;color:var(--ink-2)}
+.demo-feature p b{color:var(--ink)}
+.demo-feature .demo-link{display:inline-block;margin-top:22px;font-family:Inter,Arial,sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:#fbf9f5;background:var(--ox);padding:14px 24px;border:1px solid var(--ox)}
+.demo-feature .demo-link:hover{background:var(--ox-deep);border-color:var(--ox-deep)}
+@media (max-width:820px){.demo-feature{padding:32px 26px}}
 /* PUBLIC EXAMINATION DESK & RECORD OF STANDING */
 .desk-section{background:var(--paper-2);padding:96px 0;border-bottom:2px solid var(--ink)}
 .desk-card{background:var(--paper);border:1px solid var(--line-2);padding:48px;box-shadow:0 8px 32px rgba(28,24,21,.04);margin-top:28px}
@@ -188,6 +197,7 @@ table.terms td:first-child{white-space:normal}
 
 <section class="hero">
   <div class="wrap">
+    <img class="hero-seal" src="assets/seal-dark-art.png" alt="" aria-hidden="true">
     <div class="label">Decision Integrity Protocol &middot; The Standing Mark Service</div>
     <h1 class="display">Truth is not a <em>tone of voice.</em></h1>
     <p class="lede">Your agent has an answer. Does the record support acting on it?</p>
@@ -390,8 +400,9 @@ table.terms td:first-child{white-space:normal}
       <p>A production example must be identified separately and make its submission, issued assessment, and signature verification available for inspection.</p>
       <p>A demonstration does not substitute for a signed production record.</p>
     </div>
-    <div class="paras" style="margin-top:32px">
-      <p><b>Decision Integrity Applied.</b> One discipline, applied across domains: an existing public-record examination of the negative-pressure-test decision on the Macondo well, with Challenger, HealthCare.gov, the Taylor Swift catalog, and Mata v. Avianca. Each is an examination or authored application on a public record, not a production-issued service record. <a href="/decision-integrity-applied.html">Read Decision Integrity Applied</a></p>
+    <div class="demo-feature">
+      <p><b>Decision Integrity Applied.</b> One discipline, applied across domains: an existing public-record examination of the negative-pressure-test decision on the Macondo well, with Challenger, HealthCare.gov, the Taylor Swift catalog, and Mata v. Avianca. Each is an examination or authored application on a public record, not a production-issued service record.</p>
+      <a class="demo-link" href="/decision-integrity-applied.html">Read Decision Integrity Applied</a>
     </div>
   </div>
 </section>

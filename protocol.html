@@ -1,154 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Decision Integrity Protocol | Wheeler Hubbell Publishing</title>
-  <meta name="description" content="A structured method for examining consequential decisions when certainty is unavailable and action cannot simply be postponed."/>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-  
-  <link rel="stylesheet" href="2-style.css?v=editorial-20261014-v2"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decision Integrity Protocol | Wheeler Hubbell Publishing</title>
+<meta name="description" content="A structured method for examining consequential decisions when certainty is unavailable and action cannot simply be postponed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600&family=Spectral+SC:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#faf8f3;--paper-2:#f4f0e8;--ink:#1c1815;--ink-2:#4c453d;--ink-3:#8a8177;--ox:#6e1f28;--ox-deep:#571821;--line:#e2dccf;--line-2:#cfc7b8;--mono:ui-monospace,SFMono-Regular,Menlo,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--paper);color:var(--ink);font-family:'Spectral',Georgia,serif;font-size:17px;line-height:1.65}
+.wrap{max-width:1180px;margin:0 auto;padding:0 48px}
+.label{font-family:Inter,Arial,sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ox)}
+a{color:var(--ox-deep)}
+header.masthead{border-bottom:2px solid var(--ink)}
+.masthead-in{display:flex;align-items:center;justify-content:space-between;padding:20px 0 18px}
+.brand{display:flex;align-items:center;gap:16px;text-decoration:none;color:var(--ink)}
+.brand img{width:46px;height:46px}
+.brand .name{font-family:'Spectral SC',serif;font-size:19px;letter-spacing:.04em;line-height:1.1}
+.brand .sub{font-family:Inter;font-size:9.5px;font-weight:600;letter-spacing:.26em;color:var(--ink-3);text-transform:uppercase;margin-top:4px}
+nav.top{display:flex;gap:30px;font-family:Inter;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+nav.top a{text-decoration:none;color:var(--ink-2);padding-bottom:3px;border-bottom:1px solid transparent}
+nav.top a:hover{color:var(--ox);border-color:var(--ox)}
+.hero{padding:88px 0 80px;border-bottom:1px solid var(--line)}
+.hero .label{margin-bottom:26px}
+h1.display{font-weight:500;font-size:58px;line-height:1.08;letter-spacing:-.012em;max-width:24ch;margin-bottom:30px}
+.hero .lede{font-size:22px;font-weight:600;line-height:1.5;max-width:52ch}
+section.body{padding:88px 0;border-bottom:1px solid var(--line)}
+.paras{max-width:66ch;color:var(--ink-2)}
+.paras p{margin-bottom:16px}
+.link-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
+.btn{font-family:Inter;font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:15px 26px;border:1px solid var(--ink);color:var(--ink);display:inline-block}
+.btn.primary{background:var(--ox);border-color:var(--ox);color:#fbf9f5}
+.btn:hover{border-color:var(--ox);color:var(--ox)}
+.btn.primary:hover{background:var(--ox-deep);color:#fbf9f5}
+footer{background:#171310;color:#cfc7b8;padding:64px 0}
+footer .foot-in{display:flex;justify-content:space-between;gap:48px;flex-wrap:wrap}
+footer .fbrand{display:flex;gap:14px;align-items:center}
+footer .fbrand img{width:40px;height:40px}
+footer .fname{font-family:'Spectral SC',serif;font-size:16px;letter-spacing:.04em}
+footer .fsub{font-family:Inter;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#8a8177;margin-top:3px}
+footer .ftag{font-size:14px;color:#8a8177;margin-top:10px;font-style:italic}
+footer .col-head{font-family:Inter;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#8a8177;margin-bottom:14px}
+footer nav{display:flex;flex-direction:column;gap:10px;font-family:Inter;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+footer nav a{color:#b9b0a2;text-decoration:none}
+footer nav a:hover{color:var(--paper)}
+footer .inquiry{font-size:14.5px;color:#b9b0a2;max-width:30ch;margin-bottom:12px}
+footer .inquiry-email{font-size:15px;color:#cfc7b8}
+footer .foot-base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:48px;padding-top:24px;border-top:1px solid #2a241f;font-family:Inter;font-size:10.5px;letter-spacing:.08em;color:#8a8177}
+footer .foot-base a{color:#8a8177}
+footer .foot-base a:hover{color:#cfc7b8}
+@media (max-width:820px){
+.wrap{padding:0 26px}
+nav.top{display:none}
+.brand .name{font-size:15px;white-space:nowrap}
+.brand .sub{font-size:8.5px;letter-spacing:.18em}
+.hero{padding:64px 0}
+h1.display{font-size:36px}
+.hero .lede{font-size:19px}
+section.body{padding:64px 0}
+footer .foot-in{flex-direction:column;align-items:flex-start}
+}
+</style>
 </head>
 <body>
 
-  <!-- Masthead Navigation -->
-  <header class="masthead">
-    <div class="wrap masthead-inner">
-      <a href="index.html" class="masthead-brand" aria-label="Wheeler Hubbell Publishing Home">
-        <span class="house-seal" aria-hidden="true">
-          <span class="seal-inner">WHP</span>
-        </span>
-        <span class="brand-text">
-          <span class="brand-name">Wheeler Hubbell Publishing</span>
-          <span class="brand-city">New York · Established MMXXVI</span>
-        </span>
-      </a>
-
-      <nav class="primary-nav" aria-label="Primary Navigation">
-        <a href="index.html">Overview</a>
-        <a href="protocol.html" class="active">Protocol Specification</a>
-        <a href="index.html#failures">Named Failures</a>
-        <a href="index.html#pricing">Pricing &amp; Tiers</a>
-        <a href="index.html#integration">Developer &amp; CI/CD</a>
-      </nav>
-      <div class="nav-actions">
-        <a href="index.html#pricing" class="btn-oxblood">Deploy &amp; Subscribe &rarr;</a>
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="/" aria-label="Wheeler Hubbell Publishing Home">
+      <img src="assets/seal-dark-art.png" alt="Wheeler Hubbell Publishing dandelion seal">
+      <div>
+        <div class="name">Wheeler Hubbell Publishing, Inc.</div>
+        <div class="sub">An Independent Intellectual Press &middot; New York</div>
       </div>
-    </div>
-  </header>
+    </a>
+    <nav class="top" aria-label="Primary Navigation">
+      <a href="/#standing-mark">Standing Mark</a>
+      <a href="/#desk">Examination Desk</a>
+      <a href="/#access">Access</a>
+      <a href="/spec">Specification</a>
+      <a href="/#about">About</a>
+    </nav>
+  </div>
+</header>
 
-  <main>
-    <article class="protocol-detail">
-      <div class="wrap">
-        
-        <header class="head">
-          <div class="dept-marker">
-            <span class="dept-badge">The Method</span>
-            <span class="dept-rule"></span>
-            <span class="dept-status">Epistemic Protocol Specification</span>
-          </div>
-          <h1 class="dept-title">Decision Integrity Protocol</h1>
-          <p class="dept-subtitle">
-            A structured method for examining consequential decisions when certainty is unavailable and action cannot simply be postponed.
-          </p>
-        </header>
-
-        <div class="doc">
-          <div class="col">
-            <p>
-              The Decision Integrity Protocol is designed for circumstances in which certainty is unavailable, but action cannot simply be postponed.
-            </p>
-            <p>
-              Important decisions are rarely shaped by facts alone. They are also shaped by pressure, fear, loyalty, desire, habit, institutional incentives, incomplete information, personal history, competing obligations, and the narratives people rely on when they need to make sense of a situation.
-            </p>
-            <p>
-              The protocol provides a disciplined way to examine those conditions before they harden into an irrevocable decision.
-            </p>
-          </div>
-
-
-          <div class="col">
-            <p>
-              The protocol does not promise certainty, perfect outcomes, or a decision free from consequence. A careful decision can still lead to an unwanted result; an irresponsible one can occasionally be rewarded by luck.
-            </p>
-            <p>
-              Its purpose is to strengthen the quality of judgment itself: to help ensure that a decision is informed, proportionate to the stakes, open to correction, and accountable to those it affects.
-            </p>
-          </div>
-        </div>
-
-        
-        <div class="protocol-reading" style="margin-top: 3rem; display: flex; gap: 1.5rem; flex-wrap: wrap;">
-          <a href="index.html#decision-integrity" class="action-solid-btn">
-            <span>&larr; Return to Decision Integrity Overview</span>
-          </a>
-          <a href="1-coherent-substitution.pdf" class="action-outline-btn">
-            <span>Read Coherent Substitution (PDF) &rarr;</span>
-          </a>
-          <a href="1-From_Assertion_to_Authority_Mata_v_Avianca_Proof_Dossier_v2.docx" class="action-outline-btn">
-            <span>Read Mata v. Avianca Dossier &rarr;</span>
-          </a>
-          <a href="decision-integrity-applied.html" class="action-outline-btn">
-            <span>Decision Integrity Applied &rarr;</span>
-          </a>
-        </div>
-
-      </div>
-    </article>
-  </main>
-
-  <!-- Institutional Colophon & Footer -->
-  <footer id="contact" class="institutional-footer">
+<main>
+  <section class="hero">
     <div class="wrap">
-      
-      <div class="footer-primary">
-        <div class="footer-brand-col">
-          <div class="footer-crest" aria-hidden="true">WHP</div>
-          <div class="footer-title">Wheeler Hubbell Publishing</div>
-          <p class="footer-tagline">
-            Independent Press &amp; Epistemic Practice · New York
-          </p>
-        </div>
-
-        <div class="footer-nav-col">
-          <div class="col-head">Navigation</div>
-          <ul class="footer-links">
-            <li><a href="index.html#books">Books</a></li>
-            <li><a href="index.html#research-methods">Research &amp; Methods</a></li>
-            <li><a href="protocol.html">Decision Integrity</a></li>
-            <li><a href="index.html#essays-plays">Essays &amp; Plays</a></li>
-            <li><a href="index.html#archive">Archive</a></li>
-            <li><a href="index.html#press-about">Press &amp; About</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-inquiry-col">
-          <div class="col-head">Inquiries &amp; Correspondence</div>
-          <p class="inquiry-desc">
-            Direct speaking invitations, advisory engagements, and publication inquiries:
-          </p>
-          <a href="mailto:wheelerhubbell@gmail.com" class="inquiry-email">
-            wheelerhubbell@gmail.com
-          </a>
-        </div>
-      </div>
-
-      <div class="footer-secondary">
-        <div class="footer-copy">
-          &copy; 2026 Wheeler Hubbell · Wheeler Hubbell Publishing, Inc. All rights reserved.
-        </div>
-        <div class="footer-identifiers">
-          <span>Author Identifier: <a href="https://orcid.org/0009-0006-2009-0578" target="_blank" rel="noopener">ORCID 0009-0006-2009-0578</a></span>
-          <span class="sep">&bull;</span>
-          <span>Wheeler Hubbell Publishing, Inc.</span>
-        </div>
-      </div>
-
+      <div class="label">The Method</div>
+      <h1 class="display">Decision Integrity Protocol</h1>
+      <p class="lede">A structured method for examining consequential decisions when certainty is unavailable and action cannot simply be postponed.</p>
     </div>
-  </footer>
+  </section>
+
+  <section class="body">
+    <div class="wrap">
+      <div class="paras">
+        <p>The Decision Integrity Protocol is designed for circumstances in which certainty is unavailable, but action cannot simply be postponed.</p>
+        <p>Important decisions are rarely shaped by facts alone. They are also shaped by pressure, fear, loyalty, desire, habit, institutional incentives, incomplete information, personal history, competing obligations, and the narratives people rely on when they need to make sense of a situation.</p>
+        <p>The protocol provides a disciplined way to examine those conditions before they harden into an irrevocable decision.</p>
+        <p>The protocol does not promise certainty, perfect outcomes, or a decision free from consequence. A careful decision can still lead to an unwanted result; an irresponsible one can occasionally be rewarded by luck.</p>
+        <p>Its purpose is to strengthen the quality of judgment itself: to help ensure that a decision is informed, proportionate to the stakes, open to correction, and accountable to those it affects.</p>
+      </div>
+      <div class="link-row">
+        <a href="/" class="btn primary"><span>&larr; Return to Decision Integrity Overview</span></a>
+        <a href="1-coherent-substitution.pdf" class="btn"><span>Read Coherent Substitution (PDF) &rarr;</span></a>
+        <a href="1-From_Assertion_to_Authority_Mata_v_Avianca_Proof_Dossier_v2.docx" class="btn"><span>Read Mata v. Avianca Dossier &rarr;</span></a>
+        <a href="decision-integrity-applied.html" class="btn"><span>Decision Integrity Applied &rarr;</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <div class="fbrand">
+          <img src="assets/seal-light-art.png" alt="">
+          <div>
+            <div class="fname">Wheeler Hubbell Publishing</div>
+            <div class="fsub">New York &middot; Established MMXXVI</div>
+          </div>
+        </div>
+        <div class="ftag">Independent Press &amp; Epistemic Practice &middot; New York</div>
+      </div>
+      <div>
+        <div class="col-head">Navigation</div>
+        <nav aria-label="Footer Navigation">
+          <a href="/">Overview</a>
+          <a href="protocol.html">Decision Integrity</a>
+          <a href="decision-integrity-applied.html">Decision Integrity Applied</a>
+          <a href="/spec">Specification</a>
+          <a href="/#about">Press &amp; About</a>
+        </nav>
+      </div>
+      <div>
+        <div class="col-head">Inquiries &amp; Correspondence</div>
+        <div class="inquiry">Direct speaking invitations, advisory engagements, and publication inquiries:</div>
+        <a href="mailto:wheelerhubbell@gmail.com" class="inquiry-email">wheelerhubbell@gmail.com</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <div>&copy; 2026 Wheeler Hubbell &middot; Wheeler Hubbell Publishing, Inc. All rights reserved.</div>
+      <div>Author Identifier: <a href="https://orcid.org/0009-0006-2009-0578" target="_blank" rel="noopener">ORCID 0009-0006-2009-0578</a> &bull; Wheeler Hubbell Publishing, Inc.</div>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
