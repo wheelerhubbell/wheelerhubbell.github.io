@@ -9,7 +9,7 @@
     "method": "POST",
     "path": "/v1/evaluate",
     "url": "https://api.wheelerhubbellpublishing.com/v1/evaluate",
-    "engine": "Sovereign Large Language Model loaded with Decision Integrity: The Continuous Work (Version 7)",
+    "engine": "Sovereign Large Language Model loaded with The Elemental Properties of True",
     "canon_sha256": "bd85f51f05afc6f77053aec086a1d013a1cccde70c30231622f0ecc7e3f25c21",
     "output_envelope": "WHP-STANDING-MARK-v1",
     "canonicalization": "WHP-JCS-I1",

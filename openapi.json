@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "WHP Standing — Sovereign Epistemological Evaluator & x402 Pre-Settlement Gate",
-    "version": "1.3.0",
-    "description": "Sovereign epistemological evaluator (not a passive notary). There is one evaluation door (/v1/evaluate), one service all the way through. When a client or autonomous agent inserts their data through the door, a sovereign Large Language Model waiting inside the door — having been given Decision Integrity Version 7 (The Continuous Work) — adopts the reasoning from the text and applies that epistemological reasoning to whatever data the client puts through the door. The evaluation is the Large Language Model applying the Decision Integrity Version 7 reasoning to that data, and the output is signed with the WHP Standing Mark (WHP-STANDING-MARK-v1) and handed back to the client. TEST is never LIVE."
+    "version": "1.8.0",
+    "description": "Sovereign epistemological evaluator (not a passive notary). There is one evaluation door (/v1/evaluate), one service all the way through. When a client or autonomous agent inserts their data through the door, a sovereign Large Language Model waiting inside the door — having been given The Elemental Properties of True — adopts the reasoning from the text and applies that epistemological reasoning to whatever data the client puts through the door. The evaluation is the Large Language Model applying the Decision Integrity Version 7 reasoning to that data, and the output is signed with the WHP Standing Mark (WHP-STANDING-MARK-v1) and handed back to the client. TEST is never LIVE."
   },
   "servers": [
     {
@@ -39,7 +39,7 @@
     "/llms.txt": {
       "get": {
         "operationId": "getMachineDocumentation",
-        "summary": "Agent-facing guide to the single /v1/evaluate door, Decision Integrity v7 LLM epistemological reasoning, and x402 pre-settlement Standing Mark rules."
+        "summary": "Agent-facing guide to the single /v1/evaluate door, epistemological evaluation grounded in The Elemental Properties of True, and x402 pre-settlement Standing Mark rules."
       }
     },
     "/mcp": {
@@ -59,7 +59,7 @@
       },
       "post": {
         "operationId": "evaluateThroughSingleDoor",
-        "summary": "The single epistemological evaluation door (x402, 1 USDC on Base). Client inserts data through this door; inside the door, a sovereign Large Language Model given Decision Integrity version 7 (The Continuous Work) adopts its reasoning and applies it to the client's data. The evaluation result is signed with the WHP Standing Mark (WHP-STANDING-MARK-v1) and handed back to the client.",
+        "summary": "The single epistemological evaluation door (x402, 1 USDC on Base). Client inserts data through this door; inside the door, a sovereign Large Language Model given The Elemental Properties of True adopts its reasoning and applies it to the client's data. The evaluation result is signed with the WHP Standing Mark (WHP-STANDING-MARK-v1) and handed back to the client.",
         "security": [
           {
             "ClientProof": []
@@ -77,7 +77,7 @@
     },
     "/v1/profiles": {
       "get": {
-        "summary": "Published profile index binding Decision Integrity version 7 (The Continuous Work)."
+        "summary": "Published profile index binding The Elemental Properties of True."
       }
     },
     "/v1/purchases/{purchase_id}/result": {

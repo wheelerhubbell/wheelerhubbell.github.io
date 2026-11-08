@@ -26,7 +26,7 @@
     "canon_sha256": "bd85f51f05afc6f77053aec086a1d013a1cccde70c30231622f0ecc7e3f25c21",
     "distinction_from_notary": "Evaluates epistemic standing, qualifier inheritance, join warrants, and named failures (Coherent Substitution, Authority Leakage, Object Drift, Qualifier Stripping) via a sovereign LLM governed by Decision Integrity v7 before signing the Standing Mark—never merely notarizing raw bytes.",
     "evaluator_class": "SOVEREIGN_EPISTEMOLOGICAL_EVALUATOR",
-    "governing_text": "Decision Integrity: The Continuous Work (Version 7)",
+    "governing_text": "The Elemental Properties of True",
     "output_signature": "WHP-STANDING-MARK-v1",
     "type": "SOVEREIGN_LARGE_LANGUAGE_MODEL"
   },

@@ -5,7 +5,7 @@
 
 ## 1. What the Standing Mark Service Is (Epistemological Evaluator, Not a Notary)
 
-- **Standing Mark Service (`POST /v1/evaluate`):** A single-door epistemological evaluation service operated by Wheeler Hubbell Publishing. When a client or autonomous agent inserts material through `POST /v1/evaluate`, a waiting Large Language Model given *Decision Integrity: The Continuous Work* (Version 7, SHA-256 `bd85f51f05afc6f77053aec086a1d013a1cccde70c30231622f0ecc7e3f25c21`) adopts its reasoning and examines whether the submitted record warrants the requested operation within stated scope.
+- **Standing Mark Service (`POST /v1/evaluate`):** A single-door epistemological evaluation service operated by Wheeler Hubbell Publishing. When a client or autonomous agent inserts material through `POST /v1/evaluate`, a waiting Large Language Model applying the epistemological discipline of *The Elemental Properties of True* examines whether the submitted record warrants the requested operation within stated scope.
 - **Terminology Separation:**
   - **Standing Mark Service:** The product and evaluation doorway (`POST /v1/evaluate`). Payment buys the examination, never a favorable outcome.
   - **Positive Standing Mark (`finding_disposition: "POSITIVE_STANDING_MARK"`, `outcome: "ESTABLISHED"`):** The favorable signed outcome when warrant is established within stated scope.

@@ -122,6 +122,26 @@ table.terms td:first-child{white-space:normal}
 .demo-feature .demo-link{display:inline-block;margin-top:22px;font-family:Inter,Arial,sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:#fbf9f5;background:var(--ox);padding:14px 24px;border:1px solid var(--ox)}
 .demo-feature .demo-link:hover{background:var(--ox-deep);border-color:var(--ox-deep)}
 @media (max-width:820px){.demo-feature{padding:32px 26px}}
+
+/* EXHIBITS — THE FOUR CLEAN MURDERS */
+.exhibits-section{padding:84px 0 72px;border-bottom:1px solid var(--line-2);background:var(--paper)}
+.exhibits-section .sec-title em{font-style:italic;color:var(--ox)}
+.sec-lead{font-size:18px;max-width:68ch;color:var(--ink-2);margin:14px 0 44px;line-height:1.6}
+.exhibits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.exhibit-card{background:var(--paper-2);border:1px solid var(--line-2);padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;transition:border-color .18s ease,box-shadow .18s ease}
+.exhibit-card:hover{border-color:var(--ox);box-shadow:0 6px 20px rgba(110,31,40,.08)}
+.exhibit-num{font-family:Inter,sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ox);margin-bottom:8px}
+.exhibit-title{font-family:'Spectral SC',serif;font-size:18px;line-height:1.25;color:var(--ink);margin:0 0 8px}
+.exhibit-signal{font-size:13px;color:var(--ink-3);line-height:1.45;margin-bottom:20px;border-bottom:1px solid var(--line);padding-bottom:14px}
+.exhibit-rows{display:flex;flex-direction:column;gap:14px;margin-bottom:22px;flex-grow:1}
+.exhibit-row{padding:10px 12px;border-radius:2px;font-size:13.5px;line-height:1.5}
+.exhibit-row.standard{background:#eef4ee;border:1px solid #d2e4d3;color:#1e5e2f}
+.exhibit-row.standing{background:#faf0f1;border:1px solid #ecd1d4;color:#6e1f28}
+.badge-tag{font-family:Inter,sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;display:inline-block;margin-bottom:4px}
+.exhibit-row p{margin:0;font-size:13px}
+.btn-exhibit-load{font-family:Inter,sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:12px 14px;background:var(--paper);border:1px solid var(--ink);color:var(--ink);cursor:pointer;width:100%;text-align:center;transition:all .15s ease}
+.btn-exhibit-load:hover{background:var(--ox);color:#fbf9f5;border-color:var(--ox)}
+
 /* PUBLIC EXAMINATION DESK & RECORD OF STANDING */
 .desk-section{background:var(--paper-2);padding:96px 0 120px;border-bottom:2px solid var(--ink)}
 .service-intro{max-width:780px;margin-bottom:48px}
@@ -272,13 +292,14 @@ h2.service-title{font-size:34px}
     <div class="body">
       <p>An answer can be fluent, coherent, and entirely unsupported by the material behind it. When an agent is preparing to release funds, execute a transaction, approve a change, or submit a filing, that distinction matters.</p>
       <p><b>Decision Integrity examines whether the available record supports a conclusion and the action that follows.</b></p>
-      <p>The Standing Mark Service makes that examination available through a single API endpoint. An automated Large Language Model, configured to apply <i>Decision Integrity: The Continuous Work</i>, Version 7, examines what your submitted material establishes, what remains unknown, and what the evidence warrants.</p>
+      <p>The Standing Mark Service makes that examination available through a single API endpoint. An automated Large Language Model, configured with the epistemological discipline of <i>The Elemental Properties of True</i>, examines what your submitted material establishes, what remains unknown, and what the evidence warrants.</p>
       <p>Built for autonomous agents, developers, and systems that need an examinable record before relying on a consequential output.</p>
     </div>
     <div class="price-strip">1 USDC per examination &middot; x402 v2 &middot; Base Mainnet</div>
     <div class="cta-row">
-      <a class="btn primary" href="/openapi.json">Explore the API</a>
-      <a class="btn" href="/protocol.html">Read the Protocol</a>
+      <a class="btn primary" href="#desk">Put a Claim to the Test</a>
+      <a class="btn" href="#exhibits">See The Four Cases</a>
+      <a class="btn" href="/openapi.json">Explore the API</a>
     </div>
   </div>
 </section>
@@ -333,6 +354,93 @@ h2.service-title{font-size:34px}
     </div>
   </div>
 </div>
+
+<section id="exhibits" class="exhibits-section">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">Show, Don&rsquo;t Tell &middot; The Four Clean Murders</div>
+      <h2 class="sec-title">Fluency is not <em>authority.</em></h2>
+      <p class="sec-lead">Standard AI compliance tools check for gibberish and citation existence. When everything reads fluently and 100% of cited authorities are real, catastrophic errors pass inspection. Compare what standard tools passed against what the Decision Integrity Protocol catches:</p>
+    </div>
+    <div class="exhibits-grid">
+      <div class="exhibit-card">
+        <div>
+          <div class="exhibit-num">01 // Legal Filings</div>
+          <h3 class="exhibit-title">Mata v. Avianca &middot; 145 Sanctioned Briefs</h3>
+          <div class="exhibit-signal">Signal: 145 sanctioned lawyer cases in 2026 where 100% of cited authorities were real dockets.</div>
+          <div class="exhibit-rows">
+            <div class="exhibit-row standard">
+              <div class="badge-tag">Citation Checkers: PASS</div>
+              <p>Every docket exists in PACER. Brief is persuasive and grammatically flawless.</p>
+            </div>
+            <div class="exhibit-row standing">
+              <div class="badge-tag">Decision Integrity: NEGATIVE FINDING</div>
+              <p>Catches <b>Coherent Substitution</b> (replaces Q0 with Q1) and <b>Qualifier Stripping</b> (dropped Montreal Conv. Art. 35 condition precedent). Holds at <code>INQUIRE</code>.</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn-exhibit-load" data-target="legal">Load Case into Desk &rarr;</button>
+      </div>
+
+      <div class="exhibit-card">
+        <div>
+          <div class="exhibit-num">02 // Multi-Agent Chains</div>
+          <h3 class="exhibit-title">Enterprise Cutover &middot; 4-Stage Agent Handoff</h3>
+          <div class="exhibit-signal">Signal: Frozen 8-case Decision Integrity Benchmark 002 across multi-agent handoff pipelines.</div>
+          <div class="exhibit-rows">
+            <div class="exhibit-row standard">
+              <div class="badge-tag">Ordinary Task Eval: PASS</div>
+              <p>Stage A4 summary is fluent, cites ticket SEC-882, and passes ordinary task evaluation.</p>
+            </div>
+            <div class="exhibit-row standing">
+              <div class="badge-tag">Decision Integrity: NEGATIVE FINDING</div>
+              <p>Catches <b>Object Drift</b> (SOC 2 Type I point-in-time promoted to Type II certification) and <b>Qualifier Stripping</b> (dropped replica pause caveat). Halts cutover.</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn-exhibit-load" data-target="multiagent">Load Case into Desk &rarr;</button>
+      </div>
+
+      <div class="exhibit-card">
+        <div>
+          <div class="exhibit-num">03 // Clinical Medicine</div>
+          <h3 class="exhibit-title">Renal Dosing &middot; Guideline Revision Custody</h3>
+          <div class="exhibit-signal">Signal: Clinical LLM reconstruction failure matching Part V Reconstruction Custody.</div>
+          <div class="exhibit-rows">
+            <div class="exhibit-row standard">
+              <div class="badge-tag">Medical QA: PASS</div>
+              <p>Clinical summary explicitly cites the 2026 renal dosing guideline revision.</p>
+            </div>
+            <div class="exhibit-row standing">
+              <div class="badge-tag">Decision Integrity: NEGATIVE FINDING</div>
+              <p>Catches <b>Superseded Baseline</b> (summary mentions 2026 update while dosage calculated from superseded 2022 baseline). Holds at <code>INQUIRE</code>.</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn-exhibit-load" data-target="clinical">Load Case into Desk &rarr;</button>
+      </div>
+
+      <div class="exhibit-card">
+        <div>
+          <div class="exhibit-num">04 // Autonomous Agents &middot; x402</div>
+          <h3 class="exhibit-title">$1,000,000 Escrow &middot; Milestone Settlement</h3>
+          <div class="exhibit-signal">Signal: 130M+ x402 transactions &amp; 2026 NIST/DoD autonomous agent security advisories.</div>
+          <div class="exhibit-rows">
+            <div class="exhibit-row standard">
+              <div class="badge-tag">OAuth &amp; Wallet Oracle: PASS</div>
+              <p>OAuth 2.1 token is valid and recipient wallet is verified clean on Base Mainnet.</p>
+            </div>
+            <div class="exhibit-row standing">
+              <div class="badge-tag">Decision Integrity: NEGATIVE FINDING</div>
+              <p>Catches <b>Authority Leakage</b> (vendor email is an unverified report, not a signed SLA load-test receipt). Halts EIP-3009 transfer.</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn-exhibit-load" data-target="autonomous">Load Case into Desk &rarr;</button>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="desk" class="desk-section">
   <div class="wrap">
@@ -531,7 +639,7 @@ h2.service-title{font-size:34px}
       <h2 class="sec-title">The work behind the service</h2>
     </div>
     <div class="paras">
-      <p><i>Decision Integrity: The Continuous Work</i>, Version 7, is the governing text for the service&rsquo;s declared examination method.</p>
+      <p><i>The Elemental Properties of True</i> is the foundational work establishing the discipline behind the Decision Integrity Protocol.</p>
       <p>The work, protocol, service, and record serve distinct purposes:</p>
     </div>
     <ul class="dims">
@@ -540,11 +648,19 @@ h2.service-title{font-size:34px}
       <li><b>The service</b> provides a programmatic evaluation.</li>
       <li><b>The signed record</b> preserves the issued assessment; a positive Standing Mark identifies a finding that satisfies the applicable criteria.</li>
     </ul>
-    <div class="paras">
-      <p>Wheeler Hubbell is the author of <i>Decision Integrity: The Continuous Work</i> and the creator of the Decision Integrity Protocol.</p>
+    <div class="about-book-card" style="margin-top:36px; display:flex; gap:28px; align-items:center; background:var(--paper-2); border:1px solid var(--line-2); border-left:3px solid var(--ox); padding:24px 28px; max-width:800px;">
+      <img src="5-elemental-properties-of-true.jpg" alt="The Elemental Properties of True" style="width:105px; height:auto; box-shadow:0 4px 12px rgba(0,0,0,0.12); border:1px solid var(--line-2);">
+      <div>
+        <h4 style="font-family:'Spectral SC',serif; font-size:18px; margin:0 0 6px; color:var(--ink);">The Elemental Properties of True</h4>
+        <p style="font-size:14.5px; color:var(--ink-2); margin-bottom:14px; line-height:1.5;">By Wheeler Hubbell. The foundational text on epistemic standing, object continuity, and the conservation of warrant across transformation.</p>
+        <a href="1-elemental-properties-excerpt.pdf" class="btn" style="padding:9px 18px; font-size:10.5px;">Read Excerpt (PDF)</a>
+      </div>
+    </div>
+    <div class="paras" style="margin-top:32px;">
+      <p>Wheeler Hubbell is the author of <i>The Elemental Properties of True</i> and the architect of the Decision Integrity Protocol.</p>
       <p>Published by Wheeler Hubbell Publishing, Inc., New York.</p>
     </div>
-    <div class="linkrow"><span class="nolink">Read the Governing Work</span><span>&middot;</span><a href="/spec">Technical Specification</a><span>&middot;</span><span class="nolink">About</span></div>
+    <div class="linkrow"><a href="1-elemental-properties-excerpt.pdf">Read The Governing Work</a><span>&middot;</span><a href="/openapi.json">Technical Specification</a><span>&middot;</span><a href="#exhibits">The Four Cases</a></div>
   </div>
 </section>
 
@@ -1066,7 +1182,58 @@ import * as mammoth from "https://esm.sh/mammoth@1.8.0?bundle";
     }, { threshold: 0.1 }).observe(txnPanel);
   }
 
-  autoGrow(materialInput);
+
+  // EXHIBIT LOADER HOOKS
+  const EXHIBIT_PAYLOADS = {
+    legal: {
+      subject: "Mata v. Avianca Montreal Convention Jurisdiction Scope",
+      claim: "The court should toll the two-year period under Article 35 of the Montreal Convention because petitioner timely filed in state court, and federal courts recognize equitable tolling for diligent plaintiffs pursuing related claims (citing 678 F. Supp. 3d 443; ECF No. 54)."
+    },
+    multiagent: {
+      subject: "Agent Chain Stage A4 Production Cutover & Compliance Certification",
+      claim: "Production cutover authorized: Infrastructure review complete per ticket SEC-882. System holds certified SOC 2 Type II compliance and database cutover may proceed immediately without maintenance downtime."
+    },
+    clinical: {
+      subject: "Clinical Guideline Reconstruction & Renal Dosing Prescription",
+      claim: "Patient evaluated under 2026 Clinical Renal Dosing Guidelines revision. Prescribe standard maintenance dose of 500mg IV q12h based on baseline protocol parameters without requiring supplemental eGFR lab verification."
+    },
+    autonomous: {
+      subject: "Autonomous Treasury EIP-3009 Milestone 4 Settlement Authorization",
+      claim: "Execute release of 1,000,000 USDC on Base to vendor contract 0x482... based on received vendor notification email confirming Milestone 4 compute cluster delivery and performance targets."
+    }
+  };
+
+  document.querySelectorAll(".btn-exhibit-load").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const key = btn.getAttribute("data-target");
+      const payload = EXHIBIT_PAYLOADS[key];
+      if (!payload) return;
+      const materialEl = document.getElementById("material-text");
+      const questionEl = document.getElementById("question-text");
+      if (materialEl && questionEl) {
+        materialEl.value = payload.claim;
+        questionEl.value = payload.subject;
+        materialEl.dispatchEvent(new Event("input", { bubbles: true }));
+        questionEl.dispatchEvent(new Event("input", { bubbles: true }));
+        const deskSection = document.getElementById("desk");
+        if (deskSection) {
+          deskSection.scrollIntoView({ behavior: "smooth" });
+          const card = deskSection.querySelector(".desk-card");
+          if (card) {
+            card.style.transition = "outline 0.3s ease, box-shadow 0.3s ease";
+            card.style.outline = "2px solid var(--ox)";
+            card.style.boxShadow = "0 0 24px rgba(110,31,40,0.18)";
+            setTimeout(() => {
+              card.style.outline = "";
+              card.style.boxShadow = "";
+            }, 1800);
+          }
+        }
+      }
+    });
+  });
+
+    autoGrow(materialInput);
   autoGrow(questionInput);
   refreshReadiness();
 })();
