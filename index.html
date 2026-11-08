@@ -73,7 +73,7 @@ h3.sub-title{font-weight:600;font-size:24px;line-height:1.25;margin:56px 0 24px}
 .spec-link{margin-top:36px}
 table.terms{width:100%;border-collapse:collapse;margin:8px 0 40px;font-size:15.5px}
 table.terms th{font-family:Inter;font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);text-align:left;padding:10px 16px 10px 0;border-bottom:2px solid var(--ink)}
-table.terms td{padding:14px 16px 14px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-2)}
+table.terms td{padding:14px 16px 14px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-2);overflow-wrap:anywhere}
 table.terms td:first-child{color:var(--ink);font-weight:600;white-space:nowrap}
 code, .mono{font-family:var(--mono);font-size:.86em;background:var(--paper-2);padding:2px 6px;border:1px solid var(--line)}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:56px;align-items:start;margin-top:8px}
@@ -123,29 +123,97 @@ table.terms td:first-child{white-space:normal}
 .demo-feature .demo-link:hover{background:var(--ox-deep);border-color:var(--ox-deep)}
 @media (max-width:820px){.demo-feature{padding:32px 26px}}
 /* PUBLIC EXAMINATION DESK & RECORD OF STANDING */
-.desk-section{background:var(--paper-2);padding:96px 0;border-bottom:2px solid var(--ink)}
-.desk-card{background:var(--paper);border:1px solid var(--line-2);padding:48px;box-shadow:0 8px 32px rgba(28,24,21,.04);margin-top:28px}
-.desk-row{margin-bottom:28px}
-.desk-tag{font-family:Inter,sans-serif;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ox);margin-bottom:10px;display:flex;align-items:center;gap:8px}
-.desk-tag::after{content:'';flex:1;height:1px;background:var(--line-2)}
-.desk-textarea{width:100%;min-height:160px;padding:16px 20px;font-family:'Spectral',Georgia,serif;font-size:16px;line-height:1.6;color:var(--ink);background:var(--paper);border:1px solid var(--line-2);outline:none;resize:vertical;transition:border-color .2s}
+.desk-section{background:var(--paper-2);padding:96px 0 120px;border-bottom:2px solid var(--ink)}
+.service-intro{max-width:780px;margin-bottom:48px}
+.service-intro .label{margin-bottom:18px}
+h2.service-title{font-weight:500;font-size:48px;line-height:1.08;letter-spacing:-.015em;margin-bottom:22px}
+h2.service-title em{font-style:italic;color:var(--ox)}
+.service-copy{font-size:19px;line-height:1.6;color:var(--ink-2);max-width:56ch;margin-bottom:36px}
+.service-copy b{color:var(--ink)}
+.service-steps{display:flex;border-top:2px solid var(--ox)}
+.sstep{flex:1;padding:18px 20px 0 0;font-family:Inter,sans-serif;font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--ink);text-transform:uppercase}
+.sstep span{font-family:'Spectral SC',serif;color:var(--ox);margin-right:10px;font-size:14px}
+.desk-card{background:var(--paper);border:1px solid var(--line-2);border-top:3px solid var(--ox);padding:52px;box-shadow:0 16px 48px rgba(28,24,21,.07)}
+.desk-row{margin-bottom:40px}
+.field-head{display:flex;gap:18px;margin-bottom:18px}
+.field-num{font-family:'Spectral SC',serif;font-size:15px;color:var(--ox);padding-top:2px}
+.field-label{font-family:Inter,sans-serif;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);display:block;margin-bottom:8px}
+.field-label em{font-weight:500;color:var(--ink-3);letter-spacing:.08em;text-transform:none}
+.field-help{font-family:Inter,sans-serif;font-size:13.5px;line-height:1.55;color:var(--ink-2);max-width:62ch;margin:0}
+.upload-zone{border:1.5px dashed #b8a55e;background:rgba(212,175,55,.05);padding:26px 24px;text-align:center;cursor:pointer;transition:all .2s;margin-bottom:18px}
+.upload-zone:hover,.upload-zone.drag{border-color:#d4af37;background:rgba(212,175,55,.12)}
+.upload-zone strong{font-family:Inter,sans-serif;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);display:block;margin-bottom:6px}
+.upload-zone .uz-sub{font-family:Inter,sans-serif;font-size:13px;color:var(--ink-2)}
+.upload-zone .uz-sub button{background:none;border:none;color:var(--ox);font:inherit;font-weight:700;text-decoration:underline;cursor:pointer;padding:0}
+.upload-zone .uz-types{font-family:Inter,sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-top:10px}
+.attachments{list-style:none;padding:0;margin:0 0 18px}
+.attachments li{border:1px solid var(--line-2);background:var(--paper);margin-bottom:10px}
+.att-row{display:flex;align-items:center;gap:14px;padding:12px 16px;flex-wrap:wrap}
+.att-name{font-family:Inter,sans-serif;font-size:13.5px;font-weight:600;color:var(--ink);word-break:break-all}
+.att-meta{font-family:Inter,sans-serif;font-size:12px;color:var(--ink-3);white-space:nowrap}
+.att-status{font-family:Inter,sans-serif;font-size:12px;margin-left:auto;white-space:nowrap}
+.att-status.ok{color:#2e5d3a}
+.att-status.err{color:#8f2b22}
+.att-remove{background:none;border:1px solid var(--line-2);color:var(--ink-2);font-family:Inter,sans-serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;cursor:pointer;white-space:nowrap}
+.att-remove:hover{border-color:var(--ox);color:var(--ox)}
+.att-preview-toggle{background:none;border:none;font-family:Inter,sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ox);cursor:pointer;padding:0 16px 10px;display:block}
+.att-preview{padding:10px 16px 14px;font-family:var(--mono);font-size:11.5px;line-height:1.5;color:var(--ink-2);white-space:pre-wrap;word-break:break-word;border-top:1px solid var(--line);margin:0 0 4px;display:none}
+.att-preview.open{display:block}
+.extract-status[hidden]{display:none}
+.extract-status{font-family:Inter,sans-serif;font-size:12.5px;color:var(--ink-2);margin:-6px 0 18px;display:flex;align-items:center;gap:12px}
+.extract-bar{flex:0 0 120px;height:3px;background:var(--line);position:relative;overflow:hidden}
+.extract-bar i{position:absolute;left:0;top:0;bottom:0;background:var(--ox);transition:width .2s}
+.desk-textarea{width:100%;min-height:96px;max-height:340px;padding:14px 18px;font-family:'Spectral',Georgia,serif;font-size:16px;line-height:1.6;color:var(--ink);background:var(--paper);border:1px solid var(--line-2);outline:none;resize:vertical;transition:border-color .2s}
+.desk-textarea::placeholder{color:#a39a8c;font-size:15px;font-style:italic}
 .desk-textarea:focus{border-color:var(--ox)}
-.desk-input{width:100%;padding:12px 18px;font-family:'Spectral',Georgia,serif;font-size:15px;color:var(--ink);background:var(--paper);border:1px solid var(--line-2);outline:none;transition:border-color .2s}
-.desk-input:focus{border-color:var(--ox)}
-.desk-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:36px;padding-top:24px;border-top:1px solid var(--line)}
+#question-text{min-height:64px;font-size:15px}
+.char-line{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:8px;font-family:Inter,sans-serif;font-size:11.5px;letter-spacing:.06em;color:var(--ink-3)}
+.char-line.over{color:#8f2b22;font-weight:700}
+.char-line .hash{font-family:var(--mono);letter-spacing:0}
+.question-examples{font-family:Inter,sans-serif;font-size:12.5px;line-height:1.7;color:var(--ink-3);margin-top:10px}
+.question-examples b{color:var(--ink-2);font-weight:600}
+.txn-panel{border:1px solid var(--ink);background:var(--paper-2);padding:32px 36px;margin-top:8px}
+.txn-top{display:flex;justify-content:space-between;gap:28px;align-items:flex-start;flex-wrap:wrap;margin-bottom:22px}
+.fee-amount{font-family:'Spectral SC',serif;font-size:30px;color:var(--ink);line-height:1.1}
+.fee-note{font-family:Inter,sans-serif;font-size:12px;line-height:1.55;color:var(--ink-2);margin-top:8px;max-width:36ch}
+.txn-steps{list-style:none;display:flex;padding:0;margin:0;border:1px solid var(--line-2);background:var(--paper)}
+.txn-steps li{flex:1;font-family:Inter,sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:10px 12px;border-right:1px solid var(--line-2);text-align:center}
+.txn-steps li:last-child{border-right:none}
+.txn-steps li.done{color:var(--ink)}
+.txn-steps li.done::before{content:'\2713 ';color:var(--ox)}
+.txn-steps li.active{color:var(--ox);background:rgba(110,31,40,.06)}
+.txn-status{font-family:Inter,sans-serif;font-size:13.5px;line-height:1.55;color:var(--ink);background:var(--paper);border-left:3px solid var(--ox);padding:14px 18px;margin-bottom:22px}
+.txn-status.quiet{color:var(--ink-2);border-left-color:var(--line-2)}
+.txn-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.txn-actions .hint{font-family:Inter,sans-serif;font-size:11.5px;color:var(--ink-3);letter-spacing:.04em}
 .btn-gold{background:#0a0a0a;border:1px solid #d4af37;color:#d4af37;font-family:Inter,sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:16px 28px;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:10px}
 .btn-gold:hover{background:#d4af37;color:#0a0a0a}
-.btn-gold:disabled{opacity:.5;cursor:not-allowed}
+.btn-gold:disabled{opacity:.45;cursor:not-allowed}
+.btn-gold:disabled:hover{background:#0a0a0a;color:#d4af37}
 .btn-outline{background:transparent;border:1px solid var(--ink);color:var(--ink);font-family:Inter,sans-serif;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:15px 22px;cursor:pointer;transition:all .2s}
 .btn-outline:hover{border-color:var(--ox);color:var(--ox)}
-.desk-qr-grid{display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:center}
-.desk-qr-box{background:#fff;padding:12px;display:flex;justify-content:center;align-items:center;border:1px solid #d4af37}
-.desk-qr-box img{width:196px;height:196px;display:block}
-.desk-wallet-addr{font-family:var(--mono);font-size:12px;background:#1a1a1a;padding:10px 14px;border:1px solid #333;color:#d4af37;word-break:break-all;margin:12px 0;display:flex;justify-content:space-between;align-items:center}
-.desk-wallet-addr button{background:transparent;border:none;color:#f6f4ef;cursor:pointer;font-family:Inter;font-size:10px;text-transform:uppercase;letter-spacing:.1em;padding:4px 8px;border:1px solid #555}
-.desk-wallet-addr button:hover{color:#d4af37;border-color:#d4af37}
 .desk-state-panel{display:none;background:#0a0a0a;color:#f6f4ef;border:1px solid #d4af37;padding:48px 32px;text-align:center;margin-top:32px}
 .desk-state-panel.active{display:block}
+.crest-pulse{width:110px;height:110px;margin:0 auto 24px;border-radius:50%;box-shadow:0 0 20px rgba(212,175,55,.3);animation:crestPulse 2.4s infinite ease-in-out}
+@keyframes crestPulse{0%,100%{transform:scale(1);box-shadow:0 0 16px rgba(212,175,55,.25)}50%{transform:scale(1.06);box-shadow:0 0 32px rgba(212,175,55,.6)}}
+.pipeline-step{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:#d4af37;margin-top:8px}
+.sticky-txn{display:none}
+@media(max-width:860px){
+.desk-card{padding:28px 22px}
+h2.service-title{font-size:34px}
+.service-steps{flex-direction:column;border-top:none}
+.sstep{padding:12px 0;border-top:1px solid var(--line-2)}
+.txn-panel{padding:24px 20px}
+.txn-actions .btn-gold,.txn-actions .btn-outline{width:100%;justify-content:center;text-align:center}
+.txn-top{margin-bottom:16px;flex-direction:column}
+.txn-steps{width:100%}
+.txn-steps li{padding:10px 6px;font-size:9px;letter-spacing:.06em}
+.sticky-txn{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--paper);border-top:2px solid var(--ox);padding:12px 18px;align-items:center;gap:14px;box-shadow:0 -8px 24px rgba(28,24,21,.12)}
+.sticky-txn .fee{font-family:'Spectral SC',serif;font-size:16px;white-space:nowrap}
+.sticky-txn .act{flex:1;min-width:0}
+.sticky-txn button{width:100%;justify-content:center;padding:14px 10px;font-size:11px;letter-spacing:.1em}
+.sticky-txn.hidden{display:none}
+}
 .crest-pulse{width:110px;height:110px;margin:0 auto 24px;border-radius:50%;box-shadow:0 0 20px rgba(212,175,55,.3);animation:crestPulse 2.4s infinite ease-in-out}
 @keyframes crestPulse{0%,100%{transform:scale(1);box-shadow:0 0 16px rgba(212,175,55,.25)}50%{transform:scale(1.06);box-shadow:0 0 32px rgba(212,175,55,.6)}}
 .pipeline-step{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:#d4af37;margin-top:8px}
@@ -172,7 +240,7 @@ table.terms td:first-child{white-space:normal}
 .ledger-row .label-col{color:#888;text-transform:uppercase;letter-spacing:.08em}
 .ledger-row .val-col{color:#f6f4ef;word-break:break-all}
 .dossier-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}.sig-valid-badge{display:none;background:#14331e;color:#5cd684;border:1px solid #287a41;font-family:Inter;font-size:11px;font-weight:700;letter-spacing:.14em;padding:8px 14px;text-transform:uppercase}
-@media print{header.masthead,.hero,#protocol,#named-failures,#coherent-substitution,#standing-mark,#unilateral-integrity,#access,#your-material,#scope,#demonstrations,#benchmark,#about,footer,.desk-row,.desk-actions,.dossier-actions{display:none!important}body,.desk-section,.dossier{background:#fff!important;color:#000!important;padding:0!important;border:none!important;box-shadow:none!important}.dossier{display:block!important;margin:0!important}.dossier-header,.dossier-ledger{background:#0a0a0a!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media print{header.masthead,.hero,#protocol,#named-failures,#coherent-substitution,#standing-mark,#unilateral-integrity,#access,#your-material,#scope,#demonstrations,#benchmark,#about,footer,.desk-row,.desk-actions,.txn-panel,.sticky-txn,.dossier-actions{display:none!important}body,.desk-section,.dossier{background:#fff!important;color:#000!important;padding:0!important;border:none!important;box-shadow:none!important}.dossier{display:block!important;margin:0!important}.dossier-header,.dossier-ledger{background:#0a0a0a!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 </style>
 </head>
 <body>
@@ -268,32 +336,74 @@ table.terms td:first-child{white-space:normal}
 
 <section id="desk" class="desk-section">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="label">Public Examination Desk</div>
-      <h2 class="sec-title">Submit material for examination.</h2>
-      <p class="sec-intro">A browser-based client for the existing <code>POST /v1/evaluate</code> x402 rail. Connect an EVM wallet on Base to authorize the exact payment challenge. The service returns its signed evaluation record under its published contract.</p>
+    <div class="service-intro">
+      <div class="label">The Standing Mark Service</div>
+      <h2 class="service-title">Put a claim <em>to the test.</em></h2>
+      <p class="service-copy">Submit a document, statement, or model output for examination under the Decision Integrity Protocol. Ask a question or describe what you want to establish. Standing Mark conducts the examination and returns a signed record of its result &mdash; <b>here, on this page.</b></p>
+      <div class="service-steps">
+        <div class="sstep"><span>01</span>Submit your material</div>
+        <div class="sstep"><span>02</span>Authorize 1.00 USDC</div>
+        <div class="sstep"><span>03</span>Receive your signed record</div>
+      </div>
     </div>
     <div class="desk-card">
-      <form id="examination-form">
+      <form id="examination-form" novalidate>
         <div class="desk-row">
-          <label for="client-payload" class="desk-tag">01 // Client Data Payload</label>
-          <textarea id="client-payload" class="desk-textarea" maxlength="2000" placeholder="Paste the text, claim, model output, or strategic document to be examined... (up to 2,000 characters)" required></textarea>
+          <div class="field-head">
+            <span class="field-num">01</span>
+            <div>
+              <label class="field-label" for="material-text">Material for examination</label>
+              <p class="field-help">Upload documents, paste text, or both. PDF, DOCX, or TXT, up to 5 MB per file. The service examines up to 4,000 characters of material in one examination.</p>
+            </div>
+          </div>
+          <div id="upload-zone" class="upload-zone" role="button" tabindex="0" aria-label="Upload documents for examination">
+            <input type="file" id="file-input" accept=".pdf,.docx,.txt,.md" multiple hidden>
+            <strong>Upload documents</strong>
+            <div class="uz-sub">Drag files here, or <button type="button" id="browse-btn">browse your files</button></div>
+            <div class="uz-types">PDF &middot; DOCX &middot; TXT &middot; multiple files welcome</div>
+          </div>
+          <div id="extract-status" class="extract-status" hidden><span class="extract-bar"><i id="extract-fill"></i></span><span id="extract-text">Reading files&hellip;</span></div>
+          <ul id="attachment-list" class="attachments"></ul>
+          <textarea id="material-text" class="desk-textarea" placeholder="Or paste the text, claim, model output, or document excerpt to be examined&hellip;" aria-label="Paste material for examination"></textarea>
+          <div class="char-line"><span id="char-count">0 / 4,000 characters</span><span class="hash" id="material-hash"></span></div>
         </div>
         <div class="desk-row">
-          <label for="client-context" class="desk-tag">02 // Governing Mandate or Context (Optional)</label>
-          <textarea id="client-context" class="desk-textarea" maxlength="2000" style="min-height:100px" placeholder="Add the question, conditions, jurisdiction, scope, or requested operation (up to 2,000 characters)."></textarea>
+          <div class="field-head">
+            <span class="field-num">02</span>
+            <div>
+              <label class="field-label" for="question-text">What would you like to know? <em>(optional)</em></label>
+              <p class="field-help">Ask a question, describe a concern, or tell us what you want to establish. This field communicates your purpose. It does not establish or alter the governing examination protocol.</p>
+            </div>
+          </div>
+          <textarea id="question-text" class="desk-textarea" placeholder="Does this conclusion follow from the evidence?" aria-label="Your question or objective, optional"></textarea>
+          <div class="question-examples"><b>For example:</b> Does this conclusion follow from the evidence? &middot; Identify unsupported assertions in this document. &middot; Does this model output preserve the original proposition? &middot; Examine this report for contradictions.</div>
         </div>
-        <div class="desk-actions">
-          <button type="submit" id="execute-button" class="btn-gold">PAY & EXECUTE — 1.00 USDC</button>
-          <button type="button" id="connect-wallet" class="btn-outline">CONNECT BASE WALLET</button>
-          <span style="font-size:12px;color:var(--ink-2)">Base Mainnet · x402 authorization · no account required.</span>
+        <div class="txn-panel" id="txn-panel">
+          <div class="txn-top">
+            <div>
+              <div class="fee-amount" id="fee-amount">1.00 USDC</div>
+              <div class="fee-note">Examination fee, shown before any authorization. Base Mainnet &middot; x402. Payment purchases an examination, never a favorable finding.</div>
+            </div>
+            <ol class="txn-steps" id="txn-steps">
+              <li data-step="material">Material</li>
+              <li data-step="wallet">Wallet</li>
+              <li data-step="authorize">Authorize</li>
+              <li data-step="result">Result</li>
+            </ol>
+          </div>
+          <div class="txn-status quiet" id="txn-status" role="status">Add material for examination to begin. No wallet is connected.</div>
+          <div class="txn-actions">
+            <button type="button" id="connect-wallet" class="btn-outline">Connect Base wallet</button>
+            <button type="submit" id="execute-button" class="btn-gold" disabled>Authorize 1.00 USDC &amp; begin examination</button>
+            <span class="hint">Nothing is paid until you approve in your wallet.</span>
+          </div>
         </div>
       </form>
       <div id="state-panel" class="desk-state-panel" aria-live="polite">
         <img class="crest-pulse" src="/standing-mark-crest.png" alt="Wheeler Hubbell Publishing gold dandelion seal" />
-        <div class="pipeline-step" id="pipeline-status">[1/3] REQUESTING X402 PAYMENT CHALLENGE...</div>
+        <div class="pipeline-step" id="pipeline-status">REQUESTING THE PAYMENT CHALLENGE&hellip;</div>
       </div>
-      <div id="error-panel" style="display:none;background:#fff0ed;border:1px solid #b94a3b;color:#6b1f17;padding:18px;margin-top:24px" role="alert"></div>
+      <div id="error-panel" style="display:none;background:#fff0ed;border:1px solid #b94a3b;color:#6b1f17;padding:18px;margin-top:24px;font-family:Inter,sans-serif;font-size:14px;line-height:1.55" role="alert"></div>
       <article id="dossier" class="dossier" aria-live="polite">
         <div class="dossier-header">
           <img class="dossier-crest" src="/standing-mark-crest.png" alt="Gold dandelion crest" />
@@ -329,6 +439,11 @@ table.terms td:first-child{white-space:normal}
     </div>
   </div>
 </section>
+<div class="sticky-txn hidden" id="sticky-txn">
+  <span class="fee" id="sticky-fee">1.00 USDC</span>
+  <span class="act"><button type="button" id="sticky-action" class="btn-gold" disabled>Authorize &amp; begin</button></span>
+</div>
+
 <section id="access">
   <div class="wrap">
     <div class="sec-head">
@@ -457,35 +572,81 @@ table.terms td:first-child{white-space:normal}
 <script type="module">
 import { wrapFetchWithPayment, x402Client } from "https://esm.sh/@x402/fetch@2.30.0?bundle";
 import { ExactEvmScheme } from "https://esm.sh/@x402/evm@2.30.0?bundle";
+import * as pdfjsLib from "https://esm.sh/pdfjs-dist@4.10.38?bundle";
+import * as mammoth from "https://esm.sh/mammoth@1.8.0?bundle";
 
 (() => {
+  pdfjsLib.GlobalWorkerOptions.workerSrc = "https://esm.sh/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs";
+
+  // x402 payloads carry EIP-3009 uint256 values as BigInt; JSON cannot serialize them natively.
+  if (typeof BigInt !== "undefined" && !BigInt.prototype.toJSON) BigInt.prototype.toJSON = function () { return this.toString(); };
   const endpoint = "https://api.wheelerhubbellpublishing.com/v1/evaluate";
+  const MAX_CHARS = 4000;
+  const MAX_FILE_BYTES = 5 * 1024 * 1024;
   const provider = () => window.ethereum;
+
   const form = document.getElementById("examination-form");
-  const payloadInput = document.getElementById("client-payload");
-  const contextInput = document.getElementById("client-context");
+  const materialInput = document.getElementById("material-text");
+  const questionInput = document.getElementById("question-text");
   const executeButton = document.getElementById("execute-button");
   const connectButton = document.getElementById("connect-wallet");
+  const uploadZone = document.getElementById("upload-zone");
+  const fileInput = document.getElementById("file-input");
+  const browseBtn = document.getElementById("browse-btn");
+  const attachmentList = document.getElementById("attachment-list");
+  const extractStatus = document.getElementById("extract-status");
+  const extractFill = document.getElementById("extract-fill");
+  const extractText = document.getElementById("extract-text");
+  const charCount = document.getElementById("char-count");
+  const materialHash = document.getElementById("material-hash");
+  const feeAmount = document.getElementById("fee-amount");
+  const txnStatus = document.getElementById("txn-status");
+  const txnSteps = document.getElementById("txn-steps");
   const statePanel = document.getElementById("state-panel");
   const statusText = document.getElementById("pipeline-status");
   const errorPanel = document.getElementById("error-panel");
   const dossier = document.getElementById("dossier");
+  const stickyBar = document.getElementById("sticky-txn");
+  const stickyFee = document.getElementById("sticky-fee");
+  const stickyAction = document.getElementById("sticky-action");
+  const txnPanel = document.getElementById("txn-panel");
+
   let lastRecord = null;
   let walletAddress = null;
+  let busy = false;
+  let authRequested = false;
+  const attachments = []; // {id, name, size, text, status, error}
 
-  const setBusy = (busy, step = "") => {
-    executeButton.disabled = busy;
-    connectButton.disabled = busy;
-    statePanel.classList.toggle("active", busy);
-    if (busy) {
-      statusText.textContent = step || "[1/3] REQUESTING X402 PAYMENT CHALLENGE...";
-      errorPanel.style.display = "none";
+  const fmtSize = (n) => n >= 1048576 ? (n / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(n / 1024)) + " KB";
+  const fmtNum = (n) => n.toLocaleString("en-US");
+
+  function materialText() {
+    const parts = [];
+    const pasted = materialInput.value.trim();
+    if (pasted) parts.push(pasted);
+    for (const a of attachments) {
+      if (a.status === "ok" && a.text) parts.push(`--- ${a.name} ---\n${a.text}`);
     }
-  };
-  const showError = (message) => {
-    errorPanel.textContent = message;
-    errorPanel.style.display = "block";
-  };
+    return parts.join("\n\n");
+  }
+
+  function composeRequest() {
+    const material = materialText();
+    const question = questionInput.value.trim();
+    const claim = question
+      ? `${material}\n\nCUSTOMER QUESTION OR OBJECTIVE (the customer's purpose only; it does not establish or alter the governing examination protocol):\n${question}`
+      : material;
+    return {
+      claim,
+      subject: material.length > 2000 ? material.slice(0, 1997) + "..." : material,
+    };
+  }
+
+  async function sha256Short(text) {
+    const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+  }
+
   const safeString = (value) => typeof value === "string" ? value : (value == null ? "" : JSON.stringify(value));
   const first = (...values) => values.find(v => v !== undefined && v !== null && v !== "");
   const asList = (value) => Array.isArray(value) ? value : (typeof value === "string" && value.trim() ? value.split(/\n|; /).filter(Boolean) : []);
@@ -507,9 +668,192 @@ import { ExactEvmScheme } from "https://esm.sh/@x402/evm@2.30.0?bundle";
     return header;
   };
 
+  function setStatus(message, quiet = false) {
+    txnStatus.textContent = message;
+    txnStatus.classList.toggle("quiet", quiet);
+  }
+
+  function showError(message) {
+    errorPanel.textContent = message;
+    errorPanel.style.display = message ? "block" : "none";
+  }
+
+  function setStepState() {
+    const hasMaterial = materialText().length > 0;
+    const steps = txnSteps.querySelectorAll("li");
+    steps.forEach(li => li.classList.remove("done", "active"));
+    const mark = (name, cls) => txnSteps.querySelector(`[data-step="${name}"]`)?.classList.add(cls);
+    if (!hasMaterial) { mark("material", "active"); return; }
+    mark("material", "done");
+    if (!walletAddress) { mark("wallet", "active"); return; }
+    mark("wallet", "done");
+    if (!lastRecord) { mark("authorize", "active"); return; }
+    mark("authorize", "done");
+    mark("result", "done");
+  }
+
+  function refreshReadiness() {
+    const material = materialText();
+    const { claim } = composeRequest();
+    const over = claim.length > MAX_CHARS;
+    charCount.textContent = `${fmtNum(claim.length)} / ${fmtNum(MAX_CHARS)} characters`;
+    charCount.parentElement.classList.toggle("over", over);
+    const ready = material.length > 0 && !over && !!walletAddress && !busy;
+    executeButton.disabled = !ready;
+    if (materialHash) {
+      if (claim.length > 0) {
+        sha256Short(claim).then(h => { materialHash.textContent = `SHA-256 of submission: ${h.slice(0, 12)}\u2026`; });
+      } else {
+        materialHash.textContent = "";
+      }
+    }
+    if (busy) return;
+    if (material.length === 0) {
+      setStatus(walletAddress ? "Add material for examination to begin." : "Add material for examination to begin. No wallet is connected.", true);
+    } else if (over) {
+      setStatus(`Material is ${fmtNum(claim.length - MAX_CHARS)} characters over the service's ${fmtNum(MAX_CHARS)}-character examination limit. Remove or shorten material to proceed.`);
+    } else if (!walletAddress) {
+      setStatus(`Material received \u2014 ${fmtNum(claim.length)} characters ready for examination. Connect a Base wallet to continue.`);
+    } else {
+      setStatus(`Ready. ${fmtNum(claim.length)} characters of material, wallet connected. Review the fee above and authorize the examination \u2014 nothing is paid until you approve in your wallet.`);
+    }
+    refreshSticky();
+    setStepState();
+  }
+
+  function refreshSticky() {
+    const material = materialText();
+    const { claim } = composeRequest();
+    const ready = material.length > 0 && claim.length <= MAX_CHARS && !!walletAddress && !busy;
+    stickyFee.textContent = feeAmount.textContent;
+    if (!walletAddress) {
+      stickyAction.textContent = "Connect wallet";
+      stickyAction.disabled = busy;
+    } else {
+      stickyAction.textContent = ready ? "Authorize & begin" : "Add material to begin";
+      stickyAction.disabled = !ready;
+    }
+  }
+
+  function autoGrow(el) {
+    el.style.height = "auto";
+    el.style.height = Math.min(el.scrollHeight + 2, 340) + "px";
+  }
+
+  // ---------- File upload and client-side extraction ----------
+
+  function renderAttachments() {
+    attachmentList.replaceChildren();
+    for (const a of attachments) {
+      const li = document.createElement("li");
+      const row = document.createElement("div");
+      row.className = "att-row";
+      const name = document.createElement("span");
+      name.className = "att-name";
+      name.textContent = a.name;
+      const meta = document.createElement("span");
+      meta.className = "att-meta";
+      meta.textContent = fmtSize(a.size);
+      const status = document.createElement("span");
+      status.className = "att-status" + (a.status === "ok" ? " ok" : a.status === "error" ? " err" : "");
+      status.textContent = a.status === "reading" ? "Reading\u2026" : a.status === "ok" ? `Received \u2014 ${fmtNum(a.text.length)} characters` : a.error;
+      const remove = document.createElement("button");
+      remove.type = "button";
+      remove.className = "att-remove";
+      remove.textContent = "Remove";
+      remove.addEventListener("click", () => {
+        const i = attachments.indexOf(a);
+        if (i >= 0) attachments.splice(i, 1);
+        renderAttachments();
+        refreshReadiness();
+      });
+      row.append(name, meta, status, remove);
+      li.appendChild(row);
+      if (a.status === "ok" && a.text) {
+        const toggle = document.createElement("button");
+        toggle.type = "button";
+        toggle.className = "att-preview-toggle";
+        toggle.textContent = "Preview extracted text";
+        const preview = document.createElement("div");
+        preview.className = "att-preview";
+        preview.textContent = a.text.slice(0, 800) + (a.text.length > 800 ? "\u2026" : "");
+        toggle.addEventListener("click", () => {
+          preview.classList.toggle("open");
+          toggle.textContent = preview.classList.contains("open") ? "Hide preview" : "Preview extracted text";
+        });
+        li.append(toggle, preview);
+      }
+      attachmentList.appendChild(li);
+    }
+  }
+
+  async function extractOne(file) {
+    const lower = file.name.toLowerCase();
+    if (lower.endsWith(".txt") || lower.endsWith(".md") || file.type === "text/plain") {
+      return await file.text();
+    }
+    if (lower.endsWith(".pdf") || file.type === "application/pdf") {
+      const pdf = await pdfjsLib.getDocument({ data: await file.arrayBuffer() }).promise;
+      const pages = [];
+      for (let p = 1; p <= pdf.numPages; p++) {
+        const page = await pdf.getPage(p);
+        const content = await page.getTextContent();
+        pages.push(content.items.map(i => i.str).join(" "));
+      }
+      return pages.join("\n\n").replace(/[ \t]+/g, " ").trim();
+    }
+    if (lower.endsWith(".docx") || file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
+      const result = await mammoth.extractRawText({ arrayBuffer: await file.arrayBuffer() });
+      return result.value.trim();
+    }
+    throw new Error("Unsupported file type. Upload PDF, DOCX, or TXT.");
+  }
+
+  async function handleFiles(fileList) {
+    const incoming = Array.from(fileList || []);
+    if (!incoming.length) return;
+    let done = 0;
+    extractStatus.hidden = false;
+    for (const file of incoming) {
+      const a = { name: file.name, size: file.size, text: "", status: "reading", error: "" };
+      attachments.push(a);
+      renderAttachments();
+      extractText.textContent = `Reading ${file.name} (${done + 1} of ${done + incoming.length})\u2026`;
+      try {
+        if (file.size > MAX_FILE_BYTES) throw new Error(`Over the 5 MB per-file limit (${fmtSize(file.size)}).`);
+        a.text = (await extractOne(file)) || "";
+        if (!a.text.trim()) throw new Error("No readable text was found in this file.");
+        a.status = "ok";
+      } catch (e) {
+        a.status = "error";
+        a.error = e?.message || "Could not read this file.";
+      }
+      done++;
+      extractFill.style.width = Math.round((done / incoming.length) * 100) + "%";
+      renderAttachments();
+      refreshReadiness();
+    }
+    extractText.textContent = "All files received.";
+    setTimeout(() => { extractStatus.hidden = true; extractFill.style.width = "0%"; }, 1600);
+  }
+
+  browseBtn.addEventListener("click", (e) => { e.stopPropagation(); fileInput.click(); });
+  uploadZone.addEventListener("click", () => fileInput.click());
+  uploadZone.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fileInput.click(); } });
+  fileInput.addEventListener("change", () => { handleFiles(fileInput.files); fileInput.value = ""; });
+  ["dragenter", "dragover"].forEach(ev => uploadZone.addEventListener(ev, (e) => { e.preventDefault(); uploadZone.classList.add("drag"); }));
+  ["dragleave", "drop"].forEach(ev => uploadZone.addEventListener(ev, (e) => { e.preventDefault(); uploadZone.classList.remove("drag"); }));
+  uploadZone.addEventListener("drop", (e) => handleFiles(e.dataTransfer.files));
+
+  const onEdit = () => { showError(""); refreshReadiness(); };
+  materialInput.addEventListener("input", () => { autoGrow(materialInput); onEdit(); });
+  questionInput.addEventListener("input", () => { autoGrow(questionInput); onEdit(); });
+
+  // ---------- Wallet and payment ----------
+
   async function connectBaseWallet() {
     const eth = provider();
-    if (!eth) throw new Error("No injected EVM wallet was found. Open this page in a Base-compatible wallet browser, or install a supported wallet.");
+    if (!eth) throw new Error("No EVM wallet was found in this browser. Install a Base-compatible wallet such as MetaMask or Coinbase Wallet, then try again.");
     const accounts = await eth.request({ method: "eth_requestAccounts" });
     if (!accounts?.[0]) throw new Error("The wallet did not provide an account.");
     const chain = await eth.request({ method: "eth_chainId" });
@@ -522,25 +866,39 @@ import { ExactEvmScheme } from "https://esm.sh/@x402/evm@2.30.0?bundle";
       }
     }
     walletAddress = accounts[0];
-    connectButton.textContent = `WALLET CONNECTED · ${walletAddress.slice(0, 6)}…${walletAddress.slice(-4)}`;
+    connectButton.textContent = `Wallet connected \u00b7 ${walletAddress.slice(0, 6)}\u2026${walletAddress.slice(-4)}`;
     return { eth, address: walletAddress };
   }
 
   function makePaidFetch(eth, address) {
-    // The wallet signs only the x402 EIP-3009 authorization returned by the live endpoint.
     const signer = {
       address,
       signTypedData: async ({ domain, types, primaryType, message }) => {
+        authRequested = true;
+        setStatus("Review your wallet prompt to authorize the examination fee. Nothing has been paid yet.");
+        statusText.textContent = "AWAITING YOUR AUTHORIZATION IN THE WALLET \u2014 NOTHING PAID YET\u2026";
         const typedData = { domain, types, primaryType, message };
-        return await eth.request({
-          method: "eth_signTypedData_v4",
-          params: [address, JSON.stringify(typedData)],
-        });
+        return await eth.request({ method: "eth_signTypedData_v4", params: [address, JSON.stringify(typedData)] });
       },
     };
     const client = new x402Client().register("eip155:8453", new ExactEvmScheme(signer));
     return wrapFetchWithPayment(fetch, client);
   }
+
+  connectButton.addEventListener("click", async () => {
+    try {
+      showError("");
+      setStatus("Connecting your wallet\u2026");
+      await connectBaseWallet();
+      refreshReadiness();
+    } catch (error) {
+      setStatus("Wallet not connected.", true);
+      showError((error.message || "Wallet connection failed.") + " No payment was made.");
+      refreshReadiness();
+    }
+  });
+
+  // ---------- Result rendering ----------
 
   function renderRecord(envelope, paymentHeader) {
     lastRecord = envelope;
@@ -578,50 +936,61 @@ import { ExactEvmScheme } from "https://esm.sh/@x402/evm@2.30.0?bundle";
     dossier.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  connectButton.addEventListener("click", async () => {
-    try {
-      errorPanel.style.display = "none";
-      const { address } = await connectBaseWallet();
+  // ---------- Submission ----------
+
+  const setBusy = (isBusy, step = "") => {
+    busy = isBusy;
+    executeButton.disabled = isBusy || true;
+    connectButton.disabled = isBusy;
+    statePanel.classList.toggle("active", isBusy);
+    if (isBusy) {
+      statusText.textContent = step;
       showError("");
-      errorPanel.style.display = "none";
-      connectButton.setAttribute("aria-label", `Connected wallet ${address}`);
-    } catch (error) {
-      showError(error.message || "Wallet connection failed.");
     }
-  });
+    refreshReadiness();
+  };
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const claim = payloadInput.value.trim();
-    if (!claim) return showError("Enter the client material to examine.");
+    const { claim, subject } = composeRequest();
+    if (!materialText()) return showError("Add material for examination first. No payment was made.");
+    if (claim.length > MAX_CHARS) return showError(`Material is over the ${fmtNum(MAX_CHARS)}-character examination limit. Shorten it to proceed. No payment was made.`);
     try {
-      errorPanel.style.display = "none";
-      setBusy(true, "[1/3] REQUESTING X402 PAYMENT CHALLENGE...");
+      authRequested = false;
+      setBusy(true, "REQUESTING THE PAYMENT CHALLENGE\u2026");
+      setStatus("Requesting the payment challenge from the service\u2026");
       const { eth, address } = await connectBaseWallet();
+      refreshReadiness();
       const paidFetch = makePaidFetch(eth, address);
-      statusText.textContent = "[2/3] REVIEW THE WALLET PROMPT TO AUTHORIZE 1.00 USDC...";
-      const context = contextInput.value.trim();
-      const submittedClaim = context ? `CLIENT MATERIAL:\n${claim}\n\nGOVERNING MANDATE / CONTEXT:\n${context}` : claim;
-      if (submittedClaim.length > 4000) throw new Error("Client material and context must total 4,000 characters or fewer.");
-      const requestBody = {
-        claim: submittedClaim,
-        subject: claim.length > 2000 ? claim.slice(0, 1997) + "..." : claim,
-        operation: "INFORM",
-        requested_operation: "INFORM",
-      };
+      statusText.textContent = "PAYMENT SETTLING \u2014 EXAMINATION IN PROGRESS\u2026";
       const response = await paidFetch(endpoint, {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify(requestBody),
+        body: JSON.stringify({ claim, subject }),
       });
       const data = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(data.message || data.error || `Evaluation request failed (${response.status}).`);
-      statusText.textContent = "[3/3] PAYMENT SETTLED — RECORD SIGNED...";
+      if (!response.ok) {
+        throw Object.assign(new Error(data.message || data.error || `The service returned status ${response.status}.`), { afterAuth: true });
+      }
+      setStatus("Examination complete. Payment of " + feeAmount.textContent + " settled. Your signed record is below.");
+      statusText.textContent = "EXAMINATION COMPLETE \u2014 SIGNED RECORD RECEIVED.";
       renderRecord(data, response.headers.get("payment-response"));
       setBusy(false);
+      dossier.scrollIntoView({ behavior: "smooth", block: "start" });
     } catch (error) {
       setBusy(false);
-      showError(error?.message || "The evaluation request failed.");
+      const msg = error?.message || "The request failed.";
+      const declined = /reject|denied|declin|cancel/i.test(msg);
+      if (!authRequested) {
+        setStatus("The examination did not start. No payment was made.", true);
+        showError(msg + " No payment was made.");
+      } else if (declined) {
+        setStatus("Authorization was declined in the wallet. No payment was made.");
+        showError("Payment authorization was declined in the wallet. No payment was made. Your material is unchanged \u2014 you can authorize again whenever you are ready.");
+      } else {
+        setStatus("The examination was interrupted after authorization.");
+        showError(msg + " If your wallet authorized the payment, do not pay again: the same purchase identity recovers the result at no second charge. Write to desk@wheelerhubbellpublishing.com with what you see here and we will recover your record.");
+      }
     }
   });
 
@@ -664,7 +1033,44 @@ import { ExactEvmScheme } from "https://esm.sh/@x402/evm@2.30.0?bundle";
     }
   });
   document.getElementById("export-pdf").addEventListener("click", () => window.print());
+
+  // ---------- Live fee from the service's own payment challenge ----------
+
+  (async () => {
+    try {
+      const probe = await fetch(endpoint, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ claim: ".", subject: "." }),
+      });
+      const challenge = decodeHeaderJson(probe.headers.get("payment-required"));
+      const accepted = challenge?.accepts?.[0];
+      if (probe.status === 402 && accepted?.amount) {
+        const usdc = (Number(accepted.amount) / 1e6).toFixed(2);
+        feeAmount.textContent = `${usdc} USDC`;
+        executeButton.textContent = `Authorize ${usdc} USDC & begin examination`;
+        refreshSticky();
+      }
+    } catch { /* the printed 1.00 USDC fee remains */ }
+  })();
+
+  // ---------- Sticky mobile transaction bar ----------
+
+  stickyAction.addEventListener("click", () => {
+    if (!walletAddress) connectButton.click();
+    else executeButton.click();
+  });
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver((entries) => {
+      stickyBar.classList.toggle("hidden", entries[0].isIntersecting);
+    }, { threshold: 0.1 }).observe(txnPanel);
+  }
+
+  autoGrow(materialInput);
+  autoGrow(questionInput);
+  refreshReadiness();
 })();
 </script>
+
 </body>
 </html>
