@@ -28,13 +28,11 @@ Every signed Standing Mark Record (`WHP-STANDING-MARK-v1` over `WHP-JCS-I1` cano
 
 ## 3. Canonical Endpoints & MCP Tools (`VerifyMCP` Compliant)
 
-- **Single Evaluation Door:** `POST https://api.wheelerhubbellpublishing.com/v1/evaluate` (1.00 USDC on Base `eip155:8453` to `0x1050eddd8282623b0c263ed6bdbd42370bbc28d3` via `x402-v2`).
-- **Streamable HTTP MCP Server:** `POST https://api.wheelerhubbellpublishing.com/mcp` (All 5 tools declare full `inputSchema`, `outputSchema`, and request/response `examples`):
-  1. `whp_evaluate` — Submit material through `/v1/evaluate` and receive the signed Standing Mark Record.
-  2. `whp_authorize_x402_transaction` — Pre-settlement evidence gate for autonomous `x402` agent-to-agent transactions.
-  3. `whp_retrieve_result` — Retrieve a completed Standing Mark Record by `purchase_id` at zero second charge.
-  4. `whp_recover_purchase` — Recover a settled Standing Mark Record by `purchase_id` at zero second charge.
-  5. `whp_get_contract` — Inspect the live wire contract, data-handling facts, and Developer Integration Rule at zero charge.
-- **Live Wire Contract:** `GET https://api.wheelerhubbellpublishing.com/v1/contract`
-- **Standing Discovery Index:** `GET https://api.wheelerhubbellpublishing.com/.well-known/whp-standing.json`
-- **Capability & Key Resolution:** `GET https://api.wheelerhubbellpublishing.com/.well-known/standing-capability.json`
+- `POST /v1/evaluate` is the evaluation path. It returns a signed record. The live contract describes current payment terms (about 1 USDC on Base), quote binding, and verification procedure. Payment buys evaluation, not a favorable result. Re-read the live contract rather than treating details in this file as immutable.
+- Contract: https://decisionintegrity.wheelerhubbellpublishing.com/v1/contract
+- Evaluation: https://decisionintegrity.wheelerhubbellpublishing.com/v1/evaluate
+- Verification: https://decisionintegrity.wheelerhubbellpublishing.com/v1/verification (signature check only, per the live contract)
+- Health: https://decisionintegrity.wheelerhubbellpublishing.com/health
+- Issuer identity: https://decisionintegrity.wheelerhubbellpublishing.com/.well-known/whp-issuer.json
+- Issuer identity: Standing Marks are signed by Wheeler Hubbell Publishing with an Ed25519 key published at the discovery address above (key_id_sha256 dc872cabbbb942860cb2c4ac97a2a514245e54d69aa8515e80a7ec634c67076f). This key is the Standing Mark issuer identity. An earlier service host (api.wheelerhubbellpublishing.com) used a different key; that host is retired, does not answer, and its key does not verify current Marks.
+- The retired host api.wheelerhubbellpublishing.com no longer answers. The sealed /v1/evaluations door and the MCP endpoint previously listed here are not part of the current deployment.
