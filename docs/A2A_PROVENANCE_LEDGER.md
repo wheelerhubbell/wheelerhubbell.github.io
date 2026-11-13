@@ -1,3 +1,5 @@
+> Legacy integration description. The current service has no native A2A transport. Current onboarding: https://wheelerhubbellpublishing.com/developers.html
+
 # A2A Provenance & Operational Ledger
 ### Wheeler Hubbell Publishing — Standing Authority
 *Canonical Lineage, Operational Status & Audit Surface*  

@@ -33,7 +33,7 @@
     "inference_provider": "wheeler-hubbell-publishing-sovereign",
     "retention_policy": "Signed Standing Mark Record retained in append-only purchase registry; unsubmitted client data is never retained.",
     "storage_policy": "Immutable signed result stored by purchase_id for buyer retrieval and recovery; temporary working buffers discarded after signing.",
-    "training_use_policy": "PROHIBITED — Wheeler Hubbell Publishing never uses submitted client data to train or fine-tune models.",
+    "training_use_policy": "PROHIBITED \u2014 Wheeler Hubbell Publishing never uses submitted client data to train or fine-tune models.",
     "transmitted_fields": [
       "client_data",
       "provenance",
@@ -84,5 +84,6 @@
     "negative_finding": "NEGATIVE_STANDING_FINDING (outcome: NOT_ESTABLISHED)",
     "positive_mark": "POSITIVE_STANDING_MARK (outcome: ESTABLISHED)",
     "service": "WHP Standing Mark Service (POST /v1/evaluate)"
-  }
+  },
+  "$comment": "Legacy schema retained for historical reference. Not the current live service contract. Read https://decisionintegrity.wheelerhubbellpublishing.com/v1/contract and https://github.com/wheelerhubbell/standing-mark"
 }
