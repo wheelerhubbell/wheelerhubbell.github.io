@@ -15,7 +15,7 @@
     {
       "id": "request-examination",
       "name": "Request an examination",
-      "description": "POST /v1/evaluate with a claim or proposed action. Unpaid requests return HTTP 402 with a USDC-on-Base quote bound to the exact request bytes (scheme WHP-BASE-USDC-QUOTE-1, not x402-exact). Paying the quote and retrying with X-WHP-Quote and X-WHP-Payment-Tx returns the signed examination result."
+      "description": "POST /v1/evaluate with a claim or proposed action. Unpaid requests return HTTP 402 with a USDC-on-Base quote bound to the exact request bytes (scheme WHP-BASE-USDC-FLAT-1, exactly 1.00 USDC, not x402-exact). Paying the quoted amount and retrying with X-WHP-Quote and X-WHP-Payment-Tx returns the signed examination result."
     },
     {
       "id": "verify-result",

@@ -19,7 +19,7 @@ Independent examination of claims and proposed actions. Returns signed findings.
 
 ## Payment and protocol boundaries
 
-Payment buys the examination, not a positive finding. Read the live contract for the exact scheme and current terms. WHP-BASE-USDC-QUOTE-1 uses a quote in USDC on Base bound to the exact request bytes; it is not x402-exact. A quote is not a paid examination.
+Payment buys the examination, not a positive finding. Read the live contract for the exact scheme and current terms. WHP-BASE-USDC-FLAT-1 charges exactly 1.00 USDC on Base per examination; the quote ID is bound to the exact request bytes and the scheme is not x402-exact. A quote is not a paid examination.
 
 The service is HTTP. MCP setup uses local Python stdio source: https://github.com/wheelerhubbell/standing-mark/blob/main/mcp/README.md . No native remote MCP or A2A endpoint is claimed. The A2A card is a descriptive interoperability asset only.
 

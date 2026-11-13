@@ -4,7 +4,7 @@
     "title": "Standing Mark",
     "version": "1.2.0",
     "description": "Standing Mark is an independent examination service operated by Wheeler Hubbell Publishing, Inc. It examines claims and proposed actions and returns a signed result stating what is established and what is not. It does not execute, authorize, pay or settle.",
-    "x-guidance": "GET /v1/contract first; it is the live source of truth for schemas, payment terms and limits. POST /v1/evaluate with a JSON claim. An unpaid request returns HTTP 402 with a price quote of about 1 USDC on Base (scheme WHP-BASE-USDC-QUOTE-1, not x402-exact): the quote carries quote_id, amount_units, pay_to and expires, and is bound to the exact request bytes. Pay the quoted amount on Base, then retry the identical body with headers X-WHP-Quote and X-WHP-Payment-Tx. POST /v1/verification checks a signed result's signature only. The issuer Ed25519 key is published at /.well-known/whp-issuer.json."
+    "x-guidance": "GET /v1/contract first; it is the live source of truth for schemas, payment terms and limits. POST /v1/evaluate with a JSON claim. An unpaid request returns HTTP 402 with a fixed-price payment request for exactly 1.00 USDC on Base (scheme WHP-BASE-USDC-FLAT-1, not x402-exact): the quote carries quote_id, amount_units, pay_to and expires, and is bound to the exact request bytes. Pay the quoted amount on Base, then retry the identical body with headers X-WHP-Quote and X-WHP-Payment-Tx. POST /v1/verification checks a signed result's signature only. The issuer Ed25519 key is published at /.well-known/whp-issuer.json."
   },
   "servers": [
     {
@@ -133,15 +133,17 @@
           }
         },
         "x-whp-payment": {
-          "scheme": "WHP-BASE-USDC-QUOTE-1",
+          "scheme": "WHP-BASE-USDC-FLAT-1",
           "x402_exact": false,
           "network": "eip155:8453",
           "asset": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
           "decimals": 6,
-          "price": "1.000001 to 1.009999 USDC, subject to operator approval",
+          "price": "1.00 USDC",
           "pay_to": "0x1050eddd8282623b0c263ed6bdbd42370bbc28d3",
           "min_confirmations": 5,
-          "quote_ttl_minutes": 15
+          "quote_ttl_minutes": 15,
+          "amount_units": 1000000,
+          "amount_match": "exact"
         }
       }
     },
@@ -253,7 +255,7 @@
           "scheme": {
             "type": "string",
             "enum": [
-              "WHP-BASE-USDC-QUOTE-1"
+              "WHP-BASE-USDC-FLAT-1"
             ]
           },
           "network": {
@@ -288,7 +290,8 @@
           },
           "amount_units": {
             "type": "integer",
-            "description": "USDC atomic units (6 decimals); observed 1000001-1009999 per the declared range"
+            "description": "Exactly 1000000 USDC atomic units (1.00 USDC, 6 decimals)",
+            "const": 1000000
           },
           "expires": {
             "type": "integer",

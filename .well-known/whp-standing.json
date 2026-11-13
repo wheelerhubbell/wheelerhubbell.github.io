@@ -21,11 +21,11 @@
     }
   },
   "payment": {
-    "scheme": "WHP-BASE-USDC-QUOTE-1",
+    "scheme": "WHP-BASE-USDC-FLAT-1",
     "network": "eip155:8453",
     "asset": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
     "decimals": 6,
-    "price": "1.000001 to 1.009999 USDC, subject to operator approval",
+    "price": "1.00 USDC",
     "not_x402_exact": true,
     "pay_to": "0x1050eddd8282623b0c263ed6bdbd42370bbc28d3",
     "floor_units": 1000000,

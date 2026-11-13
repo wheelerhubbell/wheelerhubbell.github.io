@@ -10,7 +10,7 @@ Standing Mark is an independent examination service operated by Wheeler Hubbell 
 - [Independent verification](https://github.com/wheelerhubbell/standing-mark/blob/main/docs/verification.md)
 - [Local MCP adapter setup](https://github.com/wheelerhubbell/standing-mark/blob/main/mcp/README.md)
 
-The current service speaks HTTP. MCP is available through a local stdio adapter, not a hosted `/mcp` endpoint. The A2A description is not a native A2A endpoint. Payment uses `WHP-BASE-USDC-QUOTE-1`, not x402-exact.
+The current service speaks HTTP. MCP is available through a local stdio adapter, not a hosted `/mcp` endpoint. The A2A description is not a native A2A endpoint. Payment uses `WHP-BASE-USDC-FLAT-1` (exactly 1.00 USDC on Base), not x402-exact.
 
 ## Legacy material in this repository
 
