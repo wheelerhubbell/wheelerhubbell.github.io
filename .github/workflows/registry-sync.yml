@@ -16,6 +16,10 @@ on:
 
 jobs:
   publish:
+    # Held: server.json now describes a source-installed stdio adapter.
+    # No hosted MCP endpoint or published package exists to register.
+    # Resume only with a valid registry manifest for an actually available artifact.
+    if: ${{ false }}
     runs-on: ubuntu-latest
     permissions:
       id-token: write # Required for OIDC authentication
