@@ -1,3 +1,5 @@
+> Current integration: [developer onboarding](https://wheelerhubbellpublishing.com/developers.html) and [current SDKs](https://github.com/wheelerhubbell/standing-mark). This page describes a legacy integration. Host links have been corrected, but compatibility with the current payment and record contract is not established.
+
 # @wheelerhubbell/whp-standing-client
 
 > **Fail-closed epistemic standing middleware for autonomous AI agents.**  
@@ -98,7 +100,7 @@ const client = new x402Client();
 registerExactEvmScheme(client, { signer: privateKeyToAccount(process.env.EVM_PRIVATE_KEY) });
 const fetchWithPayment = wrapFetchWithPayment(fetch, client);
 
-const res = await fetchWithPayment('https://api.wheelerhubbellpublishing.com/v1/evaluate', {
+const res = await fetchWithPayment('https://decisionintegrity.wheelerhubbellpublishing.com/v1/evaluate', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
@@ -132,8 +134,8 @@ console.log('Record Hash:', record.record_hash);
 // const mark = await client.purchase(signedSubmission);
 ```
 
-- **Live Service:** [https://api.wheelerhubbellpublishing.com](https://api.wheelerhubbellpublishing.com)
-- **Discovery:** [/.well-known/x402](https://api.wheelerhubbellpublishing.com/.well-known/x402)
+- **Live Service:** [https://decisionintegrity.wheelerhubbellpublishing.com](https://decisionintegrity.wheelerhubbellpublishing.com)
+- **Discovery:** [/.well-known/x402](https://decisionintegrity.wheelerhubbellpublishing.com/.well-known/x402)
 - **Protocol:** x402-v2 / Base Network
 
 ---

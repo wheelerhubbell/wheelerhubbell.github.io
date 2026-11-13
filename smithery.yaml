@@ -1,29 +1,8 @@
-version: 1
-name: whp-standing
-displayName: WHP Standing Witness
-description: Autonomous epistemic standing audits and circuit breaker gate for AI agents and smart contracts.
-homepage: https://wheelerhubbellpublishing.com
-documentation: https://api.wheelerhubbellpublishing.com/llms.txt
-runtime: remote
-
-remote:
-  transport: streamable-http
-  url: https://api.wheelerhubbellpublishing.com/mcp
-
-categories:
-  - developer-tools
-  - security
-  - web3
-
-keywords:
-  - epistemic-standing
-  - ai-agents
-  - circuit-breaker
-  - verification
-  - x402
-  - base
-
-features:
-  tools: true
-  resources: true
-  prompts: false
+# Discovery metadata only, not a remote MCP deployment configuration.
+name: standing-mark
+status: source-install-only
+homepage: https://wheelerhubbellpublishing.com/developers.html
+repository: https://github.com/wheelerhubbell/standing-mark
+transport: stdio
+source: mcp/standing_mark_mcp.py
+# No /mcp endpoint is provided by the production HTTP service.

@@ -1,41 +1,46 @@
 {
-  "service": "WHP Standing — Sovereign Epistemological Evaluator",
-  "issuer": "Wheeler Hubbell Publishing",
-  "version": "1.3.0",
-  "service_architecture": "SINGLE_EVALUATION_DOOR",
-  "evaluator_class": "SOVEREIGN_EPISTEMOLOGICAL_EVALUATOR",
-  "distinction_from_notary": "A notary only certifies that bytes existed or were signed at a given time. WHP Standing is an epistemological evaluator: a sovereign Large Language Model inside the single /v1/evaluate door, given Decision Integrity Version 7 (The Continuous Work), adopts its reasoning and evaluates whether the submitted data's claims, qualifiers, joins, and provenance actually warrant the requested operation, then signs that evaluation output with the Standing Mark (WHP-STANDING-MARK-v1).",
-  "evaluation_door": {
-    "method": "POST",
-    "path": "/v1/evaluate",
-    "url": "https://api.wheelerhubbellpublishing.com/v1/evaluate",
-    "engine": "Sovereign Large Language Model loaded with The Elemental Properties of True",
-    "canon_sha256": "bd85f51f05afc6f77053aec086a1d013a1cccde70c30231622f0ecc7e3f25c21",
-    "output_envelope": "WHP-STANDING-MARK-v1",
-    "canonicalization": "WHP-JCS-I1",
-    "signature_algorithm": "Ed25519"
+  "profile": "WHP-PHP-SERVICE-1.2.0",
+  "activation_status": "CONFIG_PRESENT_NOT_PROOF_OF_PRODUCTION_ACTIVATION",
+  "routes": {
+    "health": {
+      "method": "GET",
+      "path": "/health"
+    },
+    "contract": {
+      "method": "GET",
+      "path": "/v1/contract"
+    },
+    "evaluation": {
+      "method": "POST",
+      "path": "/v1/evaluate"
+    },
+    "verification": {
+      "method": "POST",
+      "path": "/v1/verification",
+      "scope": "Signature only. Does not authenticate the supplied key or establish object binding; use standalone receiver."
+    }
   },
-  "x402_settlement": {
-    "protocol": "x402-v2",
+  "payment": {
+    "scheme": "WHP-BASE-USDC-QUOTE-1",
     "network": "eip155:8453",
     "asset": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
-    "payTo": "0x1050eddd8282623b0c263ed6bdbd42370bbc28d3",
-    "ens": "whpublishing.base.eth",
-    "amount": "1000000",
-    "pre_settlement_rule": "Autonomous agents on x402 payment rails must obtain and verify a WHP-STANDING-MARK-v1 with standing.outcome === ESTABLISHED and EXECUTE in standing.permitted_operations before signing or settling an agent-to-agent transaction."
+    "decimals": 6,
+    "price": "1.000001 to 1.009999 USDC, subject to operator approval",
+    "not_x402_exact": true,
+    "pay_to": "0x1050eddd8282623b0c263ed6bdbd42370bbc28d3",
+    "floor_units": 1000000,
+    "suffix_range": 9999,
+    "min_confirmations": 5
   },
-  "mcp": {
-    "url": "https://api.wheelerhubbellpublishing.com/mcp",
-    "transport": "streamable-http",
-    "tools": [
-      "whp_evaluate",
-      "whp_authorize_x402_transaction"
-    ]
-  },
-  "discovery_links": {
-    "contract": "https://api.wheelerhubbellpublishing.com/v1/contract",
-    "capability": "https://api.wheelerhubbellpublishing.com/.well-known/standing-capability.json",
-    "openapi": "https://api.wheelerhubbellpublishing.com/openapi.json",
-    "llms_txt": "https://wheelerhubbellpublishing.com/llms.txt"
-  }
+  "determinism": "WHP-DI-DETERMINISM-UTC-1",
+  "signed_type": "WHP-STANDING-MARK-v1",
+  "authorization": false,
+  "issuer_key": "Ed25519 public key MCowBQYDK2VwAyEAcpFVUj6xDgsUsKJK2r2rLk6R+te2lghdHE8jvjl9SBk= (key_id_sha256 dc872cabbbb942860cb2c4ac97a2a514245e54d69aa8515e80a7ec634c67076f), published at https://decisionintegrity.wheelerhubbellpublishing.com/.well-known/whp-issuer.json",
+  "limits": [
+    "A configured route is not production activation.",
+    "The original sealed /v1/evaluations Node door is not implemented by this PHP service.",
+    "No MCP endpoint in this deployment.",
+    "Payment buys examination, not a positive finding."
+  ],
+  "environment": "LIVE"
 }

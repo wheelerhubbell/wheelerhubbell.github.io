@@ -1,108 +1,304 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "WHP Standing — Sovereign Epistemological Evaluator & x402 Pre-Settlement Gate",
-    "version": "1.8.0",
-    "description": "Sovereign epistemological evaluator (not a passive notary). There is one evaluation door (/v1/evaluate), one service all the way through. When a client or autonomous agent inserts their data through the door, a sovereign Large Language Model waiting inside the door — having been given The Elemental Properties of True — adopts the reasoning from the text and applies that epistemological reasoning to whatever data the client puts through the door. The evaluation is the Large Language Model applying the Decision Integrity Version 7 reasoning to that data, and the output is signed with the WHP Standing Mark (WHP-STANDING-MARK-v1) and handed back to the client. TEST is never LIVE."
+    "title": "Standing Mark",
+    "version": "1.2.0",
+    "description": "Standing Mark is an independent examination service operated by Wheeler Hubbell Publishing, Inc. It examines claims and proposed actions and returns a signed result stating what is established and what is not. It does not execute, authorize, pay or settle.",
+    "x-guidance": "GET /v1/contract first; it is the live source of truth for schemas, payment terms and limits. POST /v1/evaluate with a JSON claim. An unpaid request returns HTTP 402 with a price quote of about 1 USDC on Base (scheme WHP-BASE-USDC-QUOTE-1, not x402-exact): the quote carries quote_id, amount_units, pay_to and expires, and is bound to the exact request bytes. Pay the quoted amount on Base, then retry the identical body with headers X-WHP-Quote and X-WHP-Payment-Tx. POST /v1/verification checks a signed result's signature only. The issuer Ed25519 key is published at /.well-known/whp-issuer.json."
   },
   "servers": [
     {
-      "url": "https://api.wheelerhubbellpublishing.com"
+      "url": "https://decisionintegrity.wheelerhubbellpublishing.com"
     }
   ],
-  "x-whp-evaluation-door": "/v1/evaluate",
-  "x-whp-evaluator-class": "SOVEREIGN_EPISTEMOLOGICAL_EVALUATOR",
-  "x-whp-purchase-contract": "/v1/contract",
-  "x-whp-verification": "/v1/verification",
-  "components": {
-    "securitySchemes": {
-      "ClientProof": {
-        "type": "apiKey",
-        "in": "header",
-        "name": "WHP-Client-Proof",
-        "description": "Base64 WHP-CLIENT-PROOF-v1 Ed25519 signature binding method, exact path/query, body SHA256, issued_at, expires_at and random nonce. See wire contract."
-      }
-    }
-  },
   "paths": {
-    "/.well-known/whp-standing.json": {
+    "/health": {
       "get": {
-        "operationId": "discoverStanding",
-        "summary": "Machine-readable discovery manifest for the WHP Standing Sovereign Epistemological Evaluator."
-      }
-    },
-    "/.well-known/standing-capability.json": {
-      "get": {
-        "summary": "Fresh separately signed current capability resolution; DISCOVERY authority required."
-      }
-    },
-    "/llms.txt": {
-      "get": {
-        "operationId": "getMachineDocumentation",
-        "summary": "Agent-facing guide to the single /v1/evaluate door, epistemological evaluation grounded in The Elemental Properties of True, and x402 pre-settlement Standing Mark rules."
-      }
-    },
-    "/mcp": {
-      "post": {
-        "operationId": "callStandingMcp",
-        "summary": "Stateless Streamable HTTP MCP routing to the single evaluation door (/v1/evaluate); exposes whp_evaluate and whp_authorize_x402_transaction."
+        "operationId": "health",
+        "summary": "Service status",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Service status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Health"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/v1/contract": {
       "get": {
-        "operationId": "getStandingPurchaseContract"
+        "operationId": "contract",
+        "summary": "Current machine-readable contract: schemas, payment terms and limits",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "The live contract",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/.well-known/whp-standing.json": {
+      "get": {
+        "operationId": "discovery",
+        "summary": "Discovery document (same content as /v1/contract)",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Discovery document",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/.well-known/whp-issuer.json": {
+      "get": {
+        "operationId": "issuer",
+        "summary": "Issuer identity: Ed25519 public key and key id",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Issuer identity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Issuer"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/v1/evaluate": {
-      "get": {
-        "summary": "Query single-door epistemological evaluation terms or lookup a completed Standing Mark evaluation by nonce or hash"
-      },
       "post": {
-        "operationId": "evaluateThroughSingleDoor",
-        "summary": "The single epistemological evaluation door (x402, 1 USDC on Base). Client inserts data through this door; inside the door, a sovereign Large Language Model given The Elemental Properties of True adopts its reasoning and applies it to the client's data. The evaluation result is signed with the WHP Standing Mark (WHP-STANDING-MARK-v1) and handed back to the client.",
-        "security": [
-          {
-            "ClientProof": []
+        "operationId": "evaluate",
+        "summary": "Submit a claim or proposed action for examination",
+        "description": "Without payment, returns HTTP 402 with a price quote bound to the exact request bytes. After paying the quoted amount of USDC on Base, retry the identical body with headers X-WHP-Quote (the quote id) and X-WHP-Payment-Tx (the Base transaction hash) to receive the signed examination result. Payment buys the examination, not a positive finding.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "The claim or proposed action to examine, with supporting material. Field-level requirements are defined in the live contract at GET /v1/contract; the quote is bound to the exact request bytes."
+              }
+            }
           }
-        ]
+        },
+        "responses": {
+          "200": {
+            "description": "Signed examination result: a Standing Mark (claim established) or a signed record naming what is not established",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignedResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "402": {
+            "description": "Payment required. The body carries a price quote bound to the exact request bytes, under payment_required.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequired"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Payment chain temporarily unavailable (CHAIN_UNAVAILABLE); nothing is consumed"
+          }
+        },
+        "x-whp-payment": {
+          "scheme": "WHP-BASE-USDC-QUOTE-1",
+          "x402_exact": false,
+          "network": "eip155:8453",
+          "asset": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+          "decimals": 6,
+          "price": "1.000001 to 1.009999 USDC, subject to operator approval",
+          "pay_to": "0x1050eddd8282623b0c263ed6bdbd42370bbc28d3",
+          "min_confirmations": 5,
+          "quote_ttl_minutes": 15
+        }
       }
     },
     "/v1/verification": {
-      "get": {
-        "summary": "Verification guide and key specification."
+      "post": {
+        "operationId": "verify",
+        "summary": "Check a signed result's signature",
+        "description": "Signature check only. Per the live contract this route does not authenticate the supplied key or establish object binding; full independent verification uses the published issuer key and the standalone receiver.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "A signed result previously returned by /v1/evaluate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Verification result"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Health": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "service": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "environment": {
+            "type": "string"
+          },
+          "determinism": {
+            "type": "string"
+          }
+        }
       },
-      "post": {
-        "summary": "Verify a signed WHP-STANDING-MARK-v1 evaluation envelope"
-      }
-    },
-    "/v1/profiles": {
-      "get": {
-        "summary": "Published profile index binding The Elemental Properties of True."
-      }
-    },
-    "/v1/purchases/{purchase_id}/result": {
-      "get": {
-        "operationId": "retrieveResult",
-        "security": [
-          {
-            "ClientProof": []
+      "Contract": {
+        "type": "object",
+        "description": "Live contract: profile, routes, payment terms, determinism rule, signed type, issuer key and limits. Read at time of use."
+      },
+      "Issuer": {
+        "type": "object",
+        "properties": {
+          "issuer": {
+            "type": "string"
+          },
+          "legal_actor": {
+            "type": "string"
+          },
+          "algorithm": {
+            "type": "string",
+            "enum": [
+              "Ed25519"
+            ]
+          },
+          "format": {
+            "type": "string"
+          },
+          "public_key": {
+            "type": "string",
+            "description": "SPKI DER, base64"
+          },
+          "key_id_sha256": {
+            "type": "string"
           }
-        ]
-      }
-    },
-    "/v1/purchases/{purchase_id}/recover": {
-      "post": {
-        "operationId": "recoverOriginalPurchase",
-        "security": [
-          {
-            "ClientProof": []
+        }
+      },
+      "PaymentRequired": {
+        "type": "object",
+        "description": "Observed live 402 body shape (2026-11-13).",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "enum": [
+              402
+            ]
+          },
+          "error": {
+            "type": "string",
+            "enum": [
+              "PAYMENT_REQUIRED"
+            ]
+          },
+          "detail": {
+            "type": "string"
+          },
+          "payment_required": {
+            "$ref": "#/components/schemas/Quote"
           }
-        ]
-      }
-    },
-    "/v1/registry/{purchase_id}": {
-      "get": {
-        "operationId": "readRegistry"
+        }
+      },
+      "Quote": {
+        "type": "object",
+        "description": "Price quote bound to the exact request bytes. Self-expires (observed lifetime about 15 minutes).",
+        "properties": {
+          "scheme": {
+            "type": "string",
+            "enum": [
+              "WHP-BASE-USDC-QUOTE-1"
+            ]
+          },
+          "network": {
+            "type": "string",
+            "enum": [
+              "eip155:8453"
+            ]
+          },
+          "asset": {
+            "type": "string"
+          },
+          "pay_to": {
+            "type": "string"
+          },
+          "price_floor_units": {
+            "type": "integer"
+          },
+          "decimals": {
+            "type": "integer",
+            "enum": [
+              6
+            ]
+          },
+          "min_confirmations": {
+            "type": "integer"
+          },
+          "how": {
+            "type": "string"
+          },
+          "quote_id": {
+            "type": "string"
+          },
+          "amount_units": {
+            "type": "integer",
+            "description": "USDC atomic units (6 decimals); observed 1000001-1009999 per the declared range"
+          },
+          "expires": {
+            "type": "integer",
+            "description": "Unix epoch seconds"
+          }
+        }
+      },
+      "SignedResult": {
+        "type": "object",
+        "description": "Signed examination result. Type WHP-STANDING-MARK-v1, Ed25519 signature by the published issuer key. Either a Standing Mark (ESTABLISHED) or a signed record naming what is not established."
       }
     }
   }

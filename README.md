@@ -1,98 +1,19 @@
-# Wheeler Hubbell Publishing
+# Standing Mark developer entry point
 
-> Public brand, research layer, and canonical identity for the Decision Integrity Protocol, the Standing Mark Service, and the enforcing runtime behind autonomous decision safety.
+Standing Mark is an independent examination service operated by Wheeler Hubbell Publishing, Inc. Payment buys an examination, not a favorable result. A signature establishes what was signed, not substantive correctness or permission to act.
 
-Wheeler Hubbell Publishing is the public brand, publishing imprint, and canonical documentation layer for a broader decision-integrity ecosystem. This repository hosts the public research, protocol framing, and operational standards behind the Decision Integrity Protocol.
+- [Developer onboarding](https://wheelerhubbellpublishing.com/developers.html)
+- [Current developer repository](https://github.com/wheelerhubbell/standing-mark)
+- [Live contract](https://decisionintegrity.wheelerhubbellpublishing.com/v1/contract)
+- [Live OpenAPI](https://decisionintegrity.wheelerhubbellpublishing.com/openapi.json)
+- [Quick-start](https://github.com/wheelerhubbell/standing-mark/blob/main/docs/quick-start.md)
+- [Independent verification](https://github.com/wheelerhubbell/standing-mark/blob/main/docs/verification.md)
+- [Local MCP adapter setup](https://github.com/wheelerhubbell/standing-mark/blob/main/mcp/README.md)
 
-The canonical structure is:
+The current service speaks HTTP. MCP is available through a local stdio adapter, not a hosted `/mcp` endpoint. The A2A description is not a native A2A endpoint. Payment uses `WHP-BASE-USDC-QUOTE-1`, not x402-exact.
 
-- Wheeler Hubbell Publishing — public brand and research layer
-- Decision Integrity Protocol — governing framework and ruleset
-- Unilateral Integrity — doctrine that a claim or action may not exceed the authority and provenance that justify it
-- Standing Mark Service — operational evaluation runtime
-- Standing Gate — enforcement layer for CI/CD and autonomous execution
-- Standing Mark / Standing Assessment — issued outcomes
+## Legacy material in this repository
 
-## Decision Integrity Protocol
+Older SDKs, package clients, workflow integrations and demonstrations remain available as historical implementation material. A host correction does not make their old authentication, payment or record expectations compatible with the current service. New integrations should use the linked developer repository and live contract. No current end-to-end compatibility is claimed for the legacy clients.
 
-Wheeler Hubbell Publishing operates the Decision Integrity Protocol, a machine-verifiable framework for evaluating claims, authority, provenance, and scope before irreversible action is allowed. The protocol is designed for AI agents, autonomous systems, and software pipelines that must reason under authority and bounded scope rather than unchecked assertion.
-
-The protocol distinguishes between:
-
-- Standing Mark — ESTABLISHED: the claim is grounded, bounded, and supported by admissible authority and provenance
-- Standing Assessment — NOT_ESTABLISHED: the claim is not sufficiently grounded or exceeds its evidence and authority
-- Structural Dry Run — free validation of payload, schema, and input structure without a live determination
-- Live Evaluation — paid evaluation under the protocol using the published rules
-
-## Unilateral Integrity
-
-The governing invariant is Unilateral Integrity:
-
-A claim or action may not exceed the authority and provenance that justify it.
-
-This principle prevents hollow authority, counterfeit provenance, escalated assumptions, and ungrounded automatic execution.
-
-## Standing Mark Service
-
-The Standing Mark Service is the live operational runtime that executes the protocol. It evaluates claims and issues either a Standing Mark or a Standing Assessment in accordance with the published rules.
-
-It is intentionally distinct from the public brand and the enforcement layer:
-
-- Wheeler Hubbell Publishing — public identity and standards surface
-- Decision Integrity Protocol — rules and framework
-- Standing Mark Service — live evaluation service
-- Standing Gate — enforcement layer for automated execution and CI/CD
-
-## Standing Gate
-
-Standing Gate is the enforcement surface used in pipelines, repository checks, and agent workflows. It applies the protocol to real-world actions so that automated systems fail closed when a claim is not grounded.
-
-## Canonical Terminology
-
-Use these terms consistently across the ecosystem:
-
-- Brand: Wheeler Hubbell Publishing
-- Framework: Decision Integrity Protocol
-- Principle: Unilateral Integrity
-- Runtime: Standing Mark Service
-- Enforcement: Standing Gate
-- Positive result: Standing Mark
-- Negative result: Standing Assessment
-- Free validation: Structural Dry Run
-- Paid evaluation: Live Evaluation
-
-## Pricing and Terms
-
-Pricing is workload-based and outcome-independent. Payment buys evaluation under published rules; it does not buy a favorable outcome.
-
-A Standing Mark may only be issued when the claim is genuinely established under the protocol. A Standing Assessment is issued when the claim exceeds its authority, evidence, or admissible provenance.
-
-## Machine Interfaces and Discovery
-
-- MCP Server: https://api.wheelerhubbellpublishing.com/mcp
-- API Catalog: /.well-known/api-catalog
-- MCP Discovery: /.well-known/mcp.json
-- OpenAPI: /openapi.json
-- Capability Resolution: /.well-known/standing-capability.json
-- LLM Context: /llms.txt
-
-## Archive and Canonical Boundary
-
-The current canonical machine is:
-
-- Wheeler Hubbell Publishing
-- Decision Integrity Protocol
-- Unilateral Integrity
-- Standing Mark Service
-- Standing Gate
-- Standing Mark / Standing Assessment
-
-Anything that is not directly connected to this machine is archival context, not the live canonical system. Historical essays, exploratory notes, and non-authoritative drafts belong in `archive/` and must not be treated as the current canonical identity of the protocol.
-
-## Publications and Research
-
-This repository also hosts the public literature, foundational texts, and research artifacts that ground the protocol and its doctrines.
-
-## License
-
-MIT © Wheeler Hubbell Publishing, Inc.
+This repository also hosts the publishing site and research archive. Existing literature is not the current API contract.

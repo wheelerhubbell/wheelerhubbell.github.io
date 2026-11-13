@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import readline from 'readline';
 
-const TARGET_ENDPOINT = process.env.WHP_STANDING_ENDPOINT || 'https://api.wheelerhubbellpublishing.com/mcp';
+const TARGET_ENDPOINT = process.env.WHP_STANDING_ENDPOINT || 'https://decisionintegrity.wheelerhubbellpublishing.com/mcp';
 
 const rl = readline.createInterface({
   input: process.stdin,

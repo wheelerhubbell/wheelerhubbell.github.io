@@ -1,43 +1,33 @@
 {
   "linkset": [
     {
-      "anchor": "https://wheelerhubbell.github.io/.well-known/api-catalog",
-      "item": [
-        {
-          "href": "https://api.wheelerhubbellpublishing.com/mcp"
-        },
-        {
-          "href": "https://api.wheelerhubbellpublishing.com/v1/evaluate"
-        },
-        {
-          "href": "https://api.wheelerhubbellpublishing.com/v1/evaluations"
-        },
-        {
-          "href": "https://api.wheelerhubbellpublishing.com/v1/contract"
-        }
-      ]
-    },
-    {
-      "anchor": "https://api.wheelerhubbellpublishing.com/v1/evaluate",
+      "anchor": "https://wheelerhubbellpublishing.com",
       "service-desc": [
         {
-          "href": "https://api.wheelerhubbellpublishing.com/v1/openapi.json",
-          "type": "application/json"
+          "href": "https://decisionintegrity.wheelerhubbellpublishing.com/openapi.json",
+          "type": "application/vnd.oai.openapi+json"
         }
       ],
       "service-doc": [
         {
-          "href": "https://wheelerhubbell.github.io/",
+          "href": "https://wheelerhubbellpublishing.com/developers.html",
           "type": "text/html"
+        }
+      ],
+      "item": [
+        {
+          "href": "https://decisionintegrity.wheelerhubbellpublishing.com/v1/contract"
         },
         {
-          "href": "https://wheelerhubbell.github.io/llms.txt",
-          "type": "text/plain"
+          "href": "https://decisionintegrity.wheelerhubbellpublishing.com/.well-known/whp-issuer.json"
+        },
+        {
+          "href": "https://github.com/wheelerhubbell/standing-mark"
         }
       ],
       "status": [
         {
-          "href": "https://api.wheelerhubbellpublishing.com/healthz"
+          "href": "https://decisionintegrity.wheelerhubbellpublishing.com/health"
         }
       ]
     }

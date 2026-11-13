@@ -1,7 +1,8 @@
-startCommand:
-  type: stdio
-  configSchema:
-    endpoint:
-      type: string
-      default: "https://api.wheelerhubbellpublishing.com/mcp"
-      description: "Hosted endpoint for WHP Standing Witness service."
+# Discovery metadata only, not a remote MCP deployment configuration.
+name: standing-mark
+status: source-install-only
+homepage: https://wheelerhubbellpublishing.com/developers.html
+repository: https://github.com/wheelerhubbell/standing-mark
+transport: stdio
+source: mcp/standing_mark_mcp.py
+# No /mcp endpoint is provided by the production HTTP service.

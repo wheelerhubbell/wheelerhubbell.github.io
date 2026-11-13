@@ -1,6 +1,8 @@
+> Current integration: [developer onboarding](https://wheelerhubbellpublishing.com/developers.html) and [current SDKs](https://github.com/wheelerhubbell/standing-mark). This page describes a legacy integration. Host links have been corrected, but compatibility with the current payment and record contract is not established.
+
 # whp-standing-client
 
-Async Python client for WHP Standing (https://api.wheelerhubbellpublishing.com). Answers the x402 v2 challenge (USDC on Base, `eip155:8453`) with a gasless EIP-3009 `TransferWithAuthorization` signed by a key you provide.
+Async Python client for WHP Standing (https://decisionintegrity.wheelerhubbellpublishing.com). Answers the x402 v2 challenge (USDC on Base, `eip155:8453`) with a gasless EIP-3009 `TransferWithAuthorization` signed by a key you provide.
 
 ```python
 from whp_standing_client import StandingClient, BuyerKey

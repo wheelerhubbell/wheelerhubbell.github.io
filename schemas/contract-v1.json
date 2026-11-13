@@ -59,7 +59,7 @@
   },
   "integration_rule": "A positive Standing Mark is a signed, scope-bound examination result. It may satisfy an evidence requirement defined by a receiving system, but it does not itself authorize an action. The receiving system must independently evaluate the applicable authority, conditions, and action policy. Absence of a positive Mark means the Mark requirement has not been satisfied; it does not, by itself, establish that the underlying action is prohibited.",
   "issuer": "Wheeler Hubbell Publishing",
-  "mcp_url": "https://api.wheelerhubbellpublishing.com/mcp",
+  "mcp_url": "https://decisionintegrity.wheelerhubbellpublishing.com/mcp",
   "payment": {
     "authorization_header": "PAYMENT-SIGNATURE",
     "protocol": "x402-v2",
@@ -75,7 +75,7 @@
     "id": "WHP-DECISION-INTEGRITY-V7-CONTINUOUS-WORK",
     "sha256": "bd85f51f05afc6f77053aec086a1d013a1cccde70c30231622f0ecc7e3f25c21",
     "legacy_v1_sha256": "4244be9ed0012eaeba8e2efeb9d274ad3c1f3e188748838c191129054d24c5ab",
-    "url": "https://api.wheelerhubbellpublishing.com/v1/profiles/WHP-DECISION-INTEGRITY-V7-CONTINUOUS-WORK/7.0.0",
+    "url": "https://decisionintegrity.wheelerhubbellpublishing.com/v1/profiles/WHP-DECISION-INTEGRITY-V7-CONTINUOUS-WORK/7.0.0",
     "version": "7.0.0"
   },
   "service_architecture": "SINGLE_EVALUATION_DOOR",

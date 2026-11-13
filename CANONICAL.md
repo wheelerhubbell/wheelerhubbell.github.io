@@ -1,8 +1,10 @@
+> Current integration: [developer onboarding](https://wheelerhubbellpublishing.com/developers.html) and [current SDKs](https://github.com/wheelerhubbell/standing-mark). This page describes a legacy integration. Host links have been corrected, but compatibility with the current payment and record contract is not established.
+
 # Wheeler Hubbell Canonical Machine
 
 ## Whole-system reading rule
 
-This public hub is one part of WHP, not the runtime or the entire service. Read it with *Decision Integrity: The Continuous Work*, the other three canonical repositories, and the live contract at `https://api.wheelerhubbellpublishing.com/v1/contract`. Public descriptions and pricing are not runtime proof; code/configuration and observed responses establish implementation. No single page, file, or endpoint defines the whole.
+This public hub is one part of WHP, not the runtime or the entire service. Read it with *Decision Integrity: The Continuous Work*, the other three canonical repositories, and the live contract at `https://decisionintegrity.wheelerhubbellpublishing.com/v1/contract`. Public descriptions and pricing are not runtime proof; code/configuration and observed responses establish implementation. No single page, file, or endpoint defines the whole.
 
 Keep the two API paths distinct: `/v1/evaluate` is the ordinary-agent evaluation door; `/v1/evaluations` is the sealed WHP Standing purchase/issuance path described by the live contract. A Base transfer to the settlement address alone does not establish a finalized service purchase or tier entitlement. Do not promise prepaid balances, automatic API-key provisioning, or a favorable result unless the live contract and an observed end-to-end transaction support that exact claim.
 

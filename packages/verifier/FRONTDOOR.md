@@ -1,6 +1,8 @@
+> Current integration: [developer onboarding](https://wheelerhubbellpublishing.com/developers.html) and [current SDKs](https://github.com/wheelerhubbell/standing-mark). This page describes a legacy integration. Host links have been corrected, but compatibility with the current payment and record contract is not established.
+
 # Verifying front-door evaluation records
 
-The ordinary front door is a single door, `POST https://api.wheelerhubbellpublishing.com/v1/evaluate`. It returns signed `WHP-FRONTDOOR-EVALUATION-v1` records. The earlier ordinary doors (`/v1/patch`, `/v1/audit`, `/v1/ping`, `/v1/evaluate/priority`, `/v1/ept/core`, `/v1/mock`, `/v1/credits`, the beacon doors and the `/v1/ordinary/*` discovery files) are retired: they are absent from the service's current published OpenAPI specification, and GET requests to them return 404 at the time of writing. Records issued under them remain verifiable as historical records.
+The ordinary front door is a single door, `POST https://decisionintegrity.wheelerhubbellpublishing.com/v1/evaluate`. It returns signed `WHP-FRONTDOOR-EVALUATION-v1` records. The earlier ordinary doors (`/v1/patch`, `/v1/audit`, `/v1/ping`, `/v1/evaluate/priority`, `/v1/ept/core`, `/v1/mock`, `/v1/credits`, the beacon doors and the `/v1/ordinary/*` discovery files) are retired: they are absent from the service's current published OpenAPI specification, and GET requests to them return 404 at the time of writing. Records issued under them remain verifiable as historical records.
 
 `verify_frontdoor.py` checks front-door records with envelope `{record, record_hash, signature}`. `record_hash` is SHA256 of canonical JSON (sorted keys, no whitespace, UTF-8); the Ed25519 signature covers those same bytes. The fields `public_key_b64url` and `value_b64url` are base64url. Signature verification does not prove payment finality or present standing.
 

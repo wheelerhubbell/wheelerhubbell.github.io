@@ -44,6 +44,7 @@ footer{padding:36px var(--gut);font-family:var(--sans);font-size:11.5px;letter-s
 </style>
 </head>
 <body>
+<aside style="padding:16px 24px;border-bottom:1px solid #e2dccf;background:#faf8f3;color:#1c1815;font:15px/1.6 system-ui,sans-serif"><a style="color:#6e1f28" href="/developers.html">Standing Mark developer onboarding: current contract, SDKs and independent verification</a></aside>
 <header><a href="../">Wheeler Hubbell<br>Publishing</a><span>WHP Standing</span></header>
 
 <section>
@@ -112,7 +113,7 @@ var b=this;b.disabled=true;b.textContent="Playing back\u2026";
 setTimeout(function(){fill("rows",ROWS);document.getElementById("rec").className="rec on";b.disabled=false;b.textContent="Play back again"},600)};
 document.getElementById("knock").onclick=function(){
 var b=this;b.disabled=true;b.textContent="Knocking\u2026";
-fetch("https://api.wheelerhubbellpublishing.com/v1/evaluate",{method:"POST",headers:{"content-type":"application/json"},body:"{}"})
+fetch("https://decisionintegrity.wheelerhubbellpublishing.com/v1/evaluate",{method:"POST",headers:{"content-type":"application/json"},body:"{}"})
 .then(function(r){return r.json().then(function(j){return [r.status,j]})})
 .then(function(x){var s=x[0],j=x[1],a=(j.accepts&&j.accepts[0])||{};var amt=a.amount?(Number(a.amount)/1e6).toFixed(2)+" USDC":"unreported";
 fill("krows",[

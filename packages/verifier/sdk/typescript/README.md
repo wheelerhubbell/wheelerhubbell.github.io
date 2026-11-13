@@ -1,3 +1,5 @@
+> Current integration: [developer onboarding](https://wheelerhubbellpublishing.com/developers.html) and [current SDKs](https://github.com/wheelerhubbell/standing-mark). This page describes a legacy integration. Host links have been corrected, but compatibility with the current payment and record contract is not established.
+
 # WHP Standing integration source
 
 Two sealed-contract clients are developed here. Neither is published from this commit. The TypeScript package source is `sdk/typescript`; the Python package source is `sdk/python`. Package metadata is a build target, not evidence of a registry release or reservation.
@@ -46,7 +48,7 @@ import { createPrivateKey } from 'node:crypto';
 import { StandingClient, FileJournal } from './dist/index.js';
 
 const client = new StandingClient({
-  origin: 'https://api.wheelerhubbellpublishing.com',
+  origin: 'https://decisionintegrity.wheelerhubbellpublishing.com',
   rootPin: admittedRootPin, // chosen by your own trust policy, never copied blindly
   buyerKey: createPrivateKey(buyerKeyFromSecureCustody), // Ed25519, not the wallet key
   journal: new FileJournal(privateDurableJournalDirectory)

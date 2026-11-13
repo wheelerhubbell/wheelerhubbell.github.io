@@ -9,7 +9,7 @@ import json
 import urllib.request
 import urllib.error
 
-STANDING_ENDPOINT = os.getenv("WHP_ENDPOINT", "https://api.wheelerhubbellpublishing.com")
+STANDING_ENDPOINT = os.getenv("WHP_ENDPOINT", "https://decisionintegrity.wheelerhubbellpublishing.com")
 
 def evaluate_claim(subject, claim, provenance, operation="EXECUTE"):
     payload = {

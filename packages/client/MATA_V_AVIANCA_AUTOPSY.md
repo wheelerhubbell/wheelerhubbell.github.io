@@ -43,5 +43,5 @@ If the agent drifts into $ task substitution, the call fails closed with .
 ---
 
 - **NPM Package:** [@wheelerhubbell/whp-standing-client](https://www.npmjs.com/package/@wheelerhubbell/whp-standing-client)
-- **Engine & x402 Gateway:** [https://api.wheelerhubbellpublishing.com](https://api.wheelerhubbellpublishing.com)
+- **Engine & x402 Gateway:** [https://decisionintegrity.wheelerhubbellpublishing.com](https://decisionintegrity.wheelerhubbellpublishing.com)
 - **Protocol & Invariant:** Wheeler Hubbell Publishing / Authority Conservation Principle

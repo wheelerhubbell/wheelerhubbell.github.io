@@ -1,39 +1,10 @@
 {
-  "authority": {
-    "issuer": "Wheeler Hubbell Publishing",
-    "jurisdictions": [
-      "wheeler-hubbell-publishing"
-    ],
-    "key_id": "baabb9cd21f367bb8467f1bce570cd1f4ef1b418172f2cb68968ebe7186f487e",
-    "public_key": "MCowBQYDK2VwAyEABE1ix0WObYNYEsVQm36qIjzqajWCilAwZxbpo3aKCPY=",
-    "root_certificate_url": "https://api.wheelerhubbellpublishing.com/v1/certificates/baabb9cd21f367bb8467f1bce570cd1f4ef1b418172f2cb68968ebe7186f487e.json"
-  },
-  "capability_class": "urn:capability:machine-verifiable-standing:1",
-  "capability_id": "urn:whp:standing:capability:1",
-  "endpoints": {
-    "certificates": "https://api.wheelerhubbellpublishing.com/v1/certificates",
-    "contract": "https://api.wheelerhubbellpublishing.com/v1/contract",
-    "discovery": "https://api.wheelerhubbellpublishing.com/.well-known/whp-standing.json",
-    "evaluate": "https://api.wheelerhubbellpublishing.com/v1/evaluate",
-    "health": "https://api.wheelerhubbellpublishing.com/health",
-    "mcp": "https://api.wheelerhubbellpublishing.com/mcp",
-    "profiles": "https://api.wheelerhubbellpublishing.com/v1/profiles",
-    "registry": "https://api.wheelerhubbellpublishing.com/v1/registry",
-    "revocations": "https://api.wheelerhubbellpublishing.com/v1/revocations"
-  },
-  "evaluation_door": "/v1/evaluate",
-  "evaluator": {
-    "canon_sha256": "bd85f51f05afc6f77053aec086a1d013a1cccde70c30231622f0ecc7e3f25c21",
-    "distinction_from_notary": "Evaluates epistemic standing, qualifier inheritance, join warrants, and named failures (Coherent Substitution, Authority Leakage, Object Drift, Qualifier Stripping) via a sovereign LLM governed by Decision Integrity v7 before signing the Standing Mark\u2014never merely notarizing raw bytes.",
-    "evaluator_class": "SOVEREIGN_EPISTEMOLOGICAL_EVALUATOR",
-    "governing_text": "The Elemental Properties of True",
-    "output_signature": "WHP-STANDING-MARK-v1",
-    "type": "SOVEREIGN_LARGE_LANGUAGE_MODEL"
-  },
-  "profiles": [
-    "https://api.wheelerhubbellpublishing.com/v1/profiles/WHP-DECISION-INTEGRITY-V7-CONTINUOUS-WORK/7.0.0"
-  ],
-  "resolution_id": "urn:whp:standing:resolution:1",
-  "service_architecture": "SINGLE_EVALUATION_DOOR",
-  "version": "WHP-STANDING-CAPABILITY-v1"
+  "status": "DISCOVERY_POINTER_NOT_SIGNED_CAPABILITY",
+  "issuer": "Wheeler Hubbell Publishing, Inc.",
+  "contract": "https://decisionintegrity.wheelerhubbellpublishing.com/v1/contract",
+  "issuer_key": "https://decisionintegrity.wheelerhubbellpublishing.com/.well-known/whp-issuer.json",
+  "openapi": "https://decisionintegrity.wheelerhubbellpublishing.com/openapi.json",
+  "documentation": "https://wheelerhubbellpublishing.com/developers.html",
+  "repository": "https://github.com/wheelerhubbell/standing-mark",
+  "note": "No current signed capability resolution or native remote MCP endpoint is advertised here. Read the live contract. This file grants no authority."
 }

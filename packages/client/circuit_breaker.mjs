@@ -16,7 +16,7 @@ import { StandingViolationError } from './index.mjs';
  */
 export function createEpistemicCircuitBreaker(toolFn, options = {}) {
   const toolName = options.name || toolFn.name || 'unnamed_tool';
-  const endpoint = (options.endpoint || 'https://api.wheelerhubbellpublishing.com').replace(/\/$/, '');
+  const endpoint = (options.endpoint || 'https://decisionintegrity.wheelerhubbellpublishing.com').replace(/\/$/, '');
   const mode = options.mode || 'local'; // 'local' | 'mock' | 'verify'
 
   return async function guardedExecution(args, context = {}) {

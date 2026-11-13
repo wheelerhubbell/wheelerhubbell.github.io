@@ -1,3 +1,5 @@
+> Current integration: [developer onboarding](https://wheelerhubbellpublishing.com/developers.html) and [current SDKs](https://github.com/wheelerhubbell/standing-mark). This page describes a legacy integration. Host links have been corrected, but compatibility with the current payment and record contract is not established.
+
 # WHP Standing integration source
 
 Two sealed-contract clients are developed here. Neither is published from this commit. The TypeScript package source is `sdk/typescript`; the Python package source is `sdk/python`. Package metadata is a build target, not evidence of a registry release or reservation.
@@ -45,7 +47,7 @@ No funded SDK purchase has been performed. This source gate is not a five-minute
 from whp_standing import StandingClient, FileJournal
 
 client = StandingClient(
-    origin='https://api.wheelerhubbellpublishing.com',
+    origin='https://decisionintegrity.wheelerhubbellpublishing.com',
     root_pin=admitted_root_pin, # selected under your own trust policy
     buyer_key=buyer_ed25519_key_from_secure_custody,
     journal=FileJournal(private_durable_journal_directory),

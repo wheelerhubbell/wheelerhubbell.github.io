@@ -1,3 +1,5 @@
+> Current integration: [developer onboarding](https://wheelerhubbellpublishing.com/developers.html) and [current SDKs](https://github.com/wheelerhubbell/standing-mark). This page describes a legacy integration. Host links have been corrected, but compatibility with the current payment and record contract is not established.
+
 # Epistemic Circuit Breakers for Irrevocable Tool Execution
 
 Autonomous agents with tool-calling capabilities (OpenAI Function Calling, Anthropic Claude Tools, LangChain, MCP, ElizaOS, CrewAI) pose critical risks when invoking destructive, financial, or governance actions:
@@ -21,7 +23,7 @@ Connect any autonomous agent directly to the sovereign circuit breaker via the n
 {
   "mcpServers": {
     "whp-standing-witness": {
-      "url": "https://api.wheelerhubbellpublishing.com/mcp",
+      "url": "https://decisionintegrity.wheelerhubbellpublishing.com/mcp",
       "headers": {
         "Authorization": "Bearer YOUR_WHP_API_KEY"
       }
@@ -45,7 +47,7 @@ interface ActionContext {
 }
 
 export async function assertEpistemicPassage(ctx: ActionContext): Promise<string> {
-  const res = await fetch("https://api.wheelerhubbellpublishing.com/v1/evaluate", {
+  const res = await fetch("https://decisionintegrity.wheelerhubbellpublishing.com/v1/evaluate", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

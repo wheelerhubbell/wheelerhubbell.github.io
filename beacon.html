@@ -159,7 +159,7 @@
                     <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
                         <div class="text-slate-400 text-xs font-medium mb-1">1. Production Service Gateway</div>
                         <div id="serviceStatusText" class="text-white font-mono text-xs flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500" id="statusDot"></span> <span id="statusLabel">api.wheelerhubbellpublishing.com</span>
+                            <span class="w-2 h-2 rounded-full bg-emerald-500" id="statusDot"></span> <span id="statusLabel">decisionintegrity.wheelerhubbellpublishing.com</span>
                         </div>
                         <div id="serviceSubtext" class="text-[11px] text-slate-500 mt-1 font-mono">Issuer: Wheeler Hubbell Publishing</div>
                     </div>
@@ -524,7 +524,7 @@ localStorage.removeItem('summon_beacon_gh_token');
                 appendLog(`[ERROR] Dispatch failed: ${err.message}.`);
             }
         }
-        const BACKEND_BASE = 'https://api.wheelerhubbellpublishing.com';
+        const BACKEND_BASE = 'https://decisionintegrity.wheelerhubbellpublishing.com';
         async function verifyProductionLive() {
             const term = document.getElementById('whpTerminal');
             const dot = document.getElementById('statusDot');

@@ -1,38 +1,32 @@
-# Wheeler Hubbell Publishing — WHP Standing Mark Service (`POST /v1/evaluate`)
+# Standing Mark - Wheeler Hubbell Publishing, Inc.
 
-> **Governing Integration Principle (The Developer Rule):**
-> *"A positive Standing Mark is a signed, scope-bound examination result. It may satisfy an evidence requirement defined by a receiving system, but it does not itself authorize an action. The receiving system must independently evaluate the applicable authority, conditions, and action policy. Absence of a positive Mark means the Mark requirement has not been satisfied; it does not, by itself, establish that the underlying action is prohibited."*
+Independent examination of claims and proposed actions. Returns signed findings. Does not execute, authorize, pay or settle.
 
-## 1. What the Standing Mark Service Is (Epistemological Evaluator, Not a Notary)
+## Current developer entry points
 
-- **Standing Mark Service (`POST /v1/evaluate`):** A single-door epistemological evaluation service operated by Wheeler Hubbell Publishing. When a client or autonomous agent inserts material through `POST /v1/evaluate`, a waiting Large Language Model applying the epistemological discipline of *The Elemental Properties of True* examines whether the submitted record warrants the requested operation within stated scope.
-- **Terminology Separation:**
-  - **Standing Mark Service:** The product and evaluation doorway (`POST /v1/evaluate`). Payment buys the examination, never a favorable outcome.
-  - **Positive Standing Mark (`finding_disposition: "POSITIVE_STANDING_MARK"`, `outcome: "ESTABLISHED"`):** The favorable signed outcome when warrant is established within stated scope.
-  - **Negative Standing Finding (`finding_disposition: "NEGATIVE_STANDING_FINDING"`, `outcome: "NOT_ESTABLISHED"`):** The signed outcome when warrant is not established, recording what was examined, which check or Named Failure triggered, the **Smallest True Move** (`INQUIRE` or `INFORM`), and the missing warrant.
-
-## 2. The Standing Mark Record Contract (`schemas/standing-mark-record-contract-v1.json`)
-
-Every signed Standing Mark Record (`WHP-STANDING-MARK-v1` over `WHP-JCS-I1` canonical JSON using `Ed25519`) binds four mandatory evidentiary structures inside the signed payload:
-
-1. **Mechanical Object Binding (`object_binding`):**
-   - Binds `submitted_bytes_sha256` (exact SHA-256 of the canonicalized submitted material), `examined_question`, `examination_scope`, `requested_operation`, `governing_canon_version` (`"7.0.0"`), `governing_canon_sha256`, `finding_disposition`, and `outcome`.
-   - Receiving systems verify this mechanically via `verifyObjectBoundStandingMark()`: if the received material differs by 1 byte from `submitted_bytes_sha256`, verification fails with `OBJECT_DIGEST_MISMATCH`.
-2. **Submission Completeness & Inventory (`completeness`):**
-   - Records `submitter_completeness_declaration` and `supplied_materials_inventory`, paired with the explicit limitation: *"A completeness declaration records the submitter's assertion and the inventory of materials supplied to the examination; it cannot prove that undisclosed documents, side agreements, or adverse records do not exist outside the submitted packet."*
-3. **Reproducibility & Model Provenance (`examination_provenance`):**
-   - Records `reproducibility_class` (`DETERMINISTIC_RULE_EVALUATION`, `SINGLE_MODEL_JUDGMENT_WITH_DETERMINISTIC_STRUCTURAL_FLOOR`, or `REPEATABLE_UNDER_STATED_CONDITIONS`), `model_provider`, `model_id`, `temperature`, `governing_text_sha256`, `system_prompt_sha256`, `protocol_sha256`, and `examined_at`.
-   - Preserves the exact provenance of a particular examination without pretending that stochastic LLM prose is timeless certification.
-4. **Data-Handling Disclosure (`data_handling`):**
-   - Explicitly states `inference_provider`, `transmitted_to_external_provider`, `transmitted_fields`, `storage_policy`, `retention_policy`, `training_use_policy` (`PROHIBITED`), and `deletion_policy`.
-
-## 3. Canonical Endpoints & MCP Tools (`VerifyMCP` Compliant)
-
-- `POST /v1/evaluate` is the evaluation path. It returns a signed record. The live contract describes current payment terms (about 1 USDC on Base), quote binding, and verification procedure. Payment buys evaluation, not a favorable result. Re-read the live contract rather than treating details in this file as immutable.
+- Website: https://wheelerhubbellpublishing.com
+- Developer onboarding: https://wheelerhubbellpublishing.com/developers.html
+- Developer assets: https://github.com/wheelerhubbell/standing-mark
+- Quick-start: https://github.com/wheelerhubbell/standing-mark/blob/main/docs/quick-start.md
+- Independent verification: https://github.com/wheelerhubbell/standing-mark/blob/main/docs/verification.md
+- OpenAPI: https://decisionintegrity.wheelerhubbellpublishing.com/openapi.json
 - Contract: https://decisionintegrity.wheelerhubbellpublishing.com/v1/contract
-- Evaluation: https://decisionintegrity.wheelerhubbellpublishing.com/v1/evaluate
-- Verification: https://decisionintegrity.wheelerhubbellpublishing.com/v1/verification (signature check only, per the live contract)
+- Discovery: https://decisionintegrity.wheelerhubbellpublishing.com/.well-known/whp-standing.json
+- Issuer key: https://decisionintegrity.wheelerhubbellpublishing.com/.well-known/whp-issuer.json
 - Health: https://decisionintegrity.wheelerhubbellpublishing.com/health
-- Issuer identity: https://decisionintegrity.wheelerhubbellpublishing.com/.well-known/whp-issuer.json
-- Issuer identity: Standing Marks are signed by Wheeler Hubbell Publishing with an Ed25519 key published at the discovery address above (key_id_sha256 dc872cabbbb942860cb2c4ac97a2a514245e54d69aa8515e80a7ec634c67076f). This key is the Standing Mark issuer identity. An earlier service host (api.wheelerhubbellpublishing.com) used a different key; that host is retired, does not answer, and its key does not verify current Marks.
-- The retired host api.wheelerhubbellpublishing.com no longer answers. The sealed /v1/evaluations door and the MCP endpoint previously listed here are not part of the current deployment.
+- Examination: POST https://decisionintegrity.wheelerhubbellpublishing.com/v1/evaluate
+- Signature check: POST https://decisionintegrity.wheelerhubbellpublishing.com/v1/verification
+
+## Payment and protocol boundaries
+
+Payment buys the examination, not a positive finding. Read the live contract for the exact scheme and current terms. WHP-BASE-USDC-QUOTE-1 uses a quote in USDC on Base bound to the exact request bytes; it is not x402-exact. A quote is not a paid examination.
+
+The service is HTTP. MCP setup uses local Python stdio source: https://github.com/wheelerhubbell/standing-mark/blob/main/mcp/README.md . No native remote MCP or A2A endpoint is claimed. The A2A card is a descriptive interoperability asset only.
+
+## Verification and receiver responsibility
+
+Verify the issuer key pin, protected header and Ed25519 signature independently with the published Python or JavaScript verifier. Signature verification establishes cryptographic validity, not substantive correctness, current standing or authority to act. A receiving system must compare the result to its own question, object, operation and policy.
+
+## Legacy assets
+
+Old package clients and demonstrations on the publishing site are historical material, not current onboarding. Use the developer repository above. No adoption, external integration or paid use is implied by publication.

@@ -46,7 +46,7 @@ class StandingPolicyEngine:
     """Core evaluation engine enforcing A(c) <= P(c) and WHP Standing Marks."""
     def __init__(
         self,
-        endpoint: str = "https://api.wheelerhubbellpublishing.com",
+        endpoint: str = "https://decisionintegrity.wheelerhubbellpublishing.com",
         strict_mode: bool = True,
         escalation_handler: Optional[Callable[[PolicyEvaluationResult], bool]] = None
     ):

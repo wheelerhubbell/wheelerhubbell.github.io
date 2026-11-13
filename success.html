@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="2-style.css?v=luxury-20261024-v3"/>
 </head>
 <body>
+<aside style="padding:16px 24px;border-bottom:1px solid #e2dccf;background:#faf8f3;color:#1c1815;font:15px/1.6 system-ui,sans-serif"><a style="color:#6e1f28" href="/developers.html">Standing Mark developer onboarding: current contract, SDKs and independent verification</a></aside>
 
   <!-- Top Utility Bar -->
   <aside class="top-utility">
@@ -116,7 +117,7 @@
     <div class="wrap footer-bottom" style="border: none; padding-top: 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
       <div>&copy; 2026 Wheeler Hubbell Publishing, Inc. All rights reserved.</div>
       <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
-        <a href="https://api.wheelerhubbellpublishing.com/v1/portal" target="_blank" rel="noopener" style="color: var(--gold-light); font-size: 0.85rem; text-decoration: none; border-bottom: 1px dotted var(--gold-muted); padding-bottom: 2px;">Manage Subscription &rarr;</a>
+        <a href="https://decisionintegrity.wheelerhubbellpublishing.com/v1/portal" target="_blank" rel="noopener" style="color: var(--gold-light); font-size: 0.85rem; text-decoration: none; border-bottom: 1px dotted var(--gold-muted); padding-bottom: 2px;">Manage Subscription &rarr;</a>
         <div>Settlement Identifier: <span class="ens-badge font-mono">whpublishing.base.eth</span></div>
       </div>
     </div>
@@ -153,7 +154,7 @@
       async function checkKey() {
         attempts++;
         try {
-          const res = await fetch('https://api.wheelerhubbellpublishing.com/v1/webhook/stripe?session_id=' + encodeURIComponent(sessionId));
+          const res = await fetch('https://decisionintegrity.wheelerhubbellpublishing.com/v1/webhook/stripe?session_id=' + encodeURIComponent(sessionId));
           if (res.status === 200) {
             const data = await res.json();
             if (data.status === 'ready' && data.key) {

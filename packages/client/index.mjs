@@ -221,7 +221,7 @@ export async function guardAction(toolCall, context = {}) {
  */
 export class StandingClient {
   constructor(options = {}) {
-    this.endpoint = (options.endpoint || 'https://api.wheelerhubbellpublishing.com').replace(/\/$/, '');
+    this.endpoint = (options.endpoint || 'https://decisionintegrity.wheelerhubbellpublishing.com').replace(/\/$/, '');
     this.affiliate = options.affiliate || null;
     this.buyerKey = options.buyerKey || options.privateKey || null;
     this.defaultDoor = options.door || (options.sealed ? '/v1/evaluations' : '/v1/evaluate');

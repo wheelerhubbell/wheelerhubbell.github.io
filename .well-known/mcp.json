@@ -1,17 +1,11 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.wheelerhubbell/whp-standing",
-  "title": "WHP Standing Witness",
-  "description": "Machine-verifiable standing under explicit authority and bounds. Epistemic guardrails and provenance validation for AI agents.",
-  "remotes": [
-    {
-      "type": "streamable-http",
-      "url": "https://api.wheelerhubbellpublishing.com/mcp"
-    }
-  ],
-  "websiteUrl": "https://wheelerhubbellpublishing.com",
-  "repository": {
-    "url": "https://github.com/wheelerhubbell/wheelerhubbell.github.io",
-    "source": "github"
-  }
+  "status": "SOURCE_INSTALL_ONLY",
+  "name": "Standing Mark MCP adapter",
+  "description": "Local Python stdio adapter for the HTTP examination service operated by Wheeler Hubbell Publishing, Inc.",
+  "repository": "https://github.com/wheelerhubbell/standing-mark",
+  "documentation": "https://github.com/wheelerhubbell/standing-mark/blob/main/mcp/README.md",
+  "transport": "stdio",
+  "source": "mcp/standing_mark_mcp.py",
+  "remote_endpoint": null,
+  "note": "No native remote MCP endpoint, PyPI package or registry publication is claimed. Clone the repository and run the local Python source."
 }
