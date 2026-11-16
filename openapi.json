@@ -4,7 +4,10 @@
     "title": "Standing Mark",
     "version": "1.2.0",
     "description": "Standing Mark is an independent examination service operated by Wheeler Hubbell Publishing, Inc. It examines claims and proposed actions and returns a signed result stating what is established and what is not. It does not execute, authorize, pay or settle.",
-    "x-guidance": "GET /v1/contract first; it is the live source of truth for schemas, payment terms and limits. POST /v1/evaluate with a JSON claim. An unpaid request returns HTTP 402 with a fixed-price payment request for exactly 1.00 USDC on Base (scheme WHP-BASE-USDC-FLAT-1, not x402-exact): the quote carries quote_id, amount_units, pay_to and expires, and is bound to the exact request bytes. Pay the quoted amount on Base, then retry the identical body with headers X-WHP-Quote and X-WHP-Payment-Tx. POST /v1/verification checks a signed result's signature only. The issuer Ed25519 key is published at /.well-known/whp-issuer.json."
+    "x-guidance": "GET /v1/contract first; it is the live source of truth for schemas, payment terms and limits. POST /v1/evaluate with a JSON claim. An unpaid request returns HTTP 402 with a fixed-price payment request for exactly 1.00 USDC on Base (scheme WHP-BASE-USDC-FLAT-1, not x402-exact): the quote carries quote_id, amount_units, pay_to and expires, and is bound to the exact request bytes. Pay the quoted amount on Base, then retry the identical body with headers X-WHP-Quote and X-WHP-Payment-Tx. POST /v1/verification checks a signed result's signature only. The issuer Ed25519 key is published at /.well-known/whp-issuer.json.",
+    "contact": {
+      "email": "desk@wheelerhubbellpublishing.com"
+    }
   },
   "servers": [
     {
