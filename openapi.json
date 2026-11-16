@@ -2,9 +2,9 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Standing Mark",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "description": "Standing Mark is an independent examination service operated by Wheeler Hubbell Publishing, Inc. It examines claims and proposed actions and returns a signed result stating what is established and what is not. It does not execute, authorize, pay or settle.",
-    "x-guidance": "GET /v1/contract first; it is the live source of truth for schemas, payment terms and limits. POST /v1/evaluate with a JSON claim. An unpaid request returns HTTP 402 with a fixed-price payment request for exactly 1.00 USDC on Base (scheme WHP-BASE-USDC-FLAT-1, not x402-exact): the quote carries quote_id, amount_units, pay_to and expires, and is bound to the exact request bytes. Pay the quoted amount on Base, then retry the identical body with headers X-WHP-Quote and X-WHP-Payment-Tx. POST /v1/verification checks a signed result's signature only. The issuer Ed25519 key is published at /.well-known/whp-issuer.json.",
+    "x-guidance": "GET /v1/contract first; it is the live source of truth for schemas, payment terms and limits, including the accepted input schema (input_schema). POST /v1/evaluate with a JSON body in that input schema: the proposition as a string 'claim' (aliases: text, prompt, content, statement, proposition; a string 'subject' or object.id is mapped when no alias is present), the examination material as a string or object 'data' (a 'material' field is mapped to data), provenance.source, provenance.evidence and an authority warrant as applicable. An unpaid request returns HTTP 402 with x402 v2 payment terms for exactly 1.00 USDC on Base (scheme exact, EIP-3009): sign the transferWithAuthorization to the pay_to address and retry the same body with the envelope in the payment-signature (or x-payment) header. The facilitator verifies and settles; no customer ETH gas is required. A request with no readable proposition is refused with 400 INVALID_INPUT before any payment movement. POST /v1/verification checks a signed result's signature only. The issuer Ed25519 key is published at /.well-known/whp-issuer.json.",
     "contact": {
       "email": "desk@wheelerhubbellpublishing.com"
     }
@@ -95,14 +95,127 @@
       "post": {
         "operationId": "evaluate",
         "summary": "Submit a claim or proposed action for examination",
-        "description": "Without payment, returns HTTP 402 with a price quote bound to the exact request bytes. After paying the quoted amount of USDC on Base, retry the identical body with headers X-WHP-Quote (the quote id) and X-WHP-Payment-Tx (the Base transaction hash) to receive the signed examination result. Payment buys the examination, not a positive finding.",
+        "description": "Without a payment header, returns HTTP 402 with x402 v2 payment terms (exactly 1.00 USDC on Base, EIP-3009 to the published pay_to address; the terms are mirrored in the payment-required response header). Sign the authorization and retry the same body with the x402 v2 envelope in the payment-signature (or x-payment) header: the service verifies then settles through the facilitator and returns the signed examination result with a payment-response header. A signed authorization settles at most once and the facilitator /settle is idempotent for an identical body, so a retry cannot double-charge. Payment buys the examination, not a positive finding.",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "description": "The claim or proposed action to examine, with supporting material. Field-level requirements are defined in the live contract at GET /v1/contract; the quote is bound to the exact request bytes."
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "description": "A JSON string body is treated as the claim."
+                  },
+                  {
+                    "type": "object",
+                    "description": "The examination request in the accepted input schema (authoritative copy: GET /v1/contract, field input_schema). Strict JSON: safe integers only (no floats, no -0, no integers beyond +/-2^53-1), no duplicate keys, well-formed Unicode, at most 64 levels deep and 262144 bytes.",
+                    "properties": {
+                      "claim": {
+                        "type": "string",
+                        "description": "The proposition examined. Aliases text, prompt, content, statement and proposition are read the same way; distinct conflicting values across them are refused with 400 AMBIGUOUS_INPUT_ALIASES. When no 'data' string is supplied, the claim itself is the examined material (explicit recorded fallback). An object-valued claim contributes its first string among text, claim, statement, proposition, id."
+                      },
+                      "subject": {
+                        "type": "string",
+                        "description": "Mapped to the proposition when no claim alias string is present."
+                      },
+                      "data": {
+                        "description": "The examination material read against the proposition: a string (trimmed non-empty) or an object/array."
+                      },
+                      "source": {
+                        "type": "string",
+                        "description": "A retrievable source reference for the material ('provenance.source' is also read)."
+                      },
+                      "provenance": {
+                        "type": "object",
+                        "properties": {
+                          "source": {
+                            "type": "string",
+                            "description": "A retrievable source reference for the material."
+                          },
+                          "authority": {
+                            "type": "string",
+                            "description": "The authority warrant; required for operations crossing the decision boundary (RECOMMEND and above). A top-level 'warrant' string is also read."
+                          },
+                          "evidence": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "Verbatim supporting statements."
+                          },
+                          "qualifiers": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "Binding qualifiers."
+                          }
+                        }
+                      },
+                      "warrant": {
+                        "type": "string",
+                        "description": "Authority warrant (see provenance.authority)."
+                      },
+                      "requested_operation": {
+                        "type": "string",
+                        "enum": [
+                          "DESCRIBE",
+                          "INFORM",
+                          "INQUIRE",
+                          "WARN",
+                          "REVIEW",
+                          "RECOMMEND",
+                          "CONCLUDE",
+                          "EXECUTE",
+                          "ACT"
+                        ],
+                        "description": "Default INFORM; ACT is read as EXECUTE."
+                      },
+                      "bounds": {
+                        "type": "object",
+                        "description": "jurisdiction, scope, valid_from, valid_until."
+                      },
+                      "extraction": {
+                        "type": "object",
+                        "description": "Extraction provenance, e.g. method."
+                      },
+                      "qualifiers": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "unknowns": {
+                        "type": "array",
+                        "description": "Declared unknowns, each may name operations it blocks."
+                      },
+                      "transitions": {
+                        "type": "array",
+                        "description": "Signed attestation transitions."
+                      },
+                      "nodes": {
+                        "type": "array",
+                        "description": "Signed attestation nodes; a complete WHP-STANDING-SUBMISSION-v1 object is also accepted."
+                      },
+                      "prior_record_hash": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "client_reference": {
+                        "type": "string"
+                      },
+                      "version_state": {
+                        "type": "string"
+                      },
+                      "material": {
+                        "description": "String or object; mapped to 'data' when 'data' is absent. The pre-2026-11-13 nested {\"claim\": {...}, \"material\": {...}} shape is accepted through this mapping."
+                      }
+                    }
+                  }
+                ],
+                "description": "The claim or proposed action to examine, with supporting material. Field-level requirements are defined in the live contract at GET /v1/contract (input_schema); the quote is bound to the exact request bytes."
               }
             }
           }
@@ -119,10 +232,10 @@
             }
           },
           "400": {
-            "description": "Invalid request"
+            "description": "Invalid request: not strict JSON, conflicting proposition aliases (AMBIGUOUS_INPUT_ALIASES), or no readable proposition (INVALID_INPUT; no payment is taken)."
           },
           "402": {
-            "description": "Payment required. The body carries a price quote bound to the exact request bytes, under payment_required.",
+            "description": "Payment required (x402 v2 terms; the payment-required response header mirrors the body), or a payment failure: PAYMENT_HEADER_INVALID, PAYMENT_TERMS_MISMATCH, PAYMENT_INVALID (facilitator verify), PAYMENT_SETTLEMENT_FAILED (facilitator settle).",
             "content": {
               "application/json": {
                 "schema": {
@@ -133,20 +246,27 @@
           },
           "503": {
             "description": "Payment chain temporarily unavailable (CHAIN_UNAVAILABLE); nothing is consumed"
+          },
+          "502": {
+            "description": "SETTLEMENT_OUTCOME_UNKNOWN (settlement outcome not known; reported as unknown, never as settled or failed) or EVALUATION_DELIVERY_FAILED (settled purchase recorded under the payment nonce; retry delivers without a second charge)"
           }
         },
         "x-whp-payment": {
-          "scheme": "WHP-BASE-USDC-FLAT-1",
-          "x402_exact": false,
+          "protocol": "x402-v2",
+          "scheme": "exact",
           "network": "eip155:8453",
           "asset": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
           "decimals": 6,
           "price": "1.00 USDC",
-          "pay_to": "0x1050eddd8282623b0c263ed6bdbd42370bbc28d3",
-          "min_confirmations": 5,
-          "quote_ttl_minutes": 15,
           "amount_units": 1000000,
-          "amount_match": "exact"
+          "amount_match": "exact",
+          "pay_to": "0x1050eddd8282623b0c263ed6bdbd42370bbc28d3",
+          "authorization": "EIP-3009 transferWithAuthorization; the facilitator submits the transaction, so no customer ETH gas is required.",
+          "headers": [
+            "payment-signature",
+            "x-payment"
+          ],
+          "facilitator": "https://facilitator.payai.network"
         },
         "x-payment-info": {
           "price": {
