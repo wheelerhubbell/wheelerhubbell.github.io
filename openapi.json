@@ -144,6 +144,18 @@
           "quote_ttl_minutes": 15,
           "amount_units": 1000000,
           "amount_match": "exact"
+        },
+        "x-payment-info": {
+          "price": {
+            "mode": "fixed",
+            "currency": "USD",
+            "amount": "1.00"
+          },
+          "protocols": [
+            {
+              "x402": {}
+            }
+          ]
         }
       }
     },
