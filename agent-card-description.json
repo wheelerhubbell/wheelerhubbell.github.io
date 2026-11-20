@@ -2,10 +2,17 @@
   "name": "Standing Mark",
   "description": "Independent examination of claims and proposed agent actions, operated by Wheeler Hubbell Publishing, Inc. Returns signed results (WHP-STANDING-MARK-v1, Ed25519) stating what is established and what is not. Does not execute, authorize, pay or settle.",
   "url": "https://decisionintegrity.wheelerhubbellpublishing.com",
-  "provider": { "organization": "Wheeler Hubbell Publishing, Inc." },
-  "version": "1.2.0",
-  "capabilities": { "streaming": false, "pushNotifications": false },
-  "authentication": { "schemes": [] },
+  "provider": {
+    "organization": "Wheeler Hubbell Publishing, Inc."
+  },
+  "version": "1.3.1",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "authentication": {
+    "schemes": []
+  },
   "skills": [
     {
       "id": "read-contract",
@@ -15,7 +22,7 @@
     {
       "id": "request-examination",
       "name": "Request an examination",
-      "description": "POST /v1/evaluate with a claim or proposed action. Unpaid requests return HTTP 402 with a USDC-on-Base quote bound to the exact request bytes (scheme WHP-BASE-USDC-FLAT-1, exactly 1.00 USDC, not x402-exact). Paying the quoted amount and retrying with X-WHP-Quote and X-WHP-Payment-Tx returns the signed examination result."
+      "description": "POST /v1/evaluate with a claim or proposed action. Unpaid requests return HTTP 402 with x402 v2 payment terms for exactly 1.00 USDC on Base (scheme exact: an EIP-3009 transferWithAuthorization to the pay_to address; the facilitator submits the transaction, so no customer ETH gas is required). Retry the same body with the signed x402 v2 envelope in the payment-signature (or x-payment) header; the service verifies then settles through the facilitator and returns the signed examination result."
     },
     {
       "id": "verify-result",

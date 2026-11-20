@@ -2,9 +2,9 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Standing Mark",
-    "version": "1.3.0",
+    "version": "1.3.1",
     "description": "Standing Mark is an independent examination service operated by Wheeler Hubbell Publishing, Inc. It examines claims and proposed actions and returns a signed result stating what is established and what is not. It does not execute, authorize, pay or settle.",
-    "x-guidance": "GET /v1/contract first; it is the live source of truth for schemas, payment terms and limits, including the accepted input schema (input_schema). POST /v1/evaluate with a JSON body in that input schema: the proposition as a string 'claim' (aliases: text, prompt, content, statement, proposition; a string 'subject' or object.id is mapped when no alias is present), the examination material as a string or object 'data' (a 'material' field is mapped to data), provenance.source, provenance.evidence and an authority warrant as applicable. An unpaid request returns HTTP 402 with x402 v2 payment terms for exactly 1.00 USDC on Base (scheme exact, EIP-3009): sign the transferWithAuthorization to the pay_to address and retry the same body with the envelope in the payment-signature (or x-payment) header. The facilitator verifies and settles; no customer ETH gas is required. A request with no readable proposition is refused with 400 INVALID_INPUT before any payment movement. POST /v1/verification checks a signed result's signature only. The issuer Ed25519 key is published at /.well-known/whp-issuer.json.",
+    "x-guidance": "GET /v1/contract first; it is the live source of truth for schemas, payment terms and limits, including the accepted input schema (input_schema). POST /v1/evaluate with a JSON body in that input schema: the proposition as a string 'claim' (aliases: text, prompt, content, statement, proposition; a string 'subject' or object.id is mapped when no alias is present), the examination material as a string or object 'data' (a 'material' field is mapped to data), provenance.source, provenance.evidence and an authority warrant as applicable. An unpaid request returns HTTP 402 with x402 v2 payment terms for exactly 1.00 USDC on Base (scheme exact, EIP-3009): sign the transferWithAuthorization to the pay_to address and retry the same body with the envelope in the payment-signature (or x-payment) header. The facilitator verifies and settles; no customer ETH gas is required. A request with no readable proposition is refused with 400 NOT_EXAMINABLE before any payment movement; the response names the missing objects. POST /v1/verification checks a signed result's signature only. The issuer Ed25519 key is published at /.well-known/whp-issuer.json.",
     "contact": {
       "email": "desk@wheelerhubbellpublishing.com"
     }
@@ -158,18 +158,7 @@
                       },
                       "requested_operation": {
                         "type": "string",
-                        "enum": [
-                          "DESCRIBE",
-                          "INFORM",
-                          "INQUIRE",
-                          "WARN",
-                          "REVIEW",
-                          "RECOMMEND",
-                          "CONCLUDE",
-                          "EXECUTE",
-                          "ACT"
-                        ],
-                        "description": "Default INFORM; ACT is read as EXECUTE."
+                        "description": "The operation the caller asks the examination to perform. Taken as given; the gate keeps no fixed list. Defaults to INFORM when the caller names none."
                       },
                       "bounds": {
                         "type": "object",
@@ -232,7 +221,7 @@
             }
           },
           "400": {
-            "description": "Invalid request: not strict JSON, conflicting proposition aliases (AMBIGUOUS_INPUT_ALIASES), or no readable proposition (INVALID_INPUT; no payment is taken)."
+            "description": "Invalid request: not strict JSON, conflicting proposition aliases (AMBIGUOUS_INPUT_ALIASES), no readable proposition (NOT_EXAMINABLE before any payment movement; the missing objects are named), or INVALID_INPUT when a request carrying a payment header still yields no readable proposition."
           },
           "402": {
             "description": "Payment required (x402 v2 terms; the payment-required response header mirrors the body), or a payment failure: PAYMENT_HEADER_INVALID, PAYMENT_TERMS_MISMATCH, PAYMENT_INVALID (facilitator verify), PAYMENT_SETTLEMENT_FAILED (facilitator settle).",
