@@ -9,13 +9,13 @@ Independent examination of claims and proposed actions. Returns signed findings.
 - Developer assets: https://github.com/wheelerhubbell/standing-mark
 - Quick-start: https://github.com/wheelerhubbell/standing-mark/blob/main/docs/quick-start.md
 - Independent verification: https://github.com/wheelerhubbell/standing-mark/blob/main/docs/verification.md
-- OpenAPI: https://decisionintegrity.wheelerhubbellpublishing.com/openapi.json
-- Contract: https://decisionintegrity.wheelerhubbellpublishing.com/v1/contract
-- Discovery: https://decisionintegrity.wheelerhubbellpublishing.com/.well-known/whp-standing.json
-- Issuer key: https://decisionintegrity.wheelerhubbellpublishing.com/.well-known/whp-issuer.json
-- Health: https://decisionintegrity.wheelerhubbellpublishing.com/health
-- Examination: POST https://decisionintegrity.wheelerhubbellpublishing.com/v1/evaluate
-- Signature check: POST https://decisionintegrity.wheelerhubbellpublishing.com/v1/verification
+- OpenAPI: https://api.wheelerhubbellpublishing.com/openapi.json
+- Contract: https://api.wheelerhubbellpublishing.com/v1/contract
+- Discovery: https://api.wheelerhubbellpublishing.com/.well-known/whp-standing.json
+- Issuer key: https://api.wheelerhubbellpublishing.com/.well-known/whp-issuer.json
+- Health: https://api.wheelerhubbellpublishing.com/health
+- Examination: POST https://api.wheelerhubbellpublishing.com/v1/evaluate
+- Signature check: POST https://api.wheelerhubbellpublishing.com/v1/verification
 
 ## Payment and protocol boundaries
 

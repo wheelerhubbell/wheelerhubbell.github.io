@@ -1,9 +1,9 @@
 {
   "status": "DISCOVERY_POINTER_NOT_SIGNED_CAPABILITY",
   "issuer": "Wheeler Hubbell Publishing, Inc.",
-  "contract": "https://decisionintegrity.wheelerhubbellpublishing.com/v1/contract",
-  "issuer_key": "https://decisionintegrity.wheelerhubbellpublishing.com/.well-known/whp-issuer.json",
-  "openapi": "https://decisionintegrity.wheelerhubbellpublishing.com/openapi.json",
+  "contract": "https://api.wheelerhubbellpublishing.com/v1/contract",
+  "issuer_key": "https://api.wheelerhubbellpublishing.com/.well-known/whp-issuer.json",
+  "openapi": "https://api.wheelerhubbellpublishing.com/openapi.json",
   "documentation": "https://wheelerhubbellpublishing.com/developers.html",
   "repository": "https://github.com/wheelerhubbell/standing-mark",
   "note": "No current signed capability resolution or native remote MCP endpoint is advertised here. Read the live contract. This file grants no authority."

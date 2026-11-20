@@ -1,11 +1,11 @@
 {
   "name": "Standing Mark",
   "description": "Independent examination of claims and proposed agent actions, operated by Wheeler Hubbell Publishing, Inc. Returns signed results (WHP-STANDING-MARK-v1, Ed25519) stating what is established and what is not. Does not execute, authorize, pay or settle.",
-  "url": "https://decisionintegrity.wheelerhubbellpublishing.com",
+  "url": "https://api.wheelerhubbellpublishing.com",
   "provider": {
     "organization": "Wheeler Hubbell Publishing, Inc."
   },
-  "version": "1.3.1",
+  "version": "1.3.2",
   "capabilities": {
     "streaming": false,
     "pushNotifications": false
@@ -30,7 +30,8 @@
       "description": "POST /v1/verification checks a signature (signature only). Independent offline verification against the published issuer key is available in the public developer assets."
     }
   ],
-  "x-whp-issuer": "https://decisionintegrity.wheelerhubbellpublishing.com/.well-known/whp-issuer.json",
-  "x-whp-openapi": "https://decisionintegrity.wheelerhubbellpublishing.com/openapi.json",
-  "x-note": "This card describes the HTTP interface for A2A-capable agents. The service does not yet speak the A2A protocol natively; this card is an interoperability description, not a native A2A endpoint."
+  "x-whp-issuer": "https://api.wheelerhubbellpublishing.com/.well-known/whp-issuer.json",
+  "x-whp-openapi": "https://api.wheelerhubbellpublishing.com/openapi.json",
+  "x-note": "This card describes the HTTP interface for A2A-capable agents. The service does not yet speak the A2A protocol natively; this card is an interoperability description, not a native A2A endpoint.",
+  "x-whp-alias": "https://decisionintegrity.wheelerhubbellpublishing.com (same deployment, kept operational as an alias)"
 }

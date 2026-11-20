@@ -2,16 +2,21 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Standing Mark",
-    "version": "1.3.1",
+    "version": "1.3.2",
     "description": "Standing Mark is an independent examination service operated by Wheeler Hubbell Publishing, Inc. It examines claims and proposed actions and returns a signed result stating what is established and what is not. It does not execute, authorize, pay or settle.",
-    "x-guidance": "GET /v1/contract first; it is the live source of truth for schemas, payment terms and limits, including the accepted input schema (input_schema). POST /v1/evaluate with a JSON body in that input schema: the proposition as a string 'claim' (aliases: text, prompt, content, statement, proposition; a string 'subject' or object.id is mapped when no alias is present), the examination material as a string or object 'data' (a 'material' field is mapped to data), provenance.source, provenance.evidence and an authority warrant as applicable. An unpaid request returns HTTP 402 with x402 v2 payment terms for exactly 1.00 USDC on Base (scheme exact, EIP-3009): sign the transferWithAuthorization to the pay_to address and retry the same body with the envelope in the payment-signature (or x-payment) header. The facilitator verifies and settles; no customer ETH gas is required. A request with no readable proposition is refused with 400 NOT_EXAMINABLE before any payment movement; the response names the missing objects. POST /v1/verification checks a signed result's signature only. The issuer Ed25519 key is published at /.well-known/whp-issuer.json.",
+    "x-guidance": "GET /v1/contract first; it is the live source of truth for schemas, payment terms and limits, including the accepted input schema (input_schema). POST /v1/evaluate with a JSON body in that input schema: the proposition as a string 'claim' (aliases: text, prompt, content, statement, proposition; a string 'subject' or object.id is mapped when no alias is present), the examination material as a string or object 'data' (a 'material' field is mapped to data), provenance.source, provenance.evidence and an authority warrant as applicable. An unpaid request returns HTTP 402 with x402 v2 payment terms for exactly 1.00 USDC on Base (scheme exact, EIP-3009): sign the transferWithAuthorization to the pay_to address and retry the same body with the envelope in the payment-signature (or x-payment) header. The facilitator verifies and settles; no customer ETH gas is required. Distinct conflicting values across the claim alias fields are refused with 400 AMBIGUOUS_INPUT_ALIASES before any payment movement. A request with no readable proposition is refused with 400 NOT_EXAMINABLE before any payment movement; the response names the missing objects. POST /v1/verification checks a signed result's signature only. The issuer Ed25519 key is published at /.well-known/whp-issuer.json.",
     "contact": {
       "email": "desk@wheelerhubbellpublishing.com"
     }
   },
   "servers": [
     {
-      "url": "https://decisionintegrity.wheelerhubbellpublishing.com"
+      "url": "https://api.wheelerhubbellpublishing.com",
+      "description": "Canonical door"
+    },
+    {
+      "url": "https://decisionintegrity.wheelerhubbellpublishing.com",
+      "description": "Alias of the same deployment"
     }
   ],
   "paths": {

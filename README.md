@@ -4,8 +4,8 @@ Standing Mark is an independent examination service operated by Wheeler Hubbell 
 
 - [Developer onboarding](https://wheelerhubbellpublishing.com/developers.html)
 - [Current developer repository](https://github.com/wheelerhubbell/standing-mark)
-- [Live contract](https://decisionintegrity.wheelerhubbellpublishing.com/v1/contract)
-- [Live OpenAPI](https://decisionintegrity.wheelerhubbellpublishing.com/openapi.json)
+- [Live contract](https://api.wheelerhubbellpublishing.com/v1/contract)
+- [Live OpenAPI](https://api.wheelerhubbellpublishing.com/openapi.json)
 - [Quick-start](https://github.com/wheelerhubbell/standing-mark/blob/main/docs/quick-start.md)
 - [Independent verification](https://github.com/wheelerhubbell/standing-mark/blob/main/docs/verification.md)
 - [Local MCP adapter setup](https://github.com/wheelerhubbell/standing-mark/blob/main/mcp/README.md)
