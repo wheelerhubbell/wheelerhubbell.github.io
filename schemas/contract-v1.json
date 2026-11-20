@@ -42,7 +42,7 @@
     ],
     "transmitted_to_external_provider": false
   },
-  "environment": "LIVE",
+  "environment": "HISTORICAL_NOT_CURRENT",
   "evaluation_door": "/v1/evaluate",
   "evaluator": {
     "canon_bytes": 153526,
@@ -59,7 +59,7 @@
   },
   "integration_rule": "A positive Standing Mark is a signed, scope-bound examination result. It may satisfy an evidence requirement defined by a receiving system, but it does not itself authorize an action. The receiving system must independently evaluate the applicable authority, conditions, and action policy. Absence of a positive Mark means the Mark requirement has not been satisfied; it does not, by itself, establish that the underlying action is prohibited.",
   "issuer": "Wheeler Hubbell Publishing",
-  "mcp_url": "https://decisionintegrity.wheelerhubbellpublishing.com/mcp",
+  "mcp_url": null,
   "payment": {
     "authorization_header": "PAYMENT-SIGNATURE",
     "protocol": "x402-v2",
@@ -85,5 +85,6 @@
     "positive_mark": "POSITIVE_STANDING_MARK (outcome: ESTABLISHED)",
     "service": "WHP Standing Mark Service (POST /v1/evaluate)"
   },
-  "$comment": "Legacy schema retained for historical reference. Not the current live service contract. Read https://decisionintegrity.wheelerhubbellpublishing.com/v1/contract and https://github.com/wheelerhubbell/standing-mark"
+  "$comment": "Historical schema, not the live contract. Prior LLM, remote MCP, client-proof and profile-route descriptions are not current deployment capabilities. Read current_contract_url; no examination finding authorizes execution.",
+  "current_contract_url": "https://api.wheelerhubbellpublishing.com/v1/contract"
 }
