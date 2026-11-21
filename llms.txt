@@ -17,6 +17,13 @@ Independent examination of claims and proposed actions. Returns signed findings.
 - Examination: POST https://api.wheelerhubbellpublishing.com/v1/evaluate
 - Signature check: POST https://api.wheelerhubbellpublishing.com/v1/verification
 
+## Governing publications
+
+- Decision Integrity Standard No. 001, Version 1.0: https://wheelerhubbellpublishing.com/publications/decision-integrity-standard-no-001-v1-0.html
+- Receiving Boundary Rule No. 001, Version 1.0: https://wheelerhubbellpublishing.com/publications/receiving-boundary-rule-no-001-v1-0.html
+
+The Standard defines the examination. The Standing Mark service operates the examination institution. The Receiving Boundary Rule is an adoptable instrument by which an independent receiving institution can require a verified examination before accepting designated consequential propositions; the receiving institution retains its own authority and responsibility.
+
 ## Payment and protocol boundaries
 
 Payment buys the examination, not a positive finding. Read the live contract for the exact scheme and current terms. The scheme is x402 v2 `exact`: exactly 1.00 USDC on Base per examination; the caller signs an EIP-3009 transferWithAuthorization and retries with the envelope in the payment-signature (or x-payment) header; the facilitator settles and no customer ETH gas is required. The 402 terms are not a paid examination.
