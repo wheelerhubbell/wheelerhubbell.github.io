@@ -51,13 +51,12 @@
       <li><strong>Smallest True Move &amp; Standing Mark Signing:</strong> Signing the evaluation output with the <strong>WHP Standing Mark</strong> (<code>WHP-STANDING-MARK-v1</code> over <code>WHP-JCS-I1</code> canonical JSON using <code>Ed25519</code>) and handing that signed evaluation back to the client.</li>
     </ul>
 
-    <p><strong>Pre-Settlement Assurance on <code>x402</code> Rails:</strong> Before an autonomous agent signs an <code>eip3009</code> USDC transfer on Base (<code>eip155:8453</code>) or executes an external mutation, it passes the transaction proposal through <code>POST /v1/evaluate</code> (or the <code>whp_authorize_x402_transaction</code> MCP tool). Both counterparties can verify the resulting <code>WHP-STANDING-MARK-v1</code> offline in under a millisecond. If <code>standing.outcome === "ESTABLISHED"</code> and <code>"EXECUTE"</code> is in <code>standing.permitted_operations</code>, settlement proceeds; otherwise, execution halts at the <em>Smallest True Move</em> and names the exact missing warrant.</p>
+    <p><strong>Pre-Settlement Assurance on <code>x402</code> Rails:</strong> Before an autonomous agent signs an <code>eip3009</code> USDC transfer on Base (<code>eip155:8453</code>) or executes an external mutation, it passes the transaction proposal through <code>POST /v1/evaluate</code> (or the local MCP adapter from the developer repository). Both counterparties can verify the resulting <code>WHP-STANDING-MARK-v1</code> offline in under a millisecond. If <code>standing.outcome === "ESTABLISHED"</code> and <code>"EXECUTE"</code> is in <code>standing.permitted_operations</code>, settlement proceeds; otherwise, execution halts at the <em>Smallest True Move</em> and names the exact missing warrant.</p>
 
     <p><strong>Public Endpoints:</strong></p>
     <ul>
       <li>Public Hub: <code>https://wheelerhubbellpublishing.com</code></li>
       <li>Single Evaluation Door: <code>POST https://decisionintegrity.wheelerhubbellpublishing.com/v1/evaluate</code></li>
-      <li>MCP Server: <code>POST https://decisionintegrity.wheelerhubbellpublishing.com/mcp</code></li>
       <li>Discovery Index: <code>GET https://decisionintegrity.wheelerhubbellpublishing.com/.well-known/whp-standing.json</code></li>
       <li>Live Contract: <code>GET https://decisionintegrity.wheelerhubbellpublishing.com/v1/contract</code></li>
     </ul>

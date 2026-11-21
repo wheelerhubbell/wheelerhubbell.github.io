@@ -27,7 +27,7 @@
     {
       "id": "verify-result",
       "name": "Verify a signed result",
-      "description": "POST /v1/verification checks a signature (signature only). Independent offline verification against the published issuer key is available in the public developer assets."
+      "description": "Independent offline verification against the published issuer key is available in the public developer assets. The contract also lists POST /v1/verification for a signature-only check, but that route is not currently deployed (observed 2026-11-21)."
     }
   ],
   "x-whp-issuer": "https://api.wheelerhubbellpublishing.com/.well-known/whp-issuer.json",

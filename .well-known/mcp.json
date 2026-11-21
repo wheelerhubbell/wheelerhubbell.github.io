@@ -7,5 +7,5 @@
   "transport": "stdio",
   "source": "mcp/standing_mark_mcp.py",
   "remote_endpoint": null,
-  "note": "No native remote MCP endpoint, PyPI package or registry publication is claimed. Clone the repository and run the local Python source."
+  "note": "No native remote MCP endpoint or PyPI package is claimed; an outdated pre-migration npm package exists and must not be used. The official MCP Registry carries pointer record io.github.wheelerhubbell/whp-standing (no remote endpoint). Clone the repository and run the local Python source."
 }

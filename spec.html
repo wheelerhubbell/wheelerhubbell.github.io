@@ -105,35 +105,41 @@
     <hr/>
 
     <h2>3. Cryptographic Standing Mark Envelope (WHP-STANDING-MARK-v1)</h2>
-    <p>Conforming systems shall serialize and verify evaluations using RFC 8785 JSON Canonicalization Scheme (JCS) and Ed25519 signatures according to the following canonical format:</p>
+    <p>Conforming systems shall serialize and verify evaluations using WHP-JCS-I1 (WHP's JSON canonicalization profile: object keys ordered by UTF-16 code units, no insignificant whitespace) and Ed25519 signatures. A signed result is an envelope of three members: a <code>protected</code> header naming the record type, algorithm, canonicalization and issuer key id; the <code>payload</code> (the examination record); and the <code>signature</code> over the canonical bytes of <code>{"protected": ..., "payload": ...}</code>. The operative description is the live contract (<code>GET /v1/contract</code>) together with the published issuer document (<code>GET /.well-known/whp-issuer.json</code>); if this page and the live contract ever disagree, the live contract governs. Recorded shape, as issued (verified against a live-issued record, 2026-11-21):</p>
 
     <pre><code>{
-  "version": "WHP-STANDING-MARK-v1",
-  "canonical_version": "WHP-JCS-I1",
-  "mark_id": "WHP-SM-&lt;16_char_hash&gt;",
-  "timestamp": "&lt;iso_8601_utc&gt;",
-  "artifact_sha256": "&lt;64_hex_hash&gt;",
-  "input_sha256": "&lt;64_hex_hash&gt;",
-  "evaluation_sha256": "&lt;64_hex_hash&gt;",
-  "record_sha256": "&lt;64_hex_hash&gt;",
-  "evaluation": {
-    "decision": "ALLOW | DENY | INDETERMINATE",
-    "deficit": null,
-    "smallest_true_move": "&lt;action_or_boundary&gt;"
+  "protected": {
+    "type": "WHP-STANDING-MARK-v1",
+    "algorithm": "Ed25519",
+    "canonicalization": "WHP-JCS-I1",
+    "key_id": "&lt;64_hex_sha256_of_issuer_spki_der&gt;"
   },
-  "signature": "&lt;ed25519_base64_signature&gt;",
-  "public_key": "&lt;ed25519_pem_public_key&gt;"
+  "payload": {
+    "mark_id": "WHP-SM-&lt;64_hex_hash&gt;",
+    "issuer": "Wheeler Hubbell Publishing",
+    "issued_at": "&lt;epoch_seconds&gt;",
+    "expires_at": "&lt;epoch_seconds&gt;",
+    "object": { "id": "...", "root": "&lt;64_hex_hash&gt;", "version": "..." },
+    "decision_record": {
+      "outcome": "ESTABLISHED | NOT_ESTABLISHED",
+      "...": "what was examined, what is established, what is not, and the bounds"
+    }
+  },
+  "signature": "&lt;ed25519_base64_signature&gt;"
 }</code></pre>
+
+    <p>When warrant is established the service issues a signed Standing Mark (<code>outcome</code> <code>ESTABLISHED</code>); when it is not, the service returns a signed record naming what is not established. Both are correctly delivered examinations. Payment buys the examination, not a positive finding.</p>
 
     <hr/>
 
     <h2>4. Verification &amp; Offline Auditability</h2>
     <p>All Standing Marks issued under DITS-1.0 are verifiable offline without network connectivity or API key authentication:</p>
     <ol>
-      <li>Canonicalize the envelope payload (excluding the signature) using RFC 8785 (JCS).</li>
-      <li>Validate the SHA-256 digest of the canonical bytes.</li>
-      <li>Verify the Ed25519 signature against the published issuer public key.</li>
-      <li>Recompute the input and artifact digests against the local evaluation submission.</li>
+      <li>Recompute the issuer key id as the lowercase hex SHA-256 of the published SPKI DER bytes and pin it against the live contract.</li>
+      <li>Canonicalize <code>{"protected": ..., "payload": ...}</code> under WHP-JCS-I1.</li>
+      <li>Verify the Ed25519 signature over those canonical bytes against the published issuer key.</li>
+      <li>Reference verifiers that perform these steps are published in the developer repository (<code>verification/verify.py</code>, <code>verification/verify.js</code>).</li>
+      <li>A valid signature establishes cryptographic validity of what the issuer signed, not substantive correctness, current standing, or authority to act. Binding an examination to a question, object, operation and policy is a receiver-side check.</li>
     </ol>
   </main>
 

@@ -3,7 +3,7 @@
   "info": {
     "title": "Standing Mark",
     "version": "1.3.2",
-    "description": "Standing Mark is an independent examination service operated by Wheeler Hubbell Publishing, Inc. It examines claims and proposed actions and returns a signed result stating what is established and what is not. It does not execute, authorize, pay or settle.",
+    "description": "Standing Mark is an independent examination service operated by Wheeler Hubbell Publishing, Inc. It examines claims and proposed actions and returns a signed result stating what is established and what is not. It does not execute, authorize, pay or settle. Governing publications: Decision Integrity Standard No. 001 v1.0 (https://wheelerhubbellpublishing.com/publications/decision-integrity-standard-no-001-v1-0.html) and Receiving Boundary Rule No. 001 v1.0 (https://wheelerhubbellpublishing.com/publications/receiving-boundary-rule-no-001-v1-0.html). The Standard defines the examination; this service operates the examination institution; the Rule is the adoptable instrument by which a receiving institution can require it.",
     "x-guidance": "GET /v1/contract first; it is the live source of truth for schemas, payment terms and limits, including the accepted input schema (input_schema). POST /v1/evaluate with a JSON body in that input schema: the proposition as a string 'claim' (aliases: text, prompt, content, statement, proposition; a string 'subject' or object.id is mapped when no alias is present), the examination material as a string or object 'data' (a 'material' field is mapped to data), provenance.source, provenance.evidence and an authority warrant as applicable. An unpaid request returns HTTP 402 with x402 v2 payment terms for exactly 1.00 USDC on Base (scheme exact, EIP-3009): sign the transferWithAuthorization to the pay_to address and retry the same body with the envelope in the payment-signature (or x-payment) header. The facilitator verifies and settles; no customer ETH gas is required. Distinct conflicting values across the claim alias fields are refused with 400 AMBIGUOUS_INPUT_ALIASES before any payment movement. A request with no readable proposition is refused with 400 NOT_EXAMINABLE before any payment movement; the response names the missing objects. POST /v1/verification checks a signed result's signature only. The issuer Ed25519 key is published at /.well-known/whp-issuer.json.",
     "contact": {
       "email": "desk@wheelerhubbellpublishing.com"
@@ -355,36 +355,47 @@
       },
       "PaymentRequired": {
         "type": "object",
-        "description": "Observed live 402 body shape (2026-11-13).",
+        "description": "Observed live 402 body shape (2026-11-21): x402 v2 payment terms. The same terms are mirrored in the payment-required response header.",
         "properties": {
-          "status": {
+          "x402Version": {
             "type": "integer",
             "enum": [
-              402
+              2
             ]
           },
           "error": {
-            "type": "string",
-            "enum": [
-              "PAYMENT_REQUIRED"
-            ]
-          },
-          "detail": {
             "type": "string"
           },
-          "payment_required": {
-            "$ref": "#/components/schemas/Quote"
+          "resource": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "mimeType": {
+                "type": "string"
+              }
+            }
+          },
+          "accepts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AcceptsEntry"
+            }
           }
         }
       },
-      "Quote": {
+      "AcceptsEntry": {
         "type": "object",
-        "description": "Price quote bound to the exact request bytes. Self-expires (observed lifetime about 15 minutes).",
+        "description": "x402 v2 exact payment terms for one examination: exactly 1.00 USDC on Base (amount 1000000 atomic units, 6 decimals), an EIP-3009 transferWithAuthorization to payTo settled by the facilitator; no customer ETH gas is required.",
         "properties": {
           "scheme": {
             "type": "string",
             "enum": [
-              "WHP-BASE-USDC-FLAT-1"
+              "exact"
             ]
           },
           "network": {
@@ -394,37 +405,25 @@
             ]
           },
           "asset": {
-            "type": "string"
-          },
-          "pay_to": {
-            "type": "string"
-          },
-          "price_floor_units": {
-            "type": "integer"
-          },
-          "decimals": {
-            "type": "integer",
+            "type": "string",
             "enum": [
-              6
+              "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
             ]
           },
-          "min_confirmations": {
+          "amount": {
+            "type": "string",
+            "enum": [
+              "1000000"
+            ]
+          },
+          "payTo": {
+            "type": "string"
+          },
+          "maxTimeoutSeconds": {
             "type": "integer"
           },
-          "how": {
-            "type": "string"
-          },
-          "quote_id": {
-            "type": "string"
-          },
-          "amount_units": {
-            "type": "integer",
-            "description": "Exactly 1000000 USDC atomic units (1.00 USDC, 6 decimals)",
-            "const": 1000000
-          },
-          "expires": {
-            "type": "integer",
-            "description": "Unix epoch seconds"
+          "extra": {
+            "type": "object"
           }
         }
       },
@@ -433,5 +432,9 @@
         "description": "Signed examination result. Type WHP-STANDING-MARK-v1, Ed25519 signature by the published issuer key. Either a Standing Mark (ESTABLISHED) or a signed record naming what is not established."
       }
     }
+  },
+  "externalDocs": {
+    "description": "Governing publications: Decision Integrity Standard No. 001 v1.0 and Receiving Boundary Rule No. 001 v1.0",
+    "url": "https://wheelerhubbellpublishing.com/publications/"
   }
 }

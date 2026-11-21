@@ -15,7 +15,7 @@ Independent examination of claims and proposed actions. Returns signed findings.
 - Issuer key: https://api.wheelerhubbellpublishing.com/.well-known/whp-issuer.json
 - Health: https://api.wheelerhubbellpublishing.com/health
 - Examination: POST https://api.wheelerhubbellpublishing.com/v1/evaluate
-- Signature check: POST https://api.wheelerhubbellpublishing.com/v1/verification
+- Independent verification: offline against the published issuer key (verifiers in the developer repository). The contract also lists a POST /v1/verification signature-check route that is not currently deployed (observed 2026-11-21); until the contract and the route agree, verify offline.
 
 ## Governing publications
 
