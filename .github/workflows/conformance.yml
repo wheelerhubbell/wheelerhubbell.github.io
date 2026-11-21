@@ -1,0 +1,44 @@
+name: One-truth release gate
+
+# Decision Integrity release control for wheelerhubbellpublishing.com: the
+# site deploys from main, so no change to main may land unless the one-truth
+# conformance examination authorizes the candidate site content against the
+# live sources of truth. The examination itself is sourced from the
+# standing-mark repo (its single home) and runs in gate mode against this
+# checkout, so a site change that resolves a contradiction can pass while one
+# that carries one forward cannot. See docs/conformance.md in standing-mark.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '41 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout site (release candidate)
+        uses: actions/checkout@v5
+
+      - name: Checkout the examination (standing-mark)
+        uses: actions/checkout@v5
+        with:
+          repository: wheelerhubbell/standing-mark
+          path: examination
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Live conformance examination of the site candidate (release gate)
+        env:
+          WHP_CONFORMANCE_SITE_ROOT: .
+          WHP_CONFORMANCE_REPO_REF: main
+        run: python3 examination/scripts/check_conformance.py --gate
