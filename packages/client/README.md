@@ -1,4 +1,4 @@
-> Current integration: [developer onboarding](https://wheelerhubbellpublishing.com/developers.html) and [current SDKs](https://github.com/wheelerhubbell/standing-mark). This page describes a legacy integration. Host links have been corrected, but compatibility with the current payment and record contract is not established.
+> Current integration: [developer onboarding](https://wheelerhubbellpublishing.com/developers.html) and the live contract at https://api.wheelerhubbellpublishing.com/v1/contract. Version 0.2.5 pays through x402 v2 (EIP-3009, 1.00 USDC on Base) at `POST /v1/evaluate`. `mock`, `ping`, `getResult` and the beacon stream target routes the current contract does not list.
 
 # @wheelerhubbell/whp-standing-client
 
@@ -87,7 +87,7 @@ if (!decision.allowed) {
 
 ## 🌐 Verifiable Network Verification
 
-The live service has a plain front door for ordinary x402 agents: `POST /v1/evaluate` with `subject`, `claim` and optional `provenance`, priced at 1.00 USDC on Base (x402 v2). It returns a signed evaluation record. That record is not a sealed Standing Mark. Marks are issued through `POST /v1/evaluations`, which takes signed submissions per the published contract.
+The live service has a plain front door for ordinary x402 agents: `POST /v1/evaluate` with `subject`, `claim` and optional `provenance`, priced at 1.00 USDC on Base (x402 v2). It returns a signed evaluation record. That record is not a sealed Standing Mark. The original sealed `/v1/evaluations` door is not implemented by the current service; this package does not call it.
 
 Example using the official x402 client (requires your own funded wallet and spending limits; not yet verified end to end against the live service):
 
@@ -100,7 +100,7 @@ const client = new x402Client();
 registerExactEvmScheme(client, { signer: privateKeyToAccount(process.env.EVM_PRIVATE_KEY) });
 const fetchWithPayment = wrapFetchWithPayment(fetch, client);
 
-const res = await fetchWithPayment('https://decisionintegrity.wheelerhubbellpublishing.com/v1/evaluate', {
+const res = await fetchWithPayment('https://api.wheelerhubbellpublishing.com/v1/evaluate', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
@@ -130,12 +130,10 @@ const record = await client.evaluate({
 console.log('Outcome:', record.evaluation?.determination?.outcome);
 console.log('Record Hash:', record.record_hash);
 
-// Or purchase an authoritative sealed Standing Mark (POST /v1/evaluations):
-// const mark = await client.purchase(signedSubmission);
 ```
 
-- **Live Service:** [https://decisionintegrity.wheelerhubbellpublishing.com](https://decisionintegrity.wheelerhubbellpublishing.com)
-- **Discovery:** [/.well-known/x402](https://decisionintegrity.wheelerhubbellpublishing.com/.well-known/x402)
+- **Live Service:** [https://api.wheelerhubbellpublishing.com](https://api.wheelerhubbellpublishing.com)
+- **Discovery:** [/.well-known/x402](https://api.wheelerhubbellpublishing.com/.well-known/x402)
 - **Protocol:** x402-v2 / Base Network
 
 ---
