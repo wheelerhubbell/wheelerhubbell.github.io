@@ -58,7 +58,6 @@ export declare class StandingClient {
     buyerKey?: string;
     privateKey?: string;
     door?: string;
-    sealed?: boolean;
   });
   getContract(): Promise<any>;
   mock(payload: any, door?: string): Promise<any>;
@@ -76,13 +75,11 @@ export declare class StandingClient {
           buyerKey?: string;
           privateKey?: string;
           door?: string;
-          sealed?: boolean;
           proactive?: boolean;
           terms?: any;
         }
       | null
   ): Promise<any>;
-  purchase(submission: any, options?: Record<string, any>): Promise<any>;
   getResult(purchaseId: string, options?: { fetch?: typeof fetch; headers?: Record<string, string> }): Promise<any>;
 }
 
