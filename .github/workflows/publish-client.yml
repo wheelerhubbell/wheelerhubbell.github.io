@@ -1,11 +1,14 @@
 name: Publish client to npm
 
 # Publishes packages/client to npm through npm trusted publishing (OIDC).
-# No stored token. Manual dispatch only. The package version must be one
+# No stored token. Manual dispatch, plus a push trigger on the 0.2.5 release branch so it can run before merge. The package version must be one
 # that is not yet on npm; the job fails otherwise.
 
 on:
   workflow_dispatch:
+  push:
+    branches: [client-0.2.5-current-payment-contract]
+    paths: ['.github/workflows/publish-client.yml']
 
 permissions:
   contents: read
