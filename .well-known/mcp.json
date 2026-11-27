@@ -1,18 +1,11 @@
 {
-  "status": "ACTIVE",
-  "name": "WHP Standing Mark MCP Service",
-  "description": "Streamable HTTP MCP service and client SDK for Decision Integrity and Standing Mark evaluation operated by Wheeler Hubbell Publishing, Inc.",
-  "transport": "streamable-http",
-  "remote_endpoint": "https://api.wheelerhubbellpublishing.com/mcp",
-  "protocol_version": "2024-11-05",
-  "repository": "https://github.com/wheelerhubbell/standing-guard-service",
-  "documentation": "https://wheelerhubbellpublishing.com/developers.html#mcp",
-  "npm_package": "@wheelerhubbell/whp-standing-client",
-  "mcp_registry_id": "io.github.wheelerhubbell/whp-standing",
-  "payment": {
-    "protocol": "x402",
-    "network": "eip155:8453",
-    "asset": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
-    "recipient": "0x1050eddd8282623b0c263ed6bdbd42370bbc28d3"
-  }
+  "status": "SOURCE_INSTALL_ONLY",
+  "name": "Standing Mark MCP adapter",
+  "description": "Local Python stdio adapter for the HTTP examination service operated by Wheeler Hubbell Publishing, Inc.",
+  "repository": "https://github.com/wheelerhubbell/standing-mark",
+  "documentation": "https://github.com/wheelerhubbell/standing-mark/blob/main/mcp/README.md",
+  "transport": "stdio",
+  "source": "mcp/standing_mark_mcp.py",
+  "remote_endpoint": null,
+  "note": "No native remote MCP endpoint or PyPI package is claimed; an outdated pre-migration npm package exists and must not be used. The official MCP Registry carries pointer record io.github.wheelerhubbell/whp-standing (no remote endpoint). Clone the repository and run the local Python source."
 }
